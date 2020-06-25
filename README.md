@@ -1,5 +1,4 @@
 # Simpsocks
----
 
 ## Nuestros productos 🧦
 
@@ -15,11 +14,18 @@ Además, esta audiencia tiene la particularidad que ya conoce respecto al manejo
 
 ## Nuestro equipo 👨‍💻
 
-### ✳️ Valeria Malbran
+#### ✳️ Valeria Malbran
 - Casi comunicadora social explorando el mundo IT y el diseño de productos digitales. 
 
-### ✳️ Gerardo Gallardo
-- Programador, apasionado de la tecnología, me gusta el asado y compartir un buen vino.
+#### ✳️ Gerardo Gallardo
+- Programador, apasionado de la tecnología, amante del asado y el buen vino.
 
-### ✳️ Martin Langlois
+#### ✳️ Martin Langlois
 - Hotelero intentando comprender, aprender y avanzar en el mundo IT!
+
+## Herramientas 🛠️
+
+- Repositorio: [GitHub](https://github.com/gerisg/grupo-5-simpsocks)
+- Seguimiento: [Trello](https://trello.com/b/fNkAilQh)
+- Comunicación: [Slack](https://node-a-distancia.slack.com/archives/G01644GKP8U)
+- Documentos: [Google Drive](https://drive.google.com/drive/folders/1yWLYsQS5PVYocpfAcGxI1yLDRoESWm7t)
