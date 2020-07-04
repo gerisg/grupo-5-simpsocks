@@ -29,7 +29,7 @@ Además, esta audiencia tiene la particularidad que ya conoce respecto al manejo
 - Seguimiento: [Trello](https://trello.com/b/fNkAilQh)
 - Comunicación: [Slack](https://node-a-distancia.slack.com/archives/G01644GKP8U)
 - Documentos: [Google Drive](https://drive.google.com/drive/folders/1yWLYsQS5PVYocpfAcGxI1yLDRoESWm7t)
-- Wireframes: [Figma](https://www.figma.com/file/bm6q4gl0OCdov09olw7TAv)
+- Wireframes: [Figma](https://www.figma.com/file/wrRketOpyDSYJ0KEJyjJZb)
 
 ## Nos Inspiran 🚀
 
