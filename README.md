@@ -61,6 +61,12 @@ La arquitectura de la información se muestra desplegada de forma sencilla. En l
 #### ✳️ [Vara Vara](https://www.varavara.com.ar/)
 >Es una tienda de productos de cultura pop que lo tomamos como referente por compartir nuestra temática.
 
+#### ✳️ [Fly Theme](http://ps.flytheme.net/themes/sp_market2/en/)
+>Es un tema que tomaremos de referencia en relación a estética y distribución de contenido.
+
+#### ✳️ [Roy Theme - Ayon](http://roythemes.com/demo/ayon/17/venus/)
+>Es un tema que tomamos de referencia por contener una estética simple, combinado con colores llamativos.
+
 ## Links útiles
 
 - Patrones de diseño gratuitos: [The Pattern Library](http://thepatternlibrary.com/)
