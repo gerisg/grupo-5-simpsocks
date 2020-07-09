@@ -47,25 +47,36 @@ La arquitectura de la información se muestra desplegada de forma sencilla. En l
 > Tienda online que se encarga de la venta de merchandising de Cine, Series, Comics, Videogames y más! La navegación de la página es simple, la división de categorías facilita la búsqueda, junto a un buscador que se encuentra visible en cada sección de la página. 
 
 #### ✳️ [Dafiti](https://www.dafiti.com.ar/)
+
 > Tienda con gran volumen de ventas, tiene una gran cantidad de productos agrupados en múltiples categorías. Posee un diseño simple y bien logrado, un buscador potente con sugerencias y filtros que facilitan la localización del producto deseado.
 
 #### ✳️ [Todo Moda](https://ar.todomoda.com/)
+
 > Es una tienda líder, con diseño muy atractivo y que resuelve agrupando los productos en una gran cantidad de categorías. El slide de ofertas en la página principal pareciera ser un gran acierto de marketing.
 
 #### ✳️ [Prime Video](https://www.primevideo.com)
+
 > Posee un diseño simple y destaca las funcionalidades disponibles para los usuarios.
 
 #### ✳️ [Mercado Libre](https://www.mercadolibre.com.ar)
+
 > Por tratarse de un marketplace, dispone de un abanico importante de funciones que nos sirven de ejemplo y modelo.
 
 #### ✳️ [Vara Vara](https://www.varavara.com.ar/)
+
 >Es una tienda de productos de cultura pop que lo tomamos como referente por compartir nuestra temática.
 
 #### ✳️ [Fly Theme](http://ps.flytheme.net/themes/sp_market2/en/)
+
 >Es un tema que tomaremos de referencia en relación a estética y distribución de contenido.
 
 #### ✳️ [Roy Theme - Ayon](http://roythemes.com/demo/ayon/17/venus/)
+
 >Es un tema que tomamos de referencia por contener una estética simple, combinado con colores llamativos.
+
+#### ✳️ [Velanetro](https://velanetro.myshopify.com/)
+
+>Es un tema que tomamos de referencia por contener una estética atractiva. Además, es destacable el proceso de compra y checkout.
 
 ## Links útiles
 
