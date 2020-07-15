@@ -2,6 +2,8 @@
 
 ## Diseño
 
+[Demo](http://www.simpsocks.com.ar)
+
 ### Paleta de colores
 
 Consideramos que los colores de los personajes de deben ser el elemento principal dentro del diseño del sitio.
