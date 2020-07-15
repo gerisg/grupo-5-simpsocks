@@ -24,4 +24,4 @@ Como fuente principal en el resto del contenido vamos a utilizar la tipografía 
 
 Utilizando la herramienta Gimp diseñamos un logo que contempla el producto principal que da origen a este proyecto.
 
-![Simpsocks Logo](https://github.com/gerisg/grupo-5-simpsocks/tree/master/design/images/logo/logo.png)
+![Simpsocks Logo](https://raw.githubusercontent.com/gerisg/grupo-5-simpsocks/master/design/images/logo/logo.png)
