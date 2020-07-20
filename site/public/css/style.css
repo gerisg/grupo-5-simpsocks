@@ -12,26 +12,39 @@
 }
 
 :root {
+
+  /* https://coolors.co/ffd521-70d1ef-d6e69f-424f46-f14e28 */
+
   --yellow: #FFD521;
   --skyblue: #70D1EF;
   --green: #D6E69F;
-  --darkgreen: #424f46;
-  --red: #f14e28;
+  --darkgreen: #424F46;
+  --red: #F14E28;
   --light: lightgrey;
 }
 
-body {
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
   margin: 0;
   font-family: 'Roboto', Helvetica, sans-serif;
   background-color:var(--light);
 }
 
-header {
+header{
   color: white;
   text-align: center;
-  background-image: url('/img/bg-header.jpg');
+  background-image: url('/images/bg-header.jpg');
   background-size: cover;
   height: 100px;
+}
+
+header nav{
+
 }
 
 .logo > img {
@@ -50,144 +63,78 @@ header {
   margin: 0;
 }
 
-.content {
-  background-color: white;
+main{
+
 }
 
-.content > .breadcrumb {
-  background-color: var(--darkgreen);
-  color: whitesmoke;
+main section{
+
 }
 
-.content > .breadcrumb p {
-  border: 0;
-  margin: 0;
-  padding: 0.5em;
+main section article{
+
 }
 
-.content .slides {
-  width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 2em;
+aside{
+
 }
 
-.content .slides .slide {
-  height: 500px;
-  width: auto;
-  background-image: url("/img/alchemy.gif");
-  background-repeat: repeat-x;
-}
+/* Footer */
 
-.content .top-categories {
-  background-color: var(--skyblue);
-  padding: 50px 0;
+footer {
 }
+  .footer-top {
+    background-color: var(--yellow);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+  }
+    .footer-top img {
+      width: 50px;
+      margin: 10px;
+      background-color: var(--darkgreen);
+      border: 1px solid var(--darkgreen);
+      border-radius: 50%;
+    }
+    .footer-top p {
+      font-weight: bold;
+      font-size: 16px;
+    }
 
-.content .top-categories h3 {
-  font-family: "AkbarPlain";
-  font-size: 30px;
-  color: var(--red);
-  text-align: center;
-  text-transform: uppercase;
-  padding: 1em 0 3em 0;
-  margin: 0;
-}
+  .footer-content {
+    background-color: var(--light);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+    width: 100%;
+  }
+    .footer-content > * {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .footer-content a {
+      margin: 5px;
+      color: #333;
+      font-weight: 100;
+      font-size: 14px;
+      text-decoration: none;
+    } 
+  .footer-bottom {
+    background-color: var(--darkgreen);
+    color: white;
+    text-align: center;
+  }
+    .footer-bottom small {
 
-.content .top-categories .category {  
-  display: inline-block;
-  width: 260px;
-  margin: 0 2em 2em 2em;
-  background-color: var(--skyblue);
-  border: 1px solid;
-  border-color: white;
-}
+    }
 
-.content .top-categories .category:hover {
-  border: 1px solid;
-  border-color: blue;
-}
 
-.content .top-categories .category img {
-  display:block;
-  margin:auto;
-  padding-top: 2em;
-  padding-bottom: 2em;
-}
 
-.content .top-categories .category button {
-  display:block;
-  margin:auto;
-  margin-bottom: 2em;
-  font-weight: bold;
-  text-align: center;
-  text-transform: uppercase;
-}
 
-.content .banner {
-  background-color: var(--darkgreen);
-}
-
-.content .banner img {
-  display:block;
-  margin:auto;
-  padding: 2em 0;
-}
-
-.content .best-sellers {
-  background-color: white;
-  padding: 5em 0 5em 0;
-}
-
-.content .best-sellers h3 {
-  font-family: "AkbarPlain";
-  font-size: 30px;
-  color: var(--red);
-  text-align: center;
-  text-transform: uppercase;
-  padding: 1em 0 3em 0;
-  margin: 0;
-}
-
-.content .best-sellers .product {  
-  display: inline-block;
-  width: 220px;
-  margin: 0 1em 1em 1em;
-  background-color: var(--green);
-  border: 1px solid --green;
-  border-color: var(--darkgreen);
-}
-
-.content .best-sellers .product:hover {
-  border: 1px solid;
-  border-color: var(--green);
-}
-
-.content .best-sellers .product img {
-  display:block;
-  margin:auto;
-  width: 200px;
-  padding-top: 1em;
-  padding-bottom: 1em;
-}
-
-.content .best-sellers .product button {
-  display:block;
-  margin:auto;
-  margin-bottom: 2px;
-  font-weight: bold;
-  text-align: center;
-  text-transform: uppercase;
-}
-
-.content .best-sellers .product p {
-  margin-bottom: 10px;
-  font-weight: bold;
-  text-align: center;
-  color: var(--skyblue)
-}
-
-/* buttons */
+/* Buttons */
 
 .btn {
   border: 0;
@@ -208,84 +155,25 @@ header {
   width: 100px;
 }
 
-/* footer */
-
-footer {
-  
-}
-
-footer .foot-top {
-  padding-top: 100px;
-  padding-bottom: 200px;
-  background-color: var(--yellow);
-}
-
-footer .foot-top ul {
-  list-style: none;
-  padding-left: 0; 
-}
-
-footer .foot-top ul li {
-  float: left;
-  width: 25%;
-}
-
-footer .foot-bot {
-  padding-top: 60px;
-  padding-bottom: 60px;
-  background-color: #f2f2f2;
-  display: flex;
-    align-items: center;
-  width: 1350px;
-}
-
-footer .foot-logo img {
-  max-width: 200px;
-  margin-left: 4em;;
-}
-
-footer .foot-bot .foot-logo {
-  width: 20%;
-}
-
-footer .foot-bot .foot-text {
-  width: 60%;
-}
-
-footer .foot-bot .foot-social {
-  width: 20%;
-}
-
-footer .foot-bot ul {
-  list-style: none;
-  padding-left: 0; 
-}
-
-.underline {
-  text-decoration: none!important;
-  position: relative;
-  color: #000000;
-}
-
-
-/*login*/
+/* Login & Register Forms */
 
 .mainRegisterLogin { background-color: #117cc1;
-background-size: cover;
-padding: 100px;}
-
-form {background-color: white;
-text-align: center;
-width:25%;
-margin-left: 650px;
-padding:15px;
-border-radius: 25px;
+  background-size: cover;
+  padding: 100px;
 }
-
+  
+form {background-color: white;
+  text-align: center;
+  width:25%;
+  margin-left: 650px;
+  padding:15px;
+  border-radius: 25px;
+}
+  
 .ml { background-color: #fed41f;
-border:none;
-font-size: large;
-border-radius: 50px;
-padding: 10px 30px 10px 30px;
-font-family: 'Black Han Sans', sans-serif;}
-
+  border:none;
+  font-size: large;
+  border-radius: 50px;
+  padding: 10px 30px 10px 30px;
+  font-family: 'Black Han Sans', sans-serif;
+}
