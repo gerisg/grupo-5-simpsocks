@@ -23,7 +23,7 @@
 body {
   margin: 0;
   font-family: 'Roboto', Helvetica, sans-serif;
-  background-color: var(--light);
+  background-color:var(--light);
 }
 
 header {
@@ -266,3 +266,26 @@ footer .foot-bot ul {
   position: relative;
   color: #000000;
 }
+
+
+/*login*/
+
+.mainRegisterLogin { background-color: #117cc1;
+background-size: cover;
+padding: 100px;}
+
+form {background-color: white;
+text-align: center;
+width:25%;
+margin-left: 650px;
+padding:15px;
+border-radius: 25px;
+}
+
+.ml { background-color: #fed41f;
+border:none;
+font-size: large;
+border-radius: 50px;
+padding: 10px 30px 10px 30px;
+font-family: 'Black Han Sans', sans-serif;}
+
