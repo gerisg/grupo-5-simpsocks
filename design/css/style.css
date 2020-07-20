@@ -29,7 +29,7 @@ body {
 header {
   color: white;
   text-align: center;
-  background-image: url('../images/tmp/bg-header.jpg');
+  background-image: url('/img/bg-header.jpg');
   background-size: cover;
   height: 100px;
 }
@@ -75,7 +75,7 @@ header {
 .content .slides .slide {
   height: 500px;
   width: auto;
-  background-image: url("../images/patterns/alchemy.gif");
+  background-image: url("/img/alchemy.gif");
   background-repeat: repeat-x;
 }
 
