@@ -1,12 +1,12 @@
 @font-face {
   font-family: "AkbarPlain";
-  src: url("../fonts/akbar.eot"); /* IE9 Compat Modes */
-  src: url("../fonts/akbar.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
-    url("../fonts/akbar.otf") format("opentype"), /* Open Type Font */
-    url("../fonts/akbar.svg") format("svg"), /* Legacy iOS */
-    url("../fonts/akbar.ttf") format("truetype"), /* Safari, Android, iOS */
-    url("../fonts/akbar.woff") format("woff"), /* Modern Browsers */
-    url("../fonts/akbar.woff2") format("woff2"); /* Modern Browsers */
+  src: url("/fonts/akbar.eot"); /* IE9 Compat Modes */
+  src: url("/fonts/akbar.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("/fonts/akbar.otf") format("opentype"), /* Open Type Font */
+    url("/fonts/akbar.svg") format("svg"), /* Legacy iOS */
+    url("/fonts/akbar.ttf") format("truetype"), /* Safari, Android, iOS */
+    url("/fonts/akbar.woff") format("woff"), /* Modern Browsers */
+    url("/fonts/akbar.woff2") format("woff2"); /* Modern Browsers */
   font-weight: normal;
   font-style: normal;
 }
@@ -81,8 +81,7 @@ aside{
 
 /* Footer */
 
-footer {
-}
+footer {}
   .footer-top {
     background-color: var(--yellow);
     display: flex;
@@ -101,7 +100,6 @@ footer {
       font-weight: bold;
       font-size: 16px;
     }
-
   .footer-content {
     background-color: var(--light);
     display: flex;
@@ -127,12 +125,6 @@ footer {
     color: white;
     text-align: center;
   }
-    .footer-bottom small {
-
-    }
-
-
-
 
 /* Buttons */
 
