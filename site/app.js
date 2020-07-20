@@ -4,7 +4,7 @@ const app = express();
 app.use (express.static("public"));
 app.use (express.urlencoded({extended:false}));
 
-app.listen (3500, ()=> (console.log("Funcionando en puerto 3500")));
+app.listen (3000, ()=> (console.log("Servidor funcionando en puerto 3000")));
 
 
 app.get ("/", (req,res) => (res.sendFile(__dirname +"/views/index.html")));
