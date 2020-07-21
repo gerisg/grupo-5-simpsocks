@@ -11,25 +11,43 @@
 </head>
 <body>
     <header>
-        <!-- Logo -->
-        <div class="logo">
-            <img src="/images/logo.png" alt="">
-            <h3>The Simpsocks</h3>
+        <div class="header-start">
+            <img src="/images/logo.png" alt="Logo Simpsocks">
+            <h2><span class="ultra">simp</span>socks</h2>
         </div>
-        <!-- Searchbox -->
-        <!-- Icons -->
+        <div class="header-center">
+            <form>
+                <input type="text" placeholder="Buscar productos ...">
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </form>
+        </div>
+        <div class="header-end">
+            <a href="#">
+                <i class="far fa-heart"></i>
+                <span>Favoritos</span>
+            </a>
+            <a href="#">
+                <i class="far fa-user"></i>
+                <span>Mi cuenta</span>
+            </a>
+            <a href="#">
+                <i class="fas fa-shopping-cart"></i>
+                <span>Mis compras</span>
+            </a>
+        </div>
     </header>
+
  <main class="main-register-login">  
 
-    <form action="" method="POST"> 
+    <form action="" method="POST" class="form-login-register"> 
 
         <h2>LOGIN</h2>
 
         <p><label for="user" >USUARIO</label><br>
-        <input type="text" id="user" name="user"></p>
+        <input type="text" id="user" name="user" class="input-register-login"></p>
 
         <p><label for="password" >CONTRASEÑA</label><br>
-        <input type="password" id="password" name="password"></p>
+        <input type="password" id="password" name="password" class="input-register-login"></p>
         <p><a href="">Olvidaste tu contraseña?</a></p>
 
         <button type="submit" class="button-register-login">enviar</button> 
