@@ -149,7 +149,7 @@ footer {}
 
 /* Login & Register Forms */
 
-.mainRegisterLogin { background-color: #117cc1;
+.main-register-login{ background-color: #117cc1;
   background-size: cover;
   padding: 100px;
 }
@@ -162,7 +162,7 @@ form {background-color: white;
   border-radius: 25px;
 }
   
-.ml { background-color: #fed41f;
+.button-register-login { background-color: #fed41f;
   border:none;
   font-size: large;
   border-radius: 50px;
