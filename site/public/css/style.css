@@ -267,40 +267,29 @@ footer {}
 
 /* Login & Register Forms */
 
-.main-register-login{ background-color: #117cc1;
+.main-register-login{ background-color:var(--blue);
   background-size: cover;
-  padding: 100px;
-}
+  }
 
- .h2-login-register{ margin-bottom: 20px;
+ .h2-login-register{ 
   font-family: "gotham-ultra";}
 
-.form-login-register {background-color: white;
-  text-align: center;
-  width:25%;
-  margin-left: 650px;
-  padding:15px;
-  padding-top: 100px;
-  border-radius: 25px;
-  height:600px ;
-  font-family: "gotham-ultra";
-}
-  
-.button-register-login { background-color: #fed41f;
-  border:none;
-  font-size: large;
-  border-radius: 50px;
-  padding: 10px 30px 10px 30px;
-  font-family: "gotham-ultra";
-  margin-top:25px;
-} 
+.form-login-register {background-color: var(--light);
+width: 75vw;
+height:50%;
+margin: 15% 12.5% 15% 12.5%;
+text-align: center;
+font-family: "gotham-ultra";
+font-size: smaller;
+border-radius: 50px;
+padding-top:15px;
+padding-bottom:15px;
+border: white solid 2px;}
 
-.input-register-login {width:300px;
-height: 25px;
-margin: 5px;
-margin-bottom: 20px;
-background-color: var(--light);
-border-radius: 5px;}
+@media all and (min-device-width : 768px) {
+  .form-login-register{ width: 40vw;
+    margin:15% 30% 15% 30%;}}
+
 
 /* Product Details */
 
