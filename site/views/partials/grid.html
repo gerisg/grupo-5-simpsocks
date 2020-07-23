@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid System</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <main class="container">
+        <p>Columnas</p>
+        <div class="row">
+            <div class="col-md-6 col-lg-3" style="background-color: lightpink;">col-6</div>
+            <div class="col-md-4 col-lg-2" style="background-color: lightpink;">col-4</div>
+            <div class="col-md-2 col-lg-1" style="background-color: lightpink;">col-2</div>
+        </div>
+        <p>Main Start</p>
+        <div class="row main-start">
+            <div class="col-md-6 col-lg-3" style="background-color: lightpink;">col-6</div>
+        </div>
+        <p>Main Center</p>
+        <div class="row main-center">
+            <div class="col-md-6 col-lg-3" style="background-color: lightpink;">col-6</div>
+        </div>
+        <p>Main End</p>
+        <div class="row main-end">
+            <div class="col-md-6 col-lg-3" style="background-color: lightpink;">col-6</div>
+        </div>
+        <p>Main Around</p>
+        <div class="row main-around">
+            <div class="col-md-1 col-lg-1" style="background-color: lightpink;">col-1</div>
+            <div class="col-md-3 col-lg-2" style="background-color: lightpink;">col-3</div>
+            <div class="col-md-5 col-lg-3" style="background-color: lightpink;">col-5</div>
+        </div>
+        <p>Main Between</p>
+        <div class="row main-between">
+            <div class="col-md-5 col-lg-3" style="background-color: lightpink;">col-5</div>
+            <div class="col-md-3 col-lg-2" style="background-color: lightpink;">col-3</div>
+            <div class="col-md-1 col-lg-1" style="background-color: lightpink;">col-1</div>
+        </div>
+        <p>Cross Start</p>
+        <div class="row cross-start" style="min-height: 6rem; background-color: green;">
+            <div class="col-md-5 col-lg-3" style="background-color: lightpink;">col-5</div>
+            <div class="col-md-3 col-lg-2" style="background-color: lightpink;">col-3</div>
+            <div class="col-md-1 col-lg-1" style="background-color: lightpink;">col-1</div>
+        </div>
+        <p>Cross Center</p>
+        <div class="row cross-center" style="min-height: 6rem; background-color: green;">
+            <div class="col-md-5 col-lg-3" style="background-color: lightpink;">col-5</div>
+            <div class="col-md-3 col-lg-2" style="background-color: lightpink;">col-3</div>
+            <div class="col-md-1 col-lg-1" style="background-color: lightpink;">col-1</div>
+        </div>
+        <p>Cross End</p>
+        <div class="row cross-end" style="min-height: 6rem; background-color: green;">
+            <div class="col-md-5 col-lg-3" style="background-color: lightpink;">col-5</div>
+            <div class="col-md-3 col-lg-2" style="background-color: lightpink;">col-3</div>
+            <div class="col-md-1 col-lg-1" style="background-color: lightpink;">col-1</div>
+        </div>
+        <p>Nested</p>
+        <div class="row">
+            <div class="col-md-6 col-lg-3" style="background-color: lightgrey;">
+                <div class="row main-start">
+                    <div class="col-md-6 col-lg-6" style="background-color: lightpink;">col-nested-start</div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3" style="background-color: lightgrey;">
+                <div class="row main-center">
+                    <div class="col-md-6 col-lg-6" style="background-color: lightpink;">col-nested-center</div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3" style="background-color: lightgrey;">
+                <div class="row main-center">
+                    <div class="col-md-6 col-lg-6" style="background-color: lightpink;">col-nested-center</div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3" style="background-color: lightgrey;">
+                <div class="row main-end">
+                    <div class="col-md-6 col-lg-6" style="background-color: lightpink;">col-nested-end</div>
+                </div>
+            </div>
+        </div>
+        
+    </main>
+</body>
+</html>
