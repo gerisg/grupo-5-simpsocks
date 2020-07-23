@@ -16,31 +16,34 @@
 
 :root {
   --primary: var(--yellow);
+  --secondary: var(--blue);
   --white: white;
-  --light: #ccc;
+  --light: #ebebeb;
   --dark: #333;
   
-  /* https://coolors.co/ffd521-3180bf-d6e69f-424f46-f14e28 */
+  /* https://coolors.co/ffd521-3180bf-d6e69f-424f46-f14e28-f777aa */
   --yellow: #FFD521;
   --green: #D6E69F;
   --darkgreen: #424F46;
   --blue: #3180BF;
   --red: #F14E28;
+  --pink: #F777AA;
 
-  /* https://coolors.co/ffe570-5d9fd5-e3eebe-5d6f62-f47052 */
+  /* https://coolors.co/ffe570-5d9fd5-e3eebe-5d6f62-f47052-fbb2cf */
   --soft-yellow: #FFE570;
   --soft-green: #E3EEBE;
   --soft-darkgreen: #5D6F62;
   --soft-blue: #5D9FD5;
   --soft-red: #F47052;
+  --soft-pink: #FBB2CF
 
   --info-color: var(--blue);
   --success-color: var(--green);
   --warning-color: var(--yellow);
   --danger-color: var(--red);
 
-  --default-padding: 6px;
-  --default-margin: 6px;
+  --default-padding: .5rem;
+  --default-margin: .5rem;
 }
 
 /* Generals */
@@ -67,13 +70,29 @@ a {
   text-decoration: none;
 }
 
+.title {
+  font-family: "gotham-ultra";
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.subtitle {
+  font-family: "gotham-ultra";
+  font-size: .8rem;
+  text-transform: uppercase;
+}
+
+.text {
+  font-size: .6rem;
+}
+
 .btn { 
   display: inline-block; 
   cursor: pointer;
   font-family: "gotham-ultra";
   text-transform: lowercase;
-  border-radius: 15px;
-  padding: 6px 18px;
+  border-radius: .6rem;
+  padding: .2rem .6rem;
 }
 
 input, button {
@@ -146,11 +165,13 @@ header {
     margin-left: 10px;
   }
     .header-start img {
-      width: 50px;
       background-color: var(--blue);
-      padding: 10px;
       position: absolute;
-      left: 30px;
+      z-index: 1;
+      left: .5rem;
+      top: .5rem;
+      padding: .5rem;
+      width: 4rem;
       -webkit-box-shadow: 5px 5px 12px 0px rgba(0,0,0,0.25);
       -moz-box-shadow: 5px 5px 12px 0px rgba(0,0,0,0.25);
       box-shadow: 5px 5px 12px 0px rgba(0,0,0,0.25);
@@ -211,7 +232,143 @@ header {
       font-weight: bold;
     }
 
-main{}
+/* Main */
+main { }
+
+.container {
+  margin: 0 .5rem;
+}
+
+/* Main Categories */
+.main-categories nav {
+  background-color: var(--dark);
+  color: var(--soft-green);
+  display: flex;
+  justify-content: flex-end;
+}
+  .main-category {
+    font-size: .5rem;
+    padding: .25rem .25rem;
+  }
+
+/* Home Carousel */
+.carousel {
+  max-width: 1440px;
+  position: relative;
+  margin: auto;
+}
+  .slide-container {
+    display: none;
+    padding: 1rem;
+  }
+  .slide-container.slide-1 { background-color: var(--pink); }
+  .slide-container.slide-2 { background-color: var(--blue); }
+  .slide-container.slide-3 { background-color: var(--yellow); }
+    .slide {
+      border-radius: 12px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: var(--white);
+      margin: 0 auto;
+    }
+      .slide-img {
+        width: 33.3333%;
+        border-radius: 12px;
+        align-self: center;
+        padding: .5rem;
+        margin: 1rem;
+        background-color: var(--white);
+        box-shadow: 4px 0px 12px rgba(0,0,0,0.25);
+      }
+        .slide-img img {
+          width: 100%;
+        }
+      .slide-info {
+        width: 66.6667%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 1rem 0 0;
+      }
+        .slide-info span {
+          text-align: center;
+        }
+    .fade {
+      -webkit-animation-name: fade;
+      -webkit-animation-duration: 1.5s;
+      animation-name: fade;
+      animation-duration: 1.5s;
+    }
+    @-webkit-keyframes fade {
+      from {opacity: .4};
+      to {opacity: 1};
+    }
+    @keyframes fade {
+      from {opacity: .4};
+      to {opacity: 1};
+    }
+  .prev-link, .next-link {
+    cursor: pointer;
+    position: absolute;
+    top: calc(50% - 18px);
+    padding: .2rem;
+    color: var(--white);
+    font-weight: bold;
+    font-size: 1rem;
+    transition: 0.6s ease;
+    border-radius: 0 12px 12px 0;
+    user-select: none;
+  }
+  .next-link {
+    right: 0;
+    border-radius: 12px 0 0 12px;
+  }
+  .prev-link:hover, .next-link:hover {
+    background-color: rgba(0,0,0,0.8);
+  }
+
+/* Categories */
+section.categories-container {
+  margin: 1rem auto;
+  width: 100%;
+  text-align: center;
+}
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+  .category {
+    position: relative;
+    padding: .1rem;
+    width: 100%;
+  }
+    .cat-img img {
+      width: 100%;
+    }
+    .cat-name {
+      color: var(--light);
+      position: absolute;
+      left: 10px;
+      bottom: 14px;
+      width: 90%;
+      border-radius: 8.1px;
+      background-color: var(--secondary);
+      box-shadow: 0 3px 16px 0 rgba(0,0,0,.1);
+    }
+    .cat-name {
+      text-align: center;
+      padding: .25rem 0;
+    }
+
+/* Main banner */
+main .banner {
+  display: none;
+}
+
+/* */
+
 
 main section {}
 
@@ -267,28 +424,28 @@ footer {}
 
 /* Login & Register Forms */
 
-.main-register-login{ background-color:var(--blue);
+.main-register-login {
+  background-color:var(--blue);
   background-size: cover;
-  }
+}
 
- .h2-login-register{ 
-  font-family: "gotham-ultra";}
+ .h2-login-register { 
+  font-family: "gotham-ultra";
+}
 
-.form-login-register {background-color: var(--light);
-width: 75vw;
-height:50%;
-margin: 15% 12.5% 15% 12.5%;
-text-align: center;
-font-family: "gotham-ultra";
-font-size: smaller;
-border-radius: 50px;
-padding-top:15px;
-padding-bottom:15px;
-border: white solid 2px;}
-
-@media all and (min-device-width : 768px) {
-  .form-login-register{ width: 40vw;
-    margin:15% 30% 15% 30%;}}
+.form-login-register {
+  background-color: var(--light);
+  width: 75vw;
+  height:50%;
+  margin: 15% 12.5% 15% 12.5%;
+  text-align: center;
+  font-family: "gotham-ultra";
+  font-size: smaller;
+  border-radius: 50px;
+  padding-top:15px;
+  padding-bottom:15px;
+  border: white solid 2px;
+}
 
 
 /* Product Details */
@@ -297,17 +454,84 @@ border: white solid 2px;}
 /* Cart */
 
 
-@media only screen and (min-device-width : 768px) {
+/* Grid */
+
+[class^="col-"] {
+  padding: .5rem;
+}
+
+/* Tablet */
+
+@media (min-width: 768px) {
+
+  /* Grid system */
+  
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -.5rem;
+    margin-right: -.5rem;
+  }
+
+  [class^="col-"] {
+    margin: 0 .5rem;
+  }
+
+  .row.main-start { justify-content: flex-start; }
+  .row.main-center { justify-content: center; }
+  .row.main-end { justify-content: flex-end; }
+  .row.main-around { justify-content: space-around; }
+  .row.main-between { justify-content: space-between; }
+  .row.cross-start { align-items: flex-start;}
+  .row.cross-center { align-items: center;}
+  .row.cross-end { align-items: flex-end;}
+  
+  .col-md-1 { width: calc(8,333333333% - 1rem)}
+  .col-md-2 { width: calc(16.666666667% - 1rem)}
+  .col-md-3 { width: calc(25% - 1rem)}
+  .col-md-4 { width: calc(33.333333333% - 1rem)}
+  .col-md-5 { width: calc(41.666666667% - 1rem)}
+  .col-md-6 { width: calc(50% - 1rem)}
+  .col-md-7 { width: calc(58.333333333% - 1rem)}
+  .col-md-8 { width: calc(66.666666667% - 1rem)}
+  .col-md-9 { width: calc(75% - 1rem)}
+  .col-md-10 { width: calc(83.333333333% - 1rem)}
+  .col-md-11 { width: calc(91.666666667% - 1rem)}
+  .col-md-12 { width: calc(100% - 1rem)}
+  
+  /* header */
   header {}
     .header-start {}
       .header-start img { 
         margin: 20px; 
         width: 80px;
       }
-      .header-start h2 {
-        display: inline;
-      }
-    .header-center {
-      display: inline;
-    }
+      .header-start h2 { display: inline; }
+    .header-center { display: inline; }
+  
+    /* register */
+  .form-login-register {
+    width: 40vw;
+    margin:15% 30% 15% 30%;
+  }
+}
+
+/* Desktop */
+
+@media (min-width: 1024px) {
+
+  /* Grid system */
+
+  .col-lg-1 { width: calc(8,333333333% - 1rem)}
+  .col-lg-2 { width: calc(16.666666667% - 1rem)}
+  .col-lg-3 { width: calc(25% - 1rem)}
+  .col-lg-4 { width: calc(33.333333333% - 1rem)}
+  .col-lg-5 { width: calc(41.666666667% - 1rem)}
+  .col-lg-6 { width: calc(50% - 1rem)}
+  .col-lg-7 { width: calc(58.333333333% - 1rem)}
+  .col-lg-8 { width: calc(66.666666667% - 1rem)}
+  .col-lg-9 { width: calc(75% - 1rem)}
+  .col-lg-10 { width: calc(83.333333333% - 1rem)}
+  .col-lg-11 { width: calc(91.666666667% - 1rem)}
+  .col-lg-12 { width: calc(100% - 1rem)}
 }
