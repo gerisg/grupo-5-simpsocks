@@ -764,6 +764,7 @@ body{
   .row.cross-start { align-items: flex-start;}
   .row.cross-center { align-items: center;}
   .row.cross-end { align-items: flex-end;}
+  .row.column { flex-direction: column;}
   
   .col-md-1 { width: calc(8,333333333% - 1rem)}
   .col-md-2 { width: calc(16.666666667% - 1rem)}
