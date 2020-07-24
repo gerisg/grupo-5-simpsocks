@@ -5,9 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- CSS -->
-    <link rel="stylesheet" href="/css/style.css" type="text/css" media="all" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;1,100;1,300&display=swap"
-        rel="stylesheet">
+    rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/style.css" type="text/css" media="all" />
+ 
     <!-- Title -->
     <title>Simpsocks</title>
 </head>
@@ -39,8 +41,7 @@
             </a>
         </div>
     </header>
-    <div class="breadcrumb">Lorem, ipsum.</div>
-    <div class="titulo-carrito">
+    <div class="text cart-title">
         <div>Mi carrito </div>
         <div class="article-count">2 Articulos</div>
     </div>
@@ -48,8 +49,9 @@
     <main class="cart-section">
         <div>
             <div class="purchase-details">
-                <img src="public/img/medias-soquetes.jpg" alt="foto producto">
+                <img src="/images/product.png" alt="foto producto">
                 <article class="cart-info">
+                    <span class="cancel"><i class="fa fa-times" aria-hidden="true"></i></span>
                     <h3 class="article-title">Título</h3>
                     <div class="cart-quantity">
                         <span class="quantity-label">Cantidad:</span>
@@ -65,8 +67,9 @@
                 </article>
             </div>
             <div class="purchase-details">
-                <img src="public/img/medias-soquetes.jpg" alt="foto producto">
+                <img src="/images/product.png" alt="foto producto">
                 <article class="cart-info">
+                    <span class="cancel"><i class="fa fa-times" aria-hidden="true"></i></span>
                     <h3 class="article-title">Título</h3>
                     <div class="cart-quantity">
                         <span class="quantity-label">Cantidad:</span>
@@ -82,46 +85,47 @@
                 </article>
             </div>
         </div>
-        <div class="resume">
-            <div class="price-title">Resumen de Compra</div>
-            <div>
-                <input class="resume-input" type="text" id="discount" name="discount" placeholder="código de descuento">
-                <button class="btn-action" type="submit">Aplicar</button>
+        <div class="resume-container">
+            <div class="resume">
+                <div class="title">Resumen de Compra</div>
+                <div>
+                    <input class="resume-input" type="text" id="discount" name="discount"
+                        placeholder="código de descuento">
+                    <button class="btn-action btn-secondary" type="submit">aplicar</button>
+                </div>
+                <div class="price-details-container">
+                    <div class="price-details">
+                        <div>Producto</div>
+                        <div>$ 320 </div>
+                    </div>
+                    <div class="price-details">
+                        <div>Producto</div>
+                        <div>$ 320 </div>
+                    </div>
+                    <div class="price-details discount">
+                        <div>Producto</div>
+                        <div>-$ 125</div>
+                    </div>
+                </div>
+                </section>
+                <section class="payment-details">
+                    <div class="payment">Total $515</div>
+                    <div class="btn-payment">
+                        <button class="btn btn-primary">Pagar</button>
+                    </div>
+                </section>
             </div>
-            <div class="price-details-container">
-                <div class="price-details">
-                    <div>Producto</div>
-                    <div>$ 320 </div>
-                </div>
-                <div class="price-details">
-                    <div>Producto</div>
-                    <div>$ 320 </div>
-                </div>
-                <div class="price-details discount">
-                    <div>Producto</div>
-                    <div>-$ 125</div>
-                </div>
+        </div>
+
+        <!-- <h3 class="subtitle featured-container">Destacados</h3> 
+        <div class="card">
+            <img class="img-card" src="/images/product.png" alt="Foto productos desacados">
+            <div class="card-body">
+                <h3 class="card-title">Titulo</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+                <a href="#" class="btn btn-primary">Comprar</a>
             </div>
-            </section>
-            <section class="payment-details">
-                <div class="payment">Total $515</div>
-                <div class="btn-payment">
-                    <button>Pagar</button>
-                </div>
-            </section>
-        </div>        
-        <section class="featured-container">
-            <h3 class="featured-title">Destacados</h3>
-            <article class="featured-product">
-                <div class="featured-img">
-                    <img src="public/img/product.png" alt="">
-                </div>
-                <div class="featured-desc">
-                    <h4>Titulo</h4>
-                    <p>Lorem ipsum dolor sit amet.</p>
-                </div>
-            </article>
-        </section>
+        </div> -->
     </main>
     <footer>
         <div class="footer-top">
