@@ -465,7 +465,6 @@ body{
 .product-img {
   display: flex;
   width: 100%;
-  border: .-1rem solid var(--pink);
   margin: var(--default-margin);
 }
   .product-img img {
@@ -568,15 +567,17 @@ body{
 .cart-section{
   width: 100%;
 }
-
+.purchase-container{
+  background-color: var(--danger-color);
+  padding: var( --default-padding);
+}
   .purchase-details{
-    background-color: var(--soft-blue);
+    background-color: var(--white);
     display: flex;
     flex-direction: row;
     border: 1px solid var(--blue);
     margin: 5px 1rem;
     border-radius: 10px;
-
   }
   .purchase-details img{
     width: 50%;
@@ -630,9 +631,15 @@ body{
 
 /*Resume*/
 
+.resume-container{
+  background-color: var(--blue);
+  padding: var(--default-padding);
+}
 .resume{
   margin: 1rem 1rem;
   background: var(--light);
+  padding: 1rem;
+  border-radius: 10px;
 }
   .price-title{
     font-size: 18px;
@@ -641,49 +648,50 @@ body{
     padding: 10px 0;
   }
   .resume-input{
-    width: 50%;
+    width: 60%;
     height: 5vh;
     color: var(--blue);
   }
   .btn-action{
     color: var(--soft-blue);
     border-radius: 8px;
+    background-color: var(--white);
   }
 
 .price-details-container{
-  display: flex;
-  flex-direction: column;
-  margin-top: .5rem;
-}
-.price-details{
-  width: 50%;
-  margin-left: 20%;
-  padding: .5rem;
-  display: flex;
-  justify-content: space-between;
-  text-align: left;
-}
-.discount{
-  color: green;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-/*Payment */
-.payment-details {
-  display: flex;
-  justify-content: center;
-}
-  .payment{
+.price-details{
+  padding: .5rem;
     display: flex;
-    margin: 20px;
-    font-size: 20px;
-    font-weight: bold;
-    justify-content: center;
+    justify-content: space-evenly;
+    text-align: left;
   }
+.discount{
+  color: #00a650;
+}
+.payment{
+  font-size: 20px;
+  font-weight: bold;
+}
   .btn-payment{
     display: flex;
-    padding: 10px;
-    border-radius: 8px;
+    justify-content: center;
   }
+  .btn-pay-action{
+    padding: .5rem 1rem;
+  }
+.divisor{
+  height: 1px;
+  color: var(--dark);
+  background-color: var(--dark);
+  width: 70%;
+  margin-left: 15%;
+}
+
 
 /*Featured*/
 .featured-container{
@@ -708,7 +716,7 @@ body{
 
 /*Media queries */
 @media all and (min-width:600px){
-  .purchaise-container{
+  .purchase-container{
     width: 50%;
   }
   .resume-container{
