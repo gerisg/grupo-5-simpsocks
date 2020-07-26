@@ -735,9 +735,7 @@ body{
     display: flex;
     justify-content: center;
   }
-  .btn-pay-action{
-    padding: .5rem 1rem;
-  }
+  
 .divisor{
   height: 1px;
   color: var(--dark);
