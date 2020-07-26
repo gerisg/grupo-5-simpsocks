@@ -625,6 +625,7 @@ body{
   }
 
 .purchase-container{
+  width: 100%;
   background-color: var(--danger-color);
   padding: var( --default-padding);
 }
@@ -822,6 +823,7 @@ body{
     margin-top: var(--default-margin);
   }
   .resume-container{
+    width: 100%;
     text-align: center;
     background: var(--light);
     border-radius: .5rem;
