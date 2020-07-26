@@ -550,14 +550,12 @@ body{
 .image-size{
   width: 100%;
   justify-content: center;
-  margin: 1rem 1rem;
 }
 
 .product-details {
   display: flex;
   flex-direction: column;
   padding: 12px;
-  margin: 12px;
 }
   .stock {
     display: flex;
@@ -978,9 +976,7 @@ body{
   }
   .product-img{
     margin: 1rem 0;
-    margin-left: 1rem;
     width: 50%;
-    border: .5rem solid var(--pink);
   }
   .details-container{
     width: 42%;
@@ -988,7 +984,6 @@ body{
   }
   .product-details{
     padding: 1rem;
-    margin: 1rem;
   }
   .product-actions{
     margin-top: 2.5rem;
