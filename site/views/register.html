@@ -10,6 +10,7 @@
     <!-- Title -->
     <title>Simpsocks</title>
 </head>
+
 <body>
 
     <header>
@@ -41,26 +42,39 @@
 
 <main class="main-register-login">  
 
-    <form action="" method="POST" class="form-login-register">
+    <section class="form-login-register row  main-center col-10 col-md-6 col-lg-4">
 
-        <h2 class="h2-login-register">REGISTRATE</h2><br>
-        
-        <div><label for="email">EMAIL</label><br>
-        <input type="email" id="email" name="email" class="info"></div>
-        
-        <div><label for="password">CONTRASEÑA</label><br>
-        <input type="password" id="password" name="password" class="info">
-        
-        <div><label for="name">NOMBRE</label><br> 
-        <input type="text"id="name" name="nombre" class="info"></div>
-        
-        <div><label for="lastname" >APELLIDO</label><br>
-        <input type="text" id="lastname" name="apellido" class="info"></div>
-        
-        <div><button class="btn btn-primary">enviar</button></div>
+        <form action="" method="POST">
 
-    </form>
-    
+            <h2 class="h2-login-register">REGISTRATE</h2><br>
+        
+            <div>
+                <label for="email">EMAIL</label><br>
+                <input type="email" id="email" name="email" class="info">
+            </div>
+        
+            <div>
+                <label for="password">CONTRASEÑA</label><br>
+                <input type="password" id="password" name="password" class="info">
+            </div>
+        
+            <div>
+                <label for="name">NOMBRE</label><br> 
+                <input type="text"id="name" name="nombre" class="info">
+            </div>
+        
+            <div>
+                <label for="lastname" >APELLIDO</label><br>
+                <input type="text" id="lastname" name="apellido" class="info">
+            </div>
+        
+            <div>
+                <button type="submit" class=" btn btn-primary">enviar</button>
+                <button  type="reset" class=" btn danger">borrar</button>
+            </div>
+
+        </form>
+    </section>
 </main> 
 
 <footer>

@@ -127,6 +127,10 @@ button.danger {
   border-color: var(--danger-color);
 }
 
+button.danger:hover {
+  background-color: var(--soft-red);
+}
+
 button.info:hover {
   background-color: var(--soft-blue);
 }
@@ -139,9 +143,7 @@ button.warning:hover {
   background-color: var(--soft-yellow);
 }
 
-button.danger:hover {
-  background-color: var(--soft-red);
-}
+
 
 .btn-primary {
   color: var(--dark);
@@ -510,7 +512,7 @@ footer {}
 
 .main-register-login {
   background-color:var(--blue);
-  background-size: cover;
+
 }
 
  .h2-login-register { 
@@ -519,18 +521,18 @@ footer {}
 
 .form-login-register {
   background-color: var(--light);
-  width: 75vw;
-  height:50%;
-  margin: 15% 12.5% 15% 12.5%;
+  margin: 1rem auto;
+  max-width: 300px;
   text-align: center;
+
   font-family: "gotham-ultra";
-  font-size: smaller;
+  font-size: 1rem;
   border-radius: 50px;
-  padding-top:15px;
-  padding-bottom:15px;
+  padding:.5rem;
   border: white solid 2px;
 }
 
+.btn-danger:hover [backgrou]
 /* Product Details */
 
 body{
