@@ -39,34 +39,30 @@
     
     
 <main class="main-register-login">  
-  
-    <section class="form-login-register row  main-center col-10 col-md-6 col-lg-4">
+    <section class="row main-center">
+        <div class="col-11 col-md-5 col-lg-5 form-login-register">
 
-        <form action="" method="POST"> 
+            <form action="" method="POST">
+                <h2 class="h2-login-register">LOGIN</h2>
+                <div>
+                    <label for="user">USUARIO</label><br>
+                    <input type="text" id="user" name="user" class="info"> 
+                </div>
+                <div>
+                    <label for="password" >CONTRASEÑA</label><br>
+                    <input type="password" id="password" name="password"class="info"> 
+                </div>
+                <div>
+                    <a href="">¿Olvidáste tu contraseña?</a>
+                </div>
+                <div>
+                    <button type="submit" class=" btn btn-primary">enviar</button>
+                    <input type="checkbox"  value="si" name="recuerdo">     Recordarme
+                </div>
+            </form>
 
-            <h2 class="h2-login-register">LOGIN</h2>
-
-            <div>
-                <label for="user" >USUARIO</label><br>
-                <input type="text" id="user" name="user" class="info"> 
-            </div>
-
-            <div>
-                <label for="password" >CONTRASEÑA</label><br>
-                <input type="password" id="password" name="password"class="info"> 
-            </div>
-        
-            <div>
-                <a href="">¿Olvidáste tu contraseña?</a>
-            </div>
-
-            <div>
-                <button type="submit" class=" btn btn-primary">enviar</button>
-                <input type="checkbox"  value="si" name="recuerdo">     Recordarme
-            </div>
-
-        </form>
-    </section>     
+        </div>
+    </section>  
 </main>
 
 <footer>

@@ -55,7 +55,7 @@
 body {
   font-family: 'Roboto', Helvetica, sans-serif;
   color: var(--dark);
-  background-color: var(--light);
+  background-color: var(--white);
 
   display: flex;
   flex-direction: column;
@@ -522,9 +522,7 @@ footer {}
 .form-login-register {
   background-color: var(--light);
   margin: 1rem auto;
-  max-width: 300px;
   text-align: center;
-
   font-family: "gotham-ultra";
   font-size: 1rem;
   border-radius: 50px;
@@ -926,8 +924,7 @@ body{
 
   /* register */
   .form-login-register {
-    width: 40vw;
-    margin:15% 30% 15% 30%;
+    margin: 30% auto;
   }
 
   /* purchase */
