@@ -927,9 +927,6 @@ header {
     margin-top: var(--default-margin);
     background-color:var(--blue);
   }
-  .purchase-details {
-    width: 90%;
-  }
   .resume {
     margin-top: .5rem;
     border-radius: 10px;
