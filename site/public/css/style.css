@@ -909,7 +909,7 @@ header {
     border-radius: 10px;
     width: 100%;
   }
-  .envio{
+  .shipping{
     margin: var(--default-margin);
     text-align: left;
     margin-left: 2rem;
@@ -926,11 +926,6 @@ header {
     border: 1px solid var(--light);
     margin-top: var(--default-margin);
     background-color:var(--blue);
-  }
-  .envio {
-    margin: var(--default-margin);
-    text-align: left;
-    margin-left: 2rem;
   }
   .title-featured {
     padding: var(--default-padding);
