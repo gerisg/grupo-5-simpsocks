@@ -116,10 +116,6 @@ button.success:hover { background-color: var(--soft-green); }
 button.warning:hover { background-color: var(--soft-yellow); }
 button.danger:hover { background-color: var(--soft-red); }
 
-input:valid {
-  box-shadow: 0 0 5px 1px var(--green);
-}
-
 input:invalid {
   box-shadow: 0 0 5px 1px var(--red);
 }
