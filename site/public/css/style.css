@@ -1038,3 +1038,26 @@ header {
   }
 
 }
+
+/*Breacrumb*/
+.breadcrumb{
+  background-color: var(--light);
+  padding: var(--default-padding);
+}
+  .breadcrumb li {
+    display: inline;
+    font-size: 1rem;
+  }
+  .breadcrumb li+li:before {
+    padding: 8px;
+    color: var(--dark);
+    content: "/\00a0";
+  }
+  .breadcrumb li a {
+    color: var(--dark);
+    text-decoration: none;
+  }
+  .breadcrumb li a:hover {
+    color: var(--blue);
+    text-decoration: underline;
+  }
