@@ -471,8 +471,11 @@ header {
     margin: 5px;
     color: var(--dark);
     font-weight: 100;
-    font-size: 14px;
+    font-size: 1rem;
     text-decoration: none;
+  }
+  .footer-content i {
+    font-size: 1.5rem;
   }
 .footer-bottom {
   background-color: var(--darkgreen);
@@ -739,15 +742,16 @@ header {
   background-color: var(--yellow);
 }
 .page-not-found .wrapper {
-  height: 60vh;
+  height: 53vh;
+  text-align: center;
 }
+
 .page-not-found img {
   width: 100%;
 }
 .page-not-found h2 {
   font-size: 1.2rem;
 }
-
 
 /* Grid system */
 
@@ -842,6 +846,11 @@ header {
   .footer-content>* {
     flex-direction: row;
     align-items: center;
+  }
+
+  /* error page */
+  .page-not-found .wrapper {
+    height: 62vh;
   }
 
   /* main categories */
