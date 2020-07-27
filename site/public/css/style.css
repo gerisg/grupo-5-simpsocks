@@ -106,15 +106,15 @@ input, button {
   outline: none;
 }
 
-input.info, button.info { border-color: var(--info-color); }
-input.success, button.success { border-color: var(--success-color); }
-input.warning, button.warning { border-color: var(--warning-color); }
-input.danger, button.danger, input:invalid { border-color: var(--danger-color); }
+a.info, input.info, button.info { border-color: var(--info-color); }
+a.success, input.success, button.success { border-color: var(--success-color); }
+a.warning, input.warning, button.warning { border-color: var(--warning-color); }
+a.danger, input.danger, button.danger, input:invalid { border-color: var(--danger-color); }
 
-button.info:hover { background-color: var(--soft-blue); }
-button.success:hover { background-color: var(--soft-green); }
-button.warning:hover { background-color: var(--soft-yellow); }
-button.danger:hover { background-color: var(--soft-red); }
+a.info:hover, button.info:hover { background-color: var(--soft-blue); }
+a.success:hover, button.success:hover { background-color: var(--soft-green); }
+a.warning:hover, button.warning:hover { background-color: var(--soft-yellow); }
+a.danger:hover, button.danger:hover { background-color: var(--soft-red); }
 
 input:invalid {
   box-shadow: 0 0 5px 1px var(--red);
@@ -432,7 +432,7 @@ header {
     padding: var(--default-padding);
     font-size: .75rem;
   }
-  .featured-product  button {
+  .featured-product a {
     margin: 0 auto;
   }
 
