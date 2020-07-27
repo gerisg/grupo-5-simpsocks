@@ -17,35 +17,41 @@
 <body>
     <header>
         <div class="header-start">
-            <img src="/images/logo.png" alt="Logo Simpsocks">
-            <h2><span class="ultra">simp</span>socks</h2>
+            <a href="/">
+                <img src="/images/logo.png" alt="Logo Simpsocks">
+                <h2><span class="ultra">simp</span>socks</h2>
+            </a>
         </div>
-        <div class="header-center">
+        <div class="header-center hidden-sm">
             <form>
                 <input type="text" placeholder="Buscar productos ...">
                 <button type="submit"><i class="fas fa-search"></i></button>
             </form>
         </div>
         <div class="header-end">
-            <a href="#">
+            <a href="/search" class="hidden-md">
+                <i class="far fa-search"></i>
+                <span class="hidden-sm">Buscar</span>
+            </a>
+            <a href="/profile/favorites">
                 <i class="far fa-heart"></i>
-                <span>Favoritos</span>
+                <span class="hidden-sm">Favoritos</span>
             </a>
-            <a href="#">
+            <a href="/profile">
                 <i class="far fa-user"></i>
-                <span>Mi cuenta</span>
+                <span class="hidden-sm">Mi cuenta</span>
             </a>
-            <a href="#">
+            <a href="/cart">
                 <i class="fas fa-shopping-cart"></i>
-                <span>Mis compras</span>
+                <span class="hidden-sm">Mis compras</span>
             </a>
         </div>
     </header>
-    
+
     <nav class="breadcrumb">
         <ul>
-            <li class="is-active"><a href="/">Home</a></li>
-            <li><a href="/cart">carrito de compras</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/cart" class="is-active">carrito de compras</a></li>
         </ul>
     </nav>
 
@@ -75,10 +81,10 @@
                 </article>
             </div>
             <div class="purchase-details">
-                <img class="imae-size" src="/images/products/homero-traje-banio.png" alt="foto producto">
+                <img class="imae-size" src="/images/categories/homero.png" alt="foto producto">
                 <article class="cart-info">
                     <span class="cancel"><i class="fa fa-times" aria-hidden="true"></i></span>
-                    <p class="text">Soquetes Homero - traje de baño</p>
+                    <p class="text">Soquetes Homero - Hable mas fuerte</p>
                     <div class="cart-quantity">
                         <span class="quantity-label">Cantidad:</span>
                         <select name="products" id="products">
