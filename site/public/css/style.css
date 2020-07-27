@@ -437,7 +437,6 @@ header {
   }
 
 /* Footer */
-
 footer {
   position: absolute;
   bottom: 0;
@@ -739,6 +738,21 @@ footer {
     font-size: .1rem;
     padding: var(--default-padding);
   }
+
+/* Error 404 */
+.page-not-found {
+  background-color: var(--yellow);
+}
+.page-not-found .wrapper {
+  height: 60vh;
+}
+.page-not-found img {
+  width: 100%;
+}
+.page-not-found h2 {
+  font-size: 1.2rem;
+}
+
 
 /* Grid system */
 
