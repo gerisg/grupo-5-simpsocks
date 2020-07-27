@@ -10,15 +10,27 @@
 </head>
 <body>
     <div class="container">
+        <h2>Buttons</h2>
         <button class="btn btn-primary">Primario</button>
         <button class="btn info">Info</button>
         <button class="btn success">Success</button>
         <button class="btn warning">Warning</button>
         <button class="btn danger">Danger</button>
+        <h2>Inputs</h2>
         <input type="text" class="info">
         <input type="text" class="success">
         <input type="text" class="warning">
         <input type="text" class="danger">
+        <h2>Validation form</h2>
+        <form action="/forms" method="GET" novalidate>
+            <div>
+                <label for="mail">Correo electrónico:<label><br>
+                <input type="email" id="mail" name="mail" class="info" minlength="8" required>
+                <span class="error"></span>
+            </div>
+            <button class="success">Enviar</button>
+        </form>
     </div>
+    <script type="text/javascript" src="/js/validate.js"></script>
 </body>
 </html>
