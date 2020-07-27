@@ -24,3 +24,8 @@ app.get("/forms", (req,res) => (res.sendFile(__dirname +"/views/partials/forms.h
 app.get("/header", (req,res) => (res.sendFile(__dirname +"/views/partials/header.html")));
 app.get("/footer", (req,res) => (res.sendFile(__dirname +"/views/partials/footer.html")));
 app.get("/grid", (req,res) => (res.sendFile(__dirname +"/views/partials/grid.html")));
+
+//Links Temporales
+
+app.post('/login', (req, res) => {res.send(req.url("/login.html"))})
+app.post('/register', (req, res) => {res.send(req.body)});
