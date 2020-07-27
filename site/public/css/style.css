@@ -927,11 +927,6 @@ header {
     margin-top: var(--default-margin);
     background-color:var(--blue);
   }
-  .resume {
-    margin-top: .5rem;
-    border-radius: 10px;
-    width: 100%;
-  }
   .envio {
     margin: var(--default-margin);
     text-align: left;
