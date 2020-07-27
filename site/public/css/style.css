@@ -613,13 +613,6 @@ header {
     flex-direction: column;
     justify-content: center;
   }
-  .article-title{
-    width: 100%;
-    display: flex;
-    align-items: flex-start;
-    padding: 5px 20%;
-    justify-content: space-between;
-  }
     .cancel{
       justify-content: flex-end;
       display: flex;
