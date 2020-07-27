@@ -591,7 +591,6 @@ header {
 
 .purchase-container{
   width: 100%;
-  background-color: var(--danger-color);
   padding: var( --default-padding);
 }
   .purchase-details{
@@ -603,7 +602,7 @@ header {
     border-radius: 10px;
   }
   .purchase-details img{
-    width: 50%;
+    width: 40%;
     margin: 2%;
     align-self: center;
   }
@@ -903,7 +902,6 @@ header {
 
   .purchase-container{
     border-radius: .5rem;
-    background-color: var(--soft-red);
     margin-top: var(--default-margin);
   }
   .related-products-container{
@@ -927,7 +925,6 @@ header {
     margin: var(--default-margin) 17%;
   }
   .resume-container {
-    width: 100%;
     text-align: center;
     background: var(--light);
     border-radius: .5rem;
