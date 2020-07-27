@@ -788,8 +788,9 @@ header {
   width: 100%;
 }
 
-/* Tablet */
-
+/**********
+ * Tablet *
+ **********/
 @media (min-width: 768px) {
 
   /* grid system */
@@ -836,6 +837,13 @@ header {
   .hidden-sm { display: inline-block; }
   .header-end > .hidden-md { display: none; }
   
+  /* footer */
+
+  .footer-content>* {
+    flex-direction: row;
+    align-items: center;
+  }
+
   /* main categories */
 
   .main-category-msg {
@@ -964,8 +972,9 @@ header {
   }  
 }
 
-/* Desktop */
-
+/***********
+ * Desktop *
+ ***********/
 @media (min-width: 1024px) {
 
   /* grid system */
