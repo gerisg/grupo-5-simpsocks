@@ -166,11 +166,9 @@ header {
   background-color: var(--yellow);
   background-image: url("/images/bg-header.png");
 }
-  .header-start {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    margin-left: 10px;
+  .header-start { 
+    flex-grow: 1;
+    margin-left: 60px;
   }
     .header-start img {
       background-color: var(--blue);
@@ -179,17 +177,15 @@ header {
       left: var(--default-margin);
       top: var(--default-margin);
       padding: var(--default-padding);
-      width: 4rem;
+      width: 3rem;
       -webkit-box-shadow: 5px 5px 12px 0px rgba(0,0,0,0.25);
       -moz-box-shadow: 5px 5px 12px 0px rgba(0,0,0,0.25);
       box-shadow: 5px 5px 12px 0px rgba(0,0,0,0.25);
     }
     .header-start h2 {
-      display: none;
       font-family: "gotham-bold-italic";
+      font-size: 1rem;
       text-transform: uppercase;
-      margin-left: 130px;
-      letter-spacing: 2px;
     }
     .header-start .ultra {
       font-family: "gotham-ultra";
@@ -238,7 +234,7 @@ header {
     .header-end i {
       font-weight: bold;
     }
-.hidden {
+.hidden-sm {
   display: none;
 }
 
@@ -259,7 +255,6 @@ main {}
     display: none;
     flex-grow: 1;
     padding: var(--default-padding);
-    text-align: center;
   }
   .main-category {
     padding: var(--default-padding);
@@ -816,18 +811,28 @@ footer {}
   /* header */
   
   header {}
-    .header-start {}
+    .header-start {
+      display: flex;
+      align-items: center;
+      margin-left: 10px;
+    }
       .header-start img { 
-        margin: 20px; 
         width: 80px;
       }
-      .header-start h2 { display: inline; }
+      .header-start h2 { 
+        font-size: 1.5rem;
+        margin-left: 5rem;
+        letter-spacing: 2px;
+      }
     .header-center { display: inline; }
+    .hidden-sm { display: inline-block; }
+    .header-end > .hidden-md { display: none; }
   
   /* main categories */
 
   .main-category-msg {
     display: inline;
+    margin-left: 100px;
   }
   .main-category {
     padding: var(--default-padding) 1rem;
