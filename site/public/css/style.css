@@ -35,7 +35,7 @@
   --soft-darkgreen: #5D6F62;
   --soft-blue: #5D9FD5;
   --soft-red: #F47052;
-  --soft-pink: #FBB2CF
+  --soft-pink: #FBB2CF;
 
   --info-color: var(--blue);
   --success-color: var(--green);
@@ -1009,11 +1009,6 @@ body{
   }
   .text {
     font-size: 1.25rem;
-  }
-
-  /* Buttons */
-  .btn-primary, .btn-secondary {
-    font-size: 2rem;
   }
 
   /* Info banner */
