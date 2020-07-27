@@ -143,8 +143,6 @@ button.warning:hover {
   background-color: var(--soft-yellow);
 }
 
-
-
 .btn-primary {
   color: var(--dark);
   background-color: var(--primary);
@@ -164,8 +162,8 @@ button.warning:hover {
   font-size: 1rem;
 }
 
-.btn-primary:hover,
-.btn-primary:focus {
+.btn-secondary:hover,
+.btn-secondary:focus {
   background-color: var(--soft-blue);
 }
 /* Header */
