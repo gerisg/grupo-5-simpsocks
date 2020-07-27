@@ -742,11 +742,7 @@ body{
   width: 70%;
   margin-left: 15%;
 }
-.banner-container{
-  background-color: var(--yellow);
-  margin: var(--default-margin);
-  display: none;
-}
+
 /*Featured*/
 .featured-container{
   display: inline-block;
@@ -936,10 +932,6 @@ body{
   .related-products-container{
     display: block;
   }
-  .banner-container{
-   display: none;
-   justify-content: center;
-  }
 
   .purchase-details{
     width: 90%;
@@ -1043,10 +1035,4 @@ body{
     display: none;
   }
 
-  .banner-container{
-    background-color: var(--yellow);
-    margin: var(--default-margin);
-    display: flex;  
-    justify-content: center;
-  }
 }
