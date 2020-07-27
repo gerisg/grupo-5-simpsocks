@@ -600,6 +600,7 @@ body{
   }
 .related-products-container{
   margin: var(--default-margin);
+  display: none;
 }
   .title-center{
     margin: var(--default-margin);
@@ -933,7 +934,7 @@ body{
   }
   
   .related-products-container{
-    display: none;
+    display: block;
   }
   .banner-container{
    display: none;
@@ -1030,6 +1031,10 @@ body{
   }
 
   /* ????? */
+
+  .image-size{
+    width: 50%;
+  }
   .related-products-container{
     display: block;
   }
