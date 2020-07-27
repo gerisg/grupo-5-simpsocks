@@ -17,34 +17,40 @@
 <body>
     <header>
         <div class="header-start">
-            <img src="/images/logo.png" alt="Logo Simpsocks">
-            <h2><span class="ultra">simp</span>socks</h2>
+            <a href="/">
+                <img src="/images/logo.png" alt="Logo Simpsocks">
+                <h2><span class="ultra">simp</span>socks</h2>
+            </a>
         </div>
-        <div class="header-center">
+        <div class="header-center hidden-sm">
             <form>
                 <input type="text" placeholder="Buscar productos ...">
                 <button type="submit"><i class="fas fa-search"></i></button>
             </form>
         </div>
         <div class="header-end">
-            <a href="#">
+            <a href="/search" class="hidden-md">
+                <i class="far fa-search"></i>
+                <span class="hidden-sm">Buscar</span>
+            </a>
+            <a href="/profile/favorites">
                 <i class="far fa-heart"></i>
-                <span>Favoritos</span>
+                <span class="hidden-sm">Favoritos</span>
             </a>
-            <a href="#">
+            <a href="/profile">
                 <i class="far fa-user"></i>
-                <span>Mi cuenta</span>
+                <span class="hidden-sm">Mi cuenta</span>
             </a>
-            <a href="#">
+            <a href="/cart">
                 <i class="fas fa-shopping-cart"></i>
-                <span>Mis compras</span>
+                <span class="hidden-sm">Mis compras</span>
             </a>
         </div>
     </header>
 
     <nav class="breadcrumb">
         <ul>
-            <li class="is-active"><a href="/">Home</a></li>
+            <li><a href="/">Home</a></li>
             <li><a href="/product-detail">detalles del producto</a></li>
         </ul>
     </nav>

@@ -1024,7 +1024,7 @@ header {
     height: 100px;
   }
 
-  /* ????? */
+  /* Cart-eatured */
 
   .image-size{
     width: 50%;
@@ -1036,7 +1036,6 @@ header {
   .cart-title{
     display: none;
   }
-
 }
 
 /*Breacrumb*/
