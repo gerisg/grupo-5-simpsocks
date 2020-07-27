@@ -1047,10 +1047,16 @@ header {
     display: inline;
     font-size: 1rem;
   }
-  .breadcrumb li+li:before {
+  .breadcrumb li:after {
     padding: 8px;
     color: var(--dark);
-    content: "/\00a0";
+    content: "/";
+  }
+  .breadcrumb li:last-child a{
+    font-weight: bold;
+  }
+  .breadcrumb li:last-child:after{
+    content:" ";
   }
   .breadcrumb li a {
     color: var(--dark);
