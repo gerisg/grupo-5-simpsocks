@@ -578,8 +578,10 @@ header {
 
 .cart-title{
   display: flex;
-  justify-content: space-between;
-  font-size: 14px;
+  justify-content: space-between;  
+  font-size: .1rem;
+  padding: var(--default-padding);
+
   margin-left: 1rem;
 }
   .article-count{
@@ -726,10 +728,6 @@ header {
   .img-card{
     width: 90%;
     margin: var(--default-margin);
-  }
-  .cart-title{
-    font-size: .1rem;
-    padding: var(--default-padding);
   }
 
 /* Error 404 */
@@ -960,7 +958,6 @@ header {
   }
   .product-img{
     margin: 1rem 0;
-    width: 50%;
   }
   .details-container{
     width: 42%;
@@ -1027,7 +1024,7 @@ header {
     height: 100px;
   }
 
-  /* Cart-eatured */
+  /* Cart-featured */
 
   .image-size{
     width: 50%;
