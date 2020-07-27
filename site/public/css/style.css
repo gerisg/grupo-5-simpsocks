@@ -653,6 +653,9 @@ header {
   background: var(--light);
   padding: 1rem;
   border-radius: 10px;
+  justify-content: space-evenly;
+  display: flex;
+  flex-direction: column;
 }
   .price-title{
     font-size: 18px;
