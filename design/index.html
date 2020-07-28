@@ -3,174 +3,251 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- CSS -->
-    <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;1,100;1,300&display=swap" rel="stylesheet">
-    <!-- Title -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;1,100;1,300&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/style.css">
     <title>Simpsocks</title>
 </head>
 <body>
     <header>
-        <!-- Logo -->
-        <div class="logo">
-            <img src="images/logo/logo.png" alt="">
-            <h3>The Simpsocks</h3>
+        <div class="header-start">
+            <a href="/">
+                <img src="/images/logo.png" alt="Logo Simpsocks">
+                <h2><span class="ultra">simp</span>socks</h2>
+            </a>
         </div>
-        <!-- Searchbox -->
-        <!-- Icons -->
+        <div class="header-center hidden-sm">
+            <form>
+                <input type="text" placeholder="Buscar productos ...">
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </form>
+        </div>
+        <div class="header-end">
+            <a href="/search" class="hidden-md">
+                <i class="far fa-search"></i>
+                <span class="hidden-sm">Buscar</span>
+            </a>
+            <a href="/profile/favorites">
+                <i class="far fa-heart"></i>
+                <span class="hidden-sm">Favoritos</span>
+            </a>
+            <a href="/register.html">
+                <i class="far fa-user"></i>
+                <span class="hidden-sm">Mi cuenta</span>
+            </a>
+            <a href="/cart.html">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="hidden-sm">Mis compras</span>
+            </a>
+        </div>
     </header>
-    <div class="content">
-        <!-- breadcrumb -->
-        <div class="breadcrumb">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut recusandae nisi at animi esse deserunt architecto voluptates asperiores cum reiciendis!</p>
-        </div>
-        <!-- slides -->
-        <div class="slides">
-            <div class="slide">
-                <br>
-            </div>
-        </div>
-        <!-- top-categories -->
-        <div class="top-categories">
-            <h3>Categorías más buscadas</h3>
-            <div class="category">
-                <img src="images/tmp/product.png" alt="">
-                <button class="btn btn-primary">Bucaneras</button>
-            </div>
-            <div class="category">
-                <img src="images/tmp/product.png" alt="">
-                <button class="btn btn-primary">Soquetes</button>
-            </div>
-            <div class="category">
-                <img src="images/tmp/product.png" alt="">
-                <button class="btn btn-primary">Niños</button>
-            </div>
-            <div class="category">
-                <img src="images/tmp/product.png" alt="">
-                <button class="btn btn-primary">Homero</button>
-            </div>
-        </div>
-        <!-- banner -->
-        <div class="banner">
-            <img src="images/tmp/banner.svg" alt="">
-        </div>
-        <!-- best-sellers -->
-        <div class="best-sellers">
-            <h3>Productos más Vendidos</h3>
-            <div class="product">
-                <img src="images/tmp/product.png" alt="">
-                <p>Lorem ipsum dolor</p>
-                <p>$00,00</p>
-                <button class="btn btn-buy">Comprar</button>
-            </div>
-            <div class="product">
-                <img src="images/tmp/product.png" alt="">
-                <p>Lorem ipsum dolor</p>
-                <p>$00,00</p>
-                <button class="btn btn-buy">Comprar</button>
-            </div>
-            <div class="product">
-                <img src="images/tmp/product.png" alt="">
-                <p>Lorem ipsum dolor</p>
-                <p>$00,00</p>
-                <button class="btn btn-buy">Comprar</button>
-            </div>
-            <div class="product">
-                <img src="images/tmp/product.png" alt="">
-                <p>Lorem ipsum dolor</p>
-                <p>$00,00</p>
-                <button class="btn btn-buy">Comprar</button>
-            </div>
-            <div class="product">
-                <img src="images/tmp/product.png" alt="">
-                <p>Lorem ipsum dolor</p>
-                <p>$00,00</p>
-                <button class="btn btn-buy">Comprar</button>
-            </div>
-            <div class="product">
-                <img src="images/tmp/product.png" alt="">
-                <p>Lorem ipsum dolor</p>
-                <p>$00,00</p>
-                <button class="btn btn-buy">Comprar</button>
-            </div>
-            <div class="product">
-                <img src="images/tmp/product.png" alt="">
-                <p>Lorem ipsum dolor</p>
-                <p>$00,00</p>
-                <button class="btn btn-buy">Comprar</button>
-            </div>
-            <div class="product">
-                <img src="images/tmp/product.png" alt="">
-                <p>Lorem ipsum dolor</p>
-                <p>$00,00</p>
-                <button class="btn btn-buy">Comprar</button>
-            </div>
-            <div class="product">
-                <img src="images/tmp/product.png" alt="">
-                <p>Lorem ipsum dolor</p>
-                <p>$00,00</p>
-                <button class="btn btn-buy">Comprar</button>
-            </div>
-            <div class="product">
-                <img src="images/tmp/product.png" alt="">
-                <p>Lorem ipsum dolor</p>
-                <p>$00,00</p>
-                <button class="btn btn-buy">Comprar</button>
-            </div>
-        </div>
-    </div>
-    <footer>
-        <div class="foot-top">
-            <ul>
-                <li>
-                    <div style="text-align:center">
-                        <h3 style="font-size: 20px;"><a class="underline" href="#">Productos</a></h3>
-                        <p style="margin-top: 30px;">Nuevos productos</p>
-                    </div>
-                </li>
-                <li>
-                    <div style="text-align:center">
-                        <h3 style="font-size: 20px;"><a class="underline" href="#">Descuentos</a></h3>
-                        <p style="margin-top: 30px;">Hasta el 40% menos</p>
-                    </div>
-                </li>
-                <li>
-                    <div style="text-align:center">
-                        <h3 style="font-size: 20px;"><a class="underline" href="#">Envios gratis</a></h3>
-                        <p style="margin-top: 30px;">Buscar localidades</p>
-                    </div>
-                </li>
-                <li>
-                    <div style="text-align:center">
-                        <h3 style="font-size: 20px;"><a class="underline" href="#">Contacto</a></h3>
-                        <p style="margin-top: 30px;">Estamos para ayudarte</p>
-                    </div>
-                </li>
-            </ul>
-        </div>
-        <div class="foot-bot">
-            <div class="foot-logo">
-                <img src="images/logo/logo.png" alt="">
-            </div>
-            <div class="foot-text">
-                <ul>
-                    <li>
-                        <div style="text-align:center">
-                            Derechos 2020 © Simpsocks.<br>
-                            Tel: +54 911 1234-5678 - Correo: <a href="info@simpsocks.com.ar">info@simpsocks.com.ar</a>
+    <main>
+        <!-- Main Categories -->
+        <section class="main-categories">
+            <nav>
+                <a href="/product.html" class="main-category-msg"><strong>#QuedateEnCasa</strong> productos con Envíos Gratis</a>
+                <a href="/product.html" class="main-category">2x1</a>
+                <a href="/product.html" class="main-category">Regalo</a>
+                <a href="/product.html" class="main-category">Descuento</a>
+                <a href="/product.html" class="main-category">Hot Sale</a>
+            </nav>
+        </section>
+        <!-- Slider -->
+        <section id="carousel-home" class="slides">
+            <div class="slide-container slide-1 fade">
+                <div class="row slide cross-center">
+                    <div class="col-12 col-md-5">
+                        <div class="row main-center">
+                            <div class="col-12 col-md-12 col-lg-8 slide-img">
+                                <img src="/images/slide/bucanera.png">
+                            </div>
                         </div>
-                    </li>
-                </ul>
+                    </div>
+                    <div class="col-md-7 slide-info">
+                        <span class="title">medias bucaneras</span>
+                        <span class="text">Llegaron las bucaneras de los simpsons con los mejores diseños para vestir tus piernas.  </span>
+                        <button class="btn btn-primary">comprar</button>
+                    </div>
+                </div>
             </div>
-            <div class="foot-social">
-                <h3>Seguinos</h3>
-                <ul>
-                    <li><a href="https://twitter.com" target="_blank">Twitter</a></li>
-                    <li><a href="https://youtube.com" target="_blank">YouTube</a></li>
-                    <li><a href="https://instagram.com" target="_blank">Instagram</a></li>
-                </ul>
+            <div class="slide-container slide-2 fade">
+                <div class="row slide cross-center">
+                    <div class="col-12 col-md-5">
+                        <div class="row main-center">
+                            <div class="col-12 col-md-8 col-lg-8 slide-img">
+                                <img src="/images/slide/socks.png">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-7 slide-info">
+                        <span class="title">modelos clásicos</span>
+                        <span class="text">No te podés perder la línea de diseño con los personajes clásicos para que te acompañen a todos lados.</span>
+                        <button class="btn btn-primary">comprar</button>
+                    </div>
+                </div>
             </div>
+            <div class="slide-container slide-3 fade">
+                <div class="row slide cross-center">
+                    <div class="col-12 col-md-5">
+                        <div class="row main-center">
+                            <div class="col-12 col-md-8 col-lg-8 slide-img">
+                                <img src="/images/slide/t-shirt.png">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-7 slide-info">
+                        <span class="title">muy pronto</span>
+                        <span class="text">Al igual que Homero, pensá cuál será tu próxima diseño y contactanos para incluirte en la pre-venta de remeras.</span>
+                        <button class="btn btn-secondary">contactar</button>
+                    </div>
+                </div>
+            </div>
+            <a class="prev-link" onclick="prevSlide()">&#10094;</a>
+            <a class="next-link" onclick="nextSlide()">&#10095;</a>
+        </section>
+        <!-- Information -->
+        <section class="info-banner">
+            <div class="row">
+                <div class="col info">
+                    <i class="fas fa-truck"></i>
+                    <span>Envíos a todo el país</span>
+                </div>
+                <div class="col info">
+                    <i class="fas fa-credit-card"></i>
+                    <span>Pagá en 12 cuotas</span>
+                </div>
+                <div class="col info">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Compra protegida</span>
+                </div>
+                <div class="col info">
+                    <i class="fab fa-whatsapp"></i>
+                    <span><a href="https://wa.link/93x6qy" target="_blank">Consulte aquí</a></span>
+                </div>
+            </div>
+        </section>
+        <!-- Categories -->
+        <section class="featured-categories">
+            <span class="title">más buscados</span>
+            <div class="row main-center featured-categories-container">
+                <article class="col-5 col-md-3 col-lg-2 featured-category">
+                    <div class="cat-img">
+                        <img src="/images/categories/homero.png" alt="">
+                    </div>
+                    <div class="cat-name">
+                        <a href="/search/category/homero"><span class="text">Homero</span></a>
+                    </div>
+                </article>
+                <article class="col-5 col-md-3 col-lg-2 featured-category">
+                    <div class="cat-img">
+                        <img src="/images/categories/bucaneras.png" alt="">
+                    </div>
+                    <div class="cat-name">
+                        <a href="/search/category/bucaneras"><span class="text">Bucaneras</span></a>
+                    </div>
+                </article>
+                <article class="col-5 col-md-3 col-lg-2 featured-category">
+                    <div class="cat-img">
+                        <img src="/images/categories/sockets.jpg" alt="">
+                    </div>
+                    <div class="cat-name">
+                        <a href="/search/category/soquetes"><span class="text">Soquetes</span></a>
+                    </div>
+                </article>
+                <article class="col-5 col-md-5 col-lg-3 featured-category">
+                    <div class="cat-img">
+                        <img src="/images/categories/originals.png" alt="">
+                    </div>
+                    <div class="cat-name">
+                        <a href="/search/category/originales"><span class="text">Originales</span></a>
+                    </div>
+                </article>
+            </div>
+        </section>
+        <!-- Banner Instagram -->
+        <section class="insta-banner">
+            <div class="row">
+                <div class="col-12 col-md-7 content">
+                    <span class="subtitle">buscanos en instagram</span>
+                    <span class="text"><a href="instragram.com/simpsocks-argentina" target="_blank">seguinos en <em>@simpsocks-argentina</em></a> para enterarte de las últimas colecciones y nuevos productos</span>
+                </div>
+                <div class="col-md-5 image"></div>
+            </div>
+        </section>
+        <!-- Featured Products -->
+        <section class="featured-products">
+            <span class="title">destacados</span>
+            <div class="row main-center featured-products-container">
+                <div class="col-10 col-md-3 col-lg-3">
+                    <article class="featured-product">
+                        <div class="prod-img">
+                            <a href="/product.html">
+                                <img src="/images/products/socks-homero-rosquillas.png" alt="">
+                            </a>
+                        </div>
+                        <div class="prod-discount">-10%</div>
+                        <div class="prod-price">$300</div>
+                        <div class="prod-name">Medias Homero Rosquillas</div>
+                        <a href="/cart.html" class="btn btn-primary">comprar</a>    
+                    </article>
+                </div>
+                <div class="col-10 col-md-3 col-lg-3">
+                    <article class="featured-product">
+                        <div class="prod-img">
+                            <a href="/product.html">
+                                <img src="/images/products/socks-homero-traje-banio.png" alt="">
+                            </a>
+                        </div>
+                        <div class="prod-discount">-15%</div>
+                        <div class="prod-price">$250</div>
+                        <div class="prod-name">Medias Homero Traje de Baño</div>
+                        <a href="/cart.html" class="btn btn-primary">comprar</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-top">
+            <img src="/images/logo.png" alt="Logo Simpsocks">
+            <p>¡Tus próximas medias son Simpsocks!</p>
+        </div>
+        <div class="footer-content">
+            <nav class="store">
+                <a href="/profile">Mi cuenta</a>
+                <a href="/search/discounts">Ofertas</a>
+                <a href="/help">Ayuda</a>
+            </nav>
+            <nav class="site">
+                <a href="/site/about-us">Nosotros</a>
+                <a href="/site/contact">Contacto</a>
+                <a href="/site/policies">Condiciones</a>
+            </nav>
+            <nav class="social">
+                <a href="https://instagram.com/simpsocks-argentina" target="_blank"><i class="fab fa-instagram-square"></i></a>
+                <a href="https://facebook.com/simpsocks-argentina" target="_blank"><i class="fab fa-facebook-square"></i></a>
+                <a href="https://twitter.com/simpsocks-argentina" target="_blank"><i class="fab fa-twitter-square"></i></a>
+            </nav>
+        </div>
+        <div class="footer-bottom">
+            <small>© 2020 Simpsocks</small> 
         </div>
     </footer>
+    <!-- slider script -->
+    <script>
+        let current = 1;
+        showSlides(current);
+        function prevSlide() { showSlides(current += -1); }
+        function nextSlide() { showSlides(current += 1); }
+        function showSlides(n) {
+            let slides = document.getElementsByClassName("slide-container");
+            if (n > slides.length) { current = 1 }
+            if (n < 1) { current = slides.length }
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slides[current-1].style.display = "block";
+        }
+    </script>
 </body>
 </html>
