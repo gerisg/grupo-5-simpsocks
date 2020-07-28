@@ -1036,14 +1036,6 @@ header {
       padding: 0 .5rem;
     }
 
-  /* Insta banner */
-
-  .insta-banner .back-img {
-    background-image: url("/images/main-banner.png");
-    background-repeat: no-repeat;
-    height: 100px;
-  }
-
   /* Cart-featured */
 
   .image-size{
