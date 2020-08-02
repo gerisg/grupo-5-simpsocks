@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- HEAD -->
+<%- include('./partials/head') %> 
+
+<body>
+   <!-- HEADER -->
+   <%- include('./partials/header') %>
+
+    <nav class="breadcrumb">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/cart">Carrito de compras</a></li>
+        </ul>
+    </nav>
+
+    <div class="cart-title">
+        <div class="subtitle">Mi carrito </div>
+        <div class="article-count">2 Articulos</div>
+    </div>
+
+    <main class="row main-center">
+        <div class="purchase-container col-md-4 col-lg-5">
+            <div class="purchase-details">
+                <img src="/images/products/socks-homero-rosquillas.png" alt="foto producto">
+                <article class="cart-info">
+                    <span class="cancel"><i class="fa fa-times" aria-hidden="true"></i></span>
+                    <p class="text">Medias Homero - rosquillas</p>
+                    <div class="cart-quantity">
+                        <span class="quantity-label">Cantidad:</span>
+                        <select name="products" id="products">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+                    </div>
+                    <div class="cart-price">
+                        <p class="article-price">$320</p><i class="far fa-heart"></i>
+                    </div>
+                </article>
+            </div>
+            <div class="purchase-details">
+                <img class="imae-size" src="/images/categories/homero.png" alt="foto producto">
+                <article class="cart-info">
+                    <span class="cancel"><i class="fa fa-times" aria-hidden="true"></i></span>
+                    <p class="text">Soquetes Homero - Hable mas fuerte</p>
+                    <div class="cart-quantity">
+                        <span class="quantity-label">Cantidad:</span>
+                        <select name="products" id="products">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+                    </div>
+                    <div class="cart-price">
+                        <p class="article-price">$320</p><i class="far fa-heart"></i>
+                    </div>
+                </article>
+            </div>
+        </div>
+        <div class="resume-container col-md-6 col-lg-5">
+            <div class="resume">
+                <div class="subtitle">Resumen de Compra</div>
+                <div>
+                    <input class="resume-input" type="text" id="discount" name="discount"
+                        placeholder="código de descuento">
+                    <button class="btn-action" type="submit">aplicar</button>
+                </div>
+                <div class="price-details-container">
+                    <div class="price-details">
+                        <div>Producto</div>
+                        <div>$ 320 </div>
+                    </div>
+                    <div class="price-details">
+                        <div>Producto</div>
+                        <div>$ 320 </div>
+                    </div>
+                    <div class="price-details discount">
+                        <div>Descuento</div>
+                        <div>-$ 125</div>
+                    </div>
+                    <div class="divisor"></div>
+                    <div class="payment price-details">
+                        <div>Total</div>
+                        <div>$515</div>
+                    </div>
+                    <div class="btn-payment">
+                        <button class="btn btn-primary">Pagar</button>
+                    </div>
+                </div>
+                <div>
+                    <div class="shipping">Calcular Envío</div> 
+                        <input class="resume-input" type="text" id="discount" name="discount"
+                        placeholder="código postal">
+                        <button class="btn-action" type="submit">enviar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Featured Products -->
+        <section class="featured-products col-md-10">
+            <span class="title">destacados</span>
+            <div class="row main-center featured-products-container">
+                <div class="col-10 col-md-4 col-lg-3">
+                    <article class="featured-product">
+                        <div class="prod-img"><img src="/images/products/socks-lisa.png" alt=""></div>
+                        <div class="prod-discount">-10%</div>
+                        <div class="prod-price">$300</div>
+                        <div class="prod-name">Medias Lisa saxofón</div>
+                        <button class="btn btn-primary">comprar</button>    
+                    </article>
+                </div>
+                <div class="col-10 col-md-4 col-lg-3">
+                    <article class="featured-product">
+                        <div class="prod-img"><img src="/images/products/socks-maggie.png" alt=""></div>
+                        <div class="prod-discount">-15%</div>
+                        <div class="prod-price">$250</div>
+                        <div class="prod-name">Medias Maggie Simpsons</div>
+                        <button class="btn btn-primary">comprar</button>    
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- FOOTER -->
+    <%- include('./partials/footer') %> 
+</body>
+
+</html>
