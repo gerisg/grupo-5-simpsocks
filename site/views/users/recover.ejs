@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- HEAD -->
+<%- include('./partials/head') %>
+<body>
+    <header>
+        <div class="header-start">
+            <img src="/images/logo.png" alt="Logo Simpsocks">
+            <h2><span class="ultra">simp</span>socks</h2>
+        </div>
+        <div class="header-center"></div>
+    </header>
+    <main class="main-register-login">  
+        <section class="row main-center">
+            <div class="col-9 col-md-5 col-lg-5 form-login-register">
+                <form action="" method="POST"> 
+                    <h2 class="title">Recuperá tu Contraseña</h2>
+                    <div class="subtitle">
+                        <label for="email" >Introducí tu Email</label><br>
+                        <input type="email" id="mail" name="email"class="recupera" required>
+                        <span class="error"></span>
+                    </div>
+                    <div>
+                        <button type="submit" class=" btn btn-primary">enviar</button>                        
+                    </div>
+                </form>
+            </div>
+        </section>  
+    </main>
+
+    <!-- FOOTER -->
+    <%- include('./partials/footer') %>
+    <script type="text/javascript" src="/js/validate.js"></script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- HEAD -->
+<%- include('./partials/head') %> 
+<body>
+    <header>
+        <div class="header-start">
+            <img src="/images/logo.png" alt="Logo Simpsocks">
+            <h2><span class="ultra">simp</span>socks</h2>
+        </div>
+        <div class="header-center"></div>
+    </header>
+    
+    <main class="main-register-login">  
+        <section class="row main-center">
+            <div class="col-10  col-md-5 col-lg-4 form-login-register">
+
+                <form action="" method="POST"> 
+
+                    <h2 class="title">Que bueno que volviste!</h2>
+
+                    <div class="subtitle">
+                        <label for="user" >USUARIO</label><br>
+                        <input type="email" id="mail" name="user" class="info" required>
+                        <span class="error"></span> 
+                    </div>
+
+                    <div class="subtitle">
+                        <label for="password" >CONTRASEÑA</label><br>
+                        <input type="password" id="password" name="password"class="info" requires> 
+                    </div>
+        
+                    <div>
+                        <a href="/recover">¿Olvidáste tu contraseña?</a>
+                    </div>
+
+                    <div>
+                        <button type="submit" class=" btn btn-primary"><a href="/">Enviar</a></button>
+                        <input type="checkbox"  value="si" name="recuerdo">Recordarme
+                    </div>
+                </form>
+            </div>
+        </section>  
+    </main>
+
+    <!-- FOOTER -->
+    <%- include('./partials/footer') %>
+    <script type="text/javascript" src="/js/validate.js"></script>
+</body>
+</html>

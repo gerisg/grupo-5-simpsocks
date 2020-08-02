@@ -1,27 +1,26 @@
-const express= require ("express");
+const express= require('express');
 const app = express();
 
-app.use (express.static("public"));
-app.use (express.urlencoded({extended:false}));
+// Require routes
+const indexRoutes = require('./routes/indexRoutes');
+const userRoutes = require('./routes/userRoutes');
+const demoRoutes = require('./routes/demoRoutes');
 
-app.listen (3000, ()=> (console.log("Servidor funcionando en puerto 3000")));
+// Configure
+app.set('view engine', 'ejs')
 
-app.get("/", (req,res) => (res.sendFile(__dirname +"/views/index.html")));
+// Define routes
+app.use(express.static('public'));
+app.use('/', indexRoutes);
+app.use('/user', userRoutes);
+app.use('/demo', demoRoutes);
+
+// TODO: convert to EJS
 app.get("/cart", (req,res) => (res.sendFile(__dirname +"/views/cart.html")));
 app.get("/product-detail", (req,res) => (res.sendFile(__dirname +"/views/product.html")));
-app.get("/login", (req,res) => (res.sendFile(__dirname +"/views/login.html")));
-app.get("/register", (req,res) => (res.sendFile(__dirname +"/views/register.html")));
-app.get("/recover", (req,res) => (res.sendFile(__dirname +"/views/recover.html")));
 
-// Test
-app.get("/forms", (req,res) => (res.sendFile(__dirname +"/views/partials/forms.html")));
-app.get("/header", (req,res) => (res.sendFile(__dirname +"/views/partials/header.html")));
-app.get("/footer", (req,res) => (res.sendFile(__dirname +"/views/partials/footer.html")));
-app.get("/grid", (req,res) => (res.sendFile(__dirname +"/views/partials/grid.html")));
+// Unknown routes
+app.get('*', (req, res) => res.render('error'));
 
-//Links Temporales
-app.post('/login', (req, res) => {res.send(req.url("/login.html"))})
-app.post('/register', (req, res) => {res.send(req.body)});
-
-// Invalid urls 404 errors
-app.get('*', (req, res) => res.sendFile(__dirname + "/views/error.html"));
+// Start server
+app.listen (3000, ()=> (console.log('Server listening (3000)')));
