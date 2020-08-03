@@ -6,6 +6,8 @@ const indexRoutes = require('./routes/indexRoutes');
 const userRoutes = require('./routes/userRoutes');
 const productRoutes = require('./routes/productRoutes');
 const demoRoutes = require('./routes/demoRoutes');
+const cartRoutes = require('./routes/cartRoutes');
+
 
 // Configure
 app.set('view engine', 'ejs')
@@ -16,11 +18,7 @@ app.use('/', indexRoutes);
 app.use('/user', userRoutes);
 app.use('/products', productRoutes);
 app.use('/demo', demoRoutes);
-
-
-// TODO: convert to EJS
-app.get("/cart", (req,res) => (res.sendFile(__dirname +"/views/cart.html")));
-app.get("/product-detail", (req,res) => (res.sendFile(__dirname +"/views/product.html")));
+app.use('/cart', cartRoutes);
 
 // Unknown routes
 app.get('*', (req, res) => res.render('error'));
