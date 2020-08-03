@@ -7,6 +7,7 @@ const userRoutes = require('./routes/userRoutes');
 const productRoutes = require('./routes/productRoutes');
 const demoRoutes = require('./routes/demoRoutes');
 const cartRoutes = require('./routes/cartRoutes');
+const adminRoutes = require ("./routes/adminRoutes");
 
 
 // Configure
@@ -19,6 +20,7 @@ app.use('/user', userRoutes);
 app.use('/products', productRoutes);
 app.use('/demo', demoRoutes);
 app.use('/cart', cartRoutes);
+app.use ("/admin", adminRoutes)
 
 // Unknown routes
 app.get('*', (req, res) => res.render('error'));
