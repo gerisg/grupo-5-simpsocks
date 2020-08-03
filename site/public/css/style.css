@@ -1049,3 +1049,21 @@ header {
     display: none;
   }
 }
+
+/*Admin*/
+
+  .main-admin { 
+    background-color:var(--blue);
+    height: 80vh;
+}
+
+  .admin-form {
+    background-color: var(--light);
+    margin: 1rem auto;
+    text-align: center;
+    font-family: "gotham-ultra";
+    font-size: 1rem;
+    border-radius: 50px;
+    padding:.5rem;
+    border: white solid 2px;
+  }
