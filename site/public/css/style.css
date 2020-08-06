@@ -1008,6 +1008,28 @@ aside{
   }
 }
 
+/*Create Product*/
+ .new-product-input { 
+    
+    line-height: 7px;
+    margin-left: 0px;
+    margin-bottom: 10px;}
+  
+  .new-product-input-size {
+    
+      border: 2px solid var(--soft-blue); 
+      
+      line-height: 25px;
+      margin-bottom: 15px;
+      padding: 10px;}
+
+  .new-product-input-description {
+    
+     
+    line-height: 20px;
+    margin-bottom: 10px;
+    padding: 10px;}
+
 /***********
  * Desktop *
  ***********/

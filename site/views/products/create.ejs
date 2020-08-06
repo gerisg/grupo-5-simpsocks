@@ -5,8 +5,47 @@
     
 
 <%- include("../partials/header") %>
-<main>
+<main class="main-register-login">
+    <section class="row main-center ">
+        <div class="col-10  col-md-5 col-lg-6 form-login-register">
+            <form action="" method="POST">
 
+                <h2 class="title">Nuevo Producto</h2>
+                
+                <div class="new-product-input">
+                    <label for="name">Nombre</label><br> 
+                    <input type="text"id="name" name="nombre" required placeholder="Sé creativo, pero claro.">
+                </div>
+                <div class="new-product-input-description">
+                    <label for="description" >Descripción</label><br>
+                    <textarea name="descripcion" id="description" cols="30" rows="10" style="border: 3px solid red;" placeholder="Vende tus Simpsocks!"></textarea>
+                </div>
+                <div class="new-product-input">
+                    <label for="price" >Precio</label><br>
+                    <input type="text" id="price" name="precio" required placeholder= "Introduci el valor en Pesos.">   
+                </div>
+                <div class="new-product-input-size">
+                    <label for="size" >Talle</label><br>
+                    <input type="radio" id="size" name="talle" value="S-KIDS" > Small - kids <br>
+                    <input type="radio" id="size" name="talle" value="S-KIDS" > Medium - Adults  <br>
+                    <input type="radio" id="size" name="talle" value="S-KIDS" > Large - Adults <br>
+                </div>
+                <div class="new-product-input-size">
+                    <label for="type" >Tipo de Simpsock</label><br>
+                    <input type="radio" id="type" name="tipo" value="Soquete" > Soquete <br>
+                    <input type="radio" id="type" name="tipo" value="Media" > Media Larga  <br>
+                    <input type="radio" id="type" name="tipo" value="Bucanera" > Bucanera <br>
+                </div>
+                <div class="new-product-input-size">
+                    <label for="pic" >Subí las fotos de tus Simpsocks</label><br>
+                    <input type="file" id="pic" name="fotos" style="border: none;">   
+                </div>
+                <div>
+                    <button type="submit" class=" btn btn-primary"><a href="/login">Crear Producto</a></button>
+                </div>
+            </form>          
+        </div>    
+     </section>
 </main>
 
 <%- include("../partials/footer")%>
