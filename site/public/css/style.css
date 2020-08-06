@@ -605,6 +605,23 @@ header {
     text-decoration: underline;
   }
   
+/*Aside*/
+aside{
+  position: absolute;
+  top: 8rem;
+  padding: var(--default-padding);
+  margin: var(--default-margin);
+  display: none;
+ }
+   .aside-img{
+     width: 20%;
+     border: 2px solid var(--light);
+   }
+  .aside-img:hover{
+     background-color:var(--soft-blue);
+     transition: background-color .5s;
+   }
+  
 /* Cart */
 
 .cart-title{
@@ -988,7 +1005,7 @@ header {
   }
   .product-actions{
     margin-top: 2.5rem;
-  }  
+  }
 }
 
 /***********
@@ -1048,6 +1065,9 @@ header {
   .cart-title{
     display: none;
   }
+  aside{ 
+    display: block;
+  }  
 }
 
 /*Admin*/
@@ -1067,3 +1087,4 @@ header {
     padding:.5rem;
     border: white solid 2px;
   }
+
