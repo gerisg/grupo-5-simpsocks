@@ -843,6 +843,43 @@ aside{
   box-shadow: 0 0 5px 1px var(--red);;
 }  
 
+/*Edit Product*/
+
+
+.my-product { display: flex;
+  flex-wrap: wrap;
+  border-bottom: 3px solid white;
+}
+
+.image-container { 
+  width:20%;
+
+}
+
+.img-card-edit-product{
+  width: 80%;
+  margin: var(--default-margin);
+}
+
+.text-container { display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  width: 60%;
+  text-align: left;
+  justify-content: center;
+  font-size: x-small;
+   
+}
+
+.icons-edit {width:10%;
+text-align: center;
+font-size: larger;
+color: var(--blue);
+padding-top:15px;}
+
+
+
+
 /* Grid system */
 
 .row {
@@ -1055,6 +1092,7 @@ aside{
   .product-actions{
     margin-top: 2.5rem;
   }
+ /*form*/
   .form-login-register {
     background-color: var(--light);
     margin: 1rem auto;
@@ -1066,6 +1104,27 @@ aside{
     margin-top: 30px;
     border: white solid 5px;
   }
+
+  /*Edit Product*/
+
+  .text-container { display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 60%;
+    text-align: left  ;
+    justify-content: center;
+    font-size:medium;
+    padding-left: 10%;
+     
+  }
+  
+  .icons-edit {width:10%;
+  text-align: center;
+  font-size: xx-large;
+  color: var(--blue);
+  padding-top:30px;}
+
+
 }
 
 
@@ -1130,5 +1189,26 @@ aside{
   aside{ 
     display: block;
   }  
+
+    /*Edit Product*/
+
+    .text-container { display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+      width: 60%;
+      text-align: left  ;
+      justify-content: center;
+      font-size:x-large;
+      padding-left: 10%;
+       
+    }
+    
+    .icons-edit {width:10%;
+    text-align: center;
+    font-size: xx-large;
+    color: var(--blue);
+    padding-top:30px;}
+  
+  
 }
 
