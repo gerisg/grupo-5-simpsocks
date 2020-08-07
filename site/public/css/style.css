@@ -484,27 +484,7 @@ header {
   text-align: center;
 }
 
-/* Login & Register Forms */
 
-.main-register-login {
-  background-color:var(--blue);
-
-}
-
-.h2-login-register { 
-  font-family: "gotham-ultra";
-}
-
-.form-login-register {
-  background-color: var(--light);
-  margin: 1rem auto;
-  text-align: center;
-  font-family: "gotham-ultra";
-  font-size: 1rem;
-  border-radius: 50px;
-  padding:.5rem;
-  border: white solid 2px;
-}
 
 /* Product Details */
 .product-img {
@@ -794,6 +774,75 @@ aside{
   font-size: 1.2rem;
 }
 
+/* Login & Register Forms */
+
+.main-with-form {
+  background-color:var(--blue);
+
+}
+
+.h2-login-register { 
+  font-family: "gotham-ultra";
+}
+
+.form-login-register {
+  background-color: var(--light);
+  margin: 1rem auto;
+  text-align: center;
+  font-family: "gotham-ultra";
+  font-size: 1rem;
+  border-radius: 20px;
+  padding:.5rem;
+  border: white solid 5px;
+}
+
+/*Admin*/
+
+.main-admin { 
+  background-color:var(--blue);
+  height: 80vh;
+}
+
+.admin-form {
+  background-color: var(--light);
+  margin: 1rem auto;
+  text-align: center;
+  font-family: "gotham-ultra";
+  font-size: 1rem;
+  border-radius: 50px;
+  padding:.5rem;
+  border: white solid 2px;
+}
+
+/*Create Product*/
+.new-product { 
+  text-align: left;  
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 3px solid var(--white);}
+
+.new-product-size {    
+  text-align: left; 
+  line-height: 25px;
+  margin-bottom: 15px;
+  padding: 10px;
+  border-bottom: 3px solid var(--white);}
+
+.new-product-description {
+  text-align: left; 
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 3px solid var(--white);
+  }
+  
+
+.new-product-input {
+  border: none;
+  margin-left: 0px;
+  width: 100%;
+  box-shadow: 0 0 5px 1px var(--red);;
+}  
+
 /* Grid system */
 
 .row {
@@ -1006,29 +1055,20 @@ aside{
   .product-actions{
     margin-top: 2.5rem;
   }
+  .form-login-register {
+    background-color: var(--light);
+    margin: 1rem auto;
+    text-align: center;
+    font-family: "gotham-ultra";
+    font-size: 1rem;
+    border-radius: 20px;
+    padding:.5rem;
+    margin-top: 30px;
+    border: white solid 5px;
+  }
 }
 
-/*Create Product*/
- .new-product-input { 
-    
-    line-height: 7px;
-    margin-left: 0px;
-    margin-bottom: 10px;}
-  
-  .new-product-input-size {
-    
-      border: 2px solid var(--soft-blue); 
-      
-      line-height: 25px;
-      margin-bottom: 15px;
-      padding: 10px;}
 
-  .new-product-input-description {
-    
-     
-    line-height: 20px;
-    margin-bottom: 10px;
-    padding: 10px;}
 
 /***********
  * Desktop *
@@ -1091,22 +1131,4 @@ aside{
     display: block;
   }  
 }
-
-/*Admin*/
-
-  .main-admin { 
-    background-color:var(--blue);
-    height: 80vh;
-}
-
-  .admin-form {
-    background-color: var(--light);
-    margin: 1rem auto;
-    text-align: center;
-    font-family: "gotham-ultra";
-    font-size: 1rem;
-    border-radius: 50px;
-    padding:.5rem;
-    border: white solid 2px;
-  }
 
