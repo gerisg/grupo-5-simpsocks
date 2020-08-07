@@ -555,6 +555,22 @@ header {
     text-align: center;
   }
 
+.product-container aside{
+  position: absolute;
+  top: 8rem;
+  padding: var(--default-padding);
+  margin: var(--default-margin);
+  display: none;
+}
+  .product-container .aside-img{
+    width: 20%;
+    border: 2px solid var(--light);
+  }
+  .product-container .aside-img:hover{
+    background-color:var(--soft-blue);
+    transition: background-color .5s;
+  }
+
 /*Breacrumb*/
 
 .breadcrumb{
@@ -577,22 +593,9 @@ header {
     content:" ";
   }
   
-/*Aside*/
-aside{
-  position: absolute;
-  top: 8rem;
-  padding: var(--default-padding);
-  margin: var(--default-margin);
-  display: none;
- }
-   .aside-img{
-     width: 20%;
-     border: 2px solid var(--light);
-   }
-  .aside-img:hover{
-     background-color:var(--soft-blue);
-     transition: background-color .5s;
-   }
+/* Aside */
+
+
   
 /* Cart */
 
