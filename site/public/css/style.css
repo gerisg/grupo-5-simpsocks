@@ -561,28 +561,20 @@ header {
   background-color: var(--light);
   padding: var(--default-padding);
 }
-  .breadcrumb li {
-    display: inline;
-    font-size: 1rem;
-  }
-  .breadcrumb li:after {
-    padding: 8px;
+  .breadcrumb a:after {
+    padding: .5rem;
     color: var(--dark);
     content: "/";
   }
-  .breadcrumb li:last-child a{
-    font-weight: bold;
-  }
-  .breadcrumb li:last-child:after{
-    content:" ";
-  }
-  .breadcrumb li a {
-    color: var(--dark);
-    text-decoration: none;
-  }
-  .breadcrumb li a:hover {
+  .breadcrumb a:hover {
     color: var(--blue);
     text-decoration: underline;
+  }
+  .breadcrumb a:last-child {
+    font-weight: bold;
+  }
+  .breadcrumb a:last-child:after{
+    content:" ";
   }
   
 /*Aside*/
