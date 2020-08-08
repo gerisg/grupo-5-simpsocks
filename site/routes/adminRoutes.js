@@ -4,6 +4,4 @@ const controller= require ("../controllers/adminController")
 
 router.get("/", controller.welcome)
 
-
-
 module.exports= router;

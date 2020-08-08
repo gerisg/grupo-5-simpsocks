@@ -5,22 +5,19 @@ const app = express();
 const indexRoutes = require('./routes/indexRoutes');
 const userRoutes = require('./routes/userRoutes');
 const productRoutes = require('./routes/productRoutes');
-const demoRoutes = require('./routes/demoRoutes');
-const cartRoutes = require('./routes/cartRoutes');
 const adminRoutes = require ("./routes/adminRoutes");
-
+const demoRoutes = require('./routes/demoRoutes');
 
 // Configure
 app.set('view engine', 'ejs')
+app.use(express.static('public'));
 
 // Define routes
-app.use(express.static('public'));
 app.use('/', indexRoutes);
-app.use('/user', userRoutes);
+app.use('/users', userRoutes);
 app.use('/products', productRoutes);
-app.use('/demo', demoRoutes);
-app.use('/cart', cartRoutes);
 app.use ("/admin", adminRoutes)
+app.use('/demo', demoRoutes);
 
 // Unknown routes
 app.get('*', (req, res) => res.render('error'));
