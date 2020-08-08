@@ -1,89 +1,87 @@
+<!DOCTYPE html>
 <html lang="en">
-<%- include("../partials/head") %>
-
+<%- include('../partials/head') %>
 <body>
-    
+    <%- include('../partials/header') %>
 
-<%- include("../partials/header") %>
-<main class="main-with-form">
-    <section class="row main-center ">
-        <div class="col-10  col-md-8 col-lg-8 form-login-register">
-            <form action="" method="POST">
-
-                <h2 class="title" style="border-bottom: 3px solid yellow;">Tus SImpsocks</h2>
-                <div class="my-products">
     <nav class="breadcrumb">
         <a href="/">Home</a>
         <a href="/products/detail">Editar producto</a>
     </nav>
 
-                    <article class="my-product">
-                        <div class = "image-container"> 
-                            <img class="img-card-edit-product" src="/images/products/sockets-bart-honda.png" alt="soquete bart">
-                        </div>
+    <main class="main-with-form">
+        <section class="row main-center">
+            <div class="col-10 col-md-8 col-lg-8 form-login-register">
+                <form action="" method="POST">
 
-                        <div class="text-container">
-                            <div>Soquete Bart Simpson</div>
-                            <div >Confort inexplicable</div>
-                            <div >$250</div>
-                        </div>
-                        <div class="icons-edit">
-                            <a href="#"> <i class="fas fa-edit"></i></a>
-                         </div>
-                         <div class="icons-edit">
-                            <a href="#"> <i class="fas fa-trash-alt"></i></a>
-                         </div>
-                    </article>
+                    <h2 class="title" style="border-bottom: 3px solid yellow;">Tus SImpsocks</h2>
+                    <div class="my-products">
 
-                    <article class="my-product">
-                        <div class = "image-container"> 
-                            <img class="img-card-edit-product" src="/images/products/sockets-bart-honda.png" alt="soquete bart">
-                        </div>
+                        <article class="my-product">
+                            <div class = "image-container"> 
+                                <img class="img-card-edit-product" src="/images/products/sockets-bart-honda.png" alt="soquete bart">
+                            </div>
 
-                        <div class="text-container">
-                            <div>Soquete Bart Simpson</div>
-                            <div >Confort inexplicable</div>
-                            <div >$250</div>
-                        </div>
-                        <div class="icons-edit">
-                            <a href="#"> <i class="fas fa-edit"></i></a>
-                         </div>
-                         <div class="icons-edit">
-                            <a href="#"> <i class="fas fa-trash-alt"></i></a>
-                         </div>
-                    </article>
+                            <div class="text-container">
+                                <div>Soquete Bart Simpson</div>
+                                <div >Confort inexplicable</div>
+                                <div >$250</div>
+                            </div>
+                            <div class="icons-edit">
+                                <a href="#"> <i class="fas fa-edit"></i></a>
+                                </div>
+                                <div class="icons-edit">
+                                <a href="#"> <i class="fas fa-trash-alt"></i></a>
+                                </div>
+                        </article>
 
-                    <article class="my-product">
-                        <div class = "image-container"> 
-                            <img class="img-card-edit-product" src="/images/products/sockets-bart-honda.png" alt="soquete bart">
-                        </div>
+                        <article class="my-product">
+                            <div class = "image-container"> 
+                                <img class="img-card-edit-product" src="/images/products/sockets-bart-honda.png" alt="soquete bart">
+                            </div>
 
-                        <div class="text-container">
-                            <div>Soquete Bart Simpson</div>
-                            <div >Confort inexplicable</div>
-                            <div >$250</div>
-                        </div>
-                        <div class="icons-edit">
-                           <a href="#"> <i class="fas fa-edit"></i></a>
-                        </div>
-                        <div class="icons-edit">
-                           <a href="#"> <i class="fas fa-trash-alt"></i></a>
-                        </div>
-                    </article>
+                            <div class="text-container">
+                                <div>Soquete Bart Simpson</div>
+                                <div >Confort inexplicable</div>
+                                <div >$250</div>
+                            </div>
+                            <div class="icons-edit">
+                                <a href="#"> <i class="fas fa-edit"></i></a>
+                                </div>
+                                <div class="icons-edit">
+                                <a href="#"> <i class="fas fa-trash-alt"></i></a>
+                                </div>
+                        </article>
 
-                </div>
+                        <article class="my-product">
+                            <div class = "image-container"> 
+                                <img class="img-card-edit-product" src="/images/products/sockets-bart-honda.png" alt="soquete bart">
+                            </div>
 
-                <div>
-                    <button type="submit" class=" btn btn-primary">Guardar Cambios</button>
-                </div>
-            
-            </form>          
-        </div>    
-     </section>
-</main>
+                            <div class="text-container">
+                                <div>Soquete Bart Simpson</div>
+                                <div >Confort inexplicable</div>
+                                <div >$250</div>
+                            </div>
+                            <div class="icons-edit">
+                                <a href="#"> <i class="fas fa-edit"></i></a>
+                            </div>
+                            <div class="icons-edit">
+                                <a href="#"> <i class="fas fa-trash-alt"></i></a>
+                            </div>
+                        </article>
 
-</main>
+                    </div>
 
-<%- include("../partials/footer")%>
+                    <div>
+                        <button type="submit" class=" btn btn-primary">Guardar Cambios</button>
+                    </div>
+                
+                </form>          
+            </div>    
+        </section>
+    </main>
 
+    <%- include("../partials/footer")%>
 </body>
+</html>
