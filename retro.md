@@ -2,7 +2,7 @@
 
 ## Retrospectivas
 
-### Sprint 1 - Pluses and Deltas
+### Sprint 1
 
 #### Agenda
 
@@ -50,3 +50,17 @@ Técnica _Niko-Niko_: 🙂 🙂 🙂
 Nos gustó el aprendizaje llevado adelante durante la ceremonia de Pluses and Deltas.
 
 Destacamos el uso de los post-it para que todos participemos en la confección del listado de Pluses y Deltas.
+
+
+### Sprint 2
+
+#### Metodología Estrella
+
+[Tablero Estrella](https://jamboard.google.com/u/0/d/1mataI0rrvBcHGc66sxL_zzNilD2T0eCiJGIPXk4WRzs/viewer)
+
+| Resumen |
+| -------- |
+| + **Hacer más**: Optimizar el uso de trello |
+| + **Seguir haciendo**: Reuniones periódicas y Mantener el clima del grupo |
+| + **Empezar a hacer**: Programación en grupo y Revisiones de código |
+| + **Hacer menos**: Hacer commits más reducidos |
