@@ -44,6 +44,8 @@
 
   --default-padding: .5rem;
   --default-margin: .5rem;
+
+  --base-font-family: 'Roboto', sans-serif;
 }
 
 /* Generals */
@@ -52,24 +54,39 @@
   box-sizing: border-box;
 }
 
+html, body {
+  min-height: 100vh;
+  margin: 0;
+  font-size: 1rem;
+}
+
 body {
-  font-family: 'Roboto', Helvetica, sans-serif;
+  font-family: 'Roboto', sans-serif;
   color: var(--dark);
   background-color: var(--white);
-
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+}
 
-  margin: 0 auto;
+ul, ol {
+  list-style: none;
+  margin: 0;
   padding: 0;
 }
 
-/* Texts */
+figure {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  width: 100%;
+}
 
 a {
-  color: inherit;
+  display: inline-block;
   text-decoration: none;
+  color: inherit;
 }
 
 .title {
@@ -591,10 +608,6 @@ header {
     content:" ";
   }
   
-/* Aside */
-
-
-  
 /* Cart */
 
 .cart-title{
@@ -837,8 +850,7 @@ header {
   box-shadow: 0 0 5px 1px var(--red);;
 }  
 
-/*Edit Product*/
-
+/* Edit Product */
 
 .my-product { display: flex;
   flex-wrap: wrap;
@@ -861,8 +873,7 @@ header {
   width: 60%;
   text-align: left;
   justify-content: center;
-  font-size: x-small;
-   
+  font-size: x-small;  
 }
 
 .icons-edit {
@@ -872,6 +883,9 @@ header {
   color: var(--blue);
   padding-top:15px;
 }
+
+/* List product */
+
 
 /* Grid system */
 
@@ -915,7 +929,6 @@ header {
 /**********
  * Tablet *
  **********/
-@media (min-width: 768px) {
 @media (min-width: 576px) {
 
   /* Grid system */
