@@ -13,12 +13,12 @@
 
     <main class="main-with-form">
         <section class="row main-center ">
-            <div class="col-10  col-md-8 col-lg-8 form-login-register">
+            <div class="col-10  col-md-8 col-lg-8 form-general">
                 <form action="" method="POST">
 
-                    <h2 class="title" style="border-bottom: 3px solid yellow;">Nuevo Producto</h2>
+                    <h2 class="title-forms">Nuevo Producto</h2>
                     
-                    <div class="new-product">
+                    <div class="form-step">
                         <label for="name">Nombre</label><br> 
                         <input type="text"id="name" name="nombre" required placeholder="Sé creativo, pero claro." class="new-product-input">
                     </div>
@@ -26,18 +26,18 @@
                         <label for="description" >Descripción</label><br>
                         <textarea name="descripcion" id="description" cols="30" rows="10"placeholder="Vende tus Simpsocks!" class="new-product-input"></textarea>
                     </div>
-                    <div class="new-product">
+                    <div class="form-step">
                         <label for="price" >Precio</label><br>
                         <input type="text" id="price" name="precio" required placeholder= "Introduci el valor en Pesos." class="new-product-input">   
                     </div>
                     <div class="new-product-size">
-                        <label for="size" >Talles</label><br>
+                        <label class="new-product-radio-titles"for="size" >Talles</label><br>
                         <input type="radio" id="size" name="talle" value="S-KIDS"  > Small - kids <br>
                         <input type="radio" id="size" name="talle" value="S-KIDS" > Medium - Adults  <br>
                         <input type="radio" id="size" name="talle" value="S-KIDS" > Large - Adults <br>
                     </div>
                     <div class="new-product-size">
-                        <label for="type" >Tipo de Simpsock</label><br>
+                        <label class="new-product-radio-titles" for="type" >Tipo de Simpsock</label><br>
                         <input type="radio" id="type" name="tipo" value="Soquete" > Soquete <br>
                         <input type="radio" id="type" name="tipo" value="Media" > Media Larga  <br>
                         <input type="radio" id="type" name="tipo" value="Bucanera" > Bucanera <br>

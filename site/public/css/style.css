@@ -842,20 +842,16 @@ header {
   background-color:var(--blue);
 }
 
-.h2-login-register { 
-  font-family: "gotham-ultra";
-}
-
-.form-login-register {
+.form-general {
   background-color: var(--light);
   margin: 1rem auto;
   text-align: center;
-  font-family: "gotham-ultra";
-  font-size: 1rem;
   border-radius: 20px;
-  padding:.5rem;
   border: white solid 5px;
+  padding: .5rem;
 }
+
+
 
 /* Admin */
 
@@ -867,8 +863,7 @@ header {
 .admin-form {
   background-color: var(--light);
   margin: 1rem auto;
-  text-align: center;
-  font-family: "gotham-ultra";
+  text-align: center; 
   font-size: 1rem;
   border-radius: 50px;
   padding:.5rem;
@@ -877,26 +872,44 @@ header {
 
 /* Create product */
 
-.new-product { 
+
+.title-forms {
+    font-family: "gotham-ultra";
+    font-size: 1.75rem;
+    text-transform: uppercase;
+    padding: .3rem;
+    border-bottom: 3px solid yellow;
+
+
+}
+
+.form-step { 
   text-align: left;  
   margin-bottom: 10px;
   padding-bottom: 10px;
   border-bottom: 3px solid var(--white);
+  font-weight: 500;
 }
 
 .new-product-size {    
-  text-align: left; 
+  text-align: left;
+  font-weight: 500; 
   line-height: 25px;
   margin-bottom: 15px;
   padding: 10px;
   border-bottom: 3px solid var(--white);
 }
 
+.new-product-radio-titles {    
+   font-weight: 1000; 
+ }
+
 .new-product-description {
   text-align: left; 
   margin-bottom: 15px;
   padding-bottom: 10px;
   border-bottom: 3px solid var(--white);
+  line-height: 2.5rem;
 }
 
 .new-product-input {
@@ -923,20 +936,21 @@ header {
   margin: var(--default-margin);
 }
 
-.text-container { display: flex;
+.text-container { 
+  display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   width: 60%;
   text-align: left;
   justify-content: center;
-  font-size: x-small;  
+  font-size: .8rem;  
 }
 
 .icons-edit {
+  color: var(--blue);
   width:10%;
   text-align: center;
-  font-size: larger; /* TODO Reemplazar por rem */
-  color: var(--blue);
+  font-size: 1.3rem;
   padding-top:15px;
 }
 
@@ -1158,11 +1172,10 @@ header {
 
   /* Form */
 
-  .form-login-register {
+  .form-general {
     background-color: var(--light);
     margin: 1rem auto;
     text-align: center;
-    font-family: "gotham-ultra";
     font-size: 1rem;
     border-radius: 20px;
     padding:.5rem;
@@ -1172,23 +1185,16 @@ header {
 
   /* Edit Product */
 
-  .text-container { display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    width: 60%;
-    text-align: left  ;
-    justify-content: center;
-    font-size:medium;
+  .text-container { 
+   font-size: 1rem;
     padding-left: 10%;
   }
   
-  .icons-edit { /* TODO Eliminar código repetido */
-    width:10%;
-    text-align: center;
-    font-size: xx-large;  /* TODO Reemplazar por rem */
-    color: var(--blue);
-    padding-top:30px;
-  }
+  .icons-edit { 
+    font-size: 2rem;
+    padding-top:25px;  
+   
+     }
 }
 
 /***********
@@ -1255,23 +1261,13 @@ header {
   /* Edit Product */
 
   .text-container {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    width: 60%;
-    text-align: left  ;
-    justify-content: center;
-    font-size:x-large;
-    padding-left: 10%;
+   font-size: 1.5rem;
       
   }
   
-  .icons-edit {  /* TODO Eliminar código repetido */
-    width:10%;
-    text-align: center;
-    font-size: xx-large;  /* TODO Reemplazar por rem */
-    color: var(--blue);
-    padding-top:30px;
+  .icons-edit {
+    font-size: 2.5rem; 
+   
   }
 
 }
