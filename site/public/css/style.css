@@ -1130,7 +1130,9 @@ header {
 
   .filter ul { margin-bottom: 1rem;}
   .filter ul li a { margin: .4rem .5rem; }
-  .filter ul li:hover, a:hover { 
+  
+  .filter ul li:hover,
+  .filter ul a:hover { 
     font-weight: 300;
     text-decoration: underline;
   }
