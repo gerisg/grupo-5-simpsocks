@@ -11,72 +11,93 @@
         </nav>
     </section>
 
-    <main class="product-container row">
-        <aside>
-            <figure><a href=""><img class="aside-img" src="/images/categories/homero.png" alt="foto del producto"></a></figure>
-            <figure><a href=""><img class="aside-img" src="/images/categories/homero.png" alt="foto del producto"></a></figure>
-            <figure><a href=""><img class="aside-img" src="/images/categories/homero.png" alt="foto del producto"></a></figure>
-        </aside>
-        <div class="product-img col-md-6 col-lg-6">
-            <img class="image-size" src="/images/categories/homero.png" alt="Foto producto">
-        </div>
-        <article class="product-details col-md-6 col-lg-6 row main-center">
-            <p class="stock">stock disponible</p>
-            <div class="price">
-                <span class="subtitle">$320</span>
-                <i class="far fa-heart heart-icon"></i>
-            </div>
-            <div>
-                <div class="product-title">Soquetes Homero</div>
-                <p class="product-description text">Medias estilo soquetes Homero - The Simpsons</p>
-            </div>
-            <div class="product-actions">
-                <a href="/products/cart" class="btn btn-info btn-cart">Añadir al carrito</a>
-                <a href="/error" class="btn btn-primary">Comprar</a>
-            </div>
-        </article>
-
-        <!--Productos Relacionados-->
-
-        <div class="related-products-container title col-lg-12">
-            <div class="title title-center">Productos Relacionados</div>
-            <div class="row main-center cross-center">
-                <div class="card col-md-3  col-lg-3">
-                    <img class="img-card" src="/images/products/sockets-bart-honda.jpg" alt="Foto productos destacados">
-                    <div class="card-body">
-                        <p class="text">Soquetes Bart</p>
-                        <p class="subtitle">$123</p>
-                        <a href="#" class="btn btn-primary">Comprar</a>
+    <main class="product-container">
+		<div class="row">
+            <div class="col-12 col-md-6 col-lg-6">
+                <div class="row">
+                    <div class="col-md-3 col-lg-3">
+                        <aside>
+                            <figure>
+                                <a onclick="showSlides(1)">
+                                    <img src="/images/products/sockets-bart-honda.jpg" alt="foto miniatura del producto">
+                                </a>
+                            </figure>
+                            <figure>
+                                <a onclick="showSlides(2)">
+                                    <img src="/images/products/sockets-homero.jpg" alt="foto miniatura del producto">
+                                </a>
+                            </figure>
+                            <figure>
+                                <a onclick="showSlides(3)">
+                                    <img src="/images/products/socks-homero-rosquillas.jpg" alt="foto miniatura del producto">
+                                </a>
+                            </figure>
+                        </aside>
                     </div>
-                </div>
-                <div class="card col-md-3 col-lg-3">
-                    <img class="img-card" src="/images/products/sockets-homero.jpg" alt="Foto productos destacados">
-                    <div class="card-body">
-                        <h3 class="text">soquetes Homero</h3>
-                        <p class="subtitle">$123</p>
-                        <a href="#" class="btn btn-primary">Comprar</a>
-                    </div>
-                </div>
-                <div class="card col-md-3 col-lg-3">
-                    <img class="img-card" src="/images/products/socks-mr-sparkle.jpg" alt="Foto productos desacados">
-                    <div class="card-body">
-                        <h3 class="text">mr-sparkle</h3>
-                        <p class="subtitle">$123</p>
-                        <a href="#" class="btn btn-primary">Comprar</a>
-                    </div>
-                </div>
-                <div class="card col-md-3 col-lg-3">
-                    <img class="img-card" src="/images/products/socks-rosquillas.jpg" alt="Foto productos desacados">
-                    <div class="card-body">
-                        <h3 class="text">rosquillas</h3>
-                        <p class="subtitle">$123</p>
-                        <a href="#" class="btn btn-primary">Comprar</a>
+                    <div class="col-md-9 col-lg-9">
+                        <figure class="slide-container img-1">
+                            <img src="/images/products/sockets-bart-honda.jpg" alt="foto del producto">
+                        </figure>
+                        <figure class="slide-container img-2">
+                            <img src="/images/products/sockets-homero.jpg" alt="foto del producto">
+                        </figure>
+                        <figure class="slide-container img-3">
+                            <img src="/images/products/socks-homero-rosquillas.jpg" alt="foto del producto">
+                        </figure>
                     </div>
                 </div>
             </div>
-        </div>
+            <div class="col-12 col-md-6 col-lg-6">
+                <article class="product-details row main-center">
+                    <p class="stock">stock disponible</p>
+                    <div class="price">
+                        <span class="subtitle">$320</span>
+                        <i class="far fa-heart heart-icon"></i>
+                    </div>
+                    <div>
+                        <div class="product-title">Soquetes Homero</div>
+                        <p class="product-description text">Medias estilo soquetes Homero - The Simpsons</p>
+                    </div>
+                    <div class="product-actions">
+                        <a href="/products/cart" class="btn btn-info btn-cart">Añadir al carrito</a>
+                        <a href="/error" class="btn btn-primary">Comprar</a>
+                    </div>
+                </article>
+            </div>
+		</div>
     </main>
 
+    <section class="related-products-container">
+        <span class="title">Productos Relacionados</span>
+        <div class="row nowrap simple-slider">
+            <div class="col-md-6 col-lg-3 simple-slide">
+                <%- include('product') %>
+            </div>
+            <div class="col-md-6 col-lg-3 simple-slide">
+                <%- include('product') %>
+            </div>
+            <div class="col-md-6 col-lg-3 simple-slide">
+                <%- include('product') %>
+            </div>
+            <div class="col-md-6 col-lg-3 simple-slide">
+                <%- include('product') %>
+            </div>
+            <div class="col-md-6 col-lg-3 simple-slide">
+                <%- include('product') %>
+            </div>
+            <div class="col-md-6 col-lg-3 simple-slide">
+                <%- include('product') %>
+            </div>
+            <div class="col-md-6 col-lg-3 simple-slide">
+                <%- include('product') %>
+            </div>
+            <div class="col-md-6 col-lg-3 simple-slide">
+                <%- include('product') %>
+            </div>
+        </div>
+    </section>
+
     <%- include("../partials/footer")%>
+    <script src="/js/slider.js"></script>
 </body>
 </html>
