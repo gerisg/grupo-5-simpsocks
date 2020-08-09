@@ -918,8 +918,19 @@ header {
   padding-top:15px;
 }
 
-/* List product */
+/* Simple Slider */
 
+.simple-slider {
+  height: 100%;
+  overflow-y: auto;
+  /* Always force scrolling to a snap point on the x-axis */
+  scroll-snap-type: x mandatory;
+}
+.simple-slide {
+  flex-shrink: 0;
+  height: 100%;
+  scroll-snap-align: start;
+}
 
 /* Grid system */
 
@@ -936,6 +947,7 @@ header {
 .row.cross-center { align-items: center;}
 .row.cross-end { align-items: flex-end;}
 .row.column { flex-direction: column;}
+.row.nowrap { flex-wrap: nowrap;}
 
 .col { 
   flex-grow: 1;
