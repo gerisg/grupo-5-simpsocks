@@ -419,47 +419,6 @@ header {
   text-align: center;
 }
 
-.featured-product {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  flex-wrap: wrap;
-  position: relative;
-  margin: 1rem 0;
-}
-  .featured-product .prod-img {
-    width: 50%;
-    margin: 0 auto;
-  }
-    .featured-product .prod-img img {
-      height: 30vh;
-    }
-  .featured-product .prod-discount {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    border-radius: 1.5rem;
-    background-color: var(--pink);
-    color: var(--white);
-    padding: .7rem .3rem;
-  }
-  .featured-product .prod-price {
-    position: absolute;
-    top: 4rem;
-    right: 1rem;
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: var(--pink);
-  }
-  .featured-product .prod-name {
-    border-top: 5px solid var(--yellow);
-    padding: var(--default-padding);
-    font-size: .75rem;
-  }
-  .featured-product a {
-    margin: 0 auto;
-  }
-
 /* Footer */
 .footer-top {
   background-color: var(--yellow);
