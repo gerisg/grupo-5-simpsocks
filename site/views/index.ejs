@@ -142,46 +142,48 @@
         <!-- Featured Products -->
         <section class="featured-products">
             <span class="title">destacados</span>
-            <div class="row main-center featured-products-container">
-                <div class="col-10 col-md-3 col-lg-3">
-                    <article class="featured-product">
-                        <div class="prod-img"><img src="/images/products/socks-homero-rosquillas.jpg" alt=""></div>
-                        <div class="prod-discount">-10%</div>
-                        <div class="prod-price">$300</div>
-                        <div class="prod-name">Medias Homero Rosquillas</div>
-                        <a href="/products/cart" class="btn btn-primary">comprar</a>    
-                    </article>
+            <div class="row nowrap simple-slider">
+                <div class="col-10 col-md-6 col-lg-3 simple-slide">
+                    <%- include('./products/product') %>
                 </div>
-                <div class="col-10 col-md-3 col-lg-3">
-                    <article class="featured-product">
-                        <div class="prod-img"><img src="/images/products/socks-homero-traje-banio.jpg" alt=""></div>
-                        <div class="prod-discount">-15%</div>
-                        <div class="prod-price">$250</div>
-                        <div class="prod-name">Medias Homero Traje de Baño</div>
-                        <a href="/products/cart" class="btn btn-primary">comprar</a>
-                    </article>
+                <div class="col-10 col-md-6 col-lg-3 simple-slide">
+                    <%- include('./products/product') %>
+                </div>
+                <div class="col-10 col-md-6 col-lg-3 simple-slide">
+                    <%- include('./products/product') %>
+                </div>
+                <div class="col-10 col-md-6 col-lg-3 simple-slide">
+                    <%- include('./products/product') %>
+                </div>
+                <div class="col-10 col-md-6 col-lg-3 simple-slide">
+                    <%- include('./products/product') %>
+                </div>
+                <div class="col-10 col-md-6 col-lg-3 simple-slide">
+                    <%- include('./products/product') %>
+                </div>
+                <div class="col-10 col-md-6 col-lg-3 simple-slide">
+                    <%- include('./products/product') %>
+                </div>
+                <div class="col-10 col-md-6 col-lg-3 simple-slide">
+                    <%- include('./products/product') %>
+                </div>
+                <div class="col-10 col-md-6 col-lg-3 simple-slide">
+                    <%- include('./products/product') %>
+                </div>
+                <div class="col-10 col-md-6 col-lg-3 simple-slide">
+                    <%- include('./products/product') %>
+                </div>
+                <div class="col-10 col-md-6 col-lg-3 simple-slide">
+                    <%- include('./products/product') %>
+                </div>
+                <div class="col-10 col-md-6 col-lg-3 simple-slide">
+                    <%- include('./products/product') %>
                 </div>
             </div>
         </section>
     </main>
 
     <%- include('./partials/footer') %> 
-    
-    <!-- slider script -->
-    <script>
-        let current = 1;
-        showSlides(current);
-        function prevSlide() { showSlides(current += -1); }
-        function nextSlide() { showSlides(current += 1); }
-        function showSlides(n) {
-            let slides = document.getElementsByClassName("slide-container");
-            if (n > slides.length) { current = 1 }
-            if (n < 1) { current = slides.length }
-            for (let i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-            }
-            slides[current-1].style.display = "block";
-        }
-    </script>
+    <script src="/js/slider.js"></script>
 </body>
 </html>
