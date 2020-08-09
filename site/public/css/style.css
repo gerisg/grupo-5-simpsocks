@@ -1282,7 +1282,7 @@ header {
   .cart-title{
     display: none;
   }
-  aside{ 
+  .product-container aside{ 
     display: block;
   }
 
