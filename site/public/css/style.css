@@ -1046,7 +1046,7 @@ header {
   /* Slider */
 
   .slides {
-    margin: 0 auto 1rem;
+    margin: 1rem auto;
   }
   .slide { min-height: 35vh; }
   .slide-info {
