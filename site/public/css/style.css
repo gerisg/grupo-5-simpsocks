@@ -602,7 +602,7 @@ header {
 }
 .box-container  :hover { background-color: var(--soft-blue); } 
 
-/* Carrousel */
+/* Carousel */
 .show-mobile {
   display: block;
 }
@@ -1118,7 +1118,7 @@ header {
     margin-top: 2.5rem;
   }
 
-  /* Carrousel */
+  /* Carousel */
   .show-mobile {
     display: none;
   }
@@ -1242,7 +1242,7 @@ header {
     font-size: 2.5rem; 
   }
 
-  /* Carrousel */
+  /* Carousel */
   .show-mobile {
     display: none;
   }
