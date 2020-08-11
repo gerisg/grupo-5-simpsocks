@@ -817,6 +817,15 @@ header {
 }
 
 .form-step { 
+  text-align: center;  
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 3px solid var(--white);
+  font-weight: 500;
+  width: 100%;
+}
+
+.form-step-create { 
   text-align: left;  
   margin-bottom: 10px;
   padding-bottom: 10px;
@@ -826,15 +835,6 @@ header {
 }
 
 .new-product-size {    
-  text-align: left;
-  font-weight: 500; 
-  line-height: 25px;
-  margin-bottom: 15px;
-  padding: 10px;
-  border-bottom: 3px solid var(--white);
-}
-
-.new-product-bottom {
   text-align: left;
   font-weight: 500; 
   line-height: 25px;
