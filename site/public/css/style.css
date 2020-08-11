@@ -599,9 +599,8 @@ header {
   border: .1rem solid var(--light);
   margin: var(--default-margin) auto;
   cursor: pointer;
-  padding: 3px;
 }
-.box-container  a:hover { background-color: var(--soft-blue); } 
+.box-container  :hover { background-color: var(--soft-blue); } 
 
 /* Carrousel */
 .show-mobile {
@@ -1105,8 +1104,7 @@ header {
 
   .product-container aside{ 
     display: block;
-    padding: var(--default-padding);
-    margin: var(--default-margin);
+    padding: var(--default-padding); 
   }
 
   .details-container{
