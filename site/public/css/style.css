@@ -595,6 +595,18 @@ header {
 .product-container aside{
   display: none;
 }
+.box-container{
+  border: .1rem solid var(--light);
+  margin: var(--default-margin) auto;
+  cursor: pointer;
+  padding: 3px;
+}
+.box-container  a:hover { background-color: var(--soft-blue); } 
+
+/* Carrousel */
+.show-mobile {
+  display: block;
+}
 
 /* Filters */
 .filters {
@@ -1108,6 +1120,11 @@ header {
     margin-top: 2.5rem;
   }
 
+  /* Carrousel */
+  .show-mobile {
+    display: none;
+  }
+
   /* Filters */
 
   .filters { 
@@ -1221,12 +1238,15 @@ header {
 
   .text-container {
    font-size: 1.5rem;
-      
   }
   
   .icons-edit {
     font-size: 2.5rem; 
-   
+  }
+
+  /* Carrousel */
+  .show-mobile {
+    display: none;
   }
 
 }
