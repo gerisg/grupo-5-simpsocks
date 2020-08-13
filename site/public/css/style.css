@@ -118,10 +118,14 @@ a {
   padding: .2rem .6rem;
 }
 
-input, button {
-  border: 2px solid;
+input, select {
+  width: 100%;
+}
+
+input, button, select {
+  border: 1px solid;
   padding: var(--default-padding);
-  margin: var(--default-margin);
+  margin: .1rem .5rem .5rem 0;
   outline: none;
 }
 
@@ -157,8 +161,25 @@ input:focus:invalid {
   font-size: 1rem;
 }
 
+.btn-icon {
+  background-color: initial;
+  border: 0;
+  color: var(--blue);
+  padding: .25rem;
+}
+
+.btn-cancel {
+  font-family: 'Roboto', sans-serif;
+  color: var(--blue);
+}
+
 .btn-primary:hover, .btn-primary:focus { background-color: var(--soft-yellow); }
 .btn-secondary:hover, .btn-secondary:focus { background-color: var(--soft-blue); }
+.btn-icon:hover, .btn-icon:focus { color: var(--soft-blue); }
+
+.form-only-btn {
+  display: inline;
+}
 
 /* Messages */
 
