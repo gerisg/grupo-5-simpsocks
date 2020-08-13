@@ -1,5 +1,6 @@
 const express= require('express');
 const app = express();
+const methodOverride = require('method-override');
 
 // Routers
 const indexRoutes = require('./routes/indexRoutes');
@@ -11,6 +12,8 @@ const demoRoutes = require('./routes/demoRoutes');
 // Configuration
 app.set('view engine', 'ejs'); // views extension ejs
 app.use(express.static('public')); // template engines
+app.use(express.urlencoded({ extended: false })); // put json into body
+app.use(methodOverride('_method')); // replace POST methods by parametrized '_method'
 
 // Routes
 app.use('/', indexRoutes);
