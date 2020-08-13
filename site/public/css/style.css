@@ -940,6 +940,21 @@ footer {
   padding-top:15px;
 }
 
+/* Admin Users */
+
+.users-wrapper {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.row-title {
+  padding: 10px 0px;
+  font-weight: bold;
+}
+.row-user-image {
+  padding: 5px 15px 5px 0px;
+}
+
 /* Simple Slider */
 
 .simple-slider {
