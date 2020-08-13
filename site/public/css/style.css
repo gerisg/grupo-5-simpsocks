@@ -54,18 +54,21 @@
   box-sizing: border-box;
 }
 
-html, body {
+html {
   min-height: 100vh;
-  margin: 0;
-  font-size: 1rem;
+  position: relative;
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
-  color: var(--dark);
   background-color: var(--white);
+  color: var(--dark);
+  font-size: 1rem;
+  font-family: 'Roboto', sans-serif;
   display: flex;
   flex-direction: column;
+  margin: 0;
+  /* To avoid footer overlapping. Put same value like footer height */
+  margin-bottom: 216px;
 }
 
 ul, ol {
@@ -420,6 +423,13 @@ header {
 }
 
 /* Footer */
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 216px;
+}
 .footer-top {
   background-color: var(--yellow);
   display: flex;
@@ -966,6 +976,12 @@ header {
  **********/
 @media (min-width: 576px) {
 
+  /* Generals */
+
+  body {
+    margin-bottom: 148px;  /* To avoid footer overlapping. Same value like footer height */
+  }
+
   /* Grid system */
 
   .col { 
@@ -1011,6 +1027,10 @@ header {
   .header-end > .hidden-md { display: none; }
   
   /* Footer */
+
+  footer {
+    height: 148px;
+  }
 
   .footer-content>* {
     flex-direction: row;
