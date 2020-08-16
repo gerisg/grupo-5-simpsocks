@@ -14,7 +14,7 @@
     <main class="main-with-form">
         <section class="row main-center ">
             <div class="col-10  col-md-8 col-lg-8 form-general">
-                <form action="/products" method="POST">
+                <form action="/products" method="POST"  enctype="multipart/form-data">
 
                     <h2 class="title-forms">Nuevo Producto</h2>
                     
@@ -27,7 +27,7 @@
                         <textarea name="descripcion" id="description" cols="30" rows="10"placeholder="Vende tus Simpsocks!" class="new-product-input"></textarea>
                     </div>
                     <div class="form-step-create">
-                        <label for="price" >Precio</label><br>
+                        <label for="price">Precio</label><br>
                         <input type="text" id="price" name="precio" required placeholder= "Introduci el valor en Pesos." class="new-product-input">   
                     </div>
                     <div class="create-bottom-form">
