@@ -17,22 +17,24 @@ module.exports = {
         res.render('products/create');
     },
     store: (req,res) =>{
-        let newProduct =  {
+        let product =  {
 			name: req.body.name,
-			price: '$' + parseInt(req.body.precio),
-			discount: '20', //momentaneo
-			category: req.body.category,
+			price: req.body.price,
+			discount: req.body.discount,
             description: req.body.description,
             size:req.body.talle,
-            type:req.body.tipo,
-            image:req.file ? req.file.filename : null
+            type:req.body.type,
+            image: req.file ? req.file.filename : null,
+            category: req.body.categoria, //Averiguar como van a funcionar las categorias en el create de products
             //TODO revisar las categorias de la vista create y agregar las que faltan
-		}
-		let id = productsModel.create(newProduct);
+        }
+        console.log(product);
+        let id = productsModel.create(product);
+        console.log(product.image);
 		res.redirect('/products/' + id);
     },
     // edit: (req,res) => {
     //     res.render('products/edit'),
 
-    cart: (req,res) => res.render('products/cart')
+    cart: (req,res) => {res.render('products/cart')},
 };
