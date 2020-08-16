@@ -4,7 +4,7 @@ const jsonTable = require('../database/jsonTable');
 
 const productsModel = jsonTable('products');
 
-let addedToCart = [];
+let addedToCart = []; //momentaneo hasta consultar donde debe ir 
 
 module.exports = {
     list: (req, res) => {
