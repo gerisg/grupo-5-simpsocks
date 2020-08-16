@@ -30,7 +30,7 @@ router.post('/',upload.single('image'), controller.store);
 // // router.delete('/:id', controller.destroy);
 
 // NAV - Carrito de compras
-router.get("/cart", controller.cart);
+router.get('/cart', controller.cart);
 
 // // Detalle de un producto particular
 router.get('/:id', controller.detail);

@@ -4,6 +4,8 @@ const jsonTable = require('../database/jsonTable');
 
 const productsModel = jsonTable('products');
 
+let addedToCart = [];
+
 module.exports = {
     list: (req, res) => {
         let products = productsModel.all();
@@ -36,5 +38,14 @@ module.exports = {
     // edit: (req,res) => {
     //     res.render('products/edit'),
 
-    cart: (req,res) => {res.render('products/cart')},
+    cart: (req,res) => {
+        let addedProduct = productsModel.find(req.query.id);
+        console.log(req.query.id, 'hola');
+        addedToCart.push(addedProduct);
+        console.log(addedProduct);
+
+        
+        console.log(addedToCart);
+        res.render('products/cart', {addedToCart});
+    },
 };
