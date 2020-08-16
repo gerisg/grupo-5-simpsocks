@@ -53,12 +53,12 @@
                 <article class="product-details row main-center">
                     <p class="stock">stock disponible</p>
                     <div class="price">
-                        <span class="subtitle">$320</span>
+                        <span class="subtitle"><%= product.price %> </span>
                         <i class="far fa-heart heart-icon"></i>
                     </div>
                     <div>
-                        <div class="product-title">Soquetes Homero</div>
-                        <p class="product-description text">Medias estilo soquetes Homero - The Simpsons</p>
+                        <div class="product-title"><%= product.name %> </div>
+                        <p class="product-description text"><%= product.description %> </p>
                     </div>
                     <div class="product-actions">
                         <a href="/products/cart" class="btn btn-info btn-cart">Añadir al carrito</a>
@@ -73,28 +73,28 @@
         <span class="title">Productos Relacionados</span>
         <div class="row nowrap simple-slider">
             <div class="col-md-6 col-lg-3 simple-slide">
-                <%- include('product') %>
+                <%- include('product', {product}) %>
             </div>
             <div class="col-md-6 col-lg-3 simple-slide">
-                <%- include('product') %>
+                <%- include('product', {product}) %>
             </div>
             <div class="col-md-6 col-lg-3 simple-slide">
-                <%- include('product') %>
+                <%- include('product', {product}) %>
             </div>
             <div class="col-md-6 col-lg-3 simple-slide">
-                <%- include('product') %>
+                <%- include('product', {product}) %>
             </div>
             <div class="col-md-6 col-lg-3 simple-slide">
-                <%- include('product') %>
+                <%- include('product', {product}) %>
             </div>
             <div class="col-md-6 col-lg-3 simple-slide">
-                <%- include('product') %>
+                <%- include('product', {product}) %>
             </div>
             <div class="col-md-6 col-lg-3 simple-slide">
-                <%- include('product') %>
+                <%- include('product', {product}) %>
             </div>
             <div class="col-md-6 col-lg-3 simple-slide">
-                <%- include('product') %>
+                <%- include('product', {product}) %>
             </div>
         </div>
     </section>
