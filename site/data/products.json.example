@@ -7,7 +7,7 @@
   "discount": "20",
   "size": 2,
   "type": 2,
-  "image": "socks-rosquillas.jpg",
+  "image": "sockets-bart-honda.jpg",
   "categories": 1
  },
  {
@@ -18,7 +18,7 @@
   "discount": "10",
   "size": 2,
   "type": 2,
-  "image": "socks-rosquillas.jpg",
+  "image": "sockets-homero.jpg",
   "categories": 2
  },
  {
@@ -29,7 +29,7 @@
   "discount": "10",
   "size": 1,
   "type": 1,
-  "image": "socks-rosquillas.jpg",
+  "image": "socks-homero-rosquillas.jpg",
   "categories": 2
  },
  {
@@ -40,7 +40,7 @@
   "discount": "15",
   "size": 1,
   "type": 3,
-  "image": "socks-rosquillas.jpg",
+  "image": "socks-homero-traje-banio",
   "categories": 2
  },
  {
@@ -51,7 +51,7 @@
   "discount": "12",
   "size": 2,
   "type": 3,
-  "image": "socks-rosquillas.jpg",
+  "image": "socks-lisa.jpg",
   "categories": 3
  },
  {
@@ -62,7 +62,7 @@
   "discount": "5",
   "size": 1,
   "type": 1,
-  "image": "socks-rosquillas.jpg",
+  "image": "socks-maggie.jpg",
   "categories": 3
  },
  {
@@ -73,7 +73,7 @@
   "discount": "15",
   "size": 2,
   "type": 2,
-  "image": "socks-rosquillas.jpg",
+  "image": "socks-mr-sparkle.jpg",
   "categories": 1
  },
  {
@@ -95,7 +95,7 @@
   "discount": "20",
   "size": 2,
   "type": 1,
-  "image": "socks-rosquillas.jpg",
+  "image": "sockets-bart-honda.jpg",
   "categories": 2
  },
  {
@@ -106,7 +106,7 @@
   "discount": "15",
   "size": 1,
   "type": 3,
-  "image": "socks-rosquillas.jpg",
+  "image": "sockets-homero.jpg",
   "categories": 2
  },
  {
@@ -117,7 +117,7 @@
   "discount": "20",
   "size": 1,
   "type": 3,
-  "image": "socks-rosquillas.jpg",
+  "image": "ssocks-homero-rosquillas.jpg",
   "categories": 1
  },
  {
@@ -128,7 +128,7 @@
   "discount": "10",
   "size": 1,
   "type": 3,
-  "image": "socks-rosquillas.jpg",
+  "image": "socks-homero-traje-banio",
   "categories": 3
  },
  {
@@ -139,7 +139,7 @@
   "discount": "5",
   "size": 1,
   "type": 1,
-  "image": "socks-rosquillas.jpg",
+  "image": "socks-lisa.jpg",
   "categories": 2
  },
  {
@@ -150,7 +150,7 @@
   "discount": "20",
   "size": 1,
   "type": 3,
-  "image": "socks-rosquillas.jpg",
+  "image": "socks-maggie.jpg",
   "categories": 3
  },
  {
@@ -161,7 +161,7 @@
   "discount": "10",
   "size": 1,
   "type": 3,
-  "image": "socks-rosquillas.jpg",
+  "image": "socks-mr-sparkle.jpg",
   "categories": 1
  },
  {
@@ -183,7 +183,7 @@
   "discount": "5",
   "size": 1,
   "type": 1,
-  "image": "socks-rosquillas.jpg",
+  "image": "sockets-bart-honda.jpg",
   "categories": 3
  },
  {
@@ -194,7 +194,7 @@
   "discount": "30",
   "size": 2,
   "type": 1,
-  "image": "socks-rosquillas.jpg",
+  "image": "sockets-homero.jpg",
   "categories": 2
  },
  {
@@ -205,7 +205,7 @@
   "discount": "5",
   "size": 1,
   "type": 1,
-  "image": "socks-rosquillas.jpg",
+  "image": "socks-homero-traje-banio",
   "categories": 3
  },
  {
@@ -218,39 +218,5 @@
   "type": 1,
   "image": "socks-rosquillas.jpg",
   "categories": 2
- },
- {
-  "price": null,
-  "discount": null,
-  "image": "public/images/products/socks-maggie.jpg",
-  "id": 21
- },
- {
-  "price": null,
-  "discount": null,
-  "image": "socks-maggie.jpg",
-  "id": 22
- },
- {
-  "price": 300,
-  "discount": null,
-  "image": "socks-maggie.jpg",
-  "id": 23
- },
- {
-  "price": "$250",
-  "discount": "20",
-  "size": "S-KIDS",
-  "type": "Soquete",
-  "image": "socks-maggie.jpg",
-  "id": 24
- },
- {
-  "price": "$300",
-  "discount": "20",
-  "size": "S-KIDS",
-  "type": "Bucanera",
-  "image": null,
-  "id": 25
  }
 ]
