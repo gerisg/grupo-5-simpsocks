@@ -54,18 +54,21 @@
   box-sizing: border-box;
 }
 
-html, body {
+html {
   min-height: 100vh;
-  margin: 0;
-  font-size: 1rem;
+  position: relative;
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
-  color: var(--dark);
   background-color: var(--white);
+  color: var(--dark);
+  font-size: 1rem;
+  font-family: 'Roboto', sans-serif;
   display: flex;
   flex-direction: column;
+  margin: 0;
+  /* To avoid footer overlapping. Put same value like footer height */
+  margin-bottom: 216px;
 }
 
 ul, ol {
@@ -115,10 +118,14 @@ a {
   padding: .2rem .6rem;
 }
 
-input, button {
-  border: 2px solid;
+input, select {
+  width: 100%;
+}
+
+input, button, select {
+  border: 1px solid;
   padding: var(--default-padding);
-  margin: var(--default-margin);
+  margin: .1rem .5rem .5rem 0;
   outline: none;
 }
 
@@ -154,8 +161,25 @@ input:focus:invalid {
   font-size: 1rem;
 }
 
+.btn-icon {
+  background-color: initial;
+  border: 0;
+  color: var(--blue);
+  padding: .25rem;
+}
+
+.btn-cancel {
+  font-family: 'Roboto', sans-serif;
+  color: var(--blue);
+}
+
 .btn-primary:hover, .btn-primary:focus { background-color: var(--soft-yellow); }
 .btn-secondary:hover, .btn-secondary:focus { background-color: var(--soft-blue); }
+.btn-icon:hover, .btn-icon:focus { color: var(--soft-blue); }
+
+.form-only-btn {
+  display: inline;
+}
 
 /* Messages */
 
@@ -420,6 +444,13 @@ header {
 }
 
 /* Footer */
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 216px;
+}
 .footer-top {
   background-color: var(--yellow);
   display: flex;
@@ -784,8 +815,6 @@ header {
   padding: .5rem;
 }
 
-
-
 /* Admin */
 
 .main-admin { 
@@ -805,35 +834,33 @@ header {
 
 /* Create product */
 
-
 .title-forms {
-    font-family: "gotham-ultra";
-    font-size: 1.75rem;
-    text-transform: uppercase;
-    padding: .3rem;
-    border-bottom: 3px solid yellow;
-
-
+  font-family: "gotham-ultra";
+  font-size: 1.75rem;
+  text-transform: uppercase;
+  padding: .3rem;
+  border-bottom: 3px solid yellow;
 }
 
 .form-step { 
+  text-align: center;  
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 3px solid var(--white);
+  font-weight: 500;
+  width: 100%;
+}
+
+.form-step-create { 
   text-align: left;  
   margin-bottom: 10px;
   padding-bottom: 10px;
   border-bottom: 3px solid var(--white);
   font-weight: 500;
+  width: 100%;
 }
 
 .new-product-size {    
-  text-align: left;
-  font-weight: 500; 
-  line-height: 25px;
-  margin-bottom: 15px;
-  padding: 10px;
-  border-bottom: 3px solid var(--white);
-}
-
-.new-product-bottom {
   text-align: left;
   font-weight: 500; 
   line-height: 25px;
@@ -858,13 +885,11 @@ header {
   margin-bottom: 15px;
   padding: 10px;
   border-bottom: 3px solid var(--white);
-
 }
 
-.new-product-radio-titles {   
- 
+.new-product-radio-titles {
   font-weight: 1000; 
- }
+}
 
 .new-product-description {
   text-align: left; 
@@ -915,6 +940,21 @@ header {
   padding-top:15px;
 }
 
+/* Admin Users */
+
+.users-wrapper {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.row-title {
+  padding: 10px 0px;
+  font-weight: bold;
+}
+.row-user-image {
+  padding: 5px 15px 5px 0px;
+}
+
 /* Simple Slider */
 
 .simple-slider {
@@ -950,6 +990,7 @@ header {
   flex-grow: 1;
   flex-basis: 0; /* reseteo el tamaño de base*/
   max-width: 90%;
+  width: 100%;
 }
 
 .col-1 { width: 8.333333333% }
@@ -965,14 +1006,17 @@ header {
 .col-11 { width: 91.666666667% }
 .col-12 { width: 100% }
 
-.col { /* TODO ya esta definido el selector .col */
-  width: 100%;
-}
 
 /**********
  * Tablet *
  **********/
 @media (min-width: 576px) {
+
+  /* Generals */
+
+  body {
+    margin-bottom: 148px;  /* To avoid footer overlapping. Same value like footer height */
+  }
 
   /* Grid system */
 
@@ -999,7 +1043,7 @@ header {
     margin: 0 var(--default-margin);
   }
 
-  /*Header */
+  /* Header */
 
   .header-start {
     display: flex;
@@ -1020,12 +1064,17 @@ header {
   
   /* Footer */
 
+  footer {
+    height: 148px;
+  }
+
   .footer-content>* {
     flex-direction: row;
     align-items: center;
   }
 
   /* Error page */
+
   .page-not-found .wrapper {
     height: 62vh;
   }
@@ -1147,7 +1196,8 @@ header {
     margin-top: 2.5rem;
   }
 
-  /* Carousel */
+  /* Carrousel */
+
   .show-mobile {
     display: none;
   }
@@ -1271,12 +1321,14 @@ header {
     font-size: 2.5rem; 
   }
 
-  /* Carousel */
+  /* Carrousel */
+
   .show-mobile {
     display: none;
   }
 
-  /*Create Product*/
+  /* Create Product */
+
   .create-bottom-form {
     display: flex;
     flex-wrap: wrap;
@@ -1289,11 +1341,7 @@ header {
   }
 
   .new-product-bottom-pic {
-    
     width: 100%;
     text-align: center;
-    
   }
-
-
 }

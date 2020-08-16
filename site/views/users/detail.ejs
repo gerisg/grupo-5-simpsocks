@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<!-- Include Head -->
+<%- include('../partials/head', {title: user.firstname}) %>
+<body>
+	<!-- Header -->
+	<%- include('../partials/header-admin') %>
+	<!-- /Header -->
+
+	<!-- user detail -->
+	<main class="container users-wrapper">
+		<div class="row main-center">
+			<div class="col-11">
+				<h2 class="title">Detalle del usuario: <%= user.firstname %></h2>
+			</div>
+			<div class="col-11">
+				<div class="row main-around cross-center">
+					<div class="col-10 col-md-2 col-lg-2">
+						<img src="/images/users/<%= user.image ? user.image : '' %>" onerror="this.src='/images/users/default-image.png'" alt="imagen de usuario">
+					</div>
+					<div class="col-10 col-md-6 col-lg-5">
+						<div><span class="subtitle"> Nombre: </span> <%= user.firstname %></div>
+						<div><span class="subtitle"> Apellido: </span> <%= user.lastname %></div>
+						<div><span class="subtitle"> Email: </span> <%= user.email %></div>
+						<div><span class="subtitle"> Categoría: </span> <%= user.category %></div>
+					</div>
+					<div class="col-10 col-md-3 col-lg-3">
+						<a class="btn btn-secondary" href="/users/<%= user.id %>/edit"><i class="fas fa-edit"></i> Editar</a>
+						<form class="form-only-btn" action="/users/<%= user.id %>?_method=delete" method="post">
+							<button class="btn btn-secondary" type="submit"><i class="fas fa-trash"></i> Eliminar</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+
+	<!-- footer -->
+	<%- include('../partials/footer') %>
+	<!-- /footer -->
+
+</body>	
+</html>

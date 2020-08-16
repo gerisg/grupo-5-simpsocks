@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<!-- Include Head -->
+<%- include('../partials/head', {title: 'Listado de usuarios'}) %>
+<body>
+	<!-- Header -->
+	<%- include('../partials/header-admin') %>
+	<!-- /Header -->
+
+	<main class="container users-wrapper">
+		<div class="row main-center">
+			<div class="col-11">
+				<h2 class="title">Listado de usuarios</h2>
+				<a href="/users/create" class="btn btn-primary">Crear usuario</a>
+			</div>
+			<!-- table titles -->
+			<div class="col-11">
+				<div class="row row-title">
+					<div class="col-md-1 hidden-sm">Imagen</div>
+					<div class="col-4 col-md-2">Nombre</div>
+					<div class="col-4 col-md-2">Apellido</div>
+					<div class="col-md-3 hidden-sm">Email</div>
+					<div class="col-md-2 hidden-sm">Categoría</div>
+					<div class="col-4 col-md-2">Acciones</div>
+				</div>
+			</div>
+			<!-- table content -->
+			<div class="col-11">
+				<% users.forEach(user => { %>
+					<div class="row cross-center">
+						<div class="col-md-1 hidden-sm row-user-image">
+							<img src="/images/users/<%= user.image ? user.image : '' %>" onerror="this.src='/images/users/default-image.png'" alt="imagen de usuario">
+						</div>
+						<div class="col-4 col-md-2">
+							<%= user.firstname %>
+						</div>
+						<div class="col-4 col-md-2">
+							<%= user.lastname %>
+						</div>
+						<div class="col-md-3 hidden-sm">
+							<%= user.email %>
+						</div>
+						<div class="col-md-2 hidden-sm">
+							<%= user.category %>
+						</div>
+						<div class="col-4 col-md-2">
+							<a class="btn btn-icon" href="/users/<%= user.id %>"><i class="fas fa-eye"></i></a>
+							<a class="btn btn-icon" href="/users/<%= user.id %>/edit"><i class="fas fa-edit"></i></a>
+							<form class="form-only-btn" action="/users/<%= user.id %>?_method=delete" method="post">
+								<button class="btn btn-icon" type="submit"><i class="fas fa-trash"></i></button>
+							</form>
+						</div>
+					</div>
+				<% }) %>
+			</div>
+		</div>
+	</main>
+	
+
+	<!-- footer -->
+	<%- include('../partials/footer') %>
+	<!-- /footer -->
+</body>	
+</html>
