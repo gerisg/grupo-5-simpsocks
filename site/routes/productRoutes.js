@@ -7,9 +7,9 @@ router.get('/', controller.list);
 
 
 // // Formulario de creación de productos
-// router.get('/create', controller.create);
+router.get('/create', controller.create);
 // // Acción de creación
-// // router.post('/', controller.store);
+router.post('/', controller.store);
 
 // // Formulario de edición de productos
 // router.get('/:id/edit', controller.edit);
