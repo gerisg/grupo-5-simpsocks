@@ -40,12 +40,7 @@ module.exports = {
 
     cart: (req,res) => {
         let addedProduct = productsModel.find(req.query.id);
-        console.log(req.query.id, 'hola');
         addedToCart.push(addedProduct);
-        console.log(addedProduct);
-
-        
-        console.log(addedToCart);
         res.render('products/cart', {addedToCart});
     },
 };
