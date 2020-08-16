@@ -19,11 +19,13 @@ module.exports = {
     store: (req,res) =>{
         let newProduct =  {
 			name: req.body.name,
-			price: parseInt(req.body.price),
-			discount: parseInt(req.body.discount),
+			price: '$' + parseInt(req.body.precio),
+			discount: '20', //momentaneo
 			category: req.body.category,
-			description: req.body.description,
-			image: "public/images/products/socks-maggie.jpg"
+            description: req.body.description,
+            size:req.body.talle,
+            type:req.body.tipo,
+			image: "socks-maggie.jpg" //momentaneo
 		}
 		let id = productsModel.create(newProduct);
 		res.redirect('/products/' + id);
@@ -31,5 +33,5 @@ module.exports = {
     // edit: (req,res) => {
     //     res.render('products/edit'),
 
-    // cart: (req,res) => res.render('products/cart')
+    cart: (req,res) => res.render('products/cart')
 };
