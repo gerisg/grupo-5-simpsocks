@@ -25,7 +25,8 @@ module.exports = {
             description: req.body.description,
             size:req.body.talle,
             type:req.body.tipo,
-			image: "socks-maggie.jpg" //momentaneo
+            image:req.file ? req.file.filename : null
+            //TODO revisar las categorias de la vista create y agregar las que faltan
 		}
 		let id = productsModel.create(newProduct);
 		res.redirect('/products/' + id);
