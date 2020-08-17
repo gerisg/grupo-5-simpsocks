@@ -609,12 +609,14 @@ footer {
   display: flex;
   margin: var(--default-margin);
 }
+  .buy{
+    padding: var(--default-padding);
+  }
   .btn-cart {
     background-color: transparent;
     border: 1px solid var(--blue);
     border-radius: 5px;
     color: var(--blue);
-
     margin-right: 15px;
     padding: var(--default-padding);
   }
