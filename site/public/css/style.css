@@ -636,6 +636,8 @@ footer {
 /* Carousel */
 .show-mobile {
   display: block;
+  position: absolute;
+  top: 14rem;
 }
 
 /* Filters */
