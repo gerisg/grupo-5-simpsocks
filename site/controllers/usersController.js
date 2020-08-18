@@ -55,7 +55,25 @@ module.exports = {
 		usersModel.delete(id);
 		res.redirect('/users');
     },
-    login: (req,res) => (res.render('users/login')),
-    register: (req,res) => (res.render('users/register')),
-    recover: (req,res) => (res.render('users/recover'))
+    login: (req,res) => {
+		res.render('users/login')
+	},
+	logout: (req, res) => {
+		console.log('Not implemented yet');
+		res.redirect('/');
+	},
+    register: (req,res) => {
+		(res.render('users/register'));
+	},
+	recover: (req,res) => {
+		(res.render('users/recover'));
+	},
+	favorites: (req, res) => {
+		console.log('Not implemented yet');
+		res.redirect('/');
+	},
+	profile: (req, res) => {
+		console.log('Not implemented yet');
+		res.redirect('/');
+	}
 };
