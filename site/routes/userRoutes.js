@@ -16,6 +16,11 @@ const upload = multer({ storage });
 // Listado de usuarios
 router.get('/', controller.list);
 
+// TODO Not implemented yet
+router.get('/favorites', controller.favorites);
+router.get('/profile', controller.profile);
+router.get('/logout', controller.logout);
+
 // Sesión de usuarios
 router.get('/login', controller.login);
 router.get('/register', controller.register);

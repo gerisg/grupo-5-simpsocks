@@ -7,6 +7,10 @@ const productsModel = jsonTable('products');
 let addedToCart = []; //momentaneo hasta consultar donde debe ir 
 
 module.exports = {
+    find: (req, res) => {
+        let products = productsModel.all();
+        res.render('products/find', { products });   
+    },
     list: (req, res) => {
         let products = productsModel.all();
         res.render('products/list', { products });   
@@ -16,7 +20,7 @@ module.exports = {
         res.render('products/detail', {product});
     },
     create: (req,res) => {
-        res.render('products/create');
+        res.render('products/create-form');
     },
     store: (req,res) =>{
         let product =  {
@@ -39,8 +43,7 @@ module.exports = {
     //     res.render('products/edit'),
 
     cart: (req,res) => {
-        let addedProduct = productsModel.find(req.query.id);
-        addedToCart.push(addedProduct);
-        res.render('products/cart', {addedToCart});
+        console.log('Not implemented yet');
+        res.render('products/cart', { products: productsModel.all() });
     },
 };

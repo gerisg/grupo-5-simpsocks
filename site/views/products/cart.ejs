@@ -95,24 +95,18 @@
             </div>
         </div>
         <!-- Featured Products -->
-        <!-- Featured Products -->
-        <section class="featured-products">
-            <span class="title">destacados</span>
-            <div class="row main-center">
-                <div class="col-10 col-md-3 col-lg-3">
-                    <%- include('product') %>
+        <div class="col-12">
+            <section class="featured-products">
+                <span class="title">destacados</span>
+                <div class="row nowrap simple-slider">
+                    <% products.forEach(product => { %>
+                        <div class="col-10 col-md-6 col-lg-3 simple-slide">
+                            <%- include('product', { product }) %>
+                        </div>
+                    <% }); %> 
                 </div>
-                <div class="col-10 col-md-3 col-lg-3">
-                    <%- include('product') %>
-                </div>
-                <div class="col-10 col-md-3 col-lg-3">
-                    <%- include('product') %>
-                </div>
-                <div class="col-10 col-md-3 col-lg-3">
-                    <%- include('product') %>
-                </div>
-            </div>
-        </section>
+            </section>
+        </div>
     </main>
     <!-- FOOTER -->
     <%- include('../partials/footer') %> 

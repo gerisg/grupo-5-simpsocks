@@ -14,20 +14,20 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 // Listado de productos
-router.get('/', controller.list);
+router.get('/find/:category?', controller.find); // Vista de negocio
+router.get('/', controller.list); // Vista de administrador
 
-
-// // Formulario de creación de productos
+// Formulario de creación de productos
 router.get('/create', controller.create);
-// // Acción de creación
+// Acción de creación
 router.post('/',upload.single('image'), controller.store);
 
-// // Formulario de edición de productos
+// Formulario de edición de productos
 // router.get('/:id/edit', controller.edit);
-// // Acción de edición
-// // router.put('/:id', controller.update);
-// // Acción de borrado
-// // router.delete('/:id', controller.destroy);
+// Acción de edición
+// router.put('/:id', controller.update);
+// Acción de borrado
+// router.delete('/:id', controller.destroy);
 
 // NAV - Carrito de compras
 router.get('/cart', controller.cart);

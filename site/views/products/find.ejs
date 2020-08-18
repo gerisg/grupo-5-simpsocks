@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head') %>
+<body>
+    <%- include('../partials/header') %>
+
+    <section class="top-nav">
+        <nav class="top-nav-start breadcrumb">
+            <a href="/">Inicio</a>
+            <a href="/products/find">Buscar</a>
+        </nav>
+    </section>
+
+    <main class="container products-wrapper">
+		<div class="row">
+			<div class="col-12">
+				<p class="title">Productos</p>
+            </div>
+            <div class="col-md-2 col-lg-3">
+                <aside class="filters">
+                    <p class="subtitle">Filtros</p>
+                    <div class="filter">
+                        <p>Categorías</p>
+                        <ul>
+                            <li><a href="#">Descuentos</a></li>
+                            <li><a href="#">Hot Sale</a></li>
+                            <li><a href="#">Homero</a></li>
+                        </ul>
+                    </div>
+                    <div class="filter">
+                        <p>Talles</p>
+                        <ul>
+                            <li>
+                                <label for="size-small">
+                                    <input id="size-small" name="size-small" type="checkbox">
+                                    <span>Pequeño</span>
+                                </label>
+                            </li>
+                            <li>
+                                <label for="size-medium">
+                                    <input id="size-medium" name="size-medium" type="checkbox">
+                                    <span>Mediano</span>
+                                </label>
+                            </li>
+                            <li>
+                                <label for="size-large">
+                                    <input id="size-large" name="size-large" type="checkbox">
+                                    <span>Grande</span>
+                                </label>
+                            </li>
+                        </ul>
+                        <div class="filter-action"><a href="#">Aplicar</a></div>
+                    </div>
+                    <div class="filter">
+                        <p>Tipo</p>
+                        <ul>
+                            <li>
+                                <label for="type-soquete">
+                                    <input id="type-soquete" name="type-soquete" type="checkbox">
+                                    <span>Soquete</span>
+                                </label>
+                            </li>
+                            <li>
+                                <label for="type-media">
+                                    <input id="type-media" name="type-media" type="checkbox">
+                                    <span>Media</span>
+                                </label>
+                            </li>
+                            <li>
+                                <label for="type-bucanera">
+                                    <input id="type-bucanera" name="type-bucanera" type="checkbox">
+                                    <span>Bucanera</span>
+                                </label>
+                            </li>
+                        </ul>
+                        <div class="filter-action"><a href="#">Aplicar</a></div>
+                    </div>
+                </aside>
+            </div>
+            <div class="col-12 col-md-10 col-lg-9">
+                <div class="row products">
+                    <% products.forEach(product => { %>
+                         <div class="col-12 col-md-6 col-lg-3">
+                        <%- include('product', { product }) %>
+                        </div>
+                    <% }); %> 
+                </div>
+            </div>
+		</div>
+	</main>
+
+    <%- include("../partials/footer")%>
+</body>
+</html>

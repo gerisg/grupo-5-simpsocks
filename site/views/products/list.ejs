@@ -1,94 +1,92 @@
 <!DOCTYPE html>
-<html lang="en">
-<%- include('../partials/head') %>
+<html lang="es">
+<!-- Include Head -->
+<%- include('../partials/head', {title: 'Listado de productos'}) %>
 <body>
-    <%- include('../partials/header') %>
+	<!-- Header -->
+	<%- include('../partials/header-admin') %>
+	<!-- /Header -->
 
     <section class="top-nav">
         <nav class="top-nav-start breadcrumb">
-            <a href="/">Home</a>
-            <a href="/products">Productos</a>
+			<a href="/">Inicio</a>
+			<a href="/admin">Admin</a>
+			<a href="/products/">Productos</a>
         </nav>
-    </section>
+	</section>
 
-    <main class="container products-wrapper">
-		<div class="row">
-			<div class="col-12">
-				<p class="title">Productos</p>
-            </div>
-            <div class="col-md-2 col-lg-3">
-                <aside class="filters">
-                    <p class="subtitle">Filtros</p>
-                    <div class="filter">
-                        <p>Categorías</p>
-                        <ul>
-                            <li><a href="#">Descuentos</a></li>
-                            <li><a href="#">Hot Sale</a></li>
-                            <li><a href="#">Homero</a></li>
-                        </ul>
+    <main class="main-with-form">
+        <section class="row main-center">
+            <div class="col-10 col-md-8 col-lg-8 form-general">
+                <form action="" method="POST">
+
+                    <h2 class="title-forms">Tus Simpsocks</h2>
+                    <div class="my-products">
+
+                        <article class="my-product">
+                            <div class = "image-container"> 
+                                <img class="img-card-edit-product" src="/images/products/sockets-bart-honda.jpg" alt="soquete bart">
+                            </div>
+
+                            <div class="text-container">
+                                <div>Soquete Bart Simpson</div>
+                                <div >Confort inexplicable</div>
+                                <div >$250</div>
+                            </div>
+                            <div class="icons-edit">
+                                <a href="#"> <i class="fas fa-edit"></i></a>
+                                </div>
+                                <div class="icons-edit">
+                                <a href="#"> <i class="fas fa-trash-alt"></i></a>
+                                </div>
+                        </article>
+
+                        <article class="my-product">
+                            <div class = "image-container"> 
+                                <img class="img-card-edit-product" src="/images/products/sockets-bart-honda.jpg" alt="soquete bart">
+                            </div>
+
+                            <div class="text-container">
+                                <div>Soquete Bart Simpson</div>
+                                <div >Confort inexplicable</div>
+                                <div >$250</div>
+                            </div>
+                            <div class="icons-edit">
+                                <a href="#"> <i class="fas fa-edit"></i></a>
+                                </div>
+                                <div class="icons-edit">
+                                <a href="#"> <i class="fas fa-trash-alt"></i></a>
+                                </div>
+                        </article>
+
+                        <article class="my-product">
+                            <div class = "image-container"> 
+                                <img class="img-card-edit-product" src="/images/products/sockets-bart-honda.jpg" alt="soquete bart">
+                            </div>
+
+                            <div class="text-container">
+                                <div>Soquete Bart Simpson</div>
+                                <div >Confort inexplicable</div>
+                                <div >$250</div>
+                            </div>
+                            <div class="icons-edit">
+                                <a href="#"> <i class="fas fa-edit"></i></a>
+                            </div>
+                            <div class="icons-edit">
+                                <a href="#"> <i class="fas fa-trash-alt"></i></a>
+                            </div>
+                        </article>
+
                     </div>
-                    <div class="filter">
-                        <p>Talles</p>
-                        <ul>
-                            <li>
-                                <label for="size-small">
-                                    <input id="size-small" name="size-small" type="checkbox">
-                                    <span>Pequeño</span>
-                                </label>
-                            </li>
-                            <li>
-                                <label for="size-medium">
-                                    <input id="size-medium" name="size-medium" type="checkbox">
-                                    <span>Mediano</span>
-                                </label>
-                            </li>
-                            <li>
-                                <label for="size-large">
-                                    <input id="size-large" name="size-large" type="checkbox">
-                                    <span>Grande</span>
-                                </label>
-                            </li>
-                        </ul>
-                        <div class="filter-action"><a href="#">Aplicar</a></div>
+
+                    <div>
+                        <button type="submit" class=" btn btn-primary">Guardar Cambios</button>
                     </div>
-                    <div class="filter">
-                        <p>Tipo</p>
-                        <ul>
-                            <li>
-                                <label for="type-soquete">
-                                    <input id="type-soquete" name="type-soquete" type="checkbox">
-                                    <span>Soquete</span>
-                                </label>
-                            </li>
-                            <li>
-                                <label for="type-media">
-                                    <input id="type-media" name="type-media" type="checkbox">
-                                    <span>Media</span>
-                                </label>
-                            </li>
-                            <li>
-                                <label for="type-bucanera">
-                                    <input id="type-bucanera" name="type-bucanera" type="checkbox">
-                                    <span>Bucanera</span>
-                                </label>
-                            </li>
-                        </ul>
-                        <div class="filter-action"><a href="#">Aplicar</a></div>
-                    </div>
-                </aside>
-            </div>
-            <div class="col-12 col-md-10 col-lg-9">
-                <div class="row products">
-                    <% products.forEach(product => { %>
-                         <div class="col-12 col-md-6 col-lg-3">
-                        <%- include('product', {product}) %>
-                        </div>
-                        
-                    <% }); %> 
-                </div>
-            </div>
-		</div>
-	</main>
+                
+                </form>          
+            </div>    
+        </section>
+    </main>
 
     <%- include("../partials/footer")%>
 </body>
