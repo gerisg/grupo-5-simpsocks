@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head') %>
+<body>
+    <%- include('../partials/header-admin') %>
+
+    <section class="top-nav">
+        <nav class="top-nav-start breadcrumb">
+			<a href="/">Inicio</a>
+			<a href="/admin">Admin</a>
+			<a href="/products">Productos</a>
+            <a href="/products/create">Nuevo</a>
+        </nav>
+	</section>
+
+    <main class="main-with-form">
+        <section class="row main-center ">
+            <div class="col-10  col-md-8 col-lg-8 form-general">
+                <form action="/products/" method="POST"  enctype="multipart/form-data">
+
+                    <h2 class="title-forms">Nuevo Producto</h2>
+                    
+                    <div class="form-step-create">
+                        <label for="name">Nombre</label><br> 
+                        <input type="text"id="name" name="name" required placeholder="Sé creativo, pero claro." class="new-product-input">
+                    </div>
+                    <div class="new-product-description">
+                        <label for="description" >Descripción</label><br>
+                        <textarea id="description" name="description" cols="30" rows="10"placeholder="Vende tus Simpsocks!" class="new-product-input"></textarea>
+                    </div>
+                    <div class="form-step-create">
+                        <label for="price">Precio</label><br>
+                        <input type="text" id="price" name="price" required placeholder= "Introduci el valor en Pesos" class="new-product-input">   
+                    </div>
+                    <div class="form-step-create">
+                        <label for="discount">Descuento</label><br>
+                        <input type="text" id="discount" name="discount" placeholder= "ingresa el descuento de tus simpsocks" class="new-product-input">   
+                    </div>
+                    <div class="create-bottom-form">
+                        <div class="new-product-bottom">
+                            <label class="new-product-radio-titles"for="size" >Talles</label><br>
+                            <input type="radio" id="size" name="size" value="S-KIDS"  > Small - kids <br>
+                            <input type="radio" id="size" name="size" value="S-KIDS" > Medium - Adults  <br>
+                            <input type="radio" id="size" name="size" value="S-KIDS" > Large - Adults <br>
+                        </div>
+                        <div class="new-product-bottom">
+                            <label class="new-product-radio-titles" for="type" >Tipo de Simpsock</label><br>
+                            <input type="radio" id="type" name="type" value="Soquete" > Soquete <br>
+                            <input type="radio" id="type" name="type" value="Media" > Media Larga  <br>
+                            <input type="radio" id="type" name="type" value="Bucanera" > Bucanera <br>
+                        </div>
+                        <div class="new-product-bottom-pic">
+                            <label for="pic" class="new-product-radio-titles">Subí las fotos de tus Simpsocks</label><br>
+                            <input type="file" id="pic" name="image" style="border: none;">   
+                        </div>
+                     </div>
+                    <div>
+                        <button type="submit" class=" btn btn-primary">Crear Producto</button>
+                    </div>
+                </form>          
+            </div>    
+        </section>
+    </main>
+
+    <%- include("../partials/footer")%>
+</body>
+</html>
