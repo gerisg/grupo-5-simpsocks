@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<!-- Include Head -->
+<%- include('../partials/head', {title: 'Editando: ' + product.name}) %>
+<body>
+	<!-- Header -->
+	<%- include('../partials/header-admin') %>
+	<!-- /Header -->
+
+	<section class="top-nav">
+        <nav class="top-nav-start breadcrumb">
+			<a href="/">Inicio</a>
+			<a href="/admin">Admin</a>
+			<a href="/products">Productos</a>
+            <a href="/users/<%= product.name %>/edit">Editar</a>
+        </nav>
+	</section>
+
+	<div class="container users-wrapper">
+		<div class="row main-center">
+			<div class="col-11">
+				<h2 class="title">Editando el producto: <i><%= product.name %></i></h2>
+			</div>
+			<div class="col-11 col-md-6">
+				<form action="/users/<%= product.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+					<div class="row">
+						<div class="col-12">
+							<label for="firstname">Nombre:</label>
+							<input type="text" id="firstname" name="firstname" placeholder="Ej: juan" value="<%= product.name %>">
+						</div>
+						<div class="col-12">
+							<label for="lastname">Precio:</label>
+							<input type="text" id="lastname" name="lastname" placeholder="Ej: perez" value="<%= product.price %>">
+						</div>
+						<div class="col-12">
+							<label for="size">Talle:</label>
+							<select name="size" id="size">
+								<option value="1" <%= product.size == '1' ? 'selected' : '' %>>Small - Kids</option>
+                                <option value="2" <%= product.size  == '2' ? 'selected' : '' %>>Medium - Adultos</option>
+                                <option value="3" <%= product.size  == '3' ? 'selected' : '' %>>Large - Adultos</option>
+							</select>
+						</div>
+						<div class="col-12">
+							<label for="type">Categoria:</label>
+							<select name="type" id="type">
+								<option value="1" <%= product.type == '1' ? 'selected' : '' %>>Soquete</option>
+                                <option value="2" <%= product.type == '2' ? 'selected' : '' %>>Media Larga</option>
+                                <option value="3" <%= product.type == '3' ? 'selected' : '' %>>Bucanera</option>
+							</select>
+						</div>
+                        <div class="col-12">
+							<label for="image">Imagen:</label>
+							<input type="file" id="image" name="image" value="">
+						</div>
+						<input type="hidden" name="currentImage" value="<%= product.image %>">
+						<div class="col-12">
+							<button type="submit" class="btn btn-primary">Guardar</button>
+							<a href="/products" class="btn btn-cancel">Cancelar</a>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<!-- footer -->
+	<%- include('../partials/footer') %>
+	<!-- /footer -->
+</body>	
+</html>

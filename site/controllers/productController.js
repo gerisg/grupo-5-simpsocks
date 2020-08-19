@@ -39,8 +39,9 @@ module.exports = {
         console.log(product.image);
 		res.redirect('/products/' + id);
     },
-    // edit: (req,res) => {
-    //     res.render('products/edit'),
+     edit: (req,res) => {
+        let product = productsModel.find(req.params.id)
+		res.render('products/edit-form', { product })},
 
     cart: (req,res) => {
         console.log('Not implemented yet');

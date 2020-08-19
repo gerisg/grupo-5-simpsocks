@@ -23,7 +23,10 @@ router.get('/create', controller.create);
 router.post('/',upload.single('image'), controller.store);
 
 // Formulario de edición de productos
-// router.get('/:id/edit', controller.edit);
+
+ router.get('/:id/edit', controller.edit);
+
+
 // Acción de edición
 // router.put('/:id', controller.update);
 // Acción de borrado

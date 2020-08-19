@@ -1,93 +1,72 @@
 <!DOCTYPE html>
 <html lang="es">
 <!-- Include Head -->
-<%- include('../partials/head', {title: 'Listado de productos'}) %>
+<%- include('../partials/head', {title: 'Listado de usuarios'}) %>
 <body>
 	<!-- Header -->
 	<%- include('../partials/header-admin') %>
 	<!-- /Header -->
 
-    <section class="top-nav">
+	<section class="top-nav">
         <nav class="top-nav-start breadcrumb">
 			<a href="/">Inicio</a>
 			<a href="/admin">Admin</a>
-			<a href="/products/">Productos</a>
+			<a href="/products">Productos</a>
         </nav>
 	</section>
+	
+	<main class="container users-wrapper">
+		<div class="row main-center">
+			<div class="col-11">
+				<h2 class="title">Listado de Productos</h2>
+				<a href="/products/create" class="btn btn-primary">Crear Producto</a>
+			</div>
+			<!-- table titles -->
+			<div class="col-11">
+				<div class="row row-title">
+					<div class="col-md-1 hidden-sm">Imagen</div>
+					<div class="col-4 col-md-2">Nombre</div>
+					<div class="col-4 col-md-2">Precio</div>
+					<div class="col-md-3 hidden-sm">Talle</div>
+					<div class="col-md-2 hidden-sm">Tipo</div>
+					<div class="col-4 col-md-2">Acciones</div>
+				</div>
+			</div>
+			<!-- table content -->
+			<div class="col-11">
+				<% products.forEach(product => { %>
+					<div class="row cross-center">
+						<div class="col-md-1 hidden-sm row-user-image">
+							<img src="/images/users/<%= product.image ? product.image : '' %>" onerror="this.src='/images/users/default-image.png'" alt="imagen de usuario">
+						</div>
+						<div class="col-4 col-md-2">
+							<%= product.name %>
+						</div>
+						<div class="col-4 col-md-2">
+							<%= product.price %>
+						</div>
+						<div class="col-md-3 hidden-sm">
+							<%= product.size %>
+						</div>
+						<div class="col-md-2 hidden-sm">
+							<%= product.type %>
+						</div>
+						<div class="col-4 col-md-2">
+							<a class="btn btn-icon" href="/products/<%= product.id %>"><i class="fas fa-eye"></i></a>
+							<a class="btn btn-icon" href="/products/<%= product.id %>/edit"><i class="fas fa-edit"></i></a>
+							<form class="form-only-btn" action="/products/<%= product.id %>?_method=delete" method="post">
+								<button class="btn btn-icon" type="submit"><i class="fas fa-trash"></i></button>
+							</form>
+						</div>
+					</div>
+				<% }) %>
+			</div>
+		</div>
+	</main>
+	
 
-    <main class="main-with-form">
-        <section class="row main-center">
-            <div class="col-10 col-md-8 col-lg-8 form-general">
-                <form action="" method="POST">
-
-                    <h2 class="title-forms">Tus Simpsocks</h2>
-                    <div class="my-products">
-
-                        <article class="my-product">
-                            <div class = "image-container"> 
-                                <img class="img-card-edit-product" src="/images/products/sockets-bart-honda.jpg" alt="soquete bart">
-                            </div>
-
-                            <div class="text-container">
-                                <div>Soquete Bart Simpson</div>
-                                <div >Confort inexplicable</div>
-                                <div >$250</div>
-                            </div>
-                            <div class="icons-edit">
-                                <a href="#"> <i class="fas fa-edit"></i></a>
-                                </div>
-                                <div class="icons-edit">
-                                <a href="#"> <i class="fas fa-trash-alt"></i></a>
-                                </div>
-                        </article>
-
-                        <article class="my-product">
-                            <div class = "image-container"> 
-                                <img class="img-card-edit-product" src="/images/products/sockets-bart-honda.jpg" alt="soquete bart">
-                            </div>
-
-                            <div class="text-container">
-                                <div>Soquete Bart Simpson</div>
-                                <div >Confort inexplicable</div>
-                                <div >$250</div>
-                            </div>
-                            <div class="icons-edit">
-                                <a href="#"> <i class="fas fa-edit"></i></a>
-                                </div>
-                                <div class="icons-edit">
-                                <a href="#"> <i class="fas fa-trash-alt"></i></a>
-                                </div>
-                        </article>
-
-                        <article class="my-product">
-                            <div class = "image-container"> 
-                                <img class="img-card-edit-product" src="/images/products/sockets-bart-honda.jpg" alt="soquete bart">
-                            </div>
-
-                            <div class="text-container">
-                                <div>Soquete Bart Simpson</div>
-                                <div >Confort inexplicable</div>
-                                <div >$250</div>
-                            </div>
-                            <div class="icons-edit">
-                                <a href="#"> <i class="fas fa-edit"></i></a>
-                            </div>
-                            <div class="icons-edit">
-                                <a href="#"> <i class="fas fa-trash-alt"></i></a>
-                            </div>
-                        </article>
-
-                    </div>
-
-                    <div>
-                        <button type="submit" class=" btn btn-primary">Guardar Cambios</button>
-                    </div>
-                
-                </form>          
-            </div>    
-        </section>
-    </main>
-
-    <%- include("../partials/footer")%>
-</body>
+	<!-- footer -->
+	<%- include('../partials/footer') %>
+	<!-- /footer -->
+</body>	
 </html>
