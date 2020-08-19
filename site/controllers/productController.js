@@ -16,8 +16,9 @@ module.exports = {
         res.render('products/list', { products });   
     },
     detail: (req,res) =>{
+        let featured = productsModel.all(); // TODO Destacados
         let product = productsModel.find(req.params.id);
-        res.render('products/detail', {product});
+        res.render('products/detail', {product, images, featured});
     },
     create: (req,res) => {
         res.render('products/create-form');
