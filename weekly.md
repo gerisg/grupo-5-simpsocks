@@ -29,3 +29,15 @@ __Asistentes__: Vale, Martin, Gera
 | __Gera__: Review de código. Resize de imágenes. Página de productos (en progreso). |
 
 ---
+
+__Fecha__: 19/8
+
+__Asistentes__: Vale, Martin, Gera
+
+| Resumen |
+| -------- |
+| __Vale__: Avances en alta de productos y detalle. Subida de imágenes. Revisar imagen de producto en detalle. |
+| __Martin__: Avances en delete y edit de productos.  |
+| __Gera__: Users BREAD. Navegabilidad del sitio. |
+
+---
