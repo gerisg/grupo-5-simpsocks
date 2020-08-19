@@ -64,3 +64,17 @@ Destacamos el uso de los post-it para que todos participemos en la confección d
 | + **Seguir haciendo**: Reuniones periódicas y Mantener el clima del grupo |
 | + **Empezar a hacer**: Programación en grupo y Revisiones de código |
 | + **Hacer menos**: Hacer commits más reducidos |
+
+
+### Sprint 3
+
+#### Metodología Estrella
+
+[Tablero Estrella](https://jamboard.google.com/d/1NI2gObEE7DMeHf3v1f-dyBCa2ydhofeTWhrenfDfY0g/viewer?f=0)
+
+| Resumen |
+| -------- |
+| + **Hacer más**: Revisión de código y Compartir buenas prácticas. Reutilizar código existente. |
+| + **Seguir haciendo**: Mantener la motivación del equipo |
+| + **Empezar a hacer**: Pair Programming y Proponer mejoras |
+| + **Dejar de hacer**: Suspendemos las daily meetings |
