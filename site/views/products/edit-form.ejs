@@ -22,15 +22,15 @@
 				<h2 class="title">Editando el producto: <i><%= product.name %></i></h2>
 			</div>
 			<div class="col-11 col-md-6">
-				<form action="/users/<%= product.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+				<form action="/products/<%= product.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
 					<div class="row">
 						<div class="col-12">
-							<label for="firstname">Nombre:</label>
-							<input type="text" id="firstname" name="firstname" placeholder="Ej: juan" value="<%= product.name %>">
+							<label for="name">Nombre:</label>
+							<input type="text" id="name" name="name" placeholder="Ej: Soquete Lisa Simpson" value="<%= product.name %>">
 						</div>
 						<div class="col-12">
-							<label for="lastname">Precio:</label>
-							<input type="text" id="lastname" name="lastname" placeholder="Ej: perez" value="<%= product.price %>">
+							<label for="price">Precio:</label>
+							<input type="text" id="price" name="price" placeholder=" " value="<%= product.price %>">
 						</div>
 						<div class="col-12">
 							<label for="size">Talle:</label>

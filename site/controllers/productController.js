@@ -41,7 +41,33 @@ module.exports = {
     },
      edit: (req,res) => {
         let product = productsModel.find(req.params.id)
-		res.render('products/edit-form', { product })},
+        res.render('products/edit-form', { product })},
+        
+    update: (req, res) => {
+        let product =  {
+            id: parseInt(req.params.id),
+            name: req.body.name,
+            price: req.body.price,
+            size: req.body.size,
+            type: req.body.type,
+            image: req.file ? req.file.filename : req.body.currentImage
+            }
+
+        let id = productsModel.update(product);
+        res.redirect('/products')},
+
+    destroy : (req, res) => {
+        let id = req.params.id;
+        // remove image
+        
+        let image = productsModel.find(id).image;
+        const imagePath = path.join(__dirname, '../public/images/products/' + image);
+        fs.existsSync(imagePath) ? fs.unlinkSync(imagePath) : '';
+        
+        // remove product
+        productsModel.delete(id);
+        res.redirect('/products');
+        },
 
     cart: (req,res) => {
         console.log('Not implemented yet');

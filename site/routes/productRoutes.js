@@ -26,11 +26,12 @@ router.post('/',upload.single('image'), controller.store);
 
  router.get('/:id/edit', controller.edit);
 
-
 // Acción de edición
-// router.put('/:id', controller.update);
+router.put('/:id', upload.single('image'), controller.update);
+
+
 // Acción de borrado
-// router.delete('/:id', controller.destroy);
+router.delete('/:id', controller.destroy);
 
 // NAV - Carrito de compras
 router.get('/cart', controller.cart);
