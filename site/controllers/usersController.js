@@ -22,8 +22,11 @@ module.exports = {
             lastname: req.body.lastname,
             email: req.body.email,
             password: req.body.password, // TODO hashing
-            category: req.body.category, // TODO categories
-            image: req.file ? req.file.filename : null
+			category: req.body.category,
+			phone: req.body.phone,
+			shipping_address: req.body.shipping_address,
+			payment_address: req.body.payment_address,
+			image: req.file ? req.file.filename : null
 		}
 		let id = usersModel.create(user);
 		res.redirect('/users/' + id);
@@ -39,7 +42,10 @@ module.exports = {
             lastname: req.body.lastname,
             email: req.body.email,
             password: req.body.password, // TODO hashing
-            category: req.body.category, // TODO categories
+			category: req.body.category,
+			phone: req.body.phone,
+			shipping_address: req.body.shipping_address,
+			payment_address: req.body.payment_address,
 			image: req.file ? req.file.filename : req.body.currentImage
 		}
 		let id = usersModel.update(user);
