@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <!-- Include Head -->
-<%- include('../partials/head', {title: 'Editando: ' + product.name}) %>
+<%- include('../partials/head') %>
 <body>
 	<!-- Header -->
 	<%- include('../partials/header-admin') %>
@@ -12,7 +12,7 @@
 			<a href="/">Inicio</a>
 			<a href="/admin">Admin</a>
 			<a href="/products">Productos</a>
-            <a href="/users/<%= product.name %>/edit">Editar</a>
+			<a href="">Editar</a>
         </nav>
 	</section>
 
