@@ -23,12 +23,10 @@ router.get('/create', controller.create);
 router.post('/',upload.single('image'), controller.store);
 
 // Formulario de edición de productos
-
- router.get('/:id/edit', controller.edit);
+router.get('/:id/edit', controller.edit);
 
 // Acción de edición
 router.put('/:id', upload.single('image'), controller.update);
-
 
 // Acción de borrado
 router.delete('/:id', controller.destroy);
@@ -36,7 +34,8 @@ router.delete('/:id', controller.destroy);
 // NAV - Carrito de compras
 router.get('/cart', controller.cart);
 
-// // Detalle de un producto particular
-router.get('/:id', controller.detail);
+// Detalle de un producto
+router.get('/:id/detail', controller.detail2); // Vista de negocio
+router.get('/:id', controller.detail); // Vista de administrador
 
 module.exports = router;

@@ -16,6 +16,9 @@ module.exports = {
         res.render('products/list', { products });   
     },
     detail: (req,res) =>{
+        res.send("TODO Mostrando un producto (admin): " + req.params.id);
+    },
+    detail2: (req,res) =>{
         let featured = productsModel.all(); // TODO Destacados
         let product = productsModel.find(req.params.id);
         res.render('products/detail', {product, featured});
