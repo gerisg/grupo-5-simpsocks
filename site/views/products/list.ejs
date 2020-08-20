@@ -37,7 +37,7 @@
 				<% products.forEach(product => { %>
 					<div class="row cross-center">
 						<div class="col-md-1 hidden-sm row-user-image">
-							<img src="/images/users/<%= product.image ? product.image : '' %>" onerror="this.src='/images/users/default-image.png'" alt="imagen de usuario">
+							<img src="/images/products/<%= product.image ? product.image : '' %>" onerror="this.src='/images/products/default-image.png'" alt="imagen de usuario">
 						</div>
 						<div class="col-4 col-md-2">
 							<%= product.name %>
