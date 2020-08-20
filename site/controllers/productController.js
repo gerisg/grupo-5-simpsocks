@@ -18,10 +18,10 @@ module.exports = {
     detail: (req,res) =>{
         res.send("TODO Mostrando un producto (admin): " + req.params.id);
     },
-    detail2: (req,res) =>{
+    show: (req,res) =>{
         let featured = productsModel.all(); // TODO Destacados
         let product = productsModel.find(req.params.id);
-        res.render('products/detail', {product, featured});
+        res.render('products/show', {product, featured});
     },
     create: (req,res) => {
         res.render('products/create-form');

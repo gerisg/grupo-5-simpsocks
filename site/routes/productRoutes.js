@@ -35,7 +35,7 @@ router.delete('/:id', controller.destroy);
 router.get('/cart', controller.cart);
 
 // Detalle de un producto
-router.get('/:id/detail', controller.detail2); // Vista de negocio
+router.get('/:id/show', controller.show); // Vista de negocio
 router.get('/:id', controller.detail); // Vista de administrador
 
 module.exports = router;

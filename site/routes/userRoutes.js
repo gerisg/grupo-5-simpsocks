@@ -41,5 +41,4 @@ router.delete('/:id', controller.destroy);
 // Detalle de un usuario particular
 router.get('/:id', controller.detail);
 
-
 module.exports = router;
