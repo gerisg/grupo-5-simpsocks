@@ -27,16 +27,16 @@ module.exports = {
     create: (req,res) => {
         res.render('products/create-form');
     },
-    store: (req,res) =>{
+    store: (req,res,next) =>{
         let product =  {
 			name: req.body.name,
-			price: req.body.price,
+			price: '$' + req.body.price,
 			discount: req.body.discount,
             description: req.body.description,
-            size:req.body.talle,
+            size:req.body.size,
             type:req.body.type,
             image: req.file ? req.file.filename : null,
-            category: req.body.categoria, //Averiguar como van a funcionar las categorias en el create de products
+            // category: req.body.categoria, //Averiguar como van a funcionar las categorias en el create de products
             //TODO revisar las categorias de la vista create y agregar las que faltan
         }
         console.log(product);
