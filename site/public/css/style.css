@@ -196,7 +196,9 @@ input:focus:invalid {
   display: block;
 }
 
+/************/
 /** Header **/
+/************/
 
 header {
   background-color: var(--yellow);
@@ -217,7 +219,7 @@ header {
   -moz-box-shadow: 5px 5px 12px 0px rgba(0,0,0,0.25);
   box-shadow: 5px 5px 12px 0px rgba(0,0,0,0.25);
 }
-.header-start a { margin: 12px 0 0 60px; }
+.header-start a { margin: 6px 0 0 60px; }
 .header-start .ultra { font-family: "gotham-ultra"; }
 .header-start h2 {
   font-family: "gotham-bold-italic";
@@ -228,11 +230,12 @@ header {
   opacity: 0;
   visibility: hidden;
   position: absolute;
-  background: var(--primary);
+  background: var(--soft-yellow);
   top: 100%;
   width: 100%;
 }
-.header-center.open, .header-end .main-nav.open {
+.header-center.open, 
+.header-end .main-nav.open {
   opacity: 1;
   visibility: visible;
   z-index: 2;
@@ -248,7 +251,7 @@ header {
 .header-center input[type=search] {
   background: var(--darkgreen);
   border: 0;
-  color: #fff;
+  color: var(--white);
   padding: .5rem 1rem;
   border-top-left-radius: 27px;
   border-bottom-left-radius: 27px;
@@ -265,29 +268,32 @@ header {
   margin: .5rem .5rem .5rem 0;
   padding: 0px 30px 0 25px;
 }
+
 .header-end .main-nav {
   opacity: 0;
   visibility: hidden;
   transition: .2s;
   position: absolute;
   top: 100%;
-  left: 0;
+  right: 0;
   background: var(--white);
-  width: 100%;
 }
 .header-end ul {
-  width: max-content;
-  margin: 0 auto;
-  padding: 1.5rem 0;
+  padding: .5rem 0;
 }
 .header-end ul>li>a {
   width: 100%;
   border: 0;
   font-size: 1.2rem;
-  padding: .25rem 1rem;
+  padding: .5rem 1rem;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
+}
+.header-end ul>li>a:focus,
+.header-end ul>li>a:hover {
+  color: var(--white);
+  background: linear-gradient(90deg,var(--yellow),var(--pink));
 }
 .header-end ul>li>a>i { margin: 0 var(--default-margin) }
 
@@ -303,19 +309,21 @@ header {
   margin: 0;
   font-size: 1.25rem;
   color: var(--blue);
+  width: 50px;
 }
-.mobile-actions button:first-child { padding-right: .75rem; }
-.mobile-actions button:last-child { padding-left: .75rem; }
 
 .opened>.show-search, 
 .closed>.close-search,
 .opened>.show-nav,
 .closed>.close-nav { display: none; }
-
 .opened>.close-search,
 .closed>.show-search,
 .opened>.close-nav,
 .closed>.show-nav { display: flex; }
+
+#nav-opener.opened { background-color: var(--white); }
+#search-opener.opened { background-color: var(--soft-yellow); }
+
 
 /* Top Navbar */
 
@@ -1085,11 +1093,31 @@ footer {
   .container {
     margin: 0 var(--default-margin);
   }
-
-  /* Header */
-
-
   
+  /************/
+  /** Header **/
+  /************/
+  
+  header {
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .header-start a {
+    margin-top: 6px;
+  }
+  .header-center {
+    opacity: 1;
+    visibility: visible;
+    position: relative;
+    max-width: 50%;
+    background: 0 0;
+    margin: 0 auto;
+  }
+  #search-opener {
+    display: none;
+  }
+
   /* Footer */
 
   footer {
@@ -1109,10 +1137,6 @@ footer {
 
   /* Top navbar */
 
-  .top-nav-start {
-    display: inline;
-    margin-left: 100px;
-  }
   .top-nav-end a {
     padding: .5rem 1rem;
   }
@@ -1288,6 +1312,51 @@ footer {
      }
 }
 
+/**********
+ * Tablet *
+ **********/
+@media (min-width: 768px) {
+  
+  /************/
+  /** Header **/
+  /************/
+  header { flex-wrap: nowrap; }
+    .header-center { max-width: 40%; }
+    .mobile-actions { display: none; }
+
+  .header-end .main-nav {
+    opacity: 1;
+    visibility: visible;
+    position: initial;
+    background: 0;
+    display: flex;
+  }
+  .header-end .main-nav ul {
+    display: flex;
+    padding: .5rem 0;
+  }
+  .header-end .main-nav ul li a {
+    color: var(--blue);
+    font-weight: bold;
+    font-size: .85rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: .5rem;
+    width: auto;
+  }
+  .header-end .main-nav ul li a span {
+    font-size: 12px;
+    font-weight: normal;
+    padding-top: 5px;
+  }
+  .header-end .main-nav ul li a i {
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+}
+
 /***********
  * Desktop *
  ***********/
@@ -1308,6 +1377,13 @@ footer {
   .col-lg-11 { width: 91.666666667% }
   .col-lg-12 { width: 100% }
 
+  /************/
+  /** Header **/
+  /************/
+  .header-start a { margin: 0 0 0 100px; }
+  .header-start img { width: 5rem; }
+  .header-start h2 { font-size: 1.5rem; }
+
   /* Texts */
 
   .title {
@@ -1319,6 +1395,13 @@ footer {
   }
   .text {
     font-size: 1.25rem;
+  }
+
+  /* Top navbar */
+
+  .top-nav-start {
+    display: inline;
+    margin-left: 100px;
   }
 
   /* Info banner */

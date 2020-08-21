@@ -16,48 +16,44 @@
         <nav id="main-nav" class="main-nav">
             <ul>
                 <li>
+                    <a href="/products/cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span>Mi carrito</span>
+                    </a>
+                </li>
+                <li>
                     <a href="/users/favorites">
                         <i class="far fa-heart"></i>
                         <span>Favoritos</span>
                     </a>
                 </li>
-                <li>
-                    <a href="/products/cart">
-                        <i class="fas fa-shopping-cart"></i>
-                        <span>Mis compras</span>
-                    </a>
-                </li>
+            </ul>
+            <ul class="logged">
                 <li>
                     <a href="/users/profile">
                         <i class="far fa-user"></i>
                         <span>Mi cuenta</span>
                     </a>
-                    <ul>
-                        <li>
-                            <a href="/admin">
-                                <i class="fas fa-user-shield"></i>
-                                <span>Admin</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/users/register">
-                                <i class="fas fa-user-plus"></i>
-                                <span>Registrarme</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/users/login">
-                                <i class="fas fa-sign-in-alt"></i>
-                                <span>Iniciar Sesión</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/users/logout">
-                                <i class="fas fa-sign-out-alt"></i>
-                                <span>Cerrar Sesión</span>
-                            </a>
-                        </li>
-                    </ul>
+                </li>
+                <li>
+                    <a href="/users/logout">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Cerrar Sesión</span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="guest" style="display: none;">
+                <li>
+                    <a href="/users/register">
+                        <i class="fas fa-user-plus"></i>
+                        <span>Registrarme</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/users/login">
+                        <i class="fas fa-sign-in-alt"></i>
+                        <span>Iniciar Sesión</span>
+                    </a>
                 </li>
             </ul>
         </nav>
