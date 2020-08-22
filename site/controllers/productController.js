@@ -8,7 +8,9 @@ let addedToCart = []; //momentaneo hasta consultar donde debe ir
 
 module.exports = {
     find: (req, res) => {
-        let products = productsModel.all();
+        let query = req.query.query;
+        let category = req.params.category; // TODO Category Match
+        let products = productsModel.findByFields(['name', 'description'], query);
         res.render('products/find', { products });   
     },
     list: (req, res) => {
@@ -63,8 +65,8 @@ module.exports = {
 
     destroy : (req, res) => {
         let id = req.params.id;
+
         // remove image
-        
         let image = productsModel.find(id).image;
         const imagePath = path.join(__dirname, '../public/images/products/' + image);
         fs.existsSync(imagePath) ? fs.unlinkSync(imagePath) : '';
