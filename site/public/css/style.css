@@ -242,6 +242,7 @@ header {
 }
 .header-center .search-form {
   display: flex;
+  margin-bottom: 0;
 }
 .header-center .search-label {
   position: absolute;
@@ -295,7 +296,10 @@ header {
   color: var(--white);
   background: linear-gradient(90deg,var(--yellow),var(--pink));
 }
-.header-end ul>li>a>i { margin: 0 var(--default-margin) }
+.header-end ul>li>a>i { 
+  margin: 0 var(--default-margin);
+  font-weight: bold;
+ }
 
 .mobile-actions {
   display: flex;
@@ -1137,6 +1141,11 @@ footer {
 
   /* Top navbar */
 
+  .top-nav-start {
+    display: inline;
+    margin-left: var(--default-margin);
+  }
+
   .top-nav-end a {
     padding: .5rem 1rem;
   }
@@ -1354,7 +1363,6 @@ footer {
     font-size: 24px;
     font-weight: bold;
   }
-
 }
 
 /***********
