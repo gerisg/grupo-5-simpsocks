@@ -3,9 +3,7 @@ const fs = require('fs');
 const jsonTable = require('../database/jsonTable');
 
 const productsModel = jsonTable('products');
-const asideModel = jsonTable('aside');
-
-let addedToCart = []; //momentaneo hasta consultar donde debe ir 
+const productImagesModel = jsonTable('productImages');
 
 let productsTypes = [
     { id: 1, name: 'Soquete' },
@@ -29,32 +27,27 @@ module.exports = {
         res.render('products/list', { products, productsTypes , productsSize});   
     },
     detail: (req,res) =>{
+        let images = productImagesModel.findByField('prodId', req.params.id);
         let product = productsModel.find(req.params.id);
-        res.render('products/detail', {product});
+        res.render('products/detail', { product, images });
     },
     show: (req,res) =>{
-        // let featured = productsModel.all(); // TODO Destacados
-        // let product = productsModel.find(req.params.id);
-        // res.render('products/show', {product, featured});
-
-        let aside = asideModel.find(req.params.id); // TODO Destacados
-        console.log(aside);
+        let featured = productsModel.all(); // TODO Destacados
+        let images = productImagesModel.findByField('prodId', req.params.id);
         let product = productsModel.find(req.params.id);
-        // let images = productsImagesModel.findByField(['image'], product[0].id);
-        res.render('products/show', {product,aside});
+        res.render('products/show', { product, images, featured });
     },
     create: (req,res) => {
         res.render('products/create-form');
     },
     store: (req,res,next) =>{
-
         let images = [];
         req.files.forEach(file => {
             images.push(file.filename);
         });
         let product =  {
 			name: req.body.name,
-			price: '$' + req.body.price,
+			price: req.body.price,
 			discount: req.body.discount,
             description: req.body.description,
             size:req.body.size,
@@ -81,24 +74,21 @@ module.exports = {
             size: parseInt(req.body.size),
             type: parseInt(req.body.type),
             image: req.file ? req.file.filename : req.body.currentImage
-        }
+        };
 
         let id = productsModel.update(product);
-        res.redirect('/products')},
-
+        res.redirect('/products');
+    },
     destroy : (req, res) => {
         let id = req.params.id;
         // remove image
-        
         let image = productsModel.find(id).image;
         const imagePath = path.join(__dirname, '../public/images/products/' + image);
         fs.existsSync(imagePath) ? fs.unlinkSync(imagePath) : '';
-        
         // remove product
         productsModel.delete(id);
         res.redirect('/products');
-        },
-
+    },
     cart: (req,res) => {
         console.log('Not implemented yet');
         res.render('products/cart', { products: productsModel.all() });

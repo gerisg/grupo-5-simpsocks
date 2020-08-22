@@ -21,13 +21,6 @@
 			</div>
 			<div class="col-11">
 				<div class="row main-around cross-center">
-					<div class="col-md-4 col-lg-4">
-						<% product.image.forEach(element => { %>
-							<div class="col-10 col-lg-4">
-								<img src="/images/products/<%= element ? element: '' %>" onerror="this.src='/images/products/default-image.png'" alt="imagen del producto">
-							</div>
-						<% }); %> 
-					</div>
 					<div class="col-10 col-md-6 col-lg-5">
 						<div><span class="subtitle"> Precio: </span> <%= product.price %></div>
 						<div><span class="subtitle"> Nombre: </span> <%= product.name %></div>
@@ -40,6 +33,13 @@
 							<button class="btn btn-secondary" type="submit"><i class="fas fa-trash"></i> Eliminar</button>
 						</form>
 					</div>
+				</div>
+				<div class="row">
+					<% images.forEach(prodImage => { %>
+						<div class="col-6 col-md-3">
+							<img src="/images/products/<%= prodImage ? prodImage.name : '' %>" onerror="this.src='/images/products/default-image.png'" alt="imagen del producto">
+						</div>
+					<% }); %>
 				</div>
 			</div>
 		</div>

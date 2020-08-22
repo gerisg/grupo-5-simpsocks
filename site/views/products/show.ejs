@@ -17,30 +17,23 @@
                 <div class="row ">
                     <div class="col-md-3 col-lg-3">
                         <aside>
-                            <% aside.image.forEach((element) => { %>
-                                <% var i= 1; %> 
+                            <% for(let i=0; i<images.length; i++) { %>
                                 <figure class="box-container">
-                                    <a onclick="showSlides(i)">
-                                        <img src="/images/products/<%= element ? element : '' %>" onerror="this.src='/images/products/default-image.png'" alt="foto miniatura del producto">
+                                    <a onclick="showSlides(<%= i+1 %>)">
+                                        <img src="/images/products/<%= images[i] ? images[i].name : '' %>" onerror="this.src='/images/products/default-image.png'" alt="foto miniatura del producto">
                                     </a>
                                 </figure>
-                               <% i +=1; %>
-                            <% }); %> 
+                            <% } %>
                         </aside>
                     </div>
-
                     <div class="col-md-9 col-lg-9">
-                        <figure class="slide-container img-1">
-                            <img src="/images/products/<%= aside.image[0] ? aside.image[0] : '' %>" onerror="this.src='/images/products/default-image.png'" alt="foto del producto">
-                        </figure>
-                        <figure class="slide-container img-2">
-                            <img src="/images/products/<%= aside.image[1] ? aside.image[1] : '' %>" onerror="this.src='/images/products/default-image.png'" alt="foto del producto">
-                        </figure>
-                        <figure class="slide-container img-3">
-                            <img src="/images/products/<%= aside.image[2] ? aside.image[2] : '' %>" onerror="this.src='/images/products/default-image.png'" alt="foto del producto">
-                        </figure>
+                        <% for(let i=0; i<images.length; i++) { %>
+                            <figure class="slide-container img-<%= i+1 %>">
+                                <img src="/images/products/<%= images[i] ? images[i].name : '' %>" onerror="this.src='/images/products/default-image.png'" alt="foto del producto">
+                            </figure>
+                        <% } %>
                     </div>
-                    <a class="prev-link show-mobile"  onclick="prevSlide()">&#10094;</a>
+                    <a class="prev-link show-mobile" onclick="prevSlide()">&#10094;</a>
                     <a class="next-link show-mobile" onclick="nextSlide()">&#10095;</a>
                 </div>
             </div>
@@ -64,16 +57,16 @@
 		</div>
     </main>
 
-    <!-- <section class="related-products-container">
+    <section class="related-products-container">
         <span class="title">Productos Relacionados</span>
         <div class="row nowrap simple-slider">
-            <% /* featured.forEach(product => { */%>
+            <% featured.forEach(product => { %>
                 <div class="col-md-6 col-lg-3 simple-slide">
-                    <%- /*include('product', {product})*/ %>
+                    <%- include('product', {product}) %>
                 </div>
-            <% /*})*/ %>
+            <% }) %>
         </div>
-    </section> -->
+    </section>
 
     <%- include("../partials/footer")%>
     <script src="/js/slider.js"></script>
