@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include('../partials/head', {title: 'Crear Categorías'}) %>
+<body>
+	<%- include('../partials/header-admin') %>
+
+	<section class="top-nav">
+        <nav class="top-nav-start breadcrumb">
+			<a href="/">Inicio</a>
+			<a href="/admin">Admin</a>
+			<a href="/categories">Categorías</a>
+            <a href="/categories/create">Nueva</a>
+        </nav>
+	</section>
+	
+	<div class="container categories-wrapper">
+		<div class="row main-center">
+			<div class="col-11">
+				<h2 class="title">Crear categoría</h2>
+			</div>
+			<div class="col-11 col-md-6">
+				<form action="/categories" method="POST">
+					<div class="row">
+						<div class="col-12">
+							<label for="name">Nombre:</label>
+							<input type="text" id="name" name="name" placeholder="Ej: ofertas">
+						</div>
+						<div class="col-12">
+							<button type="submit" class="btn btn-primary">Guardar</button>
+							<a href="/categories" class="btn btn-cancel">Cancelar</a>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<%- include('../partials/footer') %>
+</body>	
+</html>
