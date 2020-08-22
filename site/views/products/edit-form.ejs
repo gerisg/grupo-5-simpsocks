@@ -27,22 +27,22 @@
 						</div>
 						<div class="col-12">
 							<label for="price">Precio:</label>
-							<input type="text" id="price" name="price" placeholder=" " value="<%= product.price %>">
+							<input type="number" id="price" name="price" placeholder=" " value="<%= product.price %>">
 						</div>
 						<div class="col-12">
 							<label for="size">Talle:</label>
 							<select name="size" id="size">
-								<option value="1" <%= product.size == '1' ? 'selected' : '' %>>Small - Kids</option>
-                                <option value="2" <%= product.size  == '2' ? 'selected' : '' %>>Medium - Adultos</option>
-                                <option value="3" <%= product.size  == '3' ? 'selected' : '' %>>Large - Adultos</option>
+								<option value="Small" <%= product.size == 'small' ? 'selected' : '' %>>Small - Kids</option>
+                                <option value="Medium" <%= product.size  == 'medium' ? 'selected' : '' %>>Medium - Adultos</option>
+                                <option value="Large" <%= product.size  == 'large' ? 'selected' : '' %>>Large - Adultos</option>
 							</select>
 						</div>
 						<div class="col-12">
 							<label for="type">Categoria:</label>
 							<select name="type" id="type">
-								<option value="1" <%= product.type == '1' ? 'selected' : '' %>>Soquete</option>
-                                <option value="2" <%= product.type == '2' ? 'selected' : '' %>>Media Larga</option>
-                                <option value="3" <%= product.type == '3' ? 'selected' : '' %>>Bucanera</option>
+								<option value="Soquete" <%= product.type == 'soquete' ? 'selected' : '' %>>Soquete</option>
+                                <option value="Media" <%= product.type == 'media' ? 'selected' : '' %>>Media Larga</option>
+                                <option value="Bucanera" <%= product.type == 'bucanera' ? 'selected' : '' %>>Bucanera</option>
 							</select>
 						</div>
                         <div class="col-12">
