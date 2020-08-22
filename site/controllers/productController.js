@@ -3,6 +3,7 @@ const fs = require('fs');
 const jsonTable = require('../database/jsonTable');
 
 const productsModel = jsonTable('products');
+const asideModel = jsonTable('aside');
 
 let addedToCart = []; //momentaneo hasta consultar donde debe ir 
 
@@ -20,14 +21,25 @@ module.exports = {
         res.render('products/detail', {product});
     },
     show: (req,res) =>{
-        let featured = productsModel.all(); // TODO Destacados
+        // let featured = productsModel.all(); // TODO Destacados
+        // let product = productsModel.find(req.params.id);
+        // res.render('products/show', {product, featured});
+
+        let aside = asideModel.find(req.params.id); // TODO Destacados
+        console.log(aside);
         let product = productsModel.find(req.params.id);
-        res.render('products/show', {product, featured});
+        // let images = productsImagesModel.findByField(['image'], product[0].id);
+        res.render('products/show', {product,aside});
     },
     create: (req,res) => {
         res.render('products/create-form');
     },
     store: (req,res,next) =>{
+
+        let images = [];
+        req.files.forEach(file => {
+            images.push(file.filename);
+        });
         let product =  {
 			name: req.body.name,
 			price: '$' + req.body.price,
@@ -35,7 +47,7 @@ module.exports = {
             description: req.body.description,
             size:req.body.size,
             type:req.body.type,
-            image: req.file ? req.file.filename : null,
+            image: images
             // category: req.body.categoria, //Averiguar como van a funcionar las categorias en el create de products
             //TODO revisar las categorias de la vista create y agregar las que faltan
         }
