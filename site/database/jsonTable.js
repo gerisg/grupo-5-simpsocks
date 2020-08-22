@@ -25,7 +25,7 @@ let model = function(tableName) {
         findByField(field, value) {
             if(!field || !value) { return []; }
             let rows = this.readFile();
-            return rows.find(row => row[field].toLowerCase() == value.toLowerCase());
+            return rows.filter(row => row[field] == value);
         },
         findByFields(fields, value) {
             if(!fields || !value) { return []; }
