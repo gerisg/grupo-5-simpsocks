@@ -1,8 +1,14 @@
 const path = require('path');
 const fs = require('fs');
+const bcrypt = require('bcryptjs');
 const jsonTable = require('../database/jsonTable');
 
 const usersModel = jsonTable('users');
+
+let getCurrentPass = userId => {
+	let user = usersModel.find(userId);
+	return user ? user.password : null; // TODO If not found throw error
+}
 
 module.exports = {
 	list: (req, res) => {
@@ -17,11 +23,12 @@ module.exports = {
 		res.render('users/create-form');
 	},
 	store: (req, res) => {
+		let encryptedPassword = bcrypt.hashSync(req.body.password, 10);
 		let user =  {
             firstname: req.body.firstname,
             lastname: req.body.lastname,
             email: req.body.email,
-            password: req.body.password, // TODO hashing
+            password: encryptedPassword,
 			category: req.body.category,
 			phone: req.body.phone,
 			shipping_address: req.body.shipping_address,
@@ -32,24 +39,27 @@ module.exports = {
 		res.redirect('/users/' + id);
 	},
 	edit: (req, res) => {
-		let user = usersModel.find(req.params.id)
+		let user = usersModel.find(req.params.id);
+		delete user.password;
 		res.render('users/edit-form', { user });
 	},
 	update: (req, res) => {
+		let id = parseInt(req.params.id);
+		let encryptedPassword = req.body.password ? bcrypt.hashSync(req.body.password, 10) : getCurrentPass(id);
 		let user =  {
-            id: parseInt(req.params.id),
+            id: id,
             firstname: req.body.firstname,
             lastname: req.body.lastname,
             email: req.body.email,
-            password: req.body.password, // TODO hashing
+            password: encryptedPassword,
 			category: req.body.category,
 			phone: req.body.phone,
 			shipping_address: req.body.shipping_address,
 			payment_address: req.body.payment_address,
 			image: req.file ? req.file.filename : req.body.currentImage
 		}
-		let id = usersModel.update(user);
-		res.redirect('/users/' + id);
+		let updatedUserId = usersModel.update(user);
+		res.redirect('/users/' + updatedUserId);
 	},
 	destroy : (req, res) => {
 		let id = req.params.id;
@@ -66,7 +76,7 @@ module.exports = {
 	},
 	logout: (req, res) => {
 		console.log('Not implemented yet');
-		res.redirect('/');
+		res.redirect('/users/login');
 	},
     register: (req,res) => {
 		(res.render('users/register'));

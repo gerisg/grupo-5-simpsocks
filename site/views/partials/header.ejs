@@ -1,48 +1,80 @@
 <header>
-    <nav class="header-start">
+    <div class="header-start">
         <a href="/">
             <img src="/images/logo.png" alt="Logo Simpsocks">
             <h2><span class="ultra">simp</span>socks</h2>
         </a>
-    </nav>
-    <nav class="header-center hidden-sm">
-        <form>
-            <input type="text" placeholder="Buscar productos ...">
-            <a type="submit" href="/products/find"><i class="fas fa-search"></i></a>
+    </div>
+    <div id="searcher" class="header-center">
+        <form id="searchform" class="search-form" role="search" method="get" action="">
+            <label class="search-label" for="search-terms">Buscar</label>
+            <input class="search-field" type="search" id="search-terms" name="search-terms" placeholder="ej. bucaneras" value="">
+            <button class="btn-search" type="submit"><i class="fas fa-search"></i></button>
         </form>
-    </nav>
-    <nav class="header-end">
-        <a href="/products/find" class="hidden-md">
-            <i class="far fa-search"></i>
-            <span class="hidden-sm">Buscar</span>
-        </a>
-        <a href="/users/favorites">
-            <i class="far fa-heart"></i>
-            <span class="hidden-sm">Favoritos</span>
-        </a>
-        <a href="/products/cart">
-            <i class="fas fa-shopping-cart"></i>
-            <span class="hidden-sm">Mis compras</span>
-        </a>
-        <a href="/users/profile">
-            <i class="far fa-user"></i>
-            <span class="hidden-sm">Mi cuenta</span>
-        </a>
-        <a href="/users/register">
-            <i class="fas fa-user-plus"></i>
-            <span class="hidden-sm">Registrarme</span>
-        </a>
-        <a href="/users/login">
-            <i class="fas fa-sign-in-alt"></i>
-            <span class="hidden-sm">Iniciar Sesión</span>
-        </a>
-        <a href="/users/logout">
-            <i class="fas fa-sign-out-alt"></i>
-            <span class="hidden-sm">Cerrar Sesión</span>
-        </a>
-        <a href="/admin">
-            <i class="fas fa-user-shield"></i>
-            <span class="hidden-sm">Admin</span>
-        </a>
-    </nav>
+    </div>
+    <div class="header-end">
+        <nav id="main-nav" class="main-nav">
+            <ul>
+                <li>
+                    <a href="/products/cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span>Mi carrito</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/users/favorites">
+                        <i class="far fa-heart"></i>
+                        <span>Favoritos</span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="logged">
+                <li>
+                    <a href="/users/profile">
+                        <i class="far fa-user"></i>
+                        <span>Mi cuenta</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/users/logout">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Cerrar Sesión</span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="guest" style="display: none;">
+                <li>
+                    <a href="/users/register">
+                        <i class="fas fa-user-plus"></i>
+                        <span>Registrarme</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/users/login">
+                        <i class="fas fa-sign-in-alt"></i>
+                        <span>Iniciar Sesión</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="mobile-actions">
+        <button id="search-opener" class="closed" onclick="searchFunction()">
+            <div class="show-search">
+                <i class="fas fa-search"></i>
+            </div>
+            <div class="close-search">
+                <i class="fas fa-times"></i>
+            </div>
+        </button>
+        <button id="nav-opener" class="closed" onclick="navFunction()">
+            <div class="show-nav">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div class="close-nav">
+                <i class="fas fa-times"></i>
+            </div>
+        </button>
+    </div>
 </header>
+<script src="/js/mobile.js"></script>

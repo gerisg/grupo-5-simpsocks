@@ -1,26 +1,60 @@
 <header>
-    <nav class="header-start">
+    <div class="header-start">
         <a href="/">
             <img src="/images/logo.png" alt="Logo Simpsocks">
             <h2><span class="ultra">simp</span>socks</h2>
         </a>
-    </nav>
-    <nav class="header-end">
-        <a href="/users/">
-            <i class="far fa-user"></i>
-            <span class="hidden-sm">Usuarios</span>
-        </a>
-        <a href="/products/">
-            <i class="fas fa-shopping-cart"></i>
-            <span class="hidden-sm">Productos</span>
-        </a>
-        <a href="/users/login">
-            <i class="fas fa-sign-in-alt"></i>
-            <span class="hidden-sm">Login</span>
-        </a>
-        <a href="/users/logout">
-            <i class="fas fa-sign-out-alt"></i>
-            <span class="hidden-sm">Logout</span>
-        </a>
-    </nav>
+    </div>
+    <div id="searcher" class="header-center">
+        <form id="searchform" class="search-form" role="search" method="get" action="">
+            <label class="search-label" for="search-terms">Buscar</label>
+            <input class="search-field" type="search" id="search-terms" name="search-terms" placeholder="ej. prod:juan" value="">
+            <button class="btn-search" type="submit"><i class="fas fa-search"></i></button>
+        </form>
+    </div>
+    <div class="header-end">
+        <nav id="main-nav" class="main-nav">
+            <ul>
+                <li>
+                    <a href="/users/">
+                        <i class="far fa-user"></i>
+                        <span class="hidden-sm">Usuarios</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/products/">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="hidden-sm">Productos</span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="logged">
+                <li>
+                    <a href="/users/logout">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Cerrar Sesión</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="mobile-actions">
+        <button id="search-opener" class="closed" onclick="searchFunction()">
+            <div class="show-search">
+                <i class="fas fa-search"></i>
+            </div>
+            <div class="close-search">
+                <i class="fas fa-times"></i>
+            </div>
+        </button>
+        <button id="nav-opener" class="closed" onclick="navFunction()">
+            <div class="show-nav">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div class="close-nav">
+                <i class="fas fa-times"></i>
+            </div>
+        </button>
+    </div>
 </header>
+<script src="/js/mobile.js"></script>
