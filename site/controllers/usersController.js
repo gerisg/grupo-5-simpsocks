@@ -1,5 +1,6 @@
 const path = require('path');
 const fs = require('fs');
+const bcrypt = require('bcryptjs');
 const jsonTable = require('../database/jsonTable');
 
 const usersModel = jsonTable('users');
@@ -17,11 +18,12 @@ module.exports = {
 		res.render('users/create-form');
 	},
 	store: (req, res) => {
+		let encryptedPassword = bcrypt.hashSync(req.body.password, 10);
 		let user =  {
             firstname: req.body.firstname,
             lastname: req.body.lastname,
             email: req.body.email,
-            password: req.body.password, // TODO hashing
+            password: encryptedPassword,
 			category: req.body.category,
 			phone: req.body.phone,
 			shipping_address: req.body.shipping_address,
