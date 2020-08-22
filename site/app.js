@@ -23,7 +23,12 @@ app.use('/products', productRoutes);
 app.use ('/site', siteRoutes)
 app.use ('/admin', adminRoutes);
 app.use('/demo', demoRoutes);
-app.get('*', (req, res) => res.render('error')); // unknown
+
+// Errors
+app.use((req, res, next) => {
+    res.status(404).render('error-404');
+    next();
+});
 
 // Start server
 app.listen (3000, ()=> (console.log('Server listening (3000)')));
