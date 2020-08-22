@@ -66,7 +66,7 @@ module.exports = {
 	},
 	logout: (req, res) => {
 		console.log('Not implemented yet');
-		res.redirect('/');
+		res.redirect('/users/login');
 	},
     register: (req,res) => {
 		(res.render('users/register'));
