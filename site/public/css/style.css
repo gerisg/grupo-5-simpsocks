@@ -108,6 +108,10 @@ a {
   font-size: 1rem;
 }
 
+.hidden-sm {
+  display: none;
+}
+
 /* Input / Buttons */
 
 .btn { 
@@ -1071,9 +1075,8 @@ footer {
 
   /* Generals */
 
-  body {
-    margin-bottom: 148px;  /* To avoid footer overlapping. Same value like footer height */
-  }
+  body { margin-bottom: 148px; }  /* To avoid footer overlapping. Same value like footer height */
+  .hidden-sm { display: inline-block; }
 
   /* Grid system */
 
