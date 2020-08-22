@@ -600,6 +600,8 @@ footer {
   width: 100%;
   margin: .5rem 0;
   font-weight: 300;
+  height: 36px;
+  overflow: hidden;
 }
 
 .product-data .compare-price {
