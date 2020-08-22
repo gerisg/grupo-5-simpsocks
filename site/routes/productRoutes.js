@@ -5,13 +5,13 @@ const controller = require('../controllers/productController');
 const multer = require('multer');
 
 // Configure multer
-var storage = multer.diskStorage({
+const storage = multer.diskStorage({
     destination: path.join(__dirname, '../public/images/products'),
     filename: (req, file, callback) => {
         callback(null,  file.fieldname + '-' + Date.now() + path.extname(file.originalname));
     }
 });
-var upload = multer({ storage });
+const upload = multer({ storage });
 
 // Listado de productos
 router.get('/find/:category?', controller.find); // Vista de negocio

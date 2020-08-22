@@ -39,7 +39,6 @@ module.exports = {
             // category: req.body.categoria, //Averiguar como van a funcionar las categorias en el create de products
             //TODO revisar las categorias de la vista create y agregar las que faltan
         }
-        console.log(product);
         let id = productsModel.create(product);
         console.log(product.image);
 		res.redirect('/products/' + id);
