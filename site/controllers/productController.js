@@ -27,7 +27,6 @@ module.exports = {
             p.offerPrice = priceWithDiscount(p.price, p.discount);
             let images = productImagesModel.findByField('prodId', p.id);
             if(images && images.length > 0) { 
-                console.log(p.id, images[0]);
                 p.image = images[0].name; } // TODO hasta tener todos los datos corregidos
             return p;
         });
@@ -35,8 +34,14 @@ module.exports = {
     },
     list: (req, res) => {
         let products = productsModel.all();
-        products.map(p => p.offerPrice = priceWithDiscount(p.price, p.discount));
-        res.render('products/list', { products, productsTypes , productsSize});
+        products.map(p => {
+            p.offerPrice = priceWithDiscount(p.price, p.discount);
+            let images = productImagesModel.findByField('prodId', p.id);
+            if(images && images.length > 0) { 
+                p.image = images[0].name; } // TODO hasta tener todos los datos corregidos
+            return p;
+        });
+        res.render('products/list', { products, productsTypes , productsSize });
     },
     detail: (req,res) =>{
         let images = productImagesModel.findByField('prodId', req.params.id);
