@@ -125,10 +125,10 @@ a {
   padding: .2rem .6rem;
 }
 
-input, select { width: 100%; }
+input, select, textarea { width: 100%; }
 input[type=checkbox] { width: auto; }
 
-input, button, select {
+input, button, select, textarea {
   border: 1px solid;
   padding: var(--default-padding);
   margin: .1rem .5rem .5rem 0;
