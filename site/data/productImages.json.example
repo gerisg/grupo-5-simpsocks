@@ -1,0 +1,27 @@
+[
+ {
+  "id": 1,
+  "prodId": 1,
+  "name": "homer_1.jpg"
+ },
+ {
+  "id": 2,
+  "prodId": 1,
+  "name": "homer_2.jpg"
+ },
+ {
+  "id": 3,
+  "prodId": 1,
+  "name": "homer_3.jpg"
+ },
+ {
+  "id": 4,
+  "prodId": 2,
+  "name": "bart1.jpg"
+ },
+ {
+  "id": 5,
+  "prodId": 2,
+  "name": "bart1.jpg"
+ }
+]
