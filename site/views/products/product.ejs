@@ -4,10 +4,10 @@
             <img src="/images/products/<%= product.image %>"  alt="imagen de producto">
         </figure>
         <article class="product-data">
-            <span class="discount">-<%=product.discount%> %</span>
+            <span class="discount">-<%= product.discount %>%</span>
             <p><%= product.name %> </p>
-            <span class="compare-price">$100</span>
-            <span class="product-price"><%=product.price%> </span>
+            <span class="product-price">$<%= product.price %></span>
+            <span class="compare-price">$<%= product.offerPrice %> </span>
         </article>
     </a>
 </section>

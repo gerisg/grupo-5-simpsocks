@@ -608,19 +608,19 @@ footer {
   overflow: hidden;
 }
 
-.product-data .compare-price {
+.product-data .product-price {
   font-size: 1.25rem;
   font-weight: 300;
   opacity: 0.8;
   text-decoration: line-through;
 }
 
-.product-data .compare-price:after {
+.product-data .product-price:after {
   padding: 0 .5rem;
   content: "-";
 }
 
-.product-data .product-price {
+.product-data .compare-price {
   color: var(--pink);
   font-size: 1.25rem;
   font-weight: 700;

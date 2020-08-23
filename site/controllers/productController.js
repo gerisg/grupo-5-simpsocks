@@ -17,14 +17,25 @@ let productsSize = [
     { id: 3, name: 'Large' },
 ];
 
+let priceWithDiscount = (price, discount) => discount > 0 ? Math.round(price * ((100 - discount) / 100)) : price;
+
 module.exports = {
     find: (req, res) => {
         let products = productsModel.all();
+        products.map(p => {
+            p.offerPrice = priceWithDiscount(p.price, p.discount);
+            return p;
+        });
         res.render('products/find', { products });   
     },
     list: (req, res) => {
         let products = productsModel.all();
+<<<<<<< HEAD
         res.render('products/list', { products, productsTypes , productsSize});   
+=======
+        products.map(p => p.offerPrice = priceWithDiscount(p.price, p.discount));
+        res.render('products/list', { products });   
+>>>>>>> Calculate offer price and show it (only index and find, to check other views)
     },
     detail: (req,res) =>{
         let images = productImagesModel.findByField('prodId', req.params.id);
