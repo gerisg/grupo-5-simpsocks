@@ -47,6 +47,13 @@
                     <div>
                         <div class="product-title"><%= product.name%> </div>
                         <p class="product-description text"><%= product.description %> </p>
+                        <div>Categorías:
+                            <span class="labels">
+                                <% product.categories.forEach(category => { %>
+                                    <span><%= category.name %></span>  
+                                <% }) %>
+                            </span>
+                        </div>
                     </div>
                     <div class="product-actions">
                         <a href="/products/cart" class="btn btn-info btn-cart">Añadir al carrito</a>
