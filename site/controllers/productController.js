@@ -35,12 +35,8 @@ module.exports = {
     },
     list: (req, res) => {
         let products = productsModel.all();
-<<<<<<< HEAD
-        res.render('products/list', { products, productsTypes , productsSize});   
-=======
         products.map(p => p.offerPrice = priceWithDiscount(p.price, p.discount));
-        res.render('products/list', { products });   
->>>>>>> Calculate offer price and show it (only index and find, to check other views)
+        res.render('products/list', { products, productsTypes , productsSize});
     },
     detail: (req,res) =>{
         let images = productImagesModel.findByField('prodId', req.params.id);
