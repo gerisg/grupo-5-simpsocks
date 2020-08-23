@@ -11,21 +11,21 @@ let productsSize = [{ id: 1, name: 'Small' }, { id: 2, name: 'Medium' }, { id: 3
 
 let priceWithDiscount = (price, discount) => discount > 0 ? Math.round(price * ((100 - discount) / 100)) : price;
 
-let populate = products => {
-    products.map(p => {
-        // Add price with discount
-        p.offerPrice = priceWithDiscount(p.price, p.discount);
-        // Add main image
-        let images = productImagesModel.findByField('prodId', p.id);
-        if(images && images.length > 0) { 
-            p.image = images[0].name; 
-        }
-        // Populate categories
-        p.categories = p.categories.map(catId => categoriesModel.find(catId));
-        
-        return p;
-    });
-}
+let populate = products => products.map(p => populateProduct(p));
+
+let populateProduct = product => {
+    // Add price with discount
+    product.offerPrice = priceWithDiscount(product.price, product.discount);
+    // Add main image
+    let images = productImagesModel.findByField('prodId', product.id);
+    if(images && images.length > 0) { 
+        product.image = images[0].name; 
+    }
+    // Populate categories
+    product.categories = product.categories.map(catId => categoriesModel.find(catId));
+
+    return product;
+};
 
 module.exports = {
     find: (req, res) => {
@@ -41,13 +41,14 @@ module.exports = {
     detail: (req,res) =>{
         let images = productImagesModel.findByField('prodId', req.params.id);
         let product = productsModel.find(req.params.id);
-        product.categories = product.categories.map(catId => categoriesModel.find(catId));
+        populateProduct(product);
         res.render('products/detail', { product, images });
     },
     show: (req,res) =>{
         let featured = productsModel.all(); // TODO Destacados
         let images = productImagesModel.findByField('prodId', req.params.id);
         let product = productsModel.find(req.params.id);
+        populateProduct(product);
         res.render('products/show', { product, images, featured });
     },
     create: (req,res) => {
