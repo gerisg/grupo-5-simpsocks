@@ -112,6 +112,9 @@ a {
   display: none;
 }
 
+.labels>span:after { content: ", "; }
+.labels>span:last-child:after { content: ""; }
+
 /* Input / Buttons */
 
 .btn { 
@@ -1012,9 +1015,6 @@ footer {
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
-
-.admin-wrapper .categories>span:after { content: ", "; }
-.admin-wrapper .categories>span:last-child:after { content: ""; }
 
 .row-title {
   padding: 10px 0px;
