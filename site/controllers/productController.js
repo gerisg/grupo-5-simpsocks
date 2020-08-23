@@ -62,7 +62,8 @@ module.exports = {
 			discount: req.body.discount,
             description: req.body.description,
             size:req.body.size,
-            type:req.body.type
+            type:req.body.type,
+            categories: req.body.categories
         }
         let id = productsModel.create(product);
         req.files.forEach(file => {

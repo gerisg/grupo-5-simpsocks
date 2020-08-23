@@ -125,9 +125,8 @@ a {
   padding: .2rem .6rem;
 }
 
-input, select {
-  width: 100%;
-}
+input, select { width: 100%; }
+input[type=checkbox] { width: auto; }
 
 input, button, select {
   border: 1px solid;
