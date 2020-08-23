@@ -41,6 +41,7 @@ module.exports = {
     detail: (req,res) =>{
         let images = productImagesModel.findByField('prodId', req.params.id);
         let product = productsModel.find(req.params.id);
+        product.categories = product.categories.map(catId => categoriesModel.find(catId));
         res.render('products/detail', { product, images });
     },
     show: (req,res) =>{
