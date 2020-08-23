@@ -13,7 +13,7 @@
         </nav>
 	</section>
 
-	<!-- user detail -->
+	<!-- product detail -->
 	<main class="container users-wrapper">
 		<div class="row main-center">
 			<div class="col-11">
@@ -21,8 +21,12 @@
 			</div>
 			<div class="col-11">
 				<div class="row main-around cross-center">
-					<div class="col-10 col-md-2 col-lg-2">
-						<img src="/images/products/<%= product.image ? product.image : '' %>" onerror="this.src='/images/products/default-image.png'" alt="imagen del producto">
+					<div class="col-md-4 col-lg-4">
+						<% product.image.forEach(element => { %>
+							<div class="col-10 col-lg-4">
+								<img src="/images/products/<%= element ? element: '' %>" onerror="this.src='/images/products/default-image.png'" alt="imagen del producto">
+							</div>
+						<% }); %> 
 					</div>
 					<div class="col-10 col-md-6 col-lg-5">
 						<div><span class="subtitle"> Precio: </span> <%= product.price %></div>

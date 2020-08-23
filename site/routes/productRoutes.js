@@ -20,8 +20,7 @@ router.get('/', controller.list); // Vista de administrador
 // Formulario de creación de productos
 router.get('/create', controller.create);
 // Acción de creación
-router.post('/',upload.single('image'), controller.store);
-
+router.post('/',upload.any('image'), controller.store);
 // Formulario de edición de productos
 router.get('/:id/edit', controller.edit);
 

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include('../partials/head', {title: category.name}) %>
+<body>
+	<%- include('../partials/header-admin') %>
+	
+	<section class="top-nav">
+        <nav class="top-nav-start breadcrumb">
+			<a href="/">Inicio</a>
+			<a href="/admin">Admin</a>
+			<a href="/categories">Categorías</a>
+            <a href="/categories/create">Detalle</a>
+        </nav>
+	</section>
+
+	<!-- category detail -->
+	<main class="container categories-wrapper">
+		<div class="row main-center">
+			<div class="col-11">
+				<h2 class="title">Detalle de categoría: <%= category.name %></h2>
+			</div>
+			<div class="col-11">
+				<div class="row main-around cross-center">
+					<div class="col-10 col-md-6 col-lg-5">
+						<div><span class="subtitle"> Nombre: </span> <%= category.name %></div>
+					</div>
+					<div class="col-10 col-md-3 col-lg-3">
+						<a class="btn btn-secondary" href="/categories/<%= category.id %>/edit"><i class="fas fa-edit"></i> Editar</a>
+						<form class="form-only-btn" action="/categories/<%= category.id %>?_method=delete" method="post">
+							<button class="btn btn-secondary" type="submit"><i class="fas fa-trash"></i> Eliminar</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+
+	<%- include('../partials/footer') %>
+</body>	
+</html>

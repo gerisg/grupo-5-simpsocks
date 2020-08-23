@@ -6,6 +6,7 @@ const methodOverride = require('method-override');
 const indexRoutes = require('./routes/indexRoutes');
 const userRoutes = require('./routes/userRoutes');
 const productRoutes = require('./routes/productRoutes');
+const categoryRoutes = require('./routes/categoryRoutes');
 const siteRoutes = require('./routes/siteRoutes');
 const adminRoutes = require ("./routes/adminRoutes");
 const demoRoutes = require('./routes/demoRoutes');
@@ -20,6 +21,7 @@ app.use(methodOverride('_method')); // replace POST methods by parametrized '_me
 app.use('/', indexRoutes);
 app.use('/users', userRoutes);
 app.use('/products', productRoutes);
+app.use('/categories', categoryRoutes);
 app.use ('/site', siteRoutes)
 app.use ('/admin', adminRoutes);
 app.use('/demo', demoRoutes);
