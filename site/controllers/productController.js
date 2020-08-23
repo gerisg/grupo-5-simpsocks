@@ -20,28 +20,29 @@ let productsSize = [
 
 let priceWithDiscount = (price, discount) => discount > 0 ? Math.round(price * ((100 - discount) / 100)) : price;
 
+let populate = products => {
+    products.map(p => {
+        // Add price with discount
+        p.offerPrice = priceWithDiscount(p.price, p.discount);
+        // Add main image
+        let images = productImagesModel.findByField('prodId', p.id);
+        if(images && images.length > 0) { 
+            p.image = images[0].name; 
+        }
+        return p;
+    });
+}
+
 module.exports = {
     find: (req, res) => {
         let products = productsModel.all();
-        products.map(p => {
-            p.offerPrice = priceWithDiscount(p.price, p.discount);
-            let images = productImagesModel.findByField('prodId', p.id);
-            if(images && images.length > 0) { 
-                p.image = images[0].name; } // TODO hasta tener todos los datos corregidos
-            return p;
-        });
+        populate(products);
         res.render('products/find', { products });   
     },
     list: (req, res) => {
         let products = productsModel.all();
-        products.map(p => {
-            p.offerPrice = priceWithDiscount(p.price, p.discount);
-            let images = productImagesModel.findByField('prodId', p.id);
-            if(images && images.length > 0) { 
-                p.image = images[0].name; } // TODO hasta tener todos los datos corregidos
-            return p;
-        });
-        res.render('products/list', { products, productsTypes , productsSize });
+        populate(products);
+        res.render('products/list', { products, productsTypes, productsSize });
     },
     detail: (req,res) =>{
         let images = productImagesModel.findByField('prodId', req.params.id);
@@ -66,7 +67,6 @@ module.exports = {
             description: req.body.description,
             size:req.body.size,
             type:req.body.type
-            // category: req.body.categoria, //Averiguar como van a funcionar las categorias en el create de products
         }
         let id = productsModel.create(product);
         req.files.forEach(file => {
@@ -76,11 +76,9 @@ module.exports = {
         res.redirect('/products/' + id);
     },
     edit: (req,res) => {
-        
         let product = productsModel.find(req.params.id);
-        res.render('products/edit-form', { product, productsTypes , productsSize});
+        res.render('products/edit-form', { product, productsTypes, productsSize});
     },
-        
     update: (req, res) => {
         let product =  {
             id: parseInt(req.params.id),
@@ -90,7 +88,6 @@ module.exports = {
             type: parseInt(req.body.type),
             image: req.file ? req.file.filename : req.body.currentImage
         };
-
         let id = productsModel.update(product);
         res.redirect('/products');
     },
