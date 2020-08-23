@@ -498,6 +498,11 @@ header {
   text-align: center;
 }
 
+.featured .product {
+  background-color: var(--blue);
+  color: var(--white);
+}
+
 /* Footer */
 
 footer {
