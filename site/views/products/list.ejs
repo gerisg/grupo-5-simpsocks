@@ -43,10 +43,10 @@
 							 $ <%= product.price %>
 						</div>
 						<div class="col-md-3 hidden-sm">
-							<%= product.size %>
+							<%= productsSize[product.size - 1].name %>
 						</div>
 						<div class="col-md-2 hidden-sm">
-							<%= product.type %>
+							<%= productsTypes[product.type - 1].name %>
 						</div>
 						<div class="col-4 col-md-2">
 							<a class="btn btn-icon" href="/products/<%= product.id %>"><i class="fas fa-eye"></i></a>

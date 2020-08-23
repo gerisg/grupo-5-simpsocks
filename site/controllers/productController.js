@@ -6,6 +6,18 @@ const productsModel = jsonTable('products');
 
 let addedToCart = []; //momentaneo hasta consultar donde debe ir 
 
+let productsTypes = [
+    { id: 1, name: 'Soquete' },
+    { id: 2, name: 'Media Larga' },
+    { id: 3, name: 'Bucanera' },
+];
+
+let productsSize = [
+    { id: 1, name: 'Small' },
+    { id: 2, name: 'Medium' },
+    { id: 3, name: 'Large' },
+];
+
 module.exports = {
     find: (req, res) => {
         let products = productsModel.all();
@@ -13,7 +25,7 @@ module.exports = {
     },
     list: (req, res) => {
         let products = productsModel.all();
-        res.render('products/list', { products });   
+        res.render('products/list', { products, productsTypes , productsSize});   
     },
     detail: (req,res) =>{
         let product = productsModel.find(req.params.id);
@@ -43,19 +55,21 @@ module.exports = {
         console.log(product.image);
 		res.redirect('/products/' + id);
     },
-     edit: (req,res) => {
-        let product = productsModel.find(req.params.id)
-        res.render('products/edit-form', { product })},
+    edit: (req,res) => {
+        
+        let product = productsModel.find(req.params.id);
+        res.render('products/edit-form', { product, productsTypes , productsSize});
+    },
         
     update: (req, res) => {
         let product =  {
             id: parseInt(req.params.id),
             name: req.body.name,
-            price: req.body.price,
-            size: req.body.size,
-            type: req.body.type,
+            price: parseFloat(req.body.price),
+            size: parseInt(req.body.size),
+            type: parseInt(req.body.type),
             image: req.file ? req.file.filename : req.body.currentImage
-            }
+        }
 
         let id = productsModel.update(product);
         res.redirect('/products')},
