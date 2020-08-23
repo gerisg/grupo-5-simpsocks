@@ -6,17 +6,8 @@ const categoriesModel = jsonTable('categories');
 const productsModel = jsonTable('products');
 const productImagesModel = jsonTable('productImages');
 
-let productsTypes = [
-    { id: 1, name: 'Soquete' },
-    { id: 2, name: 'Media Larga' },
-    { id: 3, name: 'Bucanera' },
-];
-
-let productsSize = [
-    { id: 1, name: 'Small' },
-    { id: 2, name: 'Medium' },
-    { id: 3, name: 'Large' },
-];
+let productsTypes = [{ id: 1, name: 'Soquete' }, { id: 2, name: 'Media Larga' }, { id: 3, name: 'Bucanera' }];
+let productsSize = [{ id: 1, name: 'Small' }, { id: 2, name: 'Medium' }, { id: 3, name: 'Large' }];
 
 let priceWithDiscount = (price, discount) => discount > 0 ? Math.round(price * ((100 - discount) / 100)) : price;
 
@@ -29,6 +20,9 @@ let populate = products => {
         if(images && images.length > 0) { 
             p.image = images[0].name; 
         }
+        // Populate categories
+        p.categories = p.categories.map(catId => categoriesModel.find(catId));
+        
         return p;
     });
 }
@@ -37,7 +31,7 @@ module.exports = {
     find: (req, res) => {
         let products = productsModel.all();
         populate(products);
-        res.render('products/find', { products });   
+        res.render('products/find', { products });
     },
     list: (req, res) => {
         let products = productsModel.all();
@@ -47,6 +41,7 @@ module.exports = {
     detail: (req,res) =>{
         let images = productImagesModel.findByField('prodId', req.params.id);
         let product = productsModel.find(req.params.id);
+        product.categories = product.categories.map(catId => categoriesModel.find(catId));
         res.render('products/detail', { product, images });
     },
     show: (req,res) =>{
@@ -60,7 +55,7 @@ module.exports = {
         res.render('products/create-form', { categories });
     },
     store: (req,res,next) =>{
-        let product =  {
+        let product = {
 			name: req.body.name,
 			price: req.body.price,
 			discount: req.body.discount,
@@ -80,7 +75,7 @@ module.exports = {
         res.render('products/edit-form', { product, productsTypes, productsSize});
     },
     update: (req, res) => {
-        let product =  {
+        let product = {
             id: parseInt(req.params.id),
             name: req.body.name,
             price: parseFloat(req.body.price),

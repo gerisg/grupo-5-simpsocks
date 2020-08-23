@@ -14,7 +14,7 @@
 	</section>
 
 	<!-- product detail -->
-	<main class="container users-wrapper">
+	<main class="container admin-wrapper">
 		<div class="row main-center">
 			<div class="col-11">
 				<h2 class="title">Detalle del producto: <%= product.name %></h2>
@@ -28,6 +28,14 @@
 						<div><span class="subtitle"> Descuento: </span> <%= product.discount %> % </div>
 						<div><span class="subtitle"> Size: </span> <%= product.size %></div>
 						<div><span class="subtitle"> Type: </span> <%= product.type %></div> 
+						<div>
+							<span class="subtitle"> Categorías: </span> 
+							<span class="categories">
+								<% product.categories.forEach(category => { %>
+									<span><%= category.name %></span>
+								<% }) %>
+							</div>
+						</div>
 					</div>
 					<div class="col-10 col-md-3 col-lg-3">
 						<a class="btn btn-secondary" href="/products/<%= product.id %>/edit"><i class="fas fa-edit"></i> Editar </a>
