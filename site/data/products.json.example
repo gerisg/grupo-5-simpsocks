@@ -8,7 +8,7 @@
   "size": 1,
   "type": 1,
   "image": "sockets-bart-honda.jpg",
-  "categories": 1
+  "categories": [1]
  },
  {
   "id": 2,
@@ -19,7 +19,7 @@
   "size": 2,
   "type": 2,
   "image": "sockets-homero.jpg",
-  "categories": 2
+  "categories": [2]
  },
  {
   "id": 3,
@@ -30,7 +30,7 @@
   "size": 3,
   "type": 3,
   "image": "socks-homero-rosquillas.jpg",
-  "categories": 2
+  "categories": [2]
  },
  {
   "id": 4,
@@ -41,7 +41,7 @@
   "size": 1,
   "type": 1,
   "image": "socks-homero-traje-banio.jpg",
-  "categories": 2
+  "categories": [2]
  },
  {
   "id": 5,
@@ -52,7 +52,7 @@
   "size": 2,
   "type": 2,
   "image": "socks-lisa.jpg",
-  "categories": 3
+  "categories": [3]
  },
  {
   "id": 6,
@@ -63,7 +63,7 @@
   "size": 3,
   "type": 3,
   "image": "socks-maggie.jpg",
-  "categories": 3
+  "categories": [3]
  },
  {
   "id": 7,
@@ -74,7 +74,7 @@
   "size": 1,
   "type": 1,
   "image": "socks-mr-sparkle.jpg",
-  "categories": 1
+  "categories": [1]
  },
  {
   "id": 8,
@@ -85,7 +85,7 @@
   "size": 2,
   "type": 2,
   "image": "socks-rosquillas.jpg",
-  "categories": 1
+  "categories": [1]
  },
  {
   "id": 9,
@@ -96,7 +96,7 @@
   "size": 3,
   "type": 3,
   "image": "sockets-bart-honda.jpg",
-  "categories": 2
+  "categories": [2]
  },
  {
   "id": 10,
@@ -107,7 +107,7 @@
   "size": 1,
   "type": 1,
   "image": "sockets-homero.jpg",
-  "categories": 2
+  "categories": [2]
  },
  {
   "id": 11,
@@ -118,7 +118,7 @@
   "size": 2,
   "type": 2,
   "image": "socks-homero-rosquillas.jpg",
-  "categories": 1
+  "categories": [1]
  },
  {
   "id": 12,
@@ -129,7 +129,7 @@
   "size": 3,
   "type": 2,
   "image": "socks-homero-traje-banio.jpg",
-  "categories": 3
+  "categories": [3]
  },
  {
   "id": 13,
@@ -140,7 +140,7 @@
   "size": 1,
   "type": 1,
   "image": "socks-lisa.jpg",
-  "categories": 2
+  "categories": [2]
  },
  {
   "id": 14,
@@ -151,7 +151,7 @@
   "size": 2,
   "type": 2,
   "image": "socks-maggie.jpg",
-  "categories": 3
+  "categories": [3]
  },
  {
   "id": 15,
@@ -162,7 +162,7 @@
   "size": 3,
   "type": 1,
   "image": "socks-mr-sparkle.jpg",
-  "categories": 1
+  "categories": [1]
  },
  {
   "id": 16,
@@ -173,7 +173,7 @@
   "size": 1,
   "type": 1,
   "image": "socks-rosquillas.jpg",
-  "categories": 3
+  "categories": [3]
  },
  {
   "id": 17,
@@ -184,7 +184,7 @@
   "size": 2,
   "type": 2,
   "image": "sockets-bart-honda.jpg",
-  "categories": 3
+  "categories": [3]
  },
  {
   "id": 18,
@@ -195,7 +195,7 @@
   "size": 3,
   "type": 2,
   "image": "sockets-homero.jpg",
-  "categories": 2
+  "categories": [2]
  },
  {
   "id": 19,
@@ -206,7 +206,7 @@
   "size": 1,
   "type": 1,
   "image": "socks-homero-traje-banio.jpg",
-  "categories": 3
+  "categories": [3]
  },
  {
   "id": 20,
@@ -217,6 +217,6 @@
   "size": 2,
   "type": 2,
   "image": "socks-rosquillas.jpg",
-  "categories": 2
+  "categories": [2]
  }
 ]
