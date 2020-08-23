@@ -84,6 +84,8 @@ module.exports = {
             id: parseInt(req.params.id),
             name: req.body.name,
             price: parseFloat(req.body.price),
+            discount: req.body.discount,
+            description: req.body.description,
             size: parseInt(req.body.size),
             type: parseInt(req.body.type),
             image: req.file ? req.file.filename : req.body.currentImage
