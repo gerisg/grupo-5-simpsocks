@@ -1013,6 +1013,9 @@ footer {
   padding-bottom: 1rem;
 }
 
+.admin-wrapper .categories>span:after { content: ", "; }
+.admin-wrapper .categories>span:last-child:after { content: ""; }
+
 .row-title {
   padding: 10px 0px;
   font-weight: bold;
@@ -1020,6 +1023,8 @@ footer {
 .row-user-image {
   padding: 5px 15px 5px 0px;
 }
+
+
 
 /* Simple Slider */
 

@@ -22,10 +22,11 @@
 			<div class="col-11 hidden-sm">
 				<div class="row row-title">
 					<div class="col-md-1 hidden-sm">Imagen</div>
-					<div class="col-4 col-md-2">Nombre</div>
+					<div class="col-4 col-md-3">Nombre</div>
 					<div class="col-4 col-md-2">Precio</div>
-					<div class="col-md-3 hidden-sm">Talle</div>
-					<div class="col-md-2 hidden-sm">Tipo</div>
+					<div class="col-md-1 hidden-sm">Talle</div>
+					<div class="col-md-1 hidden-sm">Tipo</div>
+					<div class="col-md-2 hidden-sm">Categorías</div>
 					<div class="col-4 col-md-2">Acciones</div>
 				</div>
 			</div>
@@ -36,17 +37,22 @@
 						<div class="col-md-1 hidden-sm row-user-image">
 							<img src="/images/products/<%= product.image ? product.image : '' %>" onerror="this.src='/images/products/default-image.png'" alt="imagen de usuario">
 						</div>
-						<div class="col-4 col-md-2">
+						<div class="col-4 col-md-3">
 							<%= product.name %>
 						</div>
 						<div class="col-4 col-md-2">
 							 $ <%= product.price %>
 						</div>
-						<div class="col-md-3 hidden-sm">
+						<div class="col-md-1 hidden-sm">
 							<%= productsSize[product.size - 1].name %>
 						</div>
-						<div class="col-md-2 hidden-sm">
+						<div class="col-md-1 hidden-sm">
 							<%= productsTypes[product.type - 1].name %>
+						</div>
+						<div class="col-md-2 hidden-sm categories">
+							<% product.categories.forEach(category => { %>
+								<span><%= category.name %></span>  
+							<% }) %>
 						</div>
 						<div class="col-4 col-md-2">
 							<a class="btn btn-icon" href="/products/<%= product.id %>"><i class="fas fa-eye"></i></a>
