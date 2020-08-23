@@ -1,9 +1,0 @@
-[ {
-    "id": 1,
-    "image":["homer_1.jpg", "homer_2.jpg", "homer_3.jpg"] 
-   },
-   {
-    "id": 2,
-    "image":["bart1.jpg", "bart2.jpg"] 
-   }
-]
