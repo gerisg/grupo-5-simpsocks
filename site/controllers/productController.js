@@ -2,6 +2,7 @@ const path = require('path');
 const fs = require('fs');
 const jsonTable = require('../database/jsonTable');
 
+const categoriesModel = jsonTable('categories');
 const productsModel = jsonTable('products');
 const productImagesModel = jsonTable('productImages');
 
@@ -24,6 +25,10 @@ module.exports = {
         let products = productsModel.all();
         products.map(p => {
             p.offerPrice = priceWithDiscount(p.price, p.discount);
+            let images = productImagesModel.findByField('prodId', p.id);
+            if(images && images.length > 0) { 
+                console.log(p.id, images[0]);
+                p.image = images[0].name; } // TODO hasta tener todos los datos corregidos
             return p;
         });
         res.render('products/find', { products });   
@@ -49,27 +54,25 @@ module.exports = {
         res.render('products/show', { product, images, featured });
     },
     create: (req,res) => {
-        res.render('products/create-form');
+        let categories = categoriesModel.all();
+        res.render('products/create-form', { categories });
     },
     store: (req,res,next) =>{
-        let images = [];
-        req.files.forEach(file => {
-            images.push(file.filename);
-        });
         let product =  {
 			name: req.body.name,
 			price: req.body.price,
 			discount: req.body.discount,
             description: req.body.description,
             size:req.body.size,
-            type:req.body.type,
-            image: images
+            type:req.body.type
             // category: req.body.categoria, //Averiguar como van a funcionar las categorias en el create de products
-            //TODO revisar las categorias de la vista create y agregar las que faltan
         }
         let id = productsModel.create(product);
-        console.log(product.image);
-		res.redirect('/products/' + id);
+        req.files.forEach(file => {
+            let productImage = { prodId: id, name: file.filename };
+            productImagesModel.create(productImage);
+        });
+        res.redirect('/products/' + id);
     },
     edit: (req,res) => {
         
