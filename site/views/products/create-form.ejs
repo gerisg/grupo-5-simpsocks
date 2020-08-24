@@ -53,12 +53,20 @@
                             <label for="image" class="new-product-radio-titles">Subí las fotos de tus Simpsocks</label><br>
                             <input type="file" id="image" name="image" multiple style="border: none;"> 
                         </div>
-                     </div>
+                    </div>
+                    <div class="form-step-create">
+                        <label for="categories">Categorías</label>
+                        <div class="row">
+                            <% categories.forEach(category => { %>
+                                <div class="col-6 col-md-3"><input type="checkbox" name="categories" id="<%= category.id %>" value=<%= category.id %>><span><%= category.name %></span></div>
+                            <% }) %>
+                        </div>
+                    </div>
                     <div>
                         <button type="submit" class=" btn btn-primary">Crear Producto</button>
                     </div>
-                </form>          
-            </div>    
+                </form>
+            </div>
         </section>
     </main>
 
