@@ -937,28 +937,6 @@ footer {
   border-bottom: 3px solid var(--white);
 }
 
-.new-product-bottom {
-  text-align: left;
-  font-weight: 500; 
-  line-height: 25px;
-  margin-bottom: 15px;
-  padding: 10px;
-  border-bottom: 3px solid var(--white);
-}
-
-.new-product-bottom-pic {
-  text-align: left;
-  font-weight: 500; 
-  line-height: 25px;
-  margin-bottom: 15px;
-  padding: 10px;
-  border-bottom: 3px solid var(--white);
-}
-
-.new-product-radio-titles {
-  font-weight: 1000; 
-}
-
 .new-product-description {
   text-align: left; 
   margin-bottom: 15px;

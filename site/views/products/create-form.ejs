@@ -36,23 +36,25 @@
                         <label for="discount">Descuento</label><br>
                         <input type="number" id="discount" name="discount" placeholder= "ingresa el descuento de tus simpsocks" class="new-product-input">   
                     </div>
-                    <div class="create-bottom-form">
-                        <div class="new-product-bottom">
-                            <label class="new-product-radio-titles"for="size" >Talles</label><br>
-                            <input type="radio" id="size" name="size" value="S-KIDS"  > Small - kids <br>
-                            <input type="radio" id="size" name="size" value="S-KIDS" > Medium - Adults  <br>
-                            <input type="radio" id="size" name="size" value="S-KIDS" > Large - Adults <br>
-                        </div>
-                        <div class="new-product-bottom">
-                            <label class="new-product-radio-titles" for="type" >Tipo de Simpsock</label><br>
-                            <input type="radio" id="type" name="type" value="Soquete" > Soquete <br>
-                            <input type="radio" id="type" name="type" value="Media" > Media Larga  <br>
-                            <input type="radio" id="type" name="type" value="Bucanera" > Bucanera <br>
-                        </div>
-                        <div class="new-product-bottom-pic">
-                            <label for="image" class="new-product-radio-titles">Subí las fotos de tus Simpsocks</label><br>
-                            <input type="file" id="image" name="image" multiple style="border: none;"> 
-                        </div>
+                    <div class="form-step-create">
+                        <label for="size" >Talles</label><br>
+                        <select name="Type" id="Type" class="new-product-input">
+                            <option value="1">Small</option>
+                            <option value="2">Medium</option>
+                            <option value="3">Large</option>
+                        </select>
+                    </div>
+                    <div class="form-step-create">
+                        <label for="type" >Tipo de Simpsock</label><br>
+                        <select name="Type" id="Type" class="new-product-input">
+                            <option value="1">Soquete</option>
+                            <option value="2">Medias</option>
+                            <option value="3">Bucanera</option>
+                        </select>
+                    </div>
+                    <div class="form-step-create">
+                        <label for="image" >Subí las fotos de tus Simpsocks</label><br>
+                        <input type="file" id="image" name="image" multiple style="border: none;"> 
                     </div>
                     <div class="form-step-create">
                         <label for="categories">Categorías</label>
