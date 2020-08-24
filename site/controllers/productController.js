@@ -47,6 +47,7 @@ module.exports = {
     show: (req,res) =>{
         let featured = productsModel.all(); // TODO Destacados
         let images = productImagesModel.findByField('prodId', req.params.id);
+        console.log(images);
         let product = productsModel.find(req.params.id);
         populateProduct(product);
         res.render('products/show', { product, images, featured });
@@ -56,10 +57,12 @@ module.exports = {
         res.render('products/create-form', { categories });
     },
     store: (req,res,next) =>{
+        console.log(req.body.size);
+        console.log(req.body.type);
         let product = {
 			name: req.body.name,
 			price: parseFloat(req.body.price),
-			discount: req.body.discount,
+			discount: parseFloat(req.body.discount),
             description: req.body.description,
             size: parseInt(req.body.size),
             type: parseInt(req.body.type),
