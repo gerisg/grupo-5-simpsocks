@@ -7,9 +7,9 @@
             <p><%= product.name %></p>
             <% if (product.discount > 0) { %>
                 <span class="discount">-<%= product.discount %>%</span>
-                <span class="product-price">$<%= product.offerPrice %> </span>
+                <span class="product-price">$<%= product.price %> </span>
             <% } %>
-            <span class="compare-price">$<%= product.price %></span>
+            <span class="compare-price">$<%= product.offerPrice %></span>
         </article>
     </a>
 </section>

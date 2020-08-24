@@ -40,13 +40,27 @@
             <div class="col-12 col-md-6 col-lg-6">
                 <article class="product-details row main-center">
                     <p class="stock">stock disponible</p>
-                    <div class="price">
-                        <span class="subtitle">$ <%= product.price %> </span>
+                    <div class="price product-data">
+                        <span class="product-price">$ <%= product.price %>  </span>
+                        <span class="subtitle">$ <%= product.offerPrice %> </span>
+                        <span class="compare-price"> <%= product.discount %> % </span>
                         <i class="far fa-heart heart-icon"></i>
                     </div>
                     <div>
-                        <div class="product-title"><%= product.name%> </div>
+                        <div class="product-title"><%= product.name %> </div>
                         <p class="product-description text"><%= product.description %> </p>
+                        <div class="select-size">
+                            <label for="size">Talle:</label>
+                            <select name="size" id="size">
+                                <% productsSize.forEach(size => { %>
+                                    <option value="<%= size.id %>">
+                                         <%= size.name %>  
+                                    </option>		
+                                <% }) %> 								
+                            </select>
+                        </div>
+                        <!-- Tipo de simpsocks -->
+                        <span> Tipo: <%= product.type.name%></span>                
                         <div>Categorías:
                             <span class="labels">
                                 <% product.categories.forEach(category => { %>

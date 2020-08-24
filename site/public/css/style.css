@@ -633,7 +633,7 @@ footer {
   font-weight: 700;
 }
 
-/* Product Details */
+/* Show Product */
 
 .product-details {
   display: flex;
@@ -667,6 +667,11 @@ footer {
     .product-description {
       font-size: 14px;
       padding-left: 15px;
+    }
+    .select-size{
+      width: 100%;
+      padding: 5px 35%;
+      margin-left: -34%;
     }
 
 .product-actions {
@@ -825,7 +830,7 @@ footer {
     justify-content: space-evenly;
     text-align: left;
   }
-.discount{
+.resume-discount{
   color: #00a650;
 }
 .payment{
