@@ -1,222 +1,202 @@
 [
- {
-  "id": 1,
-  "name": "Soquetes Homero The Simpsons",
-  "description": "medias de algodón - máxima calidad ",
-  "price": 125,
-  "discount": 20,
-  "size": 1,
-  "type": 1,
-  "image": "homer_1.jpg",
-  "categories": [1]
- },
- {
-  "id": 2,
-  "name": "Soquetes - Bart Simpson",
-  "description": "composicion: algodón con lycra, dibujo en poliamida, puño con elastómero. Puño de Lurex.",
-  "price": 163,
-  "discount": 10,
-  "size": 2,
-  "type": 2,
-  "image": "bart2.jpg",
-  "categories": [3]
- },
- {
-  "id": 3,
-  "name": "Soquetes The Simpsons",
-  "description": "donec vitae nisi nam ultrices libero non mattis pulvinar nulla pede ullamcorper augue a suscipit",
-  "price": 325,
-  "discount": 10,
-  "size": 3,
-  "type": 3,
-  "image": "varios-personajes.jpg",
-  "categories": [1]
- },
- {
-  "id": 4,
-  "name": "Soquetes - Bart Simpson",
-  "description": "composicion: algodón con lycra, dibujo en poliamida, puño con elastómero. Puño de Lurex.",
-  "price": 389,
-  "discount": 15,
-  "size": 1,
-  "type": 1,
-  "image": "bart-medias-both1.jpg",
-  "categories": [3]
- },
- {
-  "id": 5,
-  "name": "Soquetes - Homero Simpson - Dona",
-  "description": "composicion: algodón con lycra, dibujo en poliamida, puño con elastómero. Puño de Lurex.",
-  "price": 327,
-  "discount": 12,
-  "size": 2,
-  "type": 2,
-  "image": "socks-homer-dona-1.jpg",
-  "categories": [1]
- },
- {
-  "id": 6,
-  "name": "Medias Soquete Simpsons Homero Dona",
-  "description": "composicion: algodón con lycra, dibujo en poliamida, puño con elastómero. Puño de Lurex.",
-  "price": 286,
-  "discount": 5,
-  "size": 3,
-  "type": 3,
-  "image": "medias-homero-donas.jpg",
-  "categories": [1]
- },
- {
-  "id": 7,
-  "name": "Medias - Bart Simpson - skate",
-  "description": "composicion: algodón con lycra, dibujo en poliamida, puño con elastómero. Puño de Lurex.",
-  "price": 249,
-  "discount": 15,
-  "size": 1,
-  "type": 1,
-  "image": "bart-medias-2.png",
-  "categories": [3]
- },
- {
-  "id": 8,
-  "name": "Medias - Homero Simpson - Burger",
-  "description": "composicion: algodón con lycra, dibujo en poliamida, puño con elastómero. Puño de Lurex.",
-  "price": 209,
-  "discount": 18,
-  "size": 2,
-  "type": 2,
-  "image": "homero-burger-1.jpg",
-  "categories": [1]
- },
- {
-  "id": 9,
-  "name": "Soquetes The Simpsons",
-  "description": "vel augue vestibulum rutrum rutrum neque aenean auctor gravida sem praesent id",
-  "price": 360,
-  "discount": 20,
-  "size": 3,
-  "type": 3,
-  "image": "sockets-bart-honda.jpg",
-  "categories": [2]
- },
- {
-  "id": 10,
-  "name": "Medias Soquete Simpsons Homero Dona",
-  "description": "odio donec vitae nisi nam ultrices libero non mattis pulvinar nulla pede ullamcorper augue a suscipit",
-  "price": 339,
-  "discount": 15,
-  "size": 1,
-  "type": 1,
-  "image": "sockets-homero.jpg",
-  "categories": [2]
- },
- {
-  "id": 11,
-  "name": "Soquetes The Simpsons",
-  "description": "sapien ut nunc vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae mauris viverra diam",
-  "price": 350,
-  "discount": 20,
-  "size": 2,
-  "type": 2,
-  "image": "socks-homero-rosquillas.jpg",
-  "categories": [1]
- },
- {
-  "id": 12,
-  "name": "Medias Soquete Simpsons Homero Dona",
-  "description": "consectetuer adipiscing elit proin interdum mauris non ligula pellentesque ultrices phasellus id sapien in sapien iaculis congue vivamus metus arcu",
-  "price": 192,
-  "discount": 10,
-  "size": 3,
-  "type": 2,
-  "image": "socks-homero-traje-banio.jpg",
-  "categories": [3]
- },
- {
-  "id": 13,
-  "name": "Soquetes The Simpsons",
-  "description": "tristique in tempus sit amet sem fusce consequat nulla nisl nunc nisl duis bibendum",
-  "price": 205,
-  "discount": 5,
-  "size": 1,
-  "type": 1,
-  "image": "socks-lisa.jpg",
-  "categories": [2]
- },
- {
-  "id": 14,
-  "name": "Medias Soquete Simpsons Homero Dona",
-  "description": "at ipsum ac tellus semper interdum mauris ullamcorper purus sit amet nulla quisque",
-  "price": 379,
-  "discount": 20,
-  "size": 2,
-  "type": 2,
-  "image": "socks-maggie.jpg",
-  "categories": [3]
- },
- {
-  "id": 15,
-  "name": "Soquetes The Simpsons",
-  "description": "nec condimentum neque sapien placerat ante nulla justo aliquam quis turpis",
-  "price": 376,
-  "discount": 10,
-  "size": 3,
-  "type": 1,
-  "image": "socks-mr-sparkle.jpg",
-  "categories": [1]
- },
- {
-  "id": 16,
-  "name": "Medias Soquete Simpsons Homero Dona",
-  "description": "consectetuer adipiscing elit proin risus praesent lectus vestibulum quam sapien varius ut blandit non interdum in",
-  "price": 280,
-  "discount": 15,
-  "size": 1,
-  "type": 1,
-  "image": "socks-rosquillas.jpg",
-  "categories": [3]
- },
- {
-  "id": 17,
-  "name": "Soquetes The Simpsons",
-  "description": "odio in hac habitasse platea dictumst maecenas ut massa quis augue luctus tincidunt nulla mollis molestie lorem",
-  "price": 128,
-  "discount": 5,
-  "size": 2,
-  "type": 2,
-  "image": "sockets-bart-honda.jpg",
-  "categories": [3]
- },
- {
-  "id": 18,
-  "name": "Medias Soquete Simpsons Homero Dona",
-  "description": "nibh in lectus pellentesque at nulla suspendisse potenti cras in purus eu magna vulputate luctus cum sociis",
-  "price": 135,
-  "discount": 30,
-  "size": 3,
-  "type": 2,
-  "image": "sockets-homero.jpg",
-  "categories": [2]
- },
- {
-  "id": 19,
-  "name": "Soquetes The Simpsons",
-  "description": "aliquam quis turpis eget elit sodales scelerisque mauris sit amet eros",
-  "price": 147,
-  "discount": 5,
-  "size": 1,
-  "type": 1,
-  "image": "socks-homero-traje-banio.jpg",
-  "categories": [3]
- },
- {
-  "id": 20,
-  "name": "Medias Soquete Simpsons Homero Dona",
-  "description": "nunc commodo placerat praesent blandit nam nulla integer pede justo lacinia eget tincidunt eget",
-  "price": 260,
-  "discount": 10,
-  "size": 2,
-  "type": 2,
-  "image": "socks-rosquillas.jpg",
-  "categories": [2]
- }
-]
+    {
+     "id": 1,
+     "name": "Soquetes Homero The Simpsons",
+     "description": "medias de algodón - máxima calidad ",
+     "price": 125,
+     "discount": 20,
+     "size": 1,
+     "type": 1,
+     "categories": [1]
+    },
+    {
+     "id": 2,
+     "name": "Soquetes - Bart Simpson",
+     "description": "composicion: algodón con lycra, dibujo en poliamida, puño con elastómero. Puño de Lurex.",
+     "price": 163,
+     "discount": 10,
+     "size": 2,
+     "type": 2,
+     "categories": [3]
+    },
+    {
+     "id": 3,
+     "name": "Soquetes The Simpsons",
+     "description": "donec vitae nisi nam ultrices libero non mattis pulvinar nulla pede ullamcorper augue a suscipit",
+     "price": 325,
+     "discount": 10,
+     "size": 3,
+     "type": 3,
+     "categories": [1]
+    },
+    {
+     "id": 4,
+     "name": "Soquetes - Bart Simpson",
+     "description": "composicion: algodón con lycra, dibujo en poliamida, puño con elastómero. Puño de Lurex.",
+     "price": 389,
+     "discount": 15,
+     "size": 1,
+     "type": 1,
+     "categories": [3]
+    },
+    {
+     "id": 5,
+     "name": "Soquetes - Homero Simpson - Dona",
+     "description": "composicion: algodón con lycra, dibujo en poliamida, puño con elastómero. Puño de Lurex.",
+     "price": 327,
+     "discount": 12,
+     "size": 2,
+     "type": 2,
+     "categories": [1]
+    },
+    {
+     "id": 6,
+     "name": "Medias Soquete Simpsons Homero Dona",
+     "description": "composicion: algodón con lycra, dibujo en poliamida, puño con elastómero. Puño de Lurex.",
+     "price": 286,
+     "discount": 5,
+     "size": 3,
+     "type": 3,
+     "categories": [1]
+    },
+    {
+     "id": 7,
+     "name": "Medias - Bart Simpson - skate",
+     "description": "composicion: algodón con lycra, dibujo en poliamida, puño con elastómero. Puño de Lurex.",
+     "price": 249,
+     "discount": 15,
+     "size": 1,
+     "type": 1,
+     "categories": [3]
+    },
+    {
+     "id": 8,
+     "name": "Medias - Homero Simpson - Burger",
+     "description": "composicion: algodón con lycra, dibujo en poliamida, puño con elastómero. Puño de Lurex.",
+     "price": 209,
+     "discount": 18,
+     "size": 2,
+     "type": 2,
+     "categories": [1]
+    },
+    {
+     "id": 9,
+     "name": "Soquetes The Simpsons",
+     "description": "vel augue vestibulum rutrum rutrum neque aenean auctor gravida sem praesent id",
+     "price": 360,
+     "discount": 20,
+     "size": 3,
+     "type": 3,
+     "categories": [2]
+    },
+    {
+     "id": 10,
+     "name": "Medias Soquete Simpsons Homero Dona",
+     "description": "odio donec vitae nisi nam ultrices libero non mattis pulvinar nulla pede ullamcorper augue a suscipit",
+     "price": 339,
+     "discount": 15,
+     "size": 1,
+     "type": 1,
+     "categories": [2]
+    },
+    {
+     "id": 11,
+     "name": "Soquetes The Simpsons",
+     "description": "sapien ut nunc vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae mauris viverra diam",
+     "price": 350,
+     "discount": 20,
+     "size": 2,
+     "type": 2,
+     "categories": [1]
+    },
+    {
+     "id": 12,
+     "name": "Medias Soquete Simpsons Homero Dona",
+     "description": "consectetuer adipiscing elit proin interdum mauris non ligula pellentesque ultrices phasellus id sapien in sapien iaculis congue vivamus metus arcu",
+     "price": 192,
+     "discount": 10,
+     "size": 3,
+     "type": 2,
+     "categories": [3]
+    },
+    {
+     "id": 13,
+     "name": "Soquetes The Simpsons",
+     "description": "tristique in tempus sit amet sem fusce consequat nulla nisl nunc nisl duis bibendum",
+     "price": 205,
+     "discount": 5,
+     "size": 1,
+     "type": 1,
+     "categories": [2]
+    },
+    {
+     "id": 14,
+     "name": "Medias Soquete Simpsons Homero Dona",
+     "description": "at ipsum ac tellus semper interdum mauris ullamcorper purus sit amet nulla quisque",
+     "price": 379,
+     "discount": 20,
+     "size": 2,
+     "type": 2,
+     "categories": [3]
+    },
+    {
+     "id": 15,
+     "name": "Soquetes The Simpsons",
+     "description": "nec condimentum neque sapien placerat ante nulla justo aliquam quis turpis",
+     "price": 376,
+     "discount": 10,
+     "size": 3,
+     "type": 1,
+     "categories": [1]
+    },
+    {
+     "id": 16,
+     "name": "Medias Soquete Simpsons Homero Dona",
+     "description": "consectetuer adipiscing elit proin risus praesent lectus vestibulum quam sapien varius ut blandit non interdum in",
+     "price": 280,
+     "discount": 15,
+     "size": 1,
+     "type": 1,
+     "categories": [3]
+    },
+    {
+     "id": 17,
+     "name": "Soquetes The Simpsons",
+     "description": "odio in hac habitasse platea dictumst maecenas ut massa quis augue luctus tincidunt nulla mollis molestie lorem",
+     "price": 128,
+     "discount": 5,
+     "size": 2,
+     "type": 2,
+     "categories": [3]
+    },
+    {
+     "id": 18,
+     "name": "Medias Soquete Simpsons Homero Dona",
+     "description": "nibh in lectus pellentesque at nulla suspendisse potenti cras in purus eu magna vulputate luctus cum sociis",
+     "price": 135,
+     "discount": 30,
+     "size": 3,
+     "type": 2,
+     "categories": [2]
+    },
+    {
+     "id": 19,
+     "name": "Soquetes The Simpsons",
+     "description": "aliquam quis turpis eget elit sodales scelerisque mauris sit amet eros",
+     "price": 147,
+     "discount": 5,
+     "size": 1,
+     "type": 1,
+     "categories": [3]
+    },
+    {
+     "id": 20,
+     "name": "Medias Soquete Simpsons Homero Dona",
+     "description": "nunc commodo placerat praesent blandit nam nulla integer pede justo lacinia eget tincidunt eget",
+     "price": 260,
+     "discount": 10,
+     "size": 2,
+     "type": 2,
+     "categories": [2]
+    }
+   ]

@@ -16,11 +16,8 @@ let populate = products => products.map(p => populateProduct(p));
 let populateProduct = product => {
     // Add price with discount
     product.offerPrice = priceWithDiscount(product.price, product.discount);
-    // Add main image
-    let images = productImagesModel.findByField('prodId', product.id);
-    if(images && images.length > 0) { 
-        product.image = images[0].name; 
-    }
+    // Populate images
+    product.images = productImagesModel.findByField('prodId', product.id);
     // Populate categories
     product.categories = product.categories.map(catId => categoriesModel.find(catId));
     // Populate types
@@ -54,17 +51,16 @@ module.exports = {
         res.render('products/list', { products, productsTypes, productsSize });
     },
     detail: (req,res) => {
-        let images = productImagesModel.findByField('prodId', req.params.id);
         let product = productsModel.find(req.params.id);
         populateProduct(product);
-        res.render('products/detail', { product, images });
+        res.render('products/detail', { product });
     },
     show: (req,res) => {
         let featured = productsModel.all(); // TODO Destacados
-        let images = productImagesModel.findByField('prodId', req.params.id);
+        populate(featured);
         let product = productsModel.find(req.params.id);
         populateProduct(product);
-        res.render('products/show', { product, images, featured });
+        res.render('products/show', { product, featured });
     },
     create: (req,res) => {
         let categories = categoriesModel.all();
@@ -124,6 +120,8 @@ module.exports = {
     },
     cart: (req,res) => {
         console.log('Not implemented yet');
-        res.render('products/cart', { products: productsModel.all() });
+        let featured = productsModel.all();
+        populate(featured);
+        res.render('products/cart', { featured });
     },
 };

@@ -45,7 +45,7 @@
 					</div>
 				</div>
 				<div class="row">
-					<% images.forEach(prodImage => { %>
+					<% product.images.forEach(prodImage => { %>
 						<div class="col-6 col-md-3">
 							<img src="/images/products/<%= prodImage ? prodImage.name : '' %>" onerror="this.src='/images/products/default-image.png'" alt="imagen del producto">
 						</div>

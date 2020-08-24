@@ -10,11 +10,8 @@ let priceWithDiscount = (price, discount) => discount > 0 ? Math.round(price * (
 let populateProduct = product => {
     // Add price with discount
     product.offerPrice = priceWithDiscount(product.price, product.discount);
-    // Add main image
-    let images = productImagesModel.findByField('prodId', product.id);
-    if(images && images.length > 0) { 
-        product.image = images[0].name; 
-    }
+    // Populate images
+    product.images = productImagesModel.findByField('prodId', product.id);
     return product;
 };
 
