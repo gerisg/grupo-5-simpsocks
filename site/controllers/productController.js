@@ -53,7 +53,7 @@ module.exports = {
     },
     create: (req,res) => {
         let categories = categoriesModel.all();
-        res.render('products/create-form', { categories });
+        res.render('products/create-form', { categories, });
     },
     store: (req,res,next) =>{
         let product = {
