@@ -33,11 +33,9 @@
 							<label for="discount">Descuento:</label>
 							<input type="text" id="discount" name="discount" placeholder=" " value= <%= product.discount %>>
 						</div>
-						<div class="col-12 col-md-12 col-lg-12">
+						<div class="col-12">
 							<label for="description">Descripción:</label>
-							<div class = "new-product-description">
-								<textarea id="description" name="description" value=<%= product.description %> placeholder="describí tus simpsocks" required></textarea>
-							</div>	
+							<textarea id="description" name="description" placeholder="describí tus simpsocks" required><%= product.description %></textarea>
 						</div>
 						<div class="col-12">
 							<label for="size">Talle:</label>
@@ -58,6 +56,22 @@
 									</option>		
 								<% }) %> 								
 							</select>
+						</div>
+						<div class="col-12">
+							<label for="categories">Categorías:</label>
+							<div class="row">
+								<% categories.forEach(category => { %>
+									<div class="col-6 col-md-3 col-lg-2">
+										<input 
+											type="checkbox"
+											name="categories"
+											id="<%= category.id %>"
+											value=<%= category.id %>
+											<%= product.categories.includes(category.id) ? 'checked' : '' %>>
+										<span><%= category.name %></span>
+									</div>
+								<% }) %>
+							</div>
 						</div>
                         <div class="col-12">
 							<label for="image">Imagen:</label>

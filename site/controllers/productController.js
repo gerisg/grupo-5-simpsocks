@@ -58,12 +58,12 @@ module.exports = {
     store: (req,res,next) =>{
         let product = {
 			name: req.body.name,
-			price: req.body.price,
+			price: parseFloat(req.body.price),
 			discount: req.body.discount,
             description: req.body.description,
-            size:req.body.size,
-            type:req.body.type,
-            categories: req.body.categories
+            size: parseInt(req.body.size),
+            type: parseInt(req.body.type),
+            categories: req.body.categories.map(c => parseInt(c))
         }
         let id = productsModel.create(product);
         req.files.forEach(file => {
@@ -73,8 +73,9 @@ module.exports = {
         res.redirect('/products/' + id);
     },
     edit: (req,res) => {
+        let categories = categoriesModel.all();
         let product = productsModel.find(req.params.id);
-        res.render('products/edit-form', { product, productsTypes, productsSize});
+        res.render('products/edit-form', { product, productsTypes, productsSize, categories });
     },
     update: (req, res) => {
         let product = {
@@ -85,9 +86,10 @@ module.exports = {
             description: req.body.description,
             size: parseInt(req.body.size),
             type: parseInt(req.body.type),
-            image: req.file ? req.file.filename : req.body.currentImage
+            categories: req.body.categories.map(c => parseInt(c))
         };
         let id = productsModel.update(product);
+        // TODO update images
         res.redirect('/products');
     },
     destroy : (req, res) => {
