@@ -110,13 +110,93 @@
   "name": "homero-burger-3.jpg"
  },
  {
-  "prodId": 21,
-  "name": "image-1598233012525.jpg",
-  "id": 24
- },
- {
-  "prodId": 22,
-  "name": "image-1598233128922.jpg",
-  "id": 25
- }
+    "id": 24,
+    "prodId": 9,
+    "name": "marge-medias-1.jpg"
+   },
+   {
+    "id": 25,
+    "prodId": 9,
+    "name": "marge-medias-2.jpg"
+   },
+   {
+    "id": 26,
+    "prodId": 9,
+    "name": "marge-medias-3.jpg"
+   },
+   {
+      "id": 27,
+      "prodId": 10,
+      "name": "burns-medias-1.jpg"
+     },
+     {
+      "id": 28,
+      "prodId": 10,
+      "name": "burns-medias-2.jpg"
+     },
+     {
+      "id": 30,
+      "prodId": 11,
+      "name": "lisa-medias.jpg"
+     },
+     {
+      "id": 31,
+      "prodId": 11,
+      "name": "lisa-medias-2.jpg"
+     },
+     {
+      "id": 31,
+      "prodId": 12,
+      "name": "maggie-2.jpg"
+     },
+     {
+      "id": 31,
+      "prodId": 12,
+      "name": "maggie-1.jpg"
+     },
+     {
+      "id": 32,
+      "prodId": 13,
+      "name": "marge-medias.jpg"
+     },
+     {
+      "id": 33,
+      "prodId": 13,
+      "name": "marge-medias2.jpg"
+     },
+     {
+      "id": 33,
+      "prodId": 14,
+      "name": "socks-maggie.jpg"
+     },
+     {
+      "id": 34,
+      "prodId": 15,
+      "name": "socks-rosquillas.jpg"
+     },
+     {
+      "id": 35,
+      "prodId": 16,
+      "name": "sockets-bart-honda.jpg"
+     },
+     {
+      "id": 36,
+      "prodId": 17,
+      "name": "sockets-homero.jpg"
+     },
+     {
+      "id": 37,
+      "prodId": 18,
+      "name": "socks-mr-sparkle.jpg"
+     },
+     {
+      "id": 38,
+      "prodId": 19,
+      "name": "socks-homero-traje-banio.jpg"
+     },
+     {
+      "id": 39,
+      "prodId": 20,
+      "name": "socks-lisa.jpg"
+     }   
 ]
