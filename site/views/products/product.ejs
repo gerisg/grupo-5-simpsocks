@@ -1,7 +1,7 @@
 <section class="product">
     <a href="/products/<%= product.id %>/show">
         <figure class="product-image">
-            <img src="/images/products/<%= product.image %>"  alt="imagen de producto">
+            <img src="/images/products/<%= product.image %>" onerror="this.src='/images/products/default-image.png'" alt="imagen de producto">
         </figure>
         <article class="product-data">
             <p><%= product.name %></p>
