@@ -73,11 +73,30 @@
 								<% }) %>
 							</div>
 						</div>
-                        <div class="col-12">
-							<label for="image">Imagen:</label>
-							<input type="file" id="image" name="image" value="">
+						<div class="col-12">
+							<label>Imágenes existentes:</label>
+							<div class="row">
+								<% if (!productImages || productImages.length == 0) { %>
+									<p>Producto sin imágenes.</p>
+								<% } else { %>
+									<div class="col-12">
+										<input type="checkbox" name="removeCurrentImages" id="removeCurrentImages" value=true>
+										<label for="removeCurrentImages">Eliminar imágenes actuales</label>
+									</div>
+									<% productImages.forEach(image => { %>
+										<div class="col-4">
+											<figure>
+												<img src="/images/products/<%= image.name %>" alt="imagen de producto">
+											</figure>
+										</div>
+									<% }) %>
+								<% } %>
+							</div>
 						</div>
-						<input type="hidden" name="currentImage" value="<%= product.image %>">
+                        <div class="col-12">
+							<label for="images">Nuevas Imágenes:</label>
+							<input type="file" id="images" name="images" multiple style="border: none;">
+						</div>
 						<div class="col-12">
 							<button type="submit" class="btn btn-primary">Guardar</button>
 							<a href="/products" class="btn btn-cancel">Cancelar</a>

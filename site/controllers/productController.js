@@ -86,7 +86,8 @@ module.exports = {
     edit: (req,res) => {
         let categories = categoriesModel.all();
         let product = productsModel.find(req.params.id);
-        res.render('products/edit-form', { product, productsTypes, productsSize, categories });
+        let productImages = productImagesModel.findByField('prodId', req.params.id);
+        res.render('products/edit-form', { product, productImages, productsTypes, productsSize, categories });
     },
     update: (req, res) => {
         let product = {
@@ -100,8 +101,13 @@ module.exports = {
             categories: parseCategories(req.body.categories)
         };
         let id = productsModel.update(product);
-        // TODO update images
-        res.redirect('/products');
+        // Eliminar imágenes actuales
+        if(req.body.removeCurrentImages) {
+            productImagesModel.findByField('prodId', id).forEach(image => productImagesModel.delete(image.id));
+        }
+        // Guardar nuevas imágenes
+        req.files.forEach(file => productImagesModel.create({ prodId: id, name: file.filename }));
+        res.redirect('/products/' + id);
     },
     destroy: (req, res) => {
         let id = req.params.id;
