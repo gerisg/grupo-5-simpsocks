@@ -12,34 +12,34 @@
         </nav>
 	</section>
 	
-	<main class="container admin-wrapper">
-		<div class="row main-center">
+	<main class="container admin-wrapper main-with-form">
+		<div class="row main-center form-general">
 			<div class="col-11">
 				<h2 class="title">Listado de usuarios</h2>
 				<a href="/users/create" class="btn btn-primary">Crear usuario</a>
 			</div>
 			<!-- table titles -->
-			<div class="col-11">
+			<div class="col-11 ">
 				<div class="row row-title">
-					<div class="col-md-1 hidden-sm">Imagen</div>
-					<div class="col-4 col-md-2">Nombre</div>
+					<div class="col 1 col-md-1">Imagen</div>
+					<div class="col-5 col-md-2">Nombre</div>
 					<div class="col-4 col-md-2">Apellido</div>
 					<div class="col-md-3 hidden-sm">Email</div>
 					<div class="col-md-2 hidden-sm">Categoría</div>
-					<div class="col-4 col-md-2">Acciones</div>
+					<div class="hidden-sm col-md-2">Acciones</div>
 				</div>
 			</div>
 			<!-- table content -->
 			<div class="col-11">
 				<% users.forEach(user => { %>
-					<div class="row cross-center">
-						<div class="col-md-1 hidden-sm row-user-image">
+					<div class="row cross-center admin-list-step">
+						<div class=" col 2 col-md-1 row-user-image">
 							<img src="/images/users/<%= user.image ? user.image : '' %>" onerror="this.src='/images/users/default-image.png'" alt="imagen de usuario">
 						</div>
-						<div class="col-4 col-md-2">
+						<div class="col-5 col-md-2">
 							<%= user.firstname %>
 						</div>
-						<div class="col-4 col-md-2">
+						<div class="col-5 col-md-2">
 							<%= user.lastname %>
 						</div>
 						<div class="col-md-3 hidden-sm">
@@ -48,11 +48,11 @@
 						<div class="col-md-2 hidden-sm">
 							<%= user.category %>
 						</div>
-						<div class="col-4 col-md-2">
+						<div class="col-12 col-md-2 admin-list-actions">
 							<a class="btn btn-icon" href="/users/<%= user.id %>"><i class="fas fa-eye"></i></a>
 							<a class="btn btn-icon" href="/users/<%= user.id %>/edit"><i class="fas fa-edit"></i></a>
 							<form class="form-only-btn" action="/users/<%= user.id %>?_method=delete" method="post">
-								<button class="btn btn-icon" type="submit"><i class="fas fa-trash"></i></button>
+								<button class="btn btn-icon admin-list-actions" type="submit"><i class="fas fa-trash"></i></button>
 							</form>
 						</div>
 					</div>
