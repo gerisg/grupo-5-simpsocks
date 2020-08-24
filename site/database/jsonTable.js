@@ -30,10 +30,15 @@ let model = function(tableName) {
         findByFields(fields, value) {
             if(!fields || !value) { return []; }
             let rows = this.readFile();
-            return rows.filter(row => 
-                fields.find(field => 
+            return rows.filter(row =>
+                fields.find(field =>
                     row[field] && row[field].toLowerCase().includes(value.toLowerCase())
                 ));
+        },
+        findByMultivalueField(field, value) {
+            if(!field || !value) { return []; }
+            let rows = this.readFile();
+            return rows.filter(row => row[field].includes(value));
         },
         create(row) {
             row.id = this.nextId();

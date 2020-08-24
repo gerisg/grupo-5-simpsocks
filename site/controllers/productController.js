@@ -49,6 +49,8 @@ let deleteImages = id => {
     }
 }
 
+let categoryMatch = categoryName => categoriesModel.findByFields(['name'], categoryName);
+
 module.exports = {
     find: (req, res) => {
         let results;
