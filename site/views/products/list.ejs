@@ -44,10 +44,10 @@
 							 $ <%= product.price %>
 						</div>
 						<div class="col-md-1 hidden-sm">
-							<%= productsSize[product.size - 1].name %>
+							<%= product.size.name %>
 						</div>
 						<div class="col-md-1 hidden-sm">
-							<%= productsTypes[product.type - 1].name %>
+							<%= product.type.name %>
 						</div>
 						<div class="col-md-2 hidden-sm labels">
 							<% product.categories.forEach(category => { %>

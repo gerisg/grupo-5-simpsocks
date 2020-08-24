@@ -23,7 +23,10 @@ let populateProduct = product => {
     }
     // Populate categories
     product.categories = product.categories.map(catId => categoriesModel.find(catId));
-
+    // Populate types
+    product.type = productsTypes.find(type => product.type == type.id);
+    // Populate size
+    product.size = productsSize.find(size => product.size == size.id);
     return product;
 };
 
@@ -50,25 +53,24 @@ module.exports = {
         populate(products);
         res.render('products/list', { products, productsTypes, productsSize });
     },
-    detail: (req,res) =>{
+    detail: (req,res) => {
         let images = productImagesModel.findByField('prodId', req.params.id);
         let product = productsModel.find(req.params.id);
         populateProduct(product);
         res.render('products/detail', { product, images });
     },
-    show: (req,res) =>{
+    show: (req,res) => {
         let featured = productsModel.all(); // TODO Destacados
         let images = productImagesModel.findByField('prodId', req.params.id);
-        console.log(images);
         let product = productsModel.find(req.params.id);
         populateProduct(product);
         res.render('products/show', { product, images, featured });
     },
     create: (req,res) => {
         let categories = categoriesModel.all();
-        res.render('products/create-form', { categories, });
+        res.render('products/create-form', { productsTypes, productsSize, categories });
     },
-    store: (req,res) =>{
+    store: (req,res) => {
         let product = {
 			name: req.body.name,
 			price: parseFloat(req.body.price),
@@ -105,7 +107,7 @@ module.exports = {
         // TODO update images
         res.redirect('/products');
     },
-    destroy : (req, res) => {
+    destroy: (req, res) => {
         let id = req.params.id;
         // remove image
         let images = productImagesModel.findByField('prodId', id);

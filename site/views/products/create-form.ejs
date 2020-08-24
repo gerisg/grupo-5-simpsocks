@@ -37,19 +37,23 @@
                         <input type="number" id="discount" name="discount" placeholder= "ingresa el descuento de tus simpsocks" class="new-product-input">   
                     </div>
                     <div class="form-step-create">
-                        <label for="size" >Talles</label><br>
-                        <select name="Type" id="Type" class="new-product-input">
-                            <option value="1">Small</option>
-                            <option value="2">Medium</option>
-                            <option value="3">Large</option>
+                        <label for="size">Talle:</label>
+                        <select name="size" id="size">
+                            <% productsSize.forEach(size => { %>
+                                <option value="<%= size.id %>">
+                                     <%= size.name %>  
+                                </option>		
+                            <% }) %> 								
                         </select>
                     </div>
                     <div class="form-step-create">
-                        <label for="type" >Tipo de Simpsock</label><br>
-                        <select name="Type" id="Type" class="new-product-input">
-                            <option value="1">Soquete</option>
-                            <option value="2">Medias</option>
-                            <option value="3">Bucanera</option>
+                        <label for="type">Tipo:</label>
+                        <select name="type" id="type">
+                            <% productsTypes.forEach(type => { %>
+                                <option value="<%= type.id %>">
+                                     <%= type.name %>  
+                                </option>		
+                            <% }) %> 								
                         </select>
                     </div>
                     <div class="form-step-create">
