@@ -22,6 +22,101 @@
  {
   "id": 5,
   "prodId": 2,
-  "name": "bart1.jpg"
+  "name": "bart2.jpg"
+ },
+ {
+  "id": 6,
+  "prodId": 2,
+  "name": "bart3.jpg"
+ },
+ {
+  "id": 7,
+  "prodId": 3,
+  "name": "varios-personajes.jpg"
+ },
+ {
+  "id": 8,
+  "prodId": 3,
+  "name": "varios-personajes-1.jpg"
+ },
+ {
+  "id": 9,
+  "prodId": 3,
+  "name": "varios-personajes.jpg"
+ },
+ {
+  "id": 10,
+  "prodId": 4,
+  "name": "bart-medias-gris.jpg"
+ },
+ {
+  "id": 11,
+  "prodId": 4,
+  "name": "bart-medias-azul.jpg"
+ },
+ {
+  "id": 12,
+  "prodId": 4,
+  "name": "bart-medias-both1.jpg"
+ },
+ {
+  "id": 13,
+  "prodId": 5,
+  "name": "socks-homer-dona-1.jpg"
+ },
+ {
+  "id": 14,
+  "prodId": 5,
+  "name": "socks-homer-dona-2.png"
+ },
+ {
+  "id": 15,
+  "prodId": 5,
+  "name": "socks-homer-dona-3.png"
+ },
+ {
+  "id": 16,
+  "prodId": 6,
+  "name": "medias-homero-donas.jpg"
+ },
+ {
+  "id": 17,
+  "prodId": 6,
+  "name": "medias-homero-donas-1.jpg"
+ },
+ {
+  "id": 19,
+  "prodId": 7,
+  "name": "bart-medias-1.png"
+ },
+ {
+  "id": 20,
+  "prodId": 7,
+  "name": "bart-medias-2.png"
+ },
+ {
+  "id": 21,
+  "prodId": 8,
+  "name": "homero-burger-1.jpg"
+ },
+ {
+  "id": 22,
+  "prodId": 8,
+  "name": "homero-burger-2.jpg"
+ },
+ {
+  "id": 23,
+  "prodId": 8,
+  "name": "homero-burger-3.jpg"
+ },
+ {
+  "prodId": 21,
+  "name": "image-1598233012525.jpg",
+  "id": 24
+ },
+ {
+  "prodId": 22,
+  "name": "image-1598233128922.jpg",
+  "id": 25
  }
 ]

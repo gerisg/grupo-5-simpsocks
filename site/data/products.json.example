@@ -1,25 +1,25 @@
 [
  {
   "id": 1,
-  "name": "Soquetes The Simpsons",
-  "description": "arcu sed augue aliquam erat volutpat in congue etiam justo etiam pretium iaculis",
+  "name": "Soquetes Homero The Simpsons",
+  "description": "medias de algodón - máxima calidad ",
   "price": 125,
   "discount": 20,
   "size": 1,
   "type": 1,
-  "image": "sockets-bart-honda.jpg",
-  "categories": 1
+  "image": "homer_1.jpg",
+  "categories": [1]
  },
  {
   "id": 2,
-  "name": "Medias Soquete Simpsons Homero Dona",
-  "description": "semper est quam pharetra magna ac consequat metus sapien ut nunc vestibulum ante ipsum",
+  "name": "Soquetes - Bart Simpson",
+  "description": "composicion: algodón con lycra, dibujo en poliamida, puño con elastómero. Puño de Lurex.",
   "price": 163,
   "discount": 10,
   "size": 2,
   "type": 2,
-  "image": "sockets-homero.jpg",
-  "categories": 2
+  "image": "bart2.jpg",
+  "categories": [3]
  },
  {
   "id": 3,
@@ -29,63 +29,63 @@
   "discount": 10,
   "size": 3,
   "type": 3,
-  "image": "socks-homero-rosquillas.jpg",
-  "categories": 2
+  "image": "varios-personajes.jpg",
+  "categories": [1]
  },
  {
   "id": 4,
-  "name": "Medias Soquete Simpsons Homero Dona",
-  "description": "sapien a libero nam dui proin leo odio porttitor id consequat in consequat ut nulla sed accumsan felis ut",
+  "name": "Soquetes - Bart Simpson",
+  "description": "composicion: algodón con lycra, dibujo en poliamida, puño con elastómero. Puño de Lurex.",
   "price": 389,
   "discount": 15,
   "size": 1,
   "type": 1,
-  "image": "socks-homero-traje-banio.jpg",
-  "categories": 2
+  "image": "bart-medias-both1.jpg",
+  "categories": [3]
  },
  {
   "id": 5,
-  "name": "Soquetes The Simpsons",
-  "description": "at velit vivamus vel nulla eget eros elementum pellentesque quisque porta volutpat",
+  "name": "Soquetes - Homero Simpson - Dona",
+  "description": "composicion: algodón con lycra, dibujo en poliamida, puño con elastómero. Puño de Lurex.",
   "price": 327,
   "discount": 12,
   "size": 2,
   "type": 2,
-  "image": "socks-lisa.jpg",
-  "categories": 3
+  "image": "socks-homer-dona-1.jpg",
+  "categories": [1]
  },
  {
   "id": 6,
   "name": "Medias Soquete Simpsons Homero Dona",
-  "description": "vitae mattis nibh ligula nec sem duis aliquam convallis nunc proin at turpis a pede posuere nonummy integer non",
+  "description": "composicion: algodón con lycra, dibujo en poliamida, puño con elastómero. Puño de Lurex.",
   "price": 286,
   "discount": 5,
   "size": 3,
   "type": 3,
-  "image": "socks-maggie.jpg",
-  "categories": 3
+  "image": "medias-homero-donas.jpg",
+  "categories": [1]
  },
  {
   "id": 7,
-  "name": "Soquetes The Simpsons",
-  "description": "gravida nisi at nibh in hac habitasse platea dictumst aliquam augue quam sollicitudin vitae consectetuer eget rutrum at lorem integer",
-  "price": 249.00,
+  "name": "Medias - Bart Simpson - skate",
+  "description": "composicion: algodón con lycra, dibujo en poliamida, puño con elastómero. Puño de Lurex.",
+  "price": 249,
   "discount": 15,
   "size": 1,
   "type": 1,
-  "image": "socks-mr-sparkle.jpg",
-  "categories": 1
+  "image": "bart-medias-2.png",
+  "categories": [3]
  },
  {
   "id": 8,
-  "name": "Medias Soquete Simpsons Homero Dona",
-  "description": "justo in hac habitasse platea dictumst etiam faucibus cursus urna ut tellus nulla ut erat",
+  "name": "Medias - Homero Simpson - Burger",
+  "description": "composicion: algodón con lycra, dibujo en poliamida, puño con elastómero. Puño de Lurex.",
   "price": 209,
   "discount": 18,
   "size": 2,
   "type": 2,
-  "image": "socks-rosquillas.jpg",
-  "categories": 1
+  "image": "homero-burger-1.jpg",
+  "categories": [1]
  },
  {
   "id": 9,
@@ -96,7 +96,7 @@
   "size": 3,
   "type": 3,
   "image": "sockets-bart-honda.jpg",
-  "categories": 2
+  "categories": [2]
  },
  {
   "id": 10,
@@ -107,7 +107,7 @@
   "size": 1,
   "type": 1,
   "image": "sockets-homero.jpg",
-  "categories": 2
+  "categories": [2]
  },
  {
   "id": 11,
@@ -118,7 +118,7 @@
   "size": 2,
   "type": 2,
   "image": "socks-homero-rosquillas.jpg",
-  "categories": 1
+  "categories": [1]
  },
  {
   "id": 12,
@@ -129,7 +129,7 @@
   "size": 3,
   "type": 2,
   "image": "socks-homero-traje-banio.jpg",
-  "categories": 3
+  "categories": [3]
  },
  {
   "id": 13,
@@ -140,7 +140,7 @@
   "size": 1,
   "type": 1,
   "image": "socks-lisa.jpg",
-  "categories": 2
+  "categories": [2]
  },
  {
   "id": 14,
@@ -151,7 +151,7 @@
   "size": 2,
   "type": 2,
   "image": "socks-maggie.jpg",
-  "categories": 3
+  "categories": [3]
  },
  {
   "id": 15,
@@ -162,7 +162,7 @@
   "size": 3,
   "type": 1,
   "image": "socks-mr-sparkle.jpg",
-  "categories": 1
+  "categories": [1]
  },
  {
   "id": 16,
@@ -173,7 +173,7 @@
   "size": 1,
   "type": 1,
   "image": "socks-rosquillas.jpg",
-  "categories": 3
+  "categories": [3]
  },
  {
   "id": 17,
@@ -184,7 +184,7 @@
   "size": 2,
   "type": 2,
   "image": "sockets-bart-honda.jpg",
-  "categories": 3
+  "categories": [3]
  },
  {
   "id": 18,
@@ -195,7 +195,7 @@
   "size": 3,
   "type": 2,
   "image": "sockets-homero.jpg",
-  "categories": 2
+  "categories": [2]
  },
  {
   "id": 19,
@@ -206,7 +206,7 @@
   "size": 1,
   "type": 1,
   "image": "socks-homero-traje-banio.jpg",
-  "categories": 3
+  "categories": [3]
  },
  {
   "id": 20,
@@ -217,6 +217,6 @@
   "size": 2,
   "type": 2,
   "image": "socks-rosquillas.jpg",
-  "categories": 2
+  "categories": [2]
  }
 ]
