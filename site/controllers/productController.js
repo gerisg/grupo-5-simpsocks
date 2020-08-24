@@ -95,9 +95,14 @@ module.exports = {
     destroy : (req, res) => {
         let id = req.params.id;
         // remove image
-        let image = productsModel.find(id).image;
-        const imagePath = path.join(__dirname, '../public/images/products/' + image);
-        fs.existsSync(imagePath) ? fs.unlinkSync(imagePath) : '';
+        let images = productImagesModel.findByField('prodId', id);
+        if(images && images.length > 0) { 
+            images.forEach(image => {
+                const imagePath = path.join(__dirname, '../public/images/products/' + image.name);
+                fs.existsSync(imagePath) ? fs.unlinkSync(imagePath) : '';
+                productImagesModel.delete(image.id);
+            });
+        }
         // remove product
         productsModel.delete(id);
         res.redirect('/products');
