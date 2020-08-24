@@ -27,6 +27,18 @@ let populateProduct = product => {
     return product;
 };
 
+let parseCategories = categories => {
+    if(!categories) {
+        categories = [];
+    } else if(categories && typeof(categories) == 'string') {
+        // we get single checkbox like string, but we want save an array of categories
+        categories = [parseInt(categories)];
+    } else {
+        categories = categories.map(category => parseInt(category))
+    }
+    return categories;
+}
+
 module.exports = {
     find: (req, res) => {
         let products = productsModel.all();
@@ -56,9 +68,7 @@ module.exports = {
         let categories = categoriesModel.all();
         res.render('products/create-form', { categories, });
     },
-    store: (req,res,next) =>{
-        console.log(req.body.size);
-        console.log(req.body.type);
+    store: (req,res) =>{
         let product = {
 			name: req.body.name,
 			price: parseFloat(req.body.price),
@@ -66,7 +76,7 @@ module.exports = {
             description: req.body.description,
             size: parseInt(req.body.size),
             type: parseInt(req.body.type),
-            categories: req.body.categories.map(c => parseInt(c))
+            categories: parseCategories(req.body.categories)
         }
         let id = productsModel.create(product);
         req.files.forEach(file => {
@@ -89,7 +99,7 @@ module.exports = {
             description: req.body.description,
             size: parseInt(req.body.size),
             type: parseInt(req.body.type),
-            categories: req.body.categories.map(c => parseInt(c))
+            categories: parseCategories(req.body.categories)
         };
         let id = productsModel.update(product);
         // TODO update images
