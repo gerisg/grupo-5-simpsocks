@@ -12,7 +12,6 @@ let productsSize = [{ id: 1, name: 'Small' }, { id: 2, name: 'Medium' }, { id: 3
 let priceWithDiscount = (price, discount) => discount > 0 ? Math.round(price * ((100 - discount) / 100)) : price;
 
 let populate = products => products.map(p => populateProduct(p));
-
 let populateProduct = product => {
     // Add price with discount
     product.offerPrice = priceWithDiscount(product.price, product.discount);
@@ -37,6 +36,17 @@ let parseCategories = categories => {
         categories = categories.map(category => parseInt(category))
     }
     return categories;
+}
+
+let deleteImages = id => {
+    let images = productImagesModel.findByField('prodId', id);
+    if (images && images.length > 0) {
+        images.forEach(image => {
+            const imagePath = path.join(__dirname, '../public/images/products/' + image.name);
+            fs.existsSync(imagePath) ? fs.unlinkSync(imagePath) : '';
+            productImagesModel.delete(image.id);
+        });
+    }
 }
 
 module.exports = {
@@ -103,7 +113,7 @@ module.exports = {
         let id = productsModel.update(product);
         // Eliminar imágenes actuales
         if(req.body.removeCurrentImages) {
-            productImagesModel.findByField('prodId', id).forEach(image => productImagesModel.delete(image.id));
+            deleteImages(id);
         }
         // Guardar nuevas imágenes
         req.files.forEach(file => productImagesModel.create({ prodId: id, name: file.filename }));
@@ -112,14 +122,7 @@ module.exports = {
     destroy: (req, res) => {
         let id = req.params.id;
         // remove image
-        let images = productImagesModel.findByField('prodId', id);
-        if(images && images.length > 0) { 
-            images.forEach(image => {
-                const imagePath = path.join(__dirname, '../public/images/products/' + image.name);
-                fs.existsSync(imagePath) ? fs.unlinkSync(imagePath) : '';
-                productImagesModel.delete(image.id);
-            });
-        }
+        deleteImages(id);
         // remove product
         productsModel.delete(id);
         res.redirect('/products');
