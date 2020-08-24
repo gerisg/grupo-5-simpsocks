@@ -1,262 +1,310 @@
 [
- {
-  "id": 1,
-  "name": "Soquetes Homero The Simpsons",
-  "description": "medias de algodón - máxima calidad ",
-  "price": 125,
-  "discount": 20,
-  "size": 1,
-  "type": 2,
-  "image": "homer_1.jpg",
-  "categories": [
-   1
-  ]
- },
- {
-  "id": 2,
-  "name": "Soquetes - Bart Simpson",
-  "description": "composicion: algodón con lycra, dibujo en poliamida, puño con elastómero. Puño de Lurex.",
-  "price": 163,
-  "discount": 10,
-  "size": 2,
-  "type": 1,
-  "image": "bart2.jpg",
-  "categories": [
-   3
-  ]
- },
- {
-  "id": 3,
-  "name": "Medias The Simpsons - varios personajes",
-  "description": "donec vitae nisi nam ultrices libero non mattis pulvinar nulla pede ullamcorper augue a suscipit",
-  "price": 325,
-  "discount": 10,
-  "size": 3,
-  "type": 2,
-  "image": "varios-personajes.jpg",
-  "categories": [
-   1
-  ]
- },
- {
-  "id": 4,
-  "name": "Medias - Bart Simpson",
-  "description": "composicion: algodón con lycra, dibujo en poliamida, puño con elastómero. Puño de Lurex.",
-  "price": 389,
-  "discount": 15,
-  "size": 1,
-  "type": 2,
-  "image": "bart-medias-both1.jpg",
-  "categories": [
-   3
-  ]
- },
- {
-  "id": 5,
-  "name": "Soquetes - Homero Simpson - Dona",
-  "description": "composicion: algodón con lycra, dibujo en poliamida, puño con elastómero. Puño de Lurex.",
-  "price": 327,
-  "discount": 12,
-  "size": 2,
-  "type": 1,
-  "image": "socks-homer-dona-1.jpg",
-  "categories": [
-   1
-  ]
- },
- {
-  "id": 6,
-  "name": "Medias Soquete Simpsons Homero Dona",
-  "description": "composicion: algodón con lycra, dibujo en poliamida, puño con elastómero. Puño de Lurex.",
-  "price": 286,
-  "discount": 5,
-  "size": 3,
-  "type": 2,
-  "image": "medias-homero-donas.jpg",
-  "categories": [
-   1
-  ]
- },
- {
-  "id": 7,
-  "name": "Medias - Bart Simpson - skate",
-  "description": "composicion: algodón con lycra, dibujo en poliamida, puño con elastómero. Puño de Lurex.",
-  "price": 249,
-  "discount": 15,
-  "size": 1,
-  "type": 2,
-  "image": "bart-medias-2.png",
-  "categories": [
-   3
-  ]
- },
- {
-  "id": 8,
-  "name": "Medias - Homero Simpson - Burger",
-  "description": "composicion: algodón con lycra, dibujo en poliamida, puño con elastómero. Puño de Lurex.",
-  "price": 209,
-  "discount": 18,
-  "size": 2,
-  "type": 2,
-  "image": "homero-burger-1.jpg",
-  "categories": [
-   1
-  ]
- },
- {
-  "id": 9,
-  "name": "Medias - Marge Simpson",
-  "description": "Diseño azul, amarillo, naranja y verde claro. 75% algodón peinado, 22% poliéster, 3% elastano.",
-  "price": 360,
-  "discount": 20,
-  "size": 3,
-  "type": 2,
-  "image": "marge-medias-1.jpg",
-  "categories": [
-   2
-  ]
- },
- {
-  "id": 10,
-  "name": "Medias - Mr Burns",
-  "description": "composicion: algodón con lycra, dibujo en poliamida, puño con elastómero. Puño de Lurex.",
-  "price": 339,
-  "discount": 15,
-  "size": 1,
-  "type": 2,
-  "image": "burns-medias.jpg",
-  "categories": [
-   2
-  ]
- },
- {
-  "id": 11,
-  "name": "Medias Lisa Simpsons",
-  "description": "sapien ut nunc vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae mauris viverra diam",
-  "price": 350,
-  "discount": 20,
-  "size": 2,
-  "type": 2,
-  "image": "lisa-medias.jpg",
-  "categories": [
-   5
-  ]
- },
- {
-  "id": 12,
-  "name": "Medias Maggie - Simpson",
-  "description": "consectetuer adipiscing elit proin interdum mauris non ligula pellentesque ultrices phasellus id sapien in sapien iaculis congue vivamus metus arcu",
-  "price": 192,
-  "discount": 10,
-  "size": 3,
-  "type": 2,
-  "image": "maggie-2.jpg",
-  "categories": [
-   4
-  ]
- },
- {
-  "id": 13,
-  "name": "Medias - Marge Simpson",
-  "description": "tristique in tempus sit amet sem fusce consequat nulla nisl nunc nisl duis bibendum",
-  "price": 205,
-  "discount": 5,
-  "size": 1,
-  "type": 2,
-  "image": "marge-medias.jpg",
-  "categories": [
-   2
-  ]
- },
- {
-  "id": 14,
-  "name": "Soquetes Maggie - Simpson",
-  "description": "at ipsum ac tellus semper interdum mauris ullamcorper purus sit amet nulla quisque",
-  "price": 379,
-  "discount": 20,
-  "size": 2,
-  "type": 1,
-  "image": "socks-maggie.jpg",
-  "categories": [
-   4
-  ]
- },
- {
-  "id": 15,
-  "name": "Soquetes Homero Simpson - Dona",
-  "description": "consectetuer adipiscing elit proin risus praesent lectus vestibulum quam sapien varius ut blandit non interdum in",
-  "price": 280,
-  "discount": 15,
-  "size": 1,
-  "type": 1,
-  "image": "socks-rosquillas.jpg",
-  "categories": [
-   1
-  ]
- },
- {
-  "id": 16,
-  "name": "Soquetes Bart Simpson - Honda",
-  "description": "odio in hac habitasse platea dictumst maecenas ut massa quis augue luctus tincidunt nulla mollis molestie lorem",
-  "price": 128,
-  "discount": 5,
-  "size": 2,
-  "type": 1,
-  "image": "sockets-bart-honda.jpg",
-  "categories": [
-   3
-  ]
- },
- {
-  "id": 17,
-  "name": "Soquetes Homero",
-  "description": "nibh in lectus pellentesque at nulla suspendisse potenti cras in purus eu magna vulputate luctus cum sociis",
-  "price": 135,
-  "discount": 30,
-  "size": 3,
-  "type": 1,
-  "image": "sockets-homero.jpg",
-  "categories": [
-   1
-  ]
- },
- {
-  "id": 18,
-  "name": "Medias Mr - Sparkle The Simpsons",
-  "description": "aliquam quis turpis eget elit sodales scelerisque mauris sit amet eros",
-  "price": 147,
-  "discount": 5,
-  "size": 1,
-  "type": 1,
-  "image": "socks-mr-sparkle.jpg",
-  "categories": [
-   1
-  ]
- },
- {
-  "id": 19,
-  "name": "Soquetes Homero Simpson - Traje de Baño",
-  "description": "nunc commodo placerat praesent blandit nam nulla integer pede justo lacinia eget tincidunt eget",
-  "price": 260,
-  "discount": 10,
-  "size": 2,
-  "type": 1,
-  "image": "socks-homero-traje-banio",
-  "categories": [
-   1
-  ]
- },
- {
-    "id": 20,
-    "name": "Soquetes Lisa Simpson - Sax",
-    "description": "nunc commodo placerat praesent blandit nam nulla integer pede justo lacinia eget tincidunt eget",
-    "price": 260,
+  {
+    "id": 1,
+    "name": "medias bart cow man",
+    "price": 100,
+    "discount": 0,
+    "description": "Medias de algodón. Máxima calidad.",
+    "size": 1,
+    "type": 2,
+    "categories": [
+      4,
+      7
+    ]
+  },
+  {
+    "id": 2,
+    "name": "medias bart cow man azules",
+    "price": 200,
+    "discount": 5,
+    "description": "Medias de algodón. Máxima calidad.",
+    "size": 2,
+    "type": 2,
+    "categories": [
+      4,
+      8
+    ]
+  },
+  {
+    "id": 3,
+    "name": "medias bart grises",
+    "price": 300,
     "discount": 10,
+    "description": "Medias de algodón. Máxima calidad.",
+    "size": 3,
+    "type": 2,
+    "categories": [
+      4,
+      8
+    ]
+  },
+  {
+    "id": 4,
+    "name": "medias bart homme",
+    "price": 400,
+    "discount": 15,
+    "description": "Medias de algodón. Máxima calidad.",
+    "size": 1,
+    "type": 2,
+    "categories": [
+      4,
+      8,
+      10
+    ]
+  },
+  {
+    "id": 5,
+    "name": "medias homero burger",
+    "price": 500,
+    "discount": 20,
+    "description": "Medias de algodón. Máxima calidad.",
+    "size": 2,
+    "type": 2,
+    "categories": [
+      2,
+      8,
+      10
+    ]
+  },
+  {
+    "id": 6,
+    "name": "medias homero dona grande",
+    "price": 150,
+    "discount": 25,
+    "description": "Composicion: algodón con lycra, dibujo en poliamida, puño con elastómero. Puño de Lurex.",
+    "size": 3,
+    "type": 2,
+    "categories": [
+      2,
+      8
+    ]
+  },
+  {
+    "id": 7,
+    "name": "medias homero comiendo dona",
+    "price": 250,
+    "discount": 50,
+    "description": "Composicion: algodón con lycra, dibujo en poliamida, puño con elastómero. Puño de Lurex.",
+    "size": 1,
+    "type": 2,
+    "categories": [
+      2,
+      8,
+      7
+    ]
+  },
+  {
+    "id": 8,
+    "name": "medias homero kit x3",
+    "price": 350,
+    "discount": 0,
+    "description": "Composicion: algodón con lycra, dibujo en poliamida, puño con elastómero. Puño de Lurex.",
+    "size": 2,
+    "type": 2,
+    "categories": [
+      1,
+      2
+    ]
+  },
+  {
+    "id": 9,
+    "name": "medias maggie blancas",
+    "price": 450,
+    "discount": 5,
+    "description": "Composicion: algodón con lycra, dibujo en poliamida, puño con elastómero. Puño de Lurex.",
+    "size": 3,
+    "type": 2,
+    "categories": [
+      6,
+      8
+    ]
+  },
+  {
+    "id": 10,
+    "name": "medias todos los personajes negras",
+    "price": 550,
+    "discount": 0,
+    "description": "Composicion: algodón con lycra, dibujo en poliamida, puño con elastómero. Puño de Lurex.",
+    "size": 1,
+    "type": 2,
+    "categories": []
+  },
+  {
+    "id": 11,
+    "name": "soquetes bart cow man",
+    "price": 100.5,
+    "discount": 15,
+    "description": "sapien ut nunc vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae mauris viverra diam",
+    "size": 1,
+    "type": 1,
+    "categories": [
+      1,
+      4,
+      8
+    ]
+  },
+  {
+    "id": 12,
+    "name": "medias homero rosquillas blancas",
+    "price": 200.5,
+    "discount": 20,
+    "description": "consectetuer adipiscing elit proin interdum mauris non ligula pellentesque ultrices phasellus id sapien in sapien iaculis congue vivamus metus arcu",
+    "size": 1,
+    "type": 2,
+    "categories": [
+      2,
+      8
+    ]
+  },
+  {
+    "id": 13,
+    "name": "bucaneras maggie negras",
+    "price": 300.5,
+    "discount": 25,
+    "description": "tristique in tempus sit amet sem fusce consequat nulla nisl nunc nisl duis bibendum",
+    "size": 1,
+    "type": 3,
+    "categories": [
+      6,
+      8
+    ]
+  },
+  {
+    "id": 14,
+    "name": "soquetes bart honda",
+    "price": 400.5,
+    "discount": 50,
+    "description": "at ipsum ac tellus semper interdum mauris ullamcorper purus sit amet nulla quisque",
     "size": 2,
     "type": 1,
-    "image": "socks-lisa.jpg",
     "categories": [
-     5
+      4,
+      8
     ]
-   }
+  },
+  {
+    "id": 15,
+    "name": "medias homero rosquillas rosa",
+    "price": 500.5,
+    "discount": 0,
+    "description": "nec condimentum neque sapien placerat ante nulla justo aliquam quis turpis",
+    "size": 2,
+    "type": 2,
+    "categories": [
+      2,
+      7
+    ]
+  },
+  {
+    "id": 16,
+    "name": "soquetes homero traje banio",
+    "price": 150.5,
+    "discount": 5,
+    "description": "consectetuer adipiscing elit proin risus praesent lectus vestibulum quam sapien varius ut blandit non interdum in",
+    "size": 2,
+    "type": 1,
+    "categories": [
+      2,
+      7,
+      8
+    ]
+  },
+  {
+    "id": 17,
+    "name": "soquetes homero cielo",
+    "price": 250.5,
+    "discount": 10,
+    "description": "odio in hac habitasse platea dictumst maecenas ut massa quis augue luctus tincidunt nulla mollis molestie lorem",
+    "size": 3,
+    "type": 1,
+    "categories": [
+      2,
+      8
+    ]
+  },
+  {
+    "id": 18,
+    "name": "medias homero sparkle",
+    "price": 350.5,
+    "discount": 15,
+    "description": "nibh in lectus pellentesque at nulla suspendisse potenti cras in purus eu magna vulputate luctus cum sociis",
+    "size": 3,
+    "type": 2,
+    "categories": [
+      2,
+      8
+    ]
+  },
+  {
+    "id": 19,
+    "name": "soquetes lisa saxo",
+    "price": 450.5,
+    "discount": 20,
+    "description": "aliquam quis turpis eget elit sodales scelerisque mauris sit amet eros",
+    "size": 3,
+    "type": 1,
+    "categories": [
+      5,
+      8
+    ]
+  },
+  {
+    "id": 20,
+    "name": "soquetes homero desnudo",
+    "price": 550.5,
+    "discount": 25,
+    "description": "nunc commodo placerat praesent blandit nam nulla integer pede justo lacinia eget tincidunt eget",
+    "size": 1,
+    "type": 1,
+    "categories": [
+      2,
+      8
+    ]
+  },
+  {
+    "id": 21,
+    "name": "medias burns",
+    "price": 100,
+    "discount": 50,
+    "description": "aliquam quis turpis eget elit sodales scelerisque mauris sit amet eros",
+    "size": 2,
+    "type": 2,
+    "categories": []
+  },
+  {
+    "id": 22,
+    "name": "medias marge paleta de colores",
+    "price": 200,
+    "discount": 0,
+    "description": "at ipsum ac tellus semper interdum mauris ullamcorper purus sit amet nulla quisque",
+    "size": 3,
+    "type": 2,
+    "categories": [
+      3
+    ]
+  },
+  {
+    "id": 23,
+    "name": "bucaneras lisa gato",
+    "price": 300,
+    "discount": 5,
+    "description": "sapien ut nunc vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae mauris viverra diam",
+    "size": 2,
+    "type": 3,
+    "categories": [
+      5
+    ]
+  },
+  {
+    "id": 24,
+    "name": "bucaneras marge gato",
+    "price": 400,
+    "discount": 10,
+    "description": "consectetuer adipiscing elit proin interdum mauris non ligula pellentesque ultrices phasellus id sapien in sapien iaculis congue vivamus metus arcu",
+    "size": 3,
+    "type": 3,
+    "categories": [
+      3
+    ]
+  }
 ]
