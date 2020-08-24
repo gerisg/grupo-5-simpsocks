@@ -41,3 +41,15 @@ __Asistentes__: Vale, Martin, Gera
 | __Gera__: Users BREAD. Navegabilidad del sitio. |
 
 ---
+
+__Fecha__: 24/8
+
+__Asistentes__: Vale, Martin, Gera
+
+| Resumen |
+| -------- |
+| __Vale__: Detalle de productos en vista administrador. Upload de múltiples archivos de imágenes de productos. Actualización de README con datos para iniciar la aplicación. Set de datos de productos con consistencia imagen / producto. Bug fix de faltantes en detalle y edición de productos, en campos numéricos. |
+| __Martin__: Edición y Eliminación de productos. Nueva estructura de datos para inserción de talles y tipos en los productos. Vistas homogéneas en los formularios de administrador. Refactor y rediseño de formularios de inicio de sesión, registro de usuario y recuperar contraseña. |
+| __Gera__: Guardado de contraseñas encriptadas. Refactor y rediseño de header responsive. BREAD categories. Correcciones de bugs relacionados a la administración de productos. Búsqueda de productos. |
+
+---
