@@ -927,6 +927,7 @@ footer {
   text-transform: uppercase;
   padding: .3rem;
   border-bottom: 5px solid var(--light);
+  margin-bottom: .5rem;
 }
 
 .form-step { 
