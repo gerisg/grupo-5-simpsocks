@@ -70,7 +70,7 @@ module.exports = {
         populate(featured);
         let product = productsModel.find(req.params.id);
         populateProduct(product);
-        res.render('products/show', { product, featured });
+        res.render('products/show', { product, featured,productsSize});
     },
     create: (req,res) => {
         let categories = categoriesModel.all();
