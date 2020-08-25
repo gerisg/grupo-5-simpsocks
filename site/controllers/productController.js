@@ -144,7 +144,8 @@ module.exports = {
     },
     cart: (req,res) => {
         console.log('Not implemented yet');
-        let featured = productsModel.all();
+        let category = categoryMatch('destacados');
+        let featured = productsModel.findByMultivalueField('categories', category[0].id);
         populate(featured);
         res.render('products/cart', { featured });
     },
