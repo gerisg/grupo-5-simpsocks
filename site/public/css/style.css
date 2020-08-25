@@ -673,10 +673,14 @@ footer {
       flex-wrap: wrap;
       flex-direction: column;
     }
+    .previous-price{
+      text-decoration: line-through
+    }
     .current-price{
       font-size: 2.5rem;
       font-weight: normal;
       color:var(--dark);
+      margin: var(--default-margin);
     }
     .product-title {
       font-size: 24px;
