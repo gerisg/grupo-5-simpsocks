@@ -49,11 +49,25 @@ let deleteImages = id => {
     }
 }
 
+let categoryMatch = categoryName => categoriesModel.findByFields(['name'], categoryName);
+
 module.exports = {
     find: (req, res) => {
-        let products = productsModel.all();
-        populate(products);
-        res.render('products/find', { products });
+        let results;
+        let category = categoryMatch(req.params.category);
+        // Search by category
+        if(category && category.length > 0) {
+            results = productsModel.findByMultivalueField('categories', category[0].id);
+        }
+        // Search by keywords
+        if(!results){
+            results = productsModel.findByFields(['name', 'description'], req.query.query);
+        }
+        // Populate
+        if(results && results.length > 0) {
+            populate(results);
+        };
+        res.render('products/find', { products: results });
     },
     list: (req, res) => {
         let products = productsModel.all();
