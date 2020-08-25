@@ -78,24 +78,46 @@ La arquitectura de la información se muestra desplegada de forma sencilla. En l
 
 >Es un tema que tomamos de referencia por contener una estética atractiva. Además, es destacable el proceso de compra y checkout.
 
-## Instrucciones para inicializar el proyecto:
+## Instrucciones para iniciar nuestra aplicación
 
-1. Para la correcta visualización se debe ejecutar el siguiente comando en la terminal: git clone https://github.com/gerisg/grupo-5-simpsocks.
+1. Abrir una consola y clonar el proyecto.
 
-2. Una vez clonado el reposiorio, debes posicionarte en la carpeta que se generó, ejecutando cd grupo-5-simpsocks, en la terminal. 
+```
+git clone https://github.com/gerisg/grupo-5-simpsocks
+```
 
-3. Se deben instalar las dependencias, debes posionarte en la carpeta site. Una forma es ejecutar cd site, y luego npm install.
+2. Deberás posicionarte en el directorio donde se encuentran los archivos de la aplicación.
 
-## Copiar datos inicicales:
+```
+cd grupos-5-simpsocks/site
+```
 
-1. En la carpeta /data se encuentran archivos de ejemplo de productos y de usuarios, con la siguiente nomenclatura: [entity-name].json.example.
+3. Usamos algunas dependencias que deberás instalar para el funcionamiento de la aplicación con el siguiente comando. _Importante:_ deberás tener instalado __npm__.
 
-2. El usuario que clona el repositorio debe hacer una copia de los archivos data/[entity-name].json.example, y renombrar los datos copiados a data/[entity-name].json.
+```
+npm install
+```
 
-3. Luego correr el servidor ejecutando el comando node app.js en la terminal.
+4. Si deseas hacer uso de todas las funcionalidades te recomendamos utilizar los datos de prueba que se encuentran en la carpeta __data__. Deberás renombrar su extensión a _.json_. __Importante:__ si tenés permiso de escritura no deberías commitear cambios en los archivos con extensión _*.example_.
 
-4. Finalmente en el navegador ingresar localhost:3000.
+```
+cd data
+mv users.json.example users.json
+mv products.json.example products.json
+mv categories.json.example categories.json
+mv productImages.json.example productImages.json
+cd ..
+```
 
+5. Ahora iniciar la aplicación ejecutando el siguiente comando en la Terminal. _Importante:_ deberás tener instalado __node__.
+
+```
+node app.js
+```
+
+6. Abrir un browser e ingresar a [localhost:3000](localhost:3000).
+
+7. Disfrutá de SimpSocks !! Y te agredecemos que reportes [acá](https://github.com/gerisg/grupo-5-simpsocks/issues) los errores o sugerencias.
 
 ## Links útiles
 
