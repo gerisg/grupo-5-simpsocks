@@ -890,10 +890,10 @@ footer {
 
 /* Admin */
 
-.main-admin { 
+.main-small-form { 
   background-color: whitesmoke;
   height: 80vh;
-  padding-top: 20vh;
+  padding-top: 13vh;
 }
 
 .admin-form {
@@ -909,13 +909,14 @@ footer {
 
 .admin-list-step {
   border-bottom: var(--light) solid 6px;
-  margin-bottom: .25rem;
+  margin-bottom: .75rem;
 }
 
 .admin-list-actions {
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 1rem;
   padding:.25rem;
+
 }
 
 
@@ -930,15 +931,8 @@ footer {
   margin-bottom: .5rem;
 }
 
-.form-step { 
-  text-align: center;  
-  margin-bottom: 10px;
-  padding-bottom: 10px;
-  font-weight: 500;
-  width: 100%;
-}
 
-.form-step-create { 
+.form-step { 
   text-align: left;  
   margin-bottom: 10px;
   padding-bottom: 10px;

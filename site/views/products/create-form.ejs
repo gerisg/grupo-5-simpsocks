@@ -20,23 +20,23 @@
 
                     <h2 class="title-forms">Nuevo Producto</h2>
                     
-                    <div class="form-step-create">
+                    <div class="form-step">
                         <label for="name">Nombre</label><br> 
                         <input type="text"id="name" name="name" required placeholder="Sé creativo, pero claro." >
                     </div>
-                    <div class="form-step-create">
+                    <div class="form-step">
                         <label for="description" >Descripción</label><br>
                         <textarea id="description" name="description" cols="30" rows="10"placeholder="Vende tus Simpsocks!" ></textarea>
                     </div>
-                    <div class="form-step-create">
+                    <div class="form-step">
                         <label for="price">Precio</label><br>
                         <input type="number" id="price" name="price" required placeholder= "Introduci el valor en Pesos" >   
                     </div>
-                    <div class="form-step-create">
+                    <div class="form-step">
                         <label for="discount">Descuento</label><br>
                         <input type="number" id="discount" name="discount" placeholder= "ingresa el descuento de tus simpsocks">   
                     </div>
-                    <div class="form-step-create">
+                    <div class="form-step">
                         <label for="size">Talle</label>
                         <select name="size" id="size">
                             <% productsSize.forEach(size => { %>
@@ -46,7 +46,7 @@
                             <% }) %> 								
                         </select>
                     </div>
-                    <div class="form-step-create">
+                    <div class="form-step">
                         <label for="type">Tipo</label>
                         <select name="type" id="type">
                             <% productsTypes.forEach(type => { %>
@@ -55,18 +55,20 @@
                                 </option>		
                             <% }) %> 								
                         </select>
-                    </div>
-                    <div class="form-step-create">
-                        <label for="images">Subí las fotos de tus Simpsocks</label><br>
-                        <input type="file" id="images" name="images" multiple style="border: none;"> 
-                    </div>
-                    <div class="form-step-create">
-                        <label for="categories">Categorías</label>
+                    </div>                    
+                    <div class="form-step">
+                        <label for="categories">Categorías</label> 
                         <div class="row">
                             <% categories.forEach(category => { %>
-                                <div class="col-6 col-md-3"><input type="checkbox" name="categories" id="<%= category.id %>" value=<%= category.id %>><span><%= category.name %></span></div>
+                                <div class="col-6 col-md-3"> <br>
+                                    <input type="checkbox" name="categories" id="<%= category.id %>" value=<%= category.id %>><span><%= category.name %></span>
+                                </div>
                             <% }) %>
                         </div>
+                    </div>
+                    <div class="form-step">
+                        <label for="images">Subí las fotos de tus Simpsocks</label><br>
+                        <input type="file" id="images" name="images" multiple style="border: none;"> 
                     </div>
                     <div>
                         <button type="submit" class=" btn btn-primary">Crear Producto</button>

@@ -12,17 +12,17 @@
             <a href="/categories/<%= category.name %>/edit">Editar</a>
         </nav>
 	</section>
-
+<main class="main-small-form">
 	<div class="container categories-wrapper">
-		<div class="row main-center">
+		<div class="row main-center form-general col-11">
 			<div class="col-11">
-				<h2 class="title">Editando la categoría: <i><%= category.name %></i></h2>
+				<h2 class="title-forms ">Editando la categoría: <i><%= category.name %></i></h2>
 			</div>
 			<div class="col-11 col-md-6">
 				<form action="/categories/<%= category.id %>?_method=PUT" method="POST">
 					<div class="row">
-						<div class="col-12">
-							<label for="name">Nombre:</label>
+						<div class="col-12 form-step">
+							<label for="name">Nombre</label>
 							<input type="text" id="name" name="name" placeholder="Ej: ofertas" value="<%= category.name %>">
 						</div>
 						<div class="col-12">
@@ -34,7 +34,7 @@
 			</div>
 		</div>
 	</div>
-
+</main>
 	<!-- footer -->
 	<%- include('../partials/footer') %>
 	<!-- /footer -->
