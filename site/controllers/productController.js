@@ -60,14 +60,15 @@ module.exports = {
             results = productsModel.findByMultivalueField('categories', category[0].id);
         }
         // Search by keywords
+        let query = req.query.query;
         if(!results){
-            results = productsModel.findByFields(['name', 'description'], req.query.query);
+            results = productsModel.findByFields(['name', 'description'], query);
         }
         // Populate
         if(results && results.length > 0) {
             populate(results);
         };
-        res.render('products/find', { products: results });
+        res.render('products/find', { results, query });
     },
     list: (req, res) => {
         let products = productsModel.all();
