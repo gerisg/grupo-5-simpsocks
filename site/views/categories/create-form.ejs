@@ -12,17 +12,17 @@
             <a href="/categories/create">Nueva</a>
         </nav>
 	</section>
-	
+<main class="main-small-form">	
 	<div class="container categories-wrapper">
-		<div class="row main-center">
-			<div class="col-11">
-				<h2 class="title">Crear categoría</h2>
+		<div class="row main-center form-general col-11 col-md-8">
+			<div>
+				<h2 class="title-forms">Crear categoría</h2>
 			</div>
-			<div class="col-11 col-md-6">
+			<div class="col-11">
 				<form action="/categories" method="POST">
 					<div class="row">
-						<div class="col-12">
-							<label for="name">Nombre:</label>
+						<div class="col-12 form-step">
+							<label for="name">Nombre</label>
 							<input type="text" id="name" name="name" placeholder="Ej: ofertas">
 						</div>
 						<div class="col-12">
@@ -34,7 +34,7 @@
 			</div>
 		</div>
 	</div>
-
+</main>
 	<%- include('../partials/footer') %>
 </body>	
 </html>

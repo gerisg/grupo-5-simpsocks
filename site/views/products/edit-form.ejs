@@ -21,7 +21,7 @@
 			<div class="col-11 col-md-6">
 				<form action="/products/<%= product.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
 					<div class="row">
-						<div class="col-12 form-step" form-step">
+						<div class="col-12 form-step">
 							<label for="name">Nombre</label>
 							<input type="text" id="name" name="name" placeholder="Ej: Soquete Lisa Simpson" value="<%= product.name %>">
 						</div>
@@ -29,7 +29,7 @@
 							<label for="price">Precio</label>
 							<input type="number" id="price" name="price" placeholder=" " value= <%= product.price %>>
 						</div>
-						<div class="col-12 form-step">
+						<div class="col-12 form-step ">
 							<label for="discount">Descuento</label>
 							<input type="number" id="discount" name="discount" placeholder=" " value= <%= product.discount %>>
 						</div>
@@ -37,7 +37,7 @@
 							<label for="description">Descripción</label>
 							<textarea id="description" name="description" placeholder="describí tus simpsocks" required><%= product.description %></textarea>
 						</div>
-						<div class="col-12 form-step">
+						<div class="col-12 form-step ">
 							<label for="size">Talle</label>
 							<select name="size" id="size">
 								<% productsSize.forEach(size => { %>
@@ -47,7 +47,7 @@
 								<% }) %> 								
 							</select>
 						</div>
-						<div class="col-12 admin-list-step">
+						<div class="col-12 form-step">
 							<label for="type">Tipo</label>
 							<select name="type" id="type">
 								<% productsTypes.forEach(type => { %>
@@ -57,11 +57,11 @@
 								<% }) %> 								
 							</select>
 						</div>
-						<div class="col-12 form-step-create">
+						<div class="col-12 form-step">
 							<label for="categories">Categorías</label>
 							<div class="row">
 								<% categories.forEach(category => { %>
-									<div class="col-6 col-md-6 col-lg-3">
+									<div class="col-6 col-md-6 col-lg-3"> <br>
 										<input 
 											type="checkbox"
 											name="categories"
@@ -74,17 +74,17 @@
 							</div>
 						</div>
 						<div class="col-12 form-step">
-							<label>Imágenes existentes</label>
+							<label>Imágenes existentes</label> 
 							<div class="row">
 								<% if (!productImages || productImages.length == 0) { %>
 									<p>Producto sin imágenes.</p>
 								<% } else { %>
-									<div class="col-12">
+									<div class="col-12 form-step">
 										<input type="checkbox" name="removeCurrentImages" id="removeCurrentImages" value=true>
 										<label for="removeCurrentImages">Eliminar imágenes actuales</label>
 									</div>
 									<% productImages.forEach(image => { %>
-										<div class="col-4">
+										<div class="col-6">
 											<figure>
 												<img src="/images/products/<%= image.name %>" alt="imagen de producto">
 											</figure>
@@ -93,7 +93,7 @@
 								<% } %>
 							</div>
 						</div>
-                        <div class="col-12">
+                        <div class="col-12 form-step">
 							<label for="images">Nuevas Imágenes:</label>
 							<input type="file" id="images" name="images" multiple style="border: none;">
 						</div>

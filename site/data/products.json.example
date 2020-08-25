@@ -88,6 +88,7 @@
     "size": 1,
     "type": 2,
     "categories": [
+      1,
       2,
       8,
       7
@@ -178,6 +179,7 @@
     "size": 2,
     "type": 1,
     "categories": [
+      1,
       4,
       8
     ]
@@ -269,7 +271,9 @@
     "description": "aliquam quis turpis eget elit sodales scelerisque mauris sit amet eros",
     "size": 2,
     "type": 2,
-    "categories": []
+    "categories": [
+      1
+    ]
   },
   {
     "id": 22,
