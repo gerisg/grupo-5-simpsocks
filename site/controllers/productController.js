@@ -51,6 +51,17 @@ let deleteImages = id => {
 
 let categoryMatch = categoryName => categoriesModel.findByFields(['name'], categoryName);
 
+let findProductsByRelatedCategory = (categories, type) => {
+    let filteredByType = categories.filter(category => category.type == type);
+    if(filteredByType.length > 0) {
+        return filteredByType[0].related.
+        map(catId => categoriesModel.find(catId)).
+        map(category => productsModel.findByMultivalueField('categories', category.id)).
+        flat(1);
+    }
+    return [];
+}
+
 module.exports = {
     find: (req, res) => {
         let results;
@@ -81,11 +92,11 @@ module.exports = {
         res.render('products/detail', { product });
     },
     show: (req,res) => {
-        let featured = productsModel.all(); // TODO Destacados
-        populate(featured);
         let product = productsModel.find(req.params.id);
         populateProduct(product);
-        res.render('products/show', { product, featured,productsSize});
+        let related = findProductsByRelatedCategory(product.categories, 'personaje');
+        populate(related);
+        res.render('products/show', { product, related, productsSize});
     },
     create: (req,res) => {
         let categories = categoriesModel.all();
