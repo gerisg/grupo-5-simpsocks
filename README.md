@@ -78,6 +78,25 @@ La arquitectura de la información se muestra desplegada de forma sencilla. En l
 
 >Es un tema que tomamos de referencia por contener una estética atractiva. Además, es destacable el proceso de compra y checkout.
 
+## Instrucciones para inicializar el proyecto:
+
+1. Para la correcta visualización se debe ejecutar el siguiente comando en la terminal: git clone https://github.com/gerisg/grupo-5-simpsocks.
+
+2. Una vez clonado el reposiorio, debes posicionarte en la carpeta que se generó, ejecutando cd grupo-5-simpsocks, en la terminal. 
+
+3. Se deben instalar las dependencias, debes posionarte en la carpeta site. Una forma es ejecutar cd site, y luego npm install.
+
+## Copiar datos inicicales:
+
+1. En la carpeta /data se encuentran archivos de ejemplo de productos y de usuarios, con la siguiente nomenclatura: [entity-name].json.example.
+
+2. El usuario que clona el repositorio debe hacer una copia de los archivos data/[entity-name].json.example, y renombrar los datos copiados a data/[entity-name].json.
+
+3. Luego correr el servidor ejecutando el comando node app.js en la terminal.
+
+4. Finalmente en el navegador ingresar localhost:3000.
+
+
 ## Links útiles
 
 - Patrones de diseño gratuitos: [The Pattern Library](http://thepatternlibrary.com/)
