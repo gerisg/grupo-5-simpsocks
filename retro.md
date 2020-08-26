@@ -78,3 +78,17 @@ Destacamos el uso de los post-it para que todos participemos en la confección d
 | + **Seguir haciendo**: Mantener la motivación del equipo |
 | + **Empezar a hacer**: Pair Programming y Proponer mejoras |
 | + **Dejar de hacer**: Suspendemos las daily meetings |
+
+
+### Sprint 4
+
+#### Metodología Estrella
+
+[Tablero Estrella](https://jamboard.google.com/d/1xMViHngJvef4sXpLeKUunvCXXBqrU3d-bl9Z_8_mJmw/)
+
+| Resumen |
+| -------- |
+| + **Hacer más**: Discutir alternativas de resolución. Reutilizar código. Mantener estado de tickets actualizado. |
+| + **Seguir haciendo**: Pair programming. Review del proyecto. Comunicación fluida. Mantener motivación del equipo. |
+| + **Empezar a hacer**: Resolver funcionalidad seleccionada en grupo. Hacer estimaciones de tiempo. Explicaciones de resolución. Temario de reuniones. |
+| + **Hacer menos**: HTML/CSS repetido o complejo. |

@@ -89,7 +89,7 @@ git clone https://github.com/gerisg/grupo-5-simpsocks
 2. Deberás posicionarte en el directorio donde se encuentran los archivos de la aplicación.
 
 ```
-cd grupos-5-simpsocks/site
+cd grupo-5-simpsocks/site
 ```
 
 3. Usamos algunas dependencias que deberás instalar para el funcionamiento de la aplicación con el siguiente comando. _Importante:_ deberás tener instalado __npm__.
