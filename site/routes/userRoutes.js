@@ -26,6 +26,9 @@ router.get('/login', controller.login);
 router.get('/register', controller.register);
 router.get('/recover', controller.recover);
 
+//Accion de Loguearse
+router.post("/users/login", controller.authenticate);
+
 // Formulario de creación de usuarios
 router.get('/create', controller.create);
 // Acción de creación

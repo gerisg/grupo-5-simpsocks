@@ -74,6 +74,29 @@ module.exports = {
     login: (req,res) => {
 		res.render('users/login')
 	},
+
+	authenticate: (req,res) => {
+		let errors = validationResult(req);
+		if (errors.empty()) {
+			let users = usersModel.all();
+			
+			let usuarioALoguear;
+
+			for(i=0; i < users.length; i++) {
+				if (users[i].email== req.body.email){
+					if (bcrypt.compareSync(req.body.password, users[i].password)){
+						let usuarioALoguear = users [i]};
+				break;
+			}}
+			if (usuarioALoguear = undefined ) {
+				return res.render("/users/login", {errors: [{msg:"Datos invalidos"
+			
+			}]});} else {
+				req.session.usuarioLogueado = usuarioALoguear;
+				res.render("success")}}	
+			//else {return res.render("users/login"),{errors: errors.errors}};
+	},
+
 	logout: (req, res) => {
 		console.log('Not implemented yet');
 		res.redirect('/users/login');

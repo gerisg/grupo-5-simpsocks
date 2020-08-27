@@ -17,7 +17,7 @@ app.set('view engine', 'ejs'); // views extension ejs
 app.use(express.static('public')); // template engines
 app.use(express.urlencoded({ extended: false })); // put json into body
 app.use(methodOverride('_method')); // replace POST methods by parametrized '_method'
-app.use (session{secret:"dh_simp_socks"});
+app.use (session ({secret:"dh_simp_socks"}));
 // Routes
 app.use('/', indexRoutes);
 app.use('/users', userRoutes);
