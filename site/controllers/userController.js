@@ -74,35 +74,35 @@ module.exports = {
 		res.redirect('/users');
     },
     login: (req,res) => {
-		res.render('users/login')
+		res.render('users/login');
 	},
-
 	authenticate: (req,res) => {
-		let user = usersModel.findByField ('email', req.body.email);
-		if (user && user.length > 0) {  user = user[0];
-			if (bcrypt.compareSync(req.body.password, user.password)){			
+		let user = usersModel.findByField('email', req.body.email);
+		if (user && user.length > 0) { 
+			user = user[0];
+			if (bcrypt.compareSync(req.body.password, user.password)){
 				req.session.user= {
 					id: req.body.id, 
-					name:req.body.name,
-					category:req.body.category
+					name: req.body.name,
+					category: req.body.category
 				};
 				res.redirect('/');
 			} else {
-				res.render('users/login')		
+				res.render('users/login');		
 			}
-		} res.render('users/login')	// TODO VER A DONDE REDIRIJIMOS UNA VEZ QUE TENGAMOS VALIDACIONES.
+		} else {
+			res.render('users/login'); // TODO con validaciones pasarle el feedback
+		}
 	},
-
 	logout: (req, res) => {
 		req.session.destroy;
-		 return res.redirect('/');
-
+		res.redirect('/');
 	},
     register: (req,res) => {
-		(res.render('users/register'));
+		res.render('users/register');
 	},
 	recover: (req,res) => {
-		(res.render('users/recover'));
+		res.render('users/recover');
 	},
 	favorites: (req, res) => {
 		console.log('Not implemented yet');

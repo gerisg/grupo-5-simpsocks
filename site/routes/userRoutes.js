@@ -19,28 +19,21 @@ router.get('/', controller.list);
 // TODO Not implemented yet
 router.get('/favorites', controller.favorites);
 router.get('/profile', controller.profile);
-router.get('/logout', controller.logout);
 
-// Sesión de usuarios
+// Sesion de usuarios
 router.get('/login', controller.login);
+router.post('/login', controller.authenticate);
+router.post('/logout', controller.logout);
 router.get('/register', controller.register);
 router.get('/recover', controller.recover);
 
-
-//Accion de Loguearse
-router.post('/login', controller.authenticate);
-router.post ('/logout', controller.logout);
-
 // Formulario de creación de usuarios
 router.get('/create', controller.create);
-// Acción de creación
 router.post('/', upload.single('image'), controller.store);
 
 // Formulario de edición de usuarios
 router.get('/:id/edit', controller.edit);
-// Acción de edición
 router.put('/:id', upload.single('image'), controller.update);
-// Acción de borrado
 router.delete('/:id', controller.destroy);
 
 // Detalle de un usuario particular
