@@ -2,9 +2,9 @@ const path = require('path');
 const express = require('express');
 const router = express.Router();
 const controller = require('../controllers/userController');
-// const guestRoute = require('../middlewares/guestRoute'); // requiero el middleware
-// const userRoute = require('../middlewares/userRoute'); requiero el mw de usuario log
-// const adminRoute = require('../midlewares/adminRoute'); requiero mw de admin
+const guestRoute = require('../middlewares/guestRoute'); // requiero el middleware
+
+// const adminRoute = require('../midlewares/adminRoute'); // requiero mw de admin
 const multer = require('multer');
 
 // Configure multer
@@ -24,7 +24,7 @@ router.get('/favorites', controller.favorites);
 router.get('/profile', controller.profile);
 
 // Sesion de usuarios
-router.get('/login', controller.login);
+router.get('/login', guestRoute, controller.login); //paso el mw de huesped
 router.post('/login', controller.authenticate);
 router.post('/logout', controller.logout);
 router.get('/register', controller.register);
