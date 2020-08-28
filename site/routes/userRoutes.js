@@ -22,26 +22,21 @@ router.get('/', controller.list);
 // TODO Not implemented yet
 router.get('/favorites', controller.favorites);
 router.get('/profile', controller.profile);
-router.get('/logout', controller.logout);
 
-// Sesión de usuarios
-router.get('/login', controller.login); //pasar el middlewere guestRoute
+// Sesion de usuarios
+router.get('/login', controller.login);
+router.post('/login', controller.authenticate);
+router.post('/logout', controller.logout);
 router.get('/register', controller.register);
 router.get('/recover', controller.recover);
 
-//Accion de Loguearse
-router.post("/users/login", controller.authenticate);
-
 // Formulario de creación de usuarios
-router.get('/create', controller.create); //pasar el mw userRoute
-// Acción de creación
+router.get('/create', controller.create);
 router.post('/', upload.single('image'), controller.store);
 
 // Formulario de edición de usuarios
-router.get('/:id/edit', controller.edit); //pasar el mw de adminRoute
-// Acción de edición
+router.get('/:id/edit', controller.edit);
 router.put('/:id', upload.single('image'), controller.update);
-// Acción de borrado
 router.delete('/:id', controller.destroy);
 
 // Detalle de un usuario particular

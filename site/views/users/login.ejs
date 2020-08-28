@@ -8,13 +8,13 @@
         <section class="row main-center">
             <div class="col-11  col-md-5 col-lg-4 form-general">
 
-                <form action="" method="POST"> 
+                <form action="/users/login" method="POST"> 
 
                     <h2 class="title-forms">Que bueno que volviste!</h2>
 
                     <div class="form-step">
-                        <label for="user" >Usuario</label><br>
-                        <input type="email" id="mail" name="user">
+                        <label for="email" >Email</label><br>
+                        <input type="email" id="email" name="email">
                         <span class="error"></span> 
                     </div>
 
@@ -28,8 +28,8 @@
                     </div>
 
                     <div>
-                        <button type="submit" class=" btn btn-primary"><a href="/">Enviar</a></button>
-                        <input type="checkbox"  value="si" name="recuerdo">Recordarme
+                        <button type="submit" class=" btn btn-primary">Enviar</button>
+                        <input type="checkbox" value="yes" name="remember">Recordarme
                     </div>
                 </form>
             </div>

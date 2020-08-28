@@ -35,12 +35,14 @@
                         <span>Mi cuenta</span>
                     </a>
                 </li>
-                <li>
-                    <a href="/users/logout">
-                        <i class="fas fa-sign-out-alt"></i>
-                        <span>Cerrar Sesión</span>
-                    </a>
-                </li>
+                <% if (locals.user) { %>
+                    <li>
+                        <a href="/users/logout">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>Cerrar Sesión</span>
+                        </a>
+                    </li>
+                <% } %>
             </ul>
             <ul class="guest" style="display: none;">
                 <li>

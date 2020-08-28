@@ -2,13 +2,15 @@ const path = require('path');
 const fs = require('fs');
 const bcrypt = require('bcryptjs');
 const jsonTable = require('../database/jsonTable');
-
+const { cpuUsage } = require('process');
+const session = require('express-session');
 const usersModel = jsonTable('users');
 
 let getCurrentPass = userId => {
 	let user = usersModel.find(userId);
 	return user ? user.password : null; // TODO If not found throw error
 }
+
 
 module.exports = {
 	list: (req, res) => {
@@ -72,40 +74,35 @@ module.exports = {
 		res.redirect('/users');
     },
     login: (req,res) => {
-		res.render('users/login')
+		res.render('users/login');
 	},
-
 	authenticate: (req,res) => {
-		let errors = validationResult(req);
-		if (errors.empty()) {
-			let users = usersModel.all();
-			
-			let usuarioALoguear;
-
-			for(i=0; i < users.length; i++) {
-				if (users[i].email== req.body.email){
-					if (bcrypt.compareSync(req.body.password, users[i].password)){
-						let usuarioALoguear = users [i]};
-				break;
-			}}
-			if (usuarioALoguear = undefined ) {
-				return res.render("/users/login", {errors: [{msg:"Datos invalidos"
-			
-			}]});} else {
-				req.session.usuarioLogueado = usuarioALoguear;
-				res.render("success")}}	
-			//else {return res.render("users/login"),{errors: errors.errors}};
+		let user = usersModel.findByField('email', req.body.email);
+		if (user && user.length > 0) { 
+			user = user[0];
+			if (bcrypt.compareSync(req.body.password, user.password)){
+				req.session.user= {
+					id: req.body.id, 
+					name: req.body.name,
+					category: req.body.category
+				};
+				res.redirect('/');
+			} else {
+				res.render('users/login');		
+			}
+		} else {
+			res.render('users/login'); // TODO con validaciones pasarle el feedback
+		}
 	},
-
 	logout: (req, res) => {
-		console.log('Not implemented yet');
-		res.redirect('/users/login');
+		req.session.destroy;
+		res.redirect('/');
 	},
     register: (req,res) => {
-		(res.render('users/register'));
+		res.render('users/register');
 	},
 	recover: (req,res) => {
-		(res.render('users/recover'));
+		res.render('users/recover');
 	},
 	favorites: (req, res) => {
 		console.log('Not implemented yet');
