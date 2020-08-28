@@ -79,18 +79,18 @@ module.exports = {
 
 	authenticate: (req,res) => {
 		let user = usersModel.findByField ('email', req.body.email);
-		if (user) { 
-			if (bcrypt.compareSync(req.body.password, user.password)){
-				delete user.password;
+		if (user && user.length > 0) {  user = user[0];
+			if (bcrypt.compareSync(req.body.password, user.password)){			
 				req.session.user= {
 					id: req.body.id, 
 					name:req.body.name,
 					category:req.body.category
 				};
-					 res.redirect('/');
-		} else {
-					 res.render('users/login')		
-		}}
+				res.redirect('/');
+			} else {
+				res.render('users/login')		
+			}
+		} res.render('users/login')	// TODO VER A DONDE REDIRIJIMOS UNA VEZ QUE TENGAMOS VALIDACIONES.
 	},
 
 	logout: (req, res) => {

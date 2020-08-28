@@ -28,7 +28,7 @@ router.get('/recover', controller.recover);
 
 
 //Accion de Loguearse
-router.post('/users/login', controller.authenticate);
+router.post('/login', controller.authenticate);
 router.post ('/logout', controller.logout);
 
 // Formulario de creación de usuarios
