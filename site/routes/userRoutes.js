@@ -2,6 +2,9 @@ const path = require('path');
 const express = require('express');
 const router = express.Router();
 const controller = require('../controllers/userController');
+// const guestRoute = require('../middlewares/guestRoute'); // requiero el middleware
+// const userRoute = require('../middlewares/userRoute'); requiero el mw de usuario log
+// const adminRoute = require('../midlewares/adminRoute'); requiero mw de admin
 const multer = require('multer');
 
 // Configure multer
@@ -22,7 +25,7 @@ router.get('/profile', controller.profile);
 router.get('/logout', controller.logout);
 
 // Sesión de usuarios
-router.get('/login', controller.login);
+router.get('/login', controller.login); //pasar el middlewere guestRoute
 router.get('/register', controller.register);
 router.get('/recover', controller.recover);
 
@@ -30,12 +33,12 @@ router.get('/recover', controller.recover);
 router.post("/users/login", controller.authenticate);
 
 // Formulario de creación de usuarios
-router.get('/create', controller.create);
+router.get('/create', controller.create); //pasar el mw userRoute
 // Acción de creación
 router.post('/', upload.single('image'), controller.store);
 
 // Formulario de edición de usuarios
-router.get('/:id/edit', controller.edit);
+router.get('/:id/edit', controller.edit); //pasar el mw de adminRoute
 // Acción de edición
 router.put('/:id', upload.single('image'), controller.update);
 // Acción de borrado
