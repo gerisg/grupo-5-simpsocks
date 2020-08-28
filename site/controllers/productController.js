@@ -7,7 +7,7 @@ const productsModel = jsonTable('products');
 const productImagesModel = jsonTable('productImages');
 
 // const userRoute = require('../middlewares/userRoute'); //requiero el mw de usuario log
-const adminRoute  = require('../middlewares/adminRoute');
+
 let productsTypes = [{ id: 1, name: 'Soquete' }, { id: 2, name: 'Media Larga' }, { id: 3, name: 'Bucanera' }];
 let productsSize = [{ id: 1, name: 'Small' }, { id: 2, name: 'Medium' }, { id: 3, name: 'Large' }];
 
@@ -102,7 +102,7 @@ module.exports = {
     },
     create: (req,res) => {
         let categories = categoriesModel.all();
-        res.render('products/create-form', adminRoute, { productsTypes, productsSize, categories });
+        res.render('products/create-form', { productsTypes, productsSize, categories });
     },
     store: (req,res) => {
         let product = {
@@ -125,7 +125,7 @@ module.exports = {
         let categories = categoriesModel.all();
         let product = productsModel.find(req.params.id);
         let productImages = productImagesModel.findByField('prodId', req.params.id);
-        res.render('products/edit-form', adminRoute,{ product, productImages, productsTypes, productsSize, categories });
+        res.render('products/edit-form', { product, productImages, productsTypes, productsSize, categories });
     },
     update: (req, res) => {
         let product = {
@@ -153,7 +153,7 @@ module.exports = {
         deleteImages(id);
         // remove product
         productsModel.delete(id);
-        res.redirect('/products', adminRoute);
+        res.redirect('/products');
     },
     cart: (req,res) => {
         console.log('Not implemented yet');
