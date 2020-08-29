@@ -108,15 +108,16 @@ module.exports = {
 		}
 	},
 	logout: (req, res) => {
-		 //borro solo el token del dispoaitivo(desde el cual se logea)
-		 let userToken = usersTokensModel.findByField('token', req.cookies.userToken);
+		//  borro solo el token del dispoaitivo(desde el cual se logea)
+		 let userToken = usersTokensModel.findByField('token', req.cookies.ut);
 		 usersTokensModel.delete(userToken.id);
 		
-		 res.clearCookie('userToken') //borra la cookie del token en el navegador
+		 res.clearCookie('ut') //borra la cookie del token en el navegador
 
 		 req.session.destroy();
 
 		 res.redirect('/users/login');
+
 		 
 	},
     register: (req,res) => {
