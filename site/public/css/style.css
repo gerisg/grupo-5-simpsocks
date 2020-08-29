@@ -1377,6 +1377,33 @@ footer {
     font-weight: bold;
   }
 
+  .header-end .main-nav ul li form {
+    display: flex;
+    flex-direction: column;
+    color: var(--blue); 
+    
+  }
+
+  .header-end .main-nav ul li form button {
+    display: flex;
+    flex-direction: column;
+    color: var(--blue);
+    background-color: transparent;
+    border: none;
+    text-align: center;
+  }
+  .header-end .main-nav ul li form button i {
+    font-size: 24px;
+    font-weight: bold;
+    align-self: center;
+  }
+  .header-end .main-nav ul li form button span {
+    font-size: 12px;
+    font-weight: normal;
+    padding-top: 5px;
+  }
+ 
+
   /* Button */
   .btn{
     display: inline-block;
