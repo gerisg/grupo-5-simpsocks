@@ -71,8 +71,12 @@
                                 </span>
                             </div>
                         <div class="product-actions">
-                            <a href="/products/cart" class="btn btn-info btn-cart">Añadir al carrito</a>
-                            <a href="/error" class="btn btn-primary">Comprar</a>
+                            <form action="/products/cart" method="GET">
+                                <button type="submit" class="btn btn-info btn-cart">Añadir al carrito</button>
+                            </form>
+                            <form action="/error" method="POST">
+                                <button type="submit" class="btn btn-primary">Comprar</button>
+                            </form>
                         </div>
                     </article>
                 </div>
