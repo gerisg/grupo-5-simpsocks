@@ -96,7 +96,7 @@ module.exports = {
 
 					usersTokensModel.create({userId: user.id, token}); // creamos una tabla de tkns   
 					//seteamos la cookie 
-					res.cookie('ut', token, {maxAge: 1000 * 60 * 60 * 24 * 30})
+					res.cookie('userToken', token, {maxAge: 1000 * 60 * 60 * 24 * 30})
 				}
 				return res.redirect('/');
 				//si el psw es incorrect se vuleve al login
@@ -109,10 +109,13 @@ module.exports = {
 	},
 	logout: (req, res) => {
 		//  borro solo el token del dispoaitivo(desde el cual se logea)
-		 let userToken = usersTokensModel.findByField('token', req.cookies.ut);
-		 usersTokensModel.delete(userToken.id);
+		let userToken = usersTokensModel.findByField('token', req.cookies.userToken);
 		
-		 res.clearCookie('ut') //borra la cookie del token en el navegador
+		if (userToken && userToken.length > 0) {
+    		usersTokensModel.delete(userToken[0].id);
+		}
+		
+		 res.clearCookie('userToken') //borra la cookie del token en el navegador
 
 		 req.session.destroy();
 
