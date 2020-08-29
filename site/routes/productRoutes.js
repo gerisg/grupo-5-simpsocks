@@ -4,6 +4,7 @@ const router = express.Router();
 const controller = require('../controllers/productController');
 const multer = require('multer');
 
+const userRoute = require('../middlewares/userRoute');
 const adminRoute = require('../middlewares/adminRoute');
 
 // Configure multer
