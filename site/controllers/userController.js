@@ -68,7 +68,7 @@ module.exports = {
 		// remove image
 		let image = usersModel.findByPK(id).image;
 		const imagePath = path.join(__dirname, '../public/images/users/' + image);
-		fs.existsSync(imagePath) ? fs.unlinkSync(imagePath) : '';
+		fs.existsSync(imagePath) && fs.lstatSync(imagePath).isFile() ? fs.unlinkSync(imagePath) : '';
 		// remove users
 		usersModel.delete(id);
 		res.redirect('/users');
