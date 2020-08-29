@@ -34,7 +34,7 @@ router.put('/:id', upload.any('images'), controller.update);
 router.delete('/:id', adminRoute, controller.destroy);
 
 // NAV - Carrito de compras
-router.get('/cart', controller.cart);
+router.get('/cart', userRoute, controller.cart); //chequear esta vista BUG
 
 // Detalle de un producto
 router.get('/:id/show', controller.show); // Vista de negocio

@@ -2,9 +2,11 @@ const path = require('path');
 const express = require('express');
 const router = express.Router();
 const controller = require('../controllers/userController');
-const guestRoute = require('../middlewares/guestRoute'); // requiero el middleware
 
-// const adminRoute = require('../midlewares/adminRoute'); // requiero mw de admin
+const guestRoute = require('../middlewares/guestRoute'); // requiero el middleware
+const userRoute = require('../middlewares/userRoute');
+const adminRoute = require('../middlewares/adminRoute');// requiero mw de admin
+
 const multer = require('multer');
 
 // Configure multer
@@ -17,11 +19,11 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 // Listado de usuarios
-router.get('/', controller.list);
+router.get('/', adminRoute, controller.list);
 
 // TODO Not implemented yet
-router.get('/favorites', controller.favorites);
-router.get('/profile', controller.profile);
+router.get('/favorites', userRoute, controller.favorites); //userRoute?
+router.get('/profile', userRoute,  controller.profile); //userRoute?
 
 // Sesion de usuarios
 router.get('/login', guestRoute, controller.login); //paso el mw de huesped
@@ -31,7 +33,7 @@ router.get('/register', guestRoute, controller.register);
 router.get('/recover', controller.recover);
 
 // Formulario de creación de usuarios
-router.get('/create', controller.create);
+router.get('/create', adminRoute, controller.create);
 router.post('/', upload.single('image'), controller.store);
 
 // Formulario de edición de usuarios
