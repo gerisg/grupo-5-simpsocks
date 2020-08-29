@@ -18,9 +18,9 @@ let populateProduct = product => {
     // Add price with discount
     product.offerPrice = priceWithDiscount(product.price, product.discount);
     // Populate images
-    product.images = productImagesModel.findByField('prodId', product.id);
+    product.images = productImagesModel.findAll('prodId', product.id);
     // Populate categories
-    product.categories = product.categories.map(catId => categoriesModel.find(catId));
+    product.categories = product.categories.map(catId => categoriesModel.findByPK(catId));
     // Populate types
     product.type = productsTypes.find(type => product.type == type.id);
     // Populate size
@@ -41,7 +41,7 @@ let parseCategories = categories => {
 }
 
 let deleteImages = id => {
-    let images = productImagesModel.findByField('prodId', id);
+    let images = productImagesModel.findAll('prodId', id);
     if (images && images.length > 0) {
         images.forEach(image => {
             const imagePath = path.join(__dirname, '../public/images/products/' + image.name);
@@ -57,7 +57,7 @@ let findProductsByRelatedCategory = (categories, type) => {
     let filteredByType = categories.filter(category => category.type == type);
     if(filteredByType.length > 0) {
         return filteredByType[0].related.
-        map(catId => categoriesModel.find(catId)).
+        map(catId => categoriesModel.findByPK(catId)).
         map(category => productsModel.findByMultivalueField('categories', category.id)).
         flat(1);
     }
@@ -89,12 +89,12 @@ module.exports = {
         res.render('products/list', { products, productsTypes, productsSize });
     },
     detail: (req,res) => {
-        let product = productsModel.find(req.params.id);
+        let product = productsModel.findByPK(req.params.id);
         populateProduct(product);
         res.render('products/detail', { product });
     },
     show: (req,res) => {
-        let product = productsModel.find(req.params.id);
+        let product = productsModel.findByPK(req.params.id);
         populateProduct(product);
         let related = findProductsByRelatedCategory(product.categories, 'personaje');
         populate(related);
@@ -123,8 +123,8 @@ module.exports = {
     },
     edit: (req,res) => {
         let categories = categoriesModel.all();
-        let product = productsModel.find(req.params.id);
-        let productImages = productImagesModel.findByField('prodId', req.params.id);
+        let product = productsModel.findByPK(req.params.id);
+        let productImages = productImagesModel.findAll('prodId', req.params.id);
         res.render('products/edit-form', { product, productImages, productsTypes, productsSize, categories });
     },
     update: (req, res) => {

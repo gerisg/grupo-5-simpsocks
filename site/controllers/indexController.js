@@ -14,7 +14,7 @@ let populateProduct = product => {
     // Add price with discount
     product.offerPrice = priceWithDiscount(product.price, product.discount);
     // Populate images
-    product.images = productImagesModel.findByField('prodId', product.id);
+    product.images = productImagesModel.findAll('prodId', product.id);
     return product;
 };
 

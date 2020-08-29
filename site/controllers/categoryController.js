@@ -8,7 +8,7 @@ module.exports = {
 		res.render('categories/list', { categories });
 	},
 	detail: (req, res) => {
-		let category = categoryModel.find(req.params.id);
+		let category = categoryModel.findByPK(req.params.id);
 		res.render('categories/detail', { category });
 	},
 	create: (req, res) => {
@@ -23,7 +23,7 @@ module.exports = {
 		res.redirect('/categories/' + id);
 	},
 	edit: (req, res) => {
-		let category = categoryModel.find(req.params.id);
+		let category = categoryModel.findByPK(req.params.id);
 		res.render('categories/edit-form', { category });
 	},
 	update: (req, res) => {

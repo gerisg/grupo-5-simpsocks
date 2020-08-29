@@ -19,11 +19,16 @@ let model = function(tableName) {
         all() {
             return this.readFile();
         },
-        find(id) {
+        findByPK(id) {
             let rows = this.readFile();
             return rows.find(row => row.id == id);
         },
-        findByField(field, value) {
+        findOne(field, value) {
+            if(!field || !value) { return undefined; }
+            let rows = this.readFile();
+            return rows.find(row => row[field] == value);
+        },
+        findAll(field, value) {
             if(!field || !value) { return []; }
             let rows = this.readFile();
             return rows.filter(row => row[field] == value);

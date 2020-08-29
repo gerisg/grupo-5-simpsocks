@@ -8,7 +8,7 @@ const usersModel = jsonTable('users');
 const usersTokensModel = jsonTable('usersTokens');
 
 let getCurrentPass = userId => {
-	let user = usersModel.find(userId);
+	let user = usersModel.findByPK(userId);
 	return user ? user.password : null; // TODO If not found throw error
 }
 
@@ -18,7 +18,7 @@ module.exports = {
 		res.render('users/list', { users });
 	},
 	detail: (req, res) => {
-		let user = usersModel.find(req.params.id);
+		let user = usersModel.findByPK(req.params.id);
 		res.render('users/detail', { user });
 	},
 	create: (req, res) => {
@@ -41,7 +41,7 @@ module.exports = {
 		res.redirect('/users/' + id);
 	},
 	edit: (req, res) => {
-		let user = usersModel.find(req.params.id);
+		let user = usersModel.findByPK(req.params.id);
 		delete user.password;
 		res.render('users/edit-form', { user });
 	},
@@ -66,7 +66,7 @@ module.exports = {
 	destroy : (req, res) => {
 		let id = req.params.id;
 		// remove image
-		let image = usersModel.find(id).image;
+		let image = usersModel.findByPK(id).image;
 		const imagePath = path.join(__dirname, '../public/images/users/' + image);
 		fs.existsSync(imagePath) ? fs.unlinkSync(imagePath) : '';
 		// remove users
@@ -77,9 +77,8 @@ module.exports = {
 		res.render('users/login');
 	},
 	authenticate: (req,res) => {
-		let user = usersModel.findByField('email', req.body.email);
-		if (user && user.length > 0) { 
-			user = user[0];
+		let user = usersModel.findOne('email', req.body.email);
+		if (user) { 
 			if (bcrypt.compareSync(req.body.password, user.password)){
 				req.session.user= { id: user.id, name: user.firstname, category: user.category };
 				if (req.body.remember){
@@ -96,9 +95,9 @@ module.exports = {
 		}
 	},
 	logout: (req, res) => {
-		let userToken = usersTokensModel.findByField('token', req.cookies.userToken);
-		if (userToken && userToken.length > 0) {
-			usersTokensModel.delete(userToken[0].id);
+		let userToken = usersTokensModel.findOne('token', req.cookies.userToken);
+		if (userToken) {
+			usersTokensModel.delete(userToken.id);
 		}
 		res.clearCookie('userToken');
 		req.session.destroy();

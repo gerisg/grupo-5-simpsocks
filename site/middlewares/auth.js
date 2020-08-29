@@ -8,10 +8,9 @@ module.exports = (req, res, next) => {
     if(user) {
         res.locals.user = user;
     } else if (utCookie) {
-        let userToken = usersTokensModel.findByField('token', utCookie);
-        if (userToken && userToken.length > 0) {
-            userToken = userToken[0];
-            let user = usersModel.find(userToken.userId);
+        let userToken = usersTokensModel.findOne('token', utCookie);
+        if (userToken) {
+            let user = usersModel.findByPK(userToken.userId);
             if (user) {
                 let userSession = { id: user.id, name: user.firstname, category: user.category };
                 req.session.user = userSession; // Available in session
