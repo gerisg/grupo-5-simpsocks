@@ -96,7 +96,7 @@ module.exports = {
 
 					usersTokensModel.create({userId: user.id, token}); // creamos una tabla de tkns   
 					//seteamos la cookie 
-					res.cookie('userToken', token, {maxAge: 1000 * 60 * 60 * 24 * 30 * 3})
+					res.cookie('ut', token, {maxAge: 1000 * 60 * 60 * 24 * 30})
 				}
 				return res.redirect('/');
 				//si el psw es incorrect se vuleve al login
