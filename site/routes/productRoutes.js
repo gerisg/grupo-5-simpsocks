@@ -17,18 +17,18 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 // Listado de productos
-router.get('/find/:category?', controller.find); // Vista de negocio
-router.get('/', controller.list); // Vista de administrador
+router.get('/find/:category?', controller.find);
+router.get('/', adminRoute, controller.list);
 
 // Formulario de creación de productos
 router.get('/create', adminRoute, controller.create);
 // Acción de creación
-router.post('/',upload.any('images'), controller.store);
+router.post('/', adminRoute, upload.any('images'), controller.store);
 // Formulario de edición de productos
 router.get('/:id/edit', adminRoute, controller.edit);
 
 // Acción de edición
-router.put('/:id', upload.any('images'), controller.update);
+router.put('/:id', adminRoute, upload.any('images'), controller.update);
 
 // Acción de borrado
 router.delete('/:id', adminRoute, controller.destroy);
@@ -37,7 +37,7 @@ router.delete('/:id', adminRoute, controller.destroy);
 router.get('/cart', userRoute, controller.cart); //chequear esta vista BUG
 
 // Detalle de un producto
-router.get('/:id/show', controller.show); // Vista de negocio
-router.get('/:id', controller.detail); // Vista de administrador
+router.get('/:id/show', userRoute, controller.show);
+router.get('/:id', adminRoute, controller.detail);
 
 module.exports = router;

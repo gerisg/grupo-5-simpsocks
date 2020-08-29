@@ -3,8 +3,6 @@ const fs = require('fs');
 const crypto = require('crypto');
 const bcrypt = require('bcryptjs');
 const jsonTable = require('../database/jsonTable');
-const { cpuUsage } = require('process');
-const session = require('express-session');
 
 const usersModel = jsonTable('users');
 const usersTokensModel = jsonTable('usersTokens');
@@ -13,7 +11,6 @@ let getCurrentPass = userId => {
 	let user = usersModel.find(userId);
 	return user ? user.password : null; // TODO If not found throw error
 }
-
 
 module.exports = {
 	list: (req, res) => {
@@ -84,22 +81,13 @@ module.exports = {
 		if (user && user.length > 0) { 
 			user = user[0];
 			if (bcrypt.compareSync(req.body.password, user.password)){
-				req.session.user= {
-					id: user.id, 
-					name: user.firstname,
-					category: user.category
-				};
-				//si checkeo recordarme
+				req.session.user= { id: user.id, name: user.firstname, category: user.category };
 				if (req.body.remember){
-
 					const token = crypto.randomBytes(64).toString('base64');
-
-					usersTokensModel.create({userId: user.id, token}); // creamos una tabla de tkns   
-					//seteamos la cookie 
-					res.cookie('userToken', token, {maxAge: 1000 * 60 * 60 * 24 * 30})
+					usersTokensModel.create({ userId: user.id, token });
+					res.cookie('userToken', token, { maxAge: 1000 * 60 * 60 * 24 * 30 })
 				}
-				return res.redirect('/');
-				//si el psw es incorrect se vuleve al login
+				res.redirect('/');
 			} else {
 				res.render('users/login');		
 			}
@@ -108,20 +96,13 @@ module.exports = {
 		}
 	},
 	logout: (req, res) => {
-		//  borro solo el token del dispoaitivo(desde el cual se logea)
 		let userToken = usersTokensModel.findByField('token', req.cookies.userToken);
-		
 		if (userToken && userToken.length > 0) {
-    		usersTokensModel.delete(userToken[0].id);
+			usersTokensModel.delete(userToken[0].id);
 		}
-		
-		 res.clearCookie('userToken') //borra la cookie del token en el navegador
-
-		 req.session.destroy();
-
-		 res.redirect('/users/login');
-
-		 
+		res.clearCookie('userToken');
+		req.session.destroy();
+		res.redirect('/users/login');
 	},
     register: (req,res) => {
 		res.render('users/register');

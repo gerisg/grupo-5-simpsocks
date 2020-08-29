@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const controller = require('../controllers/categoryController');
+const adminRoute = require('../middlewares/adminRoute');
+
+router.use(adminRoute);
 
 // Listado de usuarios
 router.get('/', controller.list);
