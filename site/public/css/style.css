@@ -289,7 +289,8 @@ header {
 .header-end ul {
   padding: .5rem 0;
 }
-.header-end ul>li>a {
+.header-end ul>li>a,
+.header-end ul>li>form>button {
   width: 100%;
   border: 0;
   font-size: 1.2rem;
@@ -297,13 +298,17 @@ header {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
+  background-color: inherit;
 }
 .header-end ul>li>a:focus,
-.header-end ul>li>a:hover {
+.header-end ul>li>a:hover,
+.header-end ul>li>form>button:focus,
+.header-end ul>li>form>button:hover {
   color: var(--white);
   background: linear-gradient(90deg,var(--yellow),var(--pink));
 }
-.header-end ul>li>a>i { 
+.header-end ul>li>a>i,
+.header-end ul>li>form>button>i { 
   margin: 0 var(--default-margin);
   font-weight: bold;
  }
@@ -1357,7 +1362,8 @@ footer {
     display: flex;
     padding: .5rem 0;
   }
-  .header-end .main-nav ul li a {
+  .header-end .main-nav ul li a,
+  .header-end .main-nav ul li form button {
     color: var(--blue);
     font-weight: bold;
     font-size: .85rem;
@@ -1366,46 +1372,24 @@ footer {
     align-items: center;
     padding: .5rem;
     width: auto;
+    margin: 0;
+    border: 0;
+    background-color: inherit;
   }
-  .header-end .main-nav ul li a span {
-    font-size: 12px;
-    font-weight: normal;
-    padding-top: 5px;
-  }
-  .header-end .main-nav ul li a i {
-    font-size: 24px;
-    font-weight: bold;
-  }
-
-  .header-end .main-nav ul li form {
-    display: flex;
-    flex-direction: column;
-    color: var(--blue); 
-    
-  }
-
-  .header-end .main-nav ul li form button {
-    display: flex;
-    flex-direction: column;
-    color: var(--blue);
-    background-color: transparent;
-    border: none;
-    text-align: center;
-  }
-  .header-end .main-nav ul li form button i {
-    font-size: 24px;
-    font-weight: bold;
-    align-self: center;
-  }
+  .header-end .main-nav ul li a span,
   .header-end .main-nav ul li form button span {
     font-size: 12px;
     font-weight: normal;
     padding-top: 5px;
   }
- 
+  .header-end .main-nav ul li a i,
+  .header-end .main-nav ul li form button i {
+    font-size: 24px;
+    font-weight: bold;
+  }
 
   /* Button */
-  .btn{
+  .btn {
     display: inline-block;
   }
 }
