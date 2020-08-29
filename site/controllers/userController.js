@@ -85,9 +85,9 @@ module.exports = {
 			user = user[0];
 			if (bcrypt.compareSync(req.body.password, user.password)){
 				req.session.user= {
-					id: req.body.id, 
-					name: req.body.name,
-					category: req.body.category
+					id: user.id, 
+					name: user.firstname,
+					category: user.category
 				};
 				//si checkeo recordarme
 				if (req.body.remember){
