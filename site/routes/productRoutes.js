@@ -4,6 +4,9 @@ const router = express.Router();
 const controller = require('../controllers/productController');
 const multer = require('multer');
 
+const userRoute = require('../middlewares/userRoute');
+const adminRoute = require('../middlewares/adminRoute');
+
 // Configure multer
 const storage = multer.diskStorage({
     destination: path.join(__dirname, '../public/images/products'),
@@ -18,17 +21,17 @@ router.get('/find/:category?', controller.find); // Vista de negocio
 router.get('/', controller.list); // Vista de administrador
 
 // Formulario de creación de productos
-router.get('/create', controller.create);
+router.get('/create', adminRoute, controller.create);
 // Acción de creación
 router.post('/',upload.any('images'), controller.store);
 // Formulario de edición de productos
-router.get('/:id/edit', controller.edit);
+router.get('/:id/edit', adminRoute, controller.edit);
 
 // Acción de edición
 router.put('/:id', upload.any('images'), controller.update);
 
 // Acción de borrado
-router.delete('/:id', controller.destroy);
+router.delete('/:id', adminRoute, controller.destroy);
 
 // NAV - Carrito de compras
 router.get('/cart', controller.cart);

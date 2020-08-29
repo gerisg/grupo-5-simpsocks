@@ -6,6 +6,8 @@ const categoriesModel = jsonTable('categories');
 const productsModel = jsonTable('products');
 const productImagesModel = jsonTable('productImages');
 
+// const userRoute = require('../middlewares/userRoute'); //requiero el mw de usuario log
+
 let productsTypes = [{ id: 1, name: 'Soquete' }, { id: 2, name: 'Media Larga' }, { id: 3, name: 'Bucanera' }];
 let productsSize = [{ id: 1, name: 'Small' }, { id: 2, name: 'Medium' }, { id: 3, name: 'Large' }];
 

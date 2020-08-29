@@ -1,10 +1,13 @@
 const path = require('path');
 const fs = require('fs');
+const crypto = require('crypto');
 const bcrypt = require('bcryptjs');
 const jsonTable = require('../database/jsonTable');
 const { cpuUsage } = require('process');
 const session = require('express-session');
+
 const usersModel = jsonTable('users');
+const usersTokensModel = jsonTable('usersTokens');
 
 let getCurrentPass = userId => {
 	let user = usersModel.find(userId);
@@ -86,7 +89,17 @@ module.exports = {
 					name: req.body.name,
 					category: req.body.category
 				};
-				res.redirect('/');
+				//si checkeo recordarme
+				if (req.body.remember){
+
+					const token = crypto.randomBytes(64).toString('base64');
+
+					usersTokensModel.create({userId: user.id, token}); // creamos una tabla de tkns   
+					//seteamos la cookie 
+					res.cookie('ut', token, {maxAge: 1000 * 60 * 60 * 24 * 30})
+				}
+				return res.redirect('/');
+				//si el psw es incorrect se vuleve al login
 			} else {
 				res.render('users/login');		
 			}
@@ -95,8 +108,16 @@ module.exports = {
 		}
 	},
 	logout: (req, res) => {
-		req.session.destroy;
-		res.redirect('/');
+		 //borro solo el token del dispoaitivo(desde el cual se logea)
+		 let userToken = usersTokensModel.findByField('token', req.cookies.userToken);
+		 usersTokensModel.delete(userToken.id);
+		
+		 res.clearCookie('userToken') //borra la cookie del token en el navegador
+
+		 req.session.destroy();
+
+		 res.redirect('/users/login');
+		 
 	},
     register: (req,res) => {
 		res.render('users/register');
