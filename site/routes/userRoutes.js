@@ -27,7 +27,7 @@ router.get('/profile', controller.profile);
 router.get('/login', guestRoute, controller.login); //paso el mw de huesped
 router.post('/login', controller.authenticate);
 router.post('/logout', controller.logout);
-router.get('/register', controller.register);
+router.get('/register', guestRoute, controller.register);
 router.get('/recover', controller.recover);
 
 // Formulario de creación de usuarios
