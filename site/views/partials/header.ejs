@@ -37,12 +37,10 @@
                 </li>
                 <% if (locals.user) { %>
                     <li>
-                        <form action="/users/logout" method="POST">
-                            <button type="submit">
-                                <i class="fas fa-sign-out-alt"></i>
-                                <span>Cerrar Sesión</span>
-                            </button>
-                        </form>
+                        <a href="/users/logout">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>Cerrar Sesión</span>
+                        </a>
                     </li>
                 <% } %>
             </ul>

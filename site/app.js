@@ -3,7 +3,8 @@ const app = express();
 const methodOverride = require('method-override');
 const session = require ('express-session');
 const cookieParser = require('cookie-parser');
-const auth = require ('./middlewares/auth');
+const auth = require('./middlewares/auth');
+
 // Routers
 const indexRoutes = require('./routes/indexRoutes');
 const userRoutes = require('./routes/userRoutes');
@@ -31,8 +32,8 @@ app.use('/', indexRoutes);
 app.use('/users', userRoutes);
 app.use('/products', productRoutes);
 app.use('/categories', categoryRoutes);
-app.use ('/site', siteRoutes)
-app.use ('/admin', adminRoutes);
+app.use('/site', siteRoutes)
+app.use('/admin', adminRoutes);
 app.use('/demo', demoRoutes);
 
 // Errors
