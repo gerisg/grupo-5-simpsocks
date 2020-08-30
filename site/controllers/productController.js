@@ -9,7 +9,7 @@ const productImagesModel = jsonTable('productImages');
 // const userRoute = require('../middlewares/userRoute'); //requiero el mw de usuario log
 
 let productsTypes = [{ id: 1, name: 'Soquete' }, { id: 2, name: 'Media Larga' }, { id: 3, name: 'Bucanera' }];
-let productsSize = [{ id: 1, name: 'Small' }, { id: 2, name: 'Medium' }, { id: 3, name: 'Large' }];
+let productsSize = [{ id: 1, name: 'Pequeño' }, { id: 2, name: 'Mediano' }, { id: 3, name: 'Grande' }];
 
 let priceWithDiscount = (price, discount) => discount > 0 ? Math.round(price * ((100 - discount) / 100)) : price;
 
@@ -66,22 +66,39 @@ let findProductsByRelatedCategory = (categories, type) => {
 
 module.exports = {
     find: (req, res) => {
+        let filter = {};
         let results;
         let category = categoryMatch(req.params.category);
         // Search by category
         if(category && category.length > 0) {
             results = productsModel.findByMultivalueField('categories', category[0].id);
+            filter.category = category[0].id;
         }
         // Search by keywords
         let query = req.query.query;
         if(!results){
             results = productsModel.findByFields(['name', 'description'], query);
+            if(!results || results.length == 0) {
+                results = productsModel.all();
+            }
+            let size = req.query.size;
+            if(size) { 
+                results = results.filter(product => product.size == size);
+                filter.size = size;
+            }
+            let type = req.query.type;
+            if(type) {
+                results = results.filter(product => product.type == type);
+                filter.type = type;
+            }
         }
         // Populate
         if(results && results.length > 0) {
             populate(results);
         };
-        res.render('products/find', { results, query });
+        // Categories
+        let categories = categoriesModel.all();
+        res.render('products/find', { results, query, filter, productsTypes, productsSize, categories });
     },
     list: (req, res) => {
         let products = productsModel.all();

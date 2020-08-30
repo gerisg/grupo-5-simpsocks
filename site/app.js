@@ -12,7 +12,6 @@ const productRoutes = require('./routes/productRoutes');
 const categoryRoutes = require('./routes/categoryRoutes');
 const siteRoutes = require('./routes/siteRoutes');
 const adminRoutes = require ('./routes/adminRoutes');
-const demoRoutes = require('./routes/demoRoutes');
 
 // Configuration
 app.set('view engine', 'ejs'); // views extension ejs
@@ -34,7 +33,6 @@ app.use('/products', productRoutes);
 app.use('/categories', categoryRoutes);
 app.use('/site', siteRoutes)
 app.use('/admin', adminRoutes);
-app.use('/demo', demoRoutes);
 
 // Errors
 app.use((req, res, next) => {

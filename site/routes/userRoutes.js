@@ -2,6 +2,7 @@ const path = require('path');
 const express = require('express');
 const router = express.Router();
 const controller = require('../controllers/userController');
+const validate = require('../validators/users-validator');
 
 const guestRoute = require('../middlewares/guestRoute');
 const userRoute = require('../middlewares/userRoute');
@@ -24,24 +25,24 @@ router.get('/profile', userRoute, controller.profile);
 
 // Sesion de usuarios
 router.get('/login', guestRoute, controller.login);
-router.post('/login', guestRoute, controller.authenticate);
+router.post('/login', guestRoute, validate.loginForm, controller.authenticate);
 router.post('/logout', controller.logout);
 router.get('/register', guestRoute, controller.register);
 router.get('/recover', guestRoute, controller.recover);
 
-/** FROM HERE ONLY ADMIN ACCESS ROUTES **/
+/* FROM HERE ONLY ADMIN ACCESS ROUTES */
 router.use(adminRoute);
 
 // Listado de usuarios
 router.get('/', controller.list);
 
 // Formulario de creación de usuarios
-router.get('/create', adminRoute, controller.create);
-router.post('/', upload.single('image'), controller.store);
+router.get('/create', controller.create);
+router.post('/', upload.single('image'), validate.createForm, controller.store);
 
 // Formulario de edición de usuarios
 router.get('/:id/edit', controller.edit);
-router.put('/:id', upload.single('image'), controller.update);
+router.put('/:id', upload.single('image'), validate.editForm, controller.update);
 router.delete('/:id', controller.destroy);
 
 // Detalle de un usuario particular
