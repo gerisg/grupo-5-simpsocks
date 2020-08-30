@@ -6,7 +6,7 @@ module.exports = (req, res, next) => {
     let user = req.session.user;
     let utCookie = req.cookies.userToken;
     if(user) {
-        res.locals.user = user; // Available in views
+        res.locals.auth = user; // Available in views
     } else if (utCookie) {
         let userToken = usersTokensModel.findOne('token', utCookie);
         if (userToken) {
@@ -14,7 +14,7 @@ module.exports = (req, res, next) => {
             if (user) {
                 let userSession = { id: user.id, name: user.firstname, category: user.category };
                 req.session.user = userSession; // Available in session
-                res.locals.user = userSession; // Available in views
+                res.locals.auth = userSession; // Available in views
                 console.log('User loaded from cookie');
             }
         }
