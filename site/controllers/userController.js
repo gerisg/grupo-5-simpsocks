@@ -2,6 +2,7 @@ const path = require('path');
 const fs = require('fs');
 const crypto = require('crypto');
 const bcrypt = require('bcryptjs');
+const { validationResult } = require('express-validator');
 const jsonTable = require('../database/jsonTable');
 
 const usersModel = jsonTable('users');
@@ -25,20 +26,25 @@ module.exports = {
 		res.render('users/create-form');
 	},
 	store: (req, res) => {
-		let encryptedPassword = bcrypt.hashSync(req.body.password, 10);
-		let user =  {
-            firstname: req.body.firstname,
-            lastname: req.body.lastname,
-            email: req.body.email,
-            password: encryptedPassword,
-			category: req.body.category,
-			phone: req.body.phone,
-			shipping_address: req.body.shipping_address,
-			payment_address: req.body.payment_address,
-			image: req.file ? req.file.filename : null
+		let errors = validationResult(req);
+        if (errors.isEmpty()) {
+            let encryptedPassword = bcrypt.hashSync(req.body.password, 10);
+			let user =  {
+				firstname: req.body.firstname,
+				lastname: req.body.lastname,
+				email: req.body.email,
+				password: encryptedPassword,
+				category: req.body.category,
+				phone: req.body.phone,
+				shipping_address: req.body.shipping_address,
+				payment_address: req.body.payment_address,
+				image: req.file ? req.file.filename : null
+			}
+			let id = usersModel.create(user);
+			res.redirect('/users/' + id);
+        } else {
+            res.render('users/create-form', { errors: errors.mapped(), user: req.body });
 		}
-		let id = usersModel.create(user);
-		res.redirect('/users/' + id);
 	},
 	edit: (req, res) => {
 		let user = usersModel.findByPK(req.params.id);
@@ -46,22 +52,29 @@ module.exports = {
 		res.render('users/edit-form', { user });
 	},
 	update: (req, res) => {
-		let id = parseInt(req.params.id);
-		let encryptedPassword = req.body.password ? bcrypt.hashSync(req.body.password, 10) : getCurrentPass(id);
-		let user =  {
-            id: id,
-            firstname: req.body.firstname,
-            lastname: req.body.lastname,
-            email: req.body.email,
-            password: encryptedPassword,
-			category: req.body.category,
-			phone: req.body.phone,
-			shipping_address: req.body.shipping_address,
-			payment_address: req.body.payment_address,
-			image: req.file ? req.file.filename : req.body.currentImage
+		let errors = validationResult(req);
+        if (errors.isEmpty()) {
+            let id = parseInt(req.params.id);
+			let encryptedPassword = req.body.password ? bcrypt.hashSync(req.body.password, 10) : getCurrentPass(id);
+			let user =  {
+				id: id,
+				firstname: req.body.firstname,
+				lastname: req.body.lastname,
+				email: req.body.email,
+				password: encryptedPassword,
+				category: req.body.category,
+				phone: req.body.phone,
+				shipping_address: req.body.shipping_address,
+				payment_address: req.body.payment_address,
+				image: req.file ? req.file.filename : req.body.currentImage
+			}
+			let updatedUserId = usersModel.update(user);
+			res.redirect('/users/' + updatedUserId);
+        } else {
+			req.body.id = req.params.id;
+            req.body.image = req.file ? req.file.filename : req.body.currentImage;
+            res.render('users/edit-form', { errors: errors.mapped(), user: req.body });
 		}
-		let updatedUserId = usersModel.update(user);
-		res.redirect('/users/' + updatedUserId);
 	},
 	destroy : (req, res) => {
 		let id = req.params.id;
@@ -77,9 +90,10 @@ module.exports = {
 		res.render('users/login');
 	},
 	authenticate: (req,res) => {
-		let user = usersModel.findOne('email', req.body.email);
-		if (user) { 
-			if (bcrypt.compareSync(req.body.password, user.password)){
+		let errors = validationResult(req);
+        if (errors.isEmpty()) {
+			let user = usersModel.findOne('email', req.body.email);
+			if (user && bcrypt.compareSync(req.body.password, user.password)){
 				req.session.user= { id: user.id, name: user.firstname, category: user.category };
 				if (req.body.remember){
 					const token = crypto.randomBytes(64).toString('base64');
@@ -88,11 +102,13 @@ module.exports = {
 				}
 				res.redirect('/');
 			} else {
-				res.render('users/login');		
-			}
+				console.log('credenciales no validas');
+                res.render('users/login', { errors: { form: { msg: 'Credenciales no válidas' }}});
+            }
 		} else {
-			res.render('users/login'); // TODO con validaciones pasarle el feedback
-		}
+			console.log(errors.mapped());
+            res.render('users/login', { errors: errors.mapped() });
+        }
 	},
 	logout: (req, res) => {
 		let userToken = usersTokensModel.findOne('token', req.cookies.userToken);
