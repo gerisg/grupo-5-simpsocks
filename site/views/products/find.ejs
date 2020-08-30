@@ -20,60 +20,43 @@
                 <aside class="filters">
                     <p class="subtitle">Filtros</p>
                     <div class="filter">
-                        <p>Categorías</p>
-                        <ul>
-                            <li><a href="#">Descuentos</a></li>
-                            <li><a href="#">Hot Sale</a></li>
-                            <li><a href="#">Homero</a></li>
-                        </ul>
+                        <label for="category">Categorías</label>
+                        <% categories.forEach(category => { %>
+                            <div>
+                                <% if (filter.category == category.id) { %>
+                                    <a href="/products/find/">
+                                        [<i class="fas fa-times"></i>]
+                                    </a>
+                                <% } %>
+                                <a href="/products/find/<%= category.name %>"><%= category.name %></a>
+                            </div>
+                        <% }) %>
                     </div>
                     <div class="filter">
-                        <p>Talles</p>
-                        <ul>
-                            <li>
-                                <label for="size-small">
-                                    <input id="size-small" name="size-small" type="checkbox">
-                                    <span>Pequeño</span>
-                                </label>
-                            </li>
-                            <li>
-                                <label for="size-medium">
-                                    <input id="size-medium" name="size-medium" type="checkbox">
-                                    <span>Mediano</span>
-                                </label>
-                            </li>
-                            <li>
-                                <label for="size-large">
-                                    <input id="size-large" name="size-large" type="checkbox">
-                                    <span>Grande</span>
-                                </label>
-                            </li>
-                        </ul>
-                        <div class="filter-action"><a href="#">Aplicar</a></div>
+                        <label for="type">Tipo</label>
+                        <% productsTypes.forEach(type => { %>	
+                            <div>
+                                <% if (filter.type == type.id) { %>
+                                    <a href="/products/find?query=<%= query %>&size=<%= filter.size %>">
+                                        [<i class="fas fa-times"></i>]
+                                    </a>
+                                <% } %>
+                                <a href="/products/find?query=<%= query %>&size=<%= filter.size %>&type=<%= type.id %>"><%= type.name %></a>
+                            </div>
+                        <% }) %>
                     </div>
                     <div class="filter">
-                        <p>Tipo</p>
-                        <ul>
-                            <li>
-                                <label for="type-soquete">
-                                    <input id="type-soquete" name="type-soquete" type="checkbox">
-                                    <span>Soquete</span>
-                                </label>
-                            </li>
-                            <li>
-                                <label for="type-media">
-                                    <input id="type-media" name="type-media" type="checkbox">
-                                    <span>Media</span>
-                                </label>
-                            </li>
-                            <li>
-                                <label for="type-bucanera">
-                                    <input id="type-bucanera" name="type-bucanera" type="checkbox">
-                                    <span>Bucanera</span>
-                                </label>
-                            </li>
-                        </ul>
-                        <div class="filter-action"><a href="#">Aplicar</a></div>
+                        <label for="type">Tamaño</label>
+                        <% productsSize.forEach(size => { %>	
+                            <div>
+                                <% if (filter.size == size.id) { %>
+                                    <a href="/products/find?query=<%= query %>&type=<%= filter.type %>">
+                                        [<i class="fas fa-times"></i>]
+                                    </a>
+                                <% } %>
+                                <a href="/products/find?query=<%= query %>&type=<%= filter.type %>&size=<%= size.id %>"><%= size.name %></a>
+                            </div>
+                        <% }) %>
                     </div>
                 </aside>
             </div>
