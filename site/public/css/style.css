@@ -191,16 +191,10 @@ input:focus:invalid {
 /* Messages */
 
 .error {
-  display: none;
-  padding: .25rem;
-  font-size: .6rem;
   color: var(--red);
-  margin: 0 auto;
-  width: 100%;
-}
-
-.error.active {
-  display: block;
+  font-size: .75rem;
+  margin: 0;
+  padding: 0;
 }
 
 /************/
