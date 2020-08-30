@@ -15,15 +15,14 @@
     <div class="header-end">
         <nav id="main-nav" class="main-nav">
             <ul>
+                <% if (locals.user && user.category == 'user') { %>
+                <!-- Aparece con session de tipo USER -->
                 <li>
                     <a href="/products/cart">
                         <i class="fas fa-shopping-cart"></i>
                         <span>Mi carrito</span>
                     </a>
                 </li>
-            </ul>
-            <% if (locals.user) { %>
-            <ul class="logged">
                 <li>
                     <a href="/users/favorites">
                         <i class="far fa-heart"></i>
@@ -44,9 +43,42 @@
                         </button>
                     </form>
                 </li>
-            </ul>
-            <% } else { %>
-            <ul class="guest">
+                <% } else if (locals.user && user.category == 'admin') { %>
+                <!-- Aparece con session de tipo ADMIN -->
+                <li>
+                    <a href="/users/">
+                        <i class="far fa-user"></i>
+                        <span>Usuarios</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/products/">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span>Productos</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/categories/">
+                        <i class="fas fa-folder"></i>
+                        <span>Categorías</span>
+                    </a>
+                </li>
+                <li>
+                    <form action="/users/logout" method="POST">
+                        <button type="submit">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>Cerrar Sesión</span>
+                        </button>
+                    </form>
+                </li>
+                <% } else { %>
+                <!-- Aparece SIN SESIÓN -->
+                <li>
+                    <a href="/products/cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span>Mi carrito</span>
+                    </a>
+                </li>
                 <li>
                     <a href="/users/register">
                         <i class="fas fa-user-plus"></i>
@@ -59,8 +91,8 @@
                         <span>Iniciar Sesión</span>
                     </a>
                 </li>
+                <% } %>
             </ul>
-            <% } %>
         </nav>
     </div>
     <div class="mobile-actions">
