@@ -29,14 +29,14 @@ router.post('/logout', controller.logout);
 router.get('/register', guestRoute, controller.register);
 router.get('/recover', guestRoute, controller.recover);
 
-/** FROM HERE ONLY ADMIN ACCESS ROUTES **/
+/* FROM HERE ONLY ADMIN ACCESS ROUTES */
 router.use(adminRoute);
 
 // Listado de usuarios
 router.get('/', controller.list);
 
 // Formulario de creación de usuarios
-router.get('/create', adminRoute, controller.create);
+router.get('/create', controller.create);
 router.post('/', upload.single('image'), controller.store);
 
 // Formulario de edición de usuarios

@@ -6,7 +6,7 @@ module.exports = (req, res, next) => {
     let user = req.session.user;
     let utCookie = req.cookies.userToken;
     if(user) {
-        res.locals.user = user;
+        res.locals.user = user; // Available in views
     } else if (utCookie) {
         let userToken = usersTokensModel.findOne('token', utCookie);
         if (userToken) {
