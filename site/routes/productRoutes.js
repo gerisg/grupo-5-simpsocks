@@ -37,7 +37,7 @@ router.delete('/:id', adminRoute, controller.destroy);
 router.get('/cart', controller.cart);
 
 // Detalle de un producto
-router.get('/:id/show', userRoute, controller.show);
+router.get('/:id/show', controller.show);
 router.get('/:id', adminRoute, controller.detail);
 
 module.exports = router;
