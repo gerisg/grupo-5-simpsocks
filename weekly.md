@@ -53,3 +53,15 @@ __Asistentes__: Vale, Martin, Gera
 | __Gera__: Guardado de contraseñas encriptadas. Refactor y rediseño de header responsive. BREAD categories. Correcciones de bugs relacionados a la administración de productos. Búsqueda de productos. |
 
 ---
+
+__Fecha__: 31/8
+
+__Asistentes__: Vale, Martin, Gera
+
+| Resumen |
+| -------- |
+| __Vale__: Implementar la función de recordar al usuario (cookie). Implementar rutas de huéspedes y de usuarios. Validaciones de productos (create y edit) |
+| __Martin__: Implementación de login / logout de usuario (session). |
+| __Gera__: Refactor de métodos find. Fix bug eliminar imagenes. Refactor de header unificado para todos los roles. Validaciones de usuario (login, create y edit). Filtro de productos por categoría, tipo y tamaño. |
+
+---
