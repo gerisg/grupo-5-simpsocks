@@ -152,24 +152,33 @@ module.exports = {
         res.render('products/edit-form', { product, productImages, productsTypes, productsSize, categories });
     },
     update: (req, res) => {
-        let product = {
-            id: parseInt(req.params.id),
-            name: req.body.name,
-            price: parseFloat(req.body.price),
-            discount: req.body.discount,
-            description: req.body.description,
-            size: parseInt(req.body.size),
-            type: parseInt(req.body.type),
-            categories: parseCategories(req.body.categories)
-        };
-        let id = productsModel.update(product);
-        // Eliminar imágenes actuales
-        if(req.body.removeCurrentImages) {
-            deleteImages(id);
+        let errors = validationResult(req);
+        if (errors.isEmpty()){
+            let product = {
+                id: parseInt(req.params.id),
+                name: req.body.name,
+                price: parseFloat(req.body.price),
+                discount: req.body.discount,
+                description: req.body.description,
+                size: parseInt(req.body.size),
+                type: parseInt(req.body.type),
+                categories: parseCategories(req.body.categories)
+            };
+            let id = productsModel.update(product);
+            // Eliminar imágenes actuales
+            if(req.body.removeCurrentImages) {
+                deleteImages(id);
+            }
+            // Guardar nuevas imágenes
+            req.files.forEach(file => productImagesModel.create({ prodId: id, name: file.filename }));
+            res.redirect('/products/' + id);
+        } else {
+            let productImages = productImagesModel.findAll('prodId', req.params.id);
+            let categories = categoriesModel.all();
+            req.body.id = req.params.id;
+            req.body.image = req.file ? req.file.filename : req.body.currentImage;
+            res.render('products/edit-form', { errors: errors.mapped(), product: req.body, productsTypes,productsSize, productImages, categories });
         }
-        // Guardar nuevas imágenes
-        req.files.forEach(file => productImagesModel.create({ prodId: id, name: file.filename }));
-        res.redirect('/products/' + id);
     },
     destroy: (req, res) => {
         let id = req.params.id;

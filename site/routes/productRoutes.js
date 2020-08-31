@@ -30,7 +30,7 @@ router.post('/', adminRoute, upload.any('images'), validate.createForm, controll
 router.get('/:id/edit', adminRoute, controller.edit);
 
 // Acción de edición
-router.put('/:id', adminRoute, upload.any('images'), controller.update);
+router.put('/:id', adminRoute, upload.any('images'), validate.editForm, controller.update);
 
 // Acción de borrado
 router.delete('/:id', adminRoute, controller.destroy);
