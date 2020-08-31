@@ -2,10 +2,12 @@ const path = require('path');
 const express = require('express');
 const router = express.Router();
 const controller = require('../controllers/productController');
-const multer = require('multer');
+const validate = require('../validators/products-validator');
 
 const userRoute = require('../middlewares/userRoute');
 const adminRoute = require('../middlewares/adminRoute');
+
+const multer = require('multer');
 
 // Configure multer
 const storage = multer.diskStorage({
@@ -23,7 +25,7 @@ router.get('/', adminRoute, controller.list);
 // Formulario de creación de productos
 router.get('/create', adminRoute, controller.create);
 // Acción de creación
-router.post('/', adminRoute, upload.any('images'), controller.store);
+router.post('/', adminRoute, upload.any('images'), validate.createForm, controller.store);
 // Formulario de edición de productos
 router.get('/:id/edit', adminRoute, controller.edit);
 

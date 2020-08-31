@@ -1,5 +1,6 @@
 const path = require('path');
 const fs = require('fs');
+const { validationResult } = require('express-validator');
 const jsonTable = require('../database/jsonTable');
 
 const categoriesModel = jsonTable('categories');
@@ -122,21 +123,27 @@ module.exports = {
         res.render('products/create-form', { productsTypes, productsSize, categories });
     },
     store: (req,res) => {
-        let product = {
-			name: req.body.name,
-			price: parseFloat(req.body.price),
-			discount: parseFloat(req.body.discount),
-            description: req.body.description,
-            size: parseInt(req.body.size),
-            type: parseInt(req.body.type),
-            categories: parseCategories(req.body.categories)
+        let errors = validationResult(req);
+        if (errors.isEmpty()) {
+            let product = {
+                name: req.body.name,
+                price: parseFloat(req.body.price),
+                discount: parseFloat(req.body.discount),
+                description: req.body.description,
+                size: parseInt(req.body.size),
+                type: parseInt(req.body.type),
+                categories: parseCategories(req.body.categories)
+            }
+            let id = productsModel.create(product);
+            req.files.forEach(file => {
+                let productImage = { prodId: id, name: file.filename };
+                productImagesModel.create(productImage);
+            });
+            res.redirect('/products/' + id);
+        } else {
+            let categories = categoriesModel.all();
+            res.render('products/create-form', { errors: errors.mapped(), product: req.body, productsTypes,productsSize, categories });
         }
-        let id = productsModel.create(product);
-        req.files.forEach(file => {
-            let productImage = { prodId: id, name: file.filename };
-            productImagesModel.create(productImage);
-        });
-        res.redirect('/products/' + id);
     },
     edit: (req,res) => {
         let categories = categoriesModel.all();

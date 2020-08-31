@@ -19,22 +19,34 @@
                 <form action="/products/" method="POST"  enctype="multipart/form-data">
 
                     <h2 class="title-forms">Nuevo Producto</h2>
-                    
+                    <% locals.errors && console.log(errors); %> 
                     <div class="form-step">
                         <label for="name">Nombre</label><br> 
-                        <input type="text"id="name" name="name" required placeholder="Sé creativo, pero claro." >
+                        <input type="text"id="name" name="name" placeholder="Sé creativo, pero claro." 
+                                value="<%= locals.product ? product.name : '' %>"
+								class="<%= locals.errors && errors.name ? 'danger' : '' %>">
+                        <span class="error"><%= locals.errors && errors.name ? errors.name.msg : '' %> </span>
                     </div>
                     <div class="form-step">
                         <label for="description" >Descripción</label><br>
-                        <textarea id="description" name="description" cols="30" rows="10"placeholder="Vende tus Simpsocks!" ></textarea>
+                        <textarea id="description" name="description" cols="30" rows="10" placeholder="Vende tus Simpsocks!"
+                            value="<%= locals.product ? product.description : '' %>"
+                            class="<%= locals.errors && errors.description ? 'danger' : '' %>"></textarea>
+                        <span class="error"><%= locals.errors && errors.description ? errors.description.msg : '' %> </span>
                     </div>
                     <div class="form-step">
                         <label for="price">Precio</label><br>
-                        <input type="number" id="price" name="price" required placeholder= "Introduci el valor en Pesos" >   
+                        <input type="number" id="price" name="price" placeholder= "Introduci el valor en Pesos"
+                            value="<%= locals.product ? product.price: '' %>"
+                            class="<%= locals.errors && errors.price? 'danger' : '' %>">
+                        <span class="error"><%= locals.errors && errors.price ? errors.price.msg : '' %> </span> 
                     </div>
                     <div class="form-step">
                         <label for="discount">Descuento</label><br>
-                        <input type="number" id="discount" name="discount" placeholder= "ingresa el descuento de tus simpsocks">   
+                        <input type="number" id="discount" name="discount" placeholder= "ingresa el descuento de tus simpsocks"
+                            value="<%= locals.product ? product.discount: '' %>"
+                            class="<%= locals.errors && errors.discount? 'danger' : '' %>">
+                        <span class="error"><%= locals.errors && errors.discount ? errors.discount.msg : '' %> </span>    
                     </div>
                     <div class="form-step">
                         <label for="size">Talle</label>
