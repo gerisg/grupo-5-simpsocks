@@ -6,12 +6,12 @@
 
     <section class="top-nav">
         <nav class="top-nav-start breadcrumb">
-			<a href="/">Inicio</a>
-			<a href="/admin">Admin</a>
-			<a href="/products">Productos</a>
+            <a href="/">Inicio</a>
+            <a href="/admin">Admin</a>
+            <a href="/products">Productos</a>
             <a href="/products/create">Nuevo</a>
         </nav>
-	</section>
+    </section>
 
     <main class="main-with-form">
         <section class="row main-center ">
@@ -24,7 +24,7 @@
                         <label for="name">Nombre</label><br> 
                         <input type="text"id="name" name="name" placeholder="Sé creativo, pero claro." 
                                 value="<%= locals.product ? product.name : '' %>"
-								class="<%= locals.errors && errors.name ? 'danger' : '' %>">
+                                class="<%= locals.errors && errors.name ? 'danger' : '' %>">
                         <span class="error"><%= locals.errors && errors.name ? errors.name.msg : '' %> </span>
                     </div>
                     <div class="form-step">
@@ -54,8 +54,8 @@
                             <% productsSize.forEach(size => { %>
                                 <option value="<%= size.id %>">
                                      <%= size.name %>  
-                                </option>		
-                            <% }) %> 								
+                                </option>        
+                            <% }) %>                                 
                         </select>
                     </div>
                     <div class="form-step">
@@ -64,8 +64,8 @@
                             <% productsTypes.forEach(type => { %>
                                 <option value="<%= type.id %>">
                                      <%= type.name %>  
-                                </option>		
-                            <% }) %> 								
+                                </option>        
+                            <% }) %>                                 
                         </select>
                     </div>                  
                     <div class="form-step">

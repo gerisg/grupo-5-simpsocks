@@ -12,9 +12,9 @@
     </section>
 
     <main class="container products-wrapper">
-		<div class="row">
-			<div class="col-12">
-				<p class="title">Productos</p>
+        <div class="row">
+            <div class="col-12">
+                <p class="title">Productos</p>
             </div>
             <div class="col-md-2 col-lg-3">
                 <aside class="filters">
@@ -34,7 +34,7 @@
                     </div>
                     <div class="filter">
                         <label for="type">Tipo</label>
-                        <% productsTypes.forEach(type => { %>	
+                        <% productsTypes.forEach(type => { %>    
                             <div>
                                 <% if (filter.type == type.id) { %>
                                     <a href="/products/find?query=<%= query %>&size=<%= filter.size %>">
@@ -47,7 +47,7 @@
                     </div>
                     <div class="filter">
                         <label for="type">Tamaño</label>
-                        <% productsSize.forEach(size => { %>	
+                        <% productsSize.forEach(size => { %>    
                             <div>
                                 <% if (filter.size == size.id) { %>
                                     <a href="/products/find?query=<%= query %>&type=<%= filter.type %>">
@@ -74,8 +74,8 @@
                     <a href="/products/find/descuentos">Hacé clic acá para ver productos con descuentos !!</a>
                 <% } %>
             </div>
-		</div>
-	</main>
+        </div>
+    </main>
 
     <%- include("../partials/footer")%>
 </body>

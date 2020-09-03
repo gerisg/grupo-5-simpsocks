@@ -2,59 +2,59 @@
 <html lang="es">
 <%- include('../partials/head') %>
 <body>
-	<%- include('../partials/header') %>
+    <%- include('../partials/header') %>
 
-	<section class="top-nav">
+    <section class="top-nav">
         <nav class="top-nav-start breadcrumb">
-			<a href="/">Inicio</a>
-			<a href="/admin">Admin</a>
-			<a href="/products">Productos</a>
-			<a href="">Detalle</a>
+            <a href="/">Inicio</a>
+            <a href="/admin">Admin</a>
+            <a href="/products">Productos</a>
+            <a href="">Detalle</a>
         </nav>
-	</section>
+    </section>
 
-	<!-- product detail -->
-	<main class="container admin-wrapper main-with-form">
-		<div class="row main-center form-general col-11">
-			<div class="col-11">
-				<h2 class="title">Detalle del producto: <%= product.name %></h2>
-			</div>
-			<div class="row">
-				<% product.images.forEach(prodImage => { %>
-					<div class="col-6">
-						<img src="/images/products/<%= prodImage ? prodImage.name : '' %>" onerror="this.src='/images/products/default-image.png'" alt="imagen del producto">
-					</div>
-				<% }); %>
-			</div> 
-			<div class="col-11">
-				<div class="row main-around cross-center"> 
-					<div class="col-10 col-md-6 col-lg-5">
-						<div><span class="subtitle"> Precio :   </span>  $ <%= product.price %></div>
-						<div><span class="subtitle"> Nombre : </span> <%= product.name %></div> 
+    <!-- product detail -->
+    <main class="container admin-wrapper main-with-form">
+        <div class="row main-center form-general col-11">
+            <div class="col-11">
+                <h2 class="title">Detalle del producto: <%= product.name %></h2>
+            </div>
+            <div class="row">
+                <% product.images.forEach(prodImage => { %>
+                    <div class="col-6">
+                        <img src="/images/products/<%= prodImage ? prodImage.name : '' %>" onerror="this.src='/images/products/default-image.png'" alt="imagen del producto">
+                    </div>
+                <% }); %>
+            </div> 
+            <div class="col-11">
+                <div class="row main-around cross-center"> 
+                    <div class="col-10 col-md-6 col-lg-5">
+                        <div><span class="subtitle"> Precio :   </span>  $ <%= product.price %></div>
+                        <div><span class="subtitle"> Nombre : </span> <%= product.name %></div> 
                         <div ><span class="subtitle"> Descripción : </span> <%= product.description %></div> 
-						<div><span class="subtitle"> Descuento : </span> <%= product.discount %> % </div> 
-						<div><span class="subtitle"> Size : </span> <%= product.size.name %></div> 
-						<div><span class="subtitle"> Type : </span>  <%= product.type.name %></div> 
-						<div>
-							<span class="subtitle"> Categorías </span> 
-							<span class="labels">
-								<% product.categories.forEach(category => { %>
-									<span><%= category.name %></span> 
-								<% }) %>
-							</div>
-						</div> 
-					</div>
-					<div class="col-11">
-						<a class="btn btn-secondary" href="/products/<%= product.id %>/edit"><i class="fas fa-edit"></i> Editar </a>
-						<form class="form-only-btn" action="/products/<%= product.id %>?_method=delete" method="post">
-							<button class="btn btn-secondary" type="submit"><i class="fas fa-trash"></i> Eliminar</button>
-						</form>
-					</div>
-				</div>				
-			</div>
-		</div>
-	</main>
+                        <div><span class="subtitle"> Descuento : </span> <%= product.discount %> % </div> 
+                        <div><span class="subtitle"> Size : </span> <%= product.size.name %></div> 
+                        <div><span class="subtitle"> Type : </span>  <%= product.type.name %></div> 
+                        <div>
+                            <span class="subtitle"> Categorías </span> 
+                            <span class="labels">
+                                <% product.categories.forEach(category => { %>
+                                    <span><%= category.name %></span> 
+                                <% }) %>
+                            </div>
+                        </div> 
+                    </div>
+                    <div class="col-11">
+                        <a class="btn btn-secondary" href="/products/<%= product.id %>/edit"><i class="fas fa-edit"></i> Editar </a>
+                        <form class="form-only-btn" action="/products/<%= product.id %>?_method=delete" method="post">
+                            <button class="btn btn-secondary" type="submit"><i class="fas fa-trash"></i> Eliminar</button>
+                        </form>
+                    </div>
+                </div>                
+            </div>
+        </div>
+    </main>
 
-	<%- include('../partials/footer') %>
-</body>	
+    <%- include('../partials/footer') %>
+</body>    
 </html>

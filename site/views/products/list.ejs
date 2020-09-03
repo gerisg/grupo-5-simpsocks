@@ -2,71 +2,71 @@
 <html lang="es">
 <%- include('../partials/head', {title: 'Listado de usuarios'}) %>
 <body>
-	<%- include('../partials/header') %>
+    <%- include('../partials/header') %>
 
-	<section class="top-nav">
+    <section class="top-nav">
         <nav class="top-nav-start breadcrumb">
-			<a href="/">Inicio</a>
-			<a href="/admin">Admin</a>
-			<a href="/products">Productos</a>
+            <a href="/">Inicio</a>
+            <a href="/admin">Admin</a>
+            <a href="/products">Productos</a>
         </nav>
-	</section>
-	
-	<main class="container admin-wrapper main-with-form">
-		<div class="row main-center form-general">
-			<div class="col-10 title-forms">
-				<h2 class="title ">Tus Productos</h2>
-				<a href="/products/create" class="btn btn-primary">Crear Producto</a>
-			</div>
-			<!-- table titles -->
-			<div class="col-11 hidden-sm">
-				<div class="row row-title">
-					<div class="col-md-1">Imagen</div>
-					<div class="col-md-3">Nombre</div>
-					<div class="col-md-1">Precio</div>
-					<div class="col-md-2 hidden-sm">Talle</div>
-					<div class="col-md-2 hidden-sm">Tipo</div>
-					<div class="col-md-2 hidden-sm">Categorías</div>
-					<div class="col-md-1 hidden-sm">Acciones</div>
-				</div>
-			</div>
-			<!-- table content -->
-			<div class="col-11 " >
-				<% products.forEach(product => { %>
-					<div class="row cross-center admin-list-step">
-						<div class=" col 1 col-md-1 row-user-image">
-							<img src="/images/products/<%= product.images && product.images.length > 0 ? product.images[0].name : '' %>" onerror="this.src='/images/products/default-image.png'" alt="imagen de usuario">
-						</div>
-						<div class="col-6 col-md-3 ">
-							<%= product.name %>
-						</div>
-						<div class="col-2 col-md-1">
-							 $ <%= product.price %>
-						</div>
-						<div class="col-md-2 hidden-sm">
-							<%= product.size.name %>
-						</div>
-						<div class="col-md-2 hidden-sm">
-							<%= product.type.name %>
-						</div>
-						<div class="col-md-2 hidden-sm labels">
-							<% product.categories.forEach(category => { %>
-								<span><%= category.name %></span>  
-							<% }) %>
-						</div>
-						<div class="col-12 col-md-1 admin-list-actions">
-							<a class="btn btn-icon" href="/products/<%= product.id %>"><i class="fas fa-eye"></i></a>
-							<a class="btn btn-icon" href="/products/<%= product.id %>/edit"><i class="fas fa-edit"></i></a>
-							<form class="form-only-btn" action="/products/<%= product.id %>?_method=delete" method="post">
-								<button class="btn btn-icon admin-list-actions" type="submit"><i class="fas fa-trash"></i></button>
-							</form>
-						</div>
-					</div>
-				<% }) %>
-			</div>
-		</div>
-	</main>
-	
-	<%- include('../partials/footer') %>
-</body>	
+    </section>
+    
+    <main class="container admin-wrapper main-with-form">
+        <div class="row main-center form-general">
+            <div class="col-10 title-forms">
+                <h2 class="title ">Tus Productos</h2>
+                <a href="/products/create" class="btn btn-primary">Crear Producto</a>
+            </div>
+            <!-- table titles -->
+            <div class="col-11 hidden-sm">
+                <div class="row row-title">
+                    <div class="col-md-1">Imagen</div>
+                    <div class="col-md-3">Nombre</div>
+                    <div class="col-md-1">Precio</div>
+                    <div class="col-md-2 hidden-sm">Talle</div>
+                    <div class="col-md-2 hidden-sm">Tipo</div>
+                    <div class="col-md-2 hidden-sm">Categorías</div>
+                    <div class="col-md-1 hidden-sm">Acciones</div>
+                </div>
+            </div>
+            <!-- table content -->
+            <div class="col-11 " >
+                <% products.forEach(product => { %>
+                    <div class="row cross-center admin-list-step">
+                        <div class=" col 1 col-md-1 row-user-image">
+                            <img src="/images/products/<%= product.images && product.images.length > 0 ? product.images[0].name : '' %>" onerror="this.src='/images/products/default-image.png'" alt="imagen de usuario">
+                        </div>
+                        <div class="col-6 col-md-3 ">
+                            <%= product.name %>
+                        </div>
+                        <div class="col-2 col-md-1">
+                             $ <%= product.price %>
+                        </div>
+                        <div class="col-md-2 hidden-sm">
+                            <%= product.size.name %>
+                        </div>
+                        <div class="col-md-2 hidden-sm">
+                            <%= product.type.name %>
+                        </div>
+                        <div class="col-md-2 hidden-sm labels">
+                            <% product.categories.forEach(category => { %>
+                                <span><%= category.name %></span>  
+                            <% }) %>
+                        </div>
+                        <div class="col-12 col-md-1 admin-list-actions">
+                            <a class="btn btn-icon" href="/products/<%= product.id %>"><i class="fas fa-eye"></i></a>
+                            <a class="btn btn-icon" href="/products/<%= product.id %>/edit"><i class="fas fa-edit"></i></a>
+                            <form class="form-only-btn" action="/products/<%= product.id %>?_method=delete" method="post">
+                                <button class="btn btn-icon admin-list-actions" type="submit"><i class="fas fa-trash"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+        </div>
+    </main>
+    
+    <%- include('../partials/footer') %>
+</body>    
 </html>
