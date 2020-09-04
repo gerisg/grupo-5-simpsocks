@@ -7,6 +7,6 @@ router.get('/', controller.index);
 router.get('/aboutus', controller.aboutUs);
 router.get('/faq', controller.faq);
 router.get('/contact', controller.contact);
-router.post('/contact', validate.contactForm, controller.store);
+router.post('/contact', validate.contactForm, controller.contactInfo);
 
 module.exports = router;

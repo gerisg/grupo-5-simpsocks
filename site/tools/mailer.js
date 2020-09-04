@@ -35,5 +35,17 @@ module.exports = {
         transporter.sendMail(mailOptions)
             .then((info) => console.log(info.response))
             .catch(error => console.log(error));
+    },
+    sendContactInfo: (messageHTML) => {
+        let mailOptions = {
+            from: 'simpsocks@gmail.com',
+            to: 'simpsocks@gmail.com',
+            subject: 'Contacto Simpsocks',
+            html: messageHTML
+        };
+
+        transporter.sendMail(mailOptions)
+            .then((info) => console.log(info.response))
+            .catch(error => console.log(error));
     }
 }

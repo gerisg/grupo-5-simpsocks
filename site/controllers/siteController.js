@@ -2,6 +2,7 @@ const path = require('path');
 const jsonTable = require('../database/jsonTable');
 const { validationResult } = require('express-validator');
 const contactModel = jsonTable('contact');
+const mailer = require('../tools/mailer');
 
 module.exports = {
     index: (req, res) => {
@@ -16,19 +17,36 @@ module.exports = {
     contact: (req, res) => {
      res.render('site/contact-form');
     },
-    store: (req, res) => {
+    contactInfo: (req,res) => {
         let errors = validationResult(req);
-        if(errors.isEmpty()){
-            let contactMessage = {
-                name: req.body.name, 
-                email: req.body.email,
-                phone:req.body.phone,
-                message: req.body.message
-            }
-            let id = contactModel.create(contactMessage);
+        if (errors.isEmpty()) {
+            let messageHTML = 
+            `<h1>SimpSocks</h1>
+            <h2>Nuevo Mensaje de Contacto</h2>
+            <p>Nombre: ${req.body.name}</p>
+            <p>Email: ${req.body.email}</p>
+            <p>Teléfono: ${req.body.phone}</p>
+            <p>Mensaje: ${req.body.message}</p>`
+            mailer.sendContactInfo(messageHTML);
             res.redirect('/');
-        }else {
+        } else {
             res.render('site/contact-form', { errors: errors.mapped(), contactMessage: req.body });
         }
     }
+    // store: (req, res) => {
+    //     let errors = validationResult(req);
+    //     if(errors.isEmpty()){
+    //         let contactMessage = {
+    //             name: req.body.name, 
+    //             email: req.body.email,
+    //             phone:req.body.phone,
+    //             message: req.body.message
+    //         }
+    //         // let id = contactModel.create(contactMessage);
+    //         mailer.sendContact(contactMessage);
+    //         res.redirect('/');
+    //     }else {
+    //         res.render('site/contact-form', { errors: errors.mapped(), contactMessage: req.body });
+    //     }
+    // }
 }; 
