@@ -34,7 +34,8 @@ module.exports = {
     store: (req, res) => {
         let errors = validationResult(req);
         if (errors.isEmpty()) {
-            let encryptedPassword = bcrypt.hashSync(req.body.password, 10);
+            let password = generatePass();
+            let encryptedPassword = bcrypt.hashSync(password, 10);
             let user =  {
                 firstname: req.body.firstname,
                 lastname: req.body.lastname,
@@ -47,6 +48,7 @@ module.exports = {
                 image: req.file ? req.file.filename : null
             }
             let id = usersModel.create(user);
+            mailer.sendWelcome(user.email, password);
             res.redirect('/users/' + id);
         } else {
             res.render('users/create-form', { errors: errors.mapped(), user: req.body });
@@ -61,13 +63,12 @@ module.exports = {
         let errors = validationResult(req);
         if (errors.isEmpty()) {
             let id = parseInt(req.params.id);
-            let encryptedPassword = req.body.password ? bcrypt.hashSync(req.body.password, 10) : getCurrentPass(id);
             let user =  {
                 id: id,
                 firstname: req.body.firstname,
                 lastname: req.body.lastname,
                 email: req.body.email,
-                password: encryptedPassword,
+                password: getCurrentPass(id),
                 category: req.body.category,
                 phone: req.body.phone,
                 shipping_address: req.body.shipping_address,

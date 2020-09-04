@@ -69,12 +69,6 @@
                                     value="<%= locals.user ? user.shipping_address : '' %>">
                             </div>
                             <div class="col-12 form-step">
-                                <label for="password">Contraseña</label>
-                                <input type="password" id="password" name="password"
-                                    class="<%= locals.errors && errors.password ? 'danger' : '' %>">
-                                <span class="error"><%= locals.errors && errors.password ? errors.password.msg : '' %></span>
-                            </div>
-                            <div class="col-12 form-step">
                                 <label for="image">Imagen</label>
                                 <input type="file" id="image" name="image">
                             </div>

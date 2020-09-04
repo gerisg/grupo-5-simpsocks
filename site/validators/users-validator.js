@@ -4,7 +4,7 @@ module.exports = {
     loginForm: [
         check('email')
             .notEmpty().withMessage('Ingrese su correo electrónico').bail()
-            .isEmail().withMessage('Debe ingresar un correo electrónico válido'),
+            .isEmail().withMessage('Debe ingresar un correo electrónico válido')
     ],
     createForm: [
         check('firstname')
@@ -19,10 +19,7 @@ module.exports = {
         check('category')
             .notEmpty().withMessage('Debe seleccionar una categoría'),
         check('phone')
-            .custom(value => value ? value.isNumeric() : true).withMessage('Debe ingresar sólo números en el campo teléfono'),
-        check('password')
-            .notEmpty().withMessage('La contraseña es obligatoria').bail()
-            .isLength({ min:8 }).withMessage('La contraseña debe tener al menos 8 caracteres'),
+            .custom(value => value ? typeof value != 'number' : true).withMessage('Debe ingresar sólo números en el campo teléfono')
     ],
     editForm: [
         check('firstname')
@@ -37,9 +34,7 @@ module.exports = {
         check('category')
             .notEmpty().withMessage('Debe seleccionar una categoría'),
         check('phone')
-            .custom(value => value ? value.isNumeric() : true).withMessage('Debe ingresar sólo números en el campo teléfono'),
-        check('password')
-            .custom(value => value.length ? value.length >= 8 : true).withMessage('La contraseña debe tener al menos 8 caracteres'),
+            .custom(value => value ? typeof value != 'number' : true).withMessage('Debe ingresar sólo números en el campo teléfono')
     ],
     registerForm: [
         check('firstname')
