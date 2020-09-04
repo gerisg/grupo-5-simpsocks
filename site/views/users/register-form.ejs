@@ -30,11 +30,6 @@
                             class="<%= locals.errors && errors.email ? 'danger' : '' %>">
                         <span class="error"><%= locals.errors && errors.email ? errors.email.msg : '' %></span>
                     </div>
-                    <div class="form-step">
-                        <label for="password">Contraseña</label>
-                        <input type="password" name="password" class="<%= locals.errors && errors.password ? 'danger' : '' %>">
-                        <span class="error"><%= locals.errors && errors.password ? errors.password.msg : '' %></span>
-                    </div>
                     <div>
                         <button type="submit" class="btn btn-primary">Enviar</button>
                         <button type="reset" class="btn danger">Borrar</button>

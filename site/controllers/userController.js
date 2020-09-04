@@ -3,6 +3,7 @@ const fs = require('fs');
 const crypto = require('crypto');
 const bcrypt = require('bcryptjs');
 const { validationResult } = require('express-validator');
+const mailer = require('../tools/mailer');
 const jsonTable = require('../database/jsonTable');
 
 const usersModel = jsonTable('users');
@@ -11,6 +12,11 @@ const usersTokensModel = jsonTable('usersTokens');
 let getCurrentPass = userId => {
     let user = usersModel.findByPK(userId);
     return user ? user.password : null; // TODO If not found throw error
+}
+
+let generatePass = () => {
+    let hash = bcrypt.hashSync('simpsocks-secret-to-hash', 10);
+    return hash.slice(1).slice(-8);
 }
 
 module.exports = {
@@ -125,7 +131,8 @@ module.exports = {
     register: (req,res) => {
         let errors = validationResult(req);
         if (errors.isEmpty()) {
-            let encryptedPassword = bcrypt.hashSync(req.body.password, 10);
+            let password = generatePass();
+            let encryptedPassword = bcrypt.hashSync(password, 10);
             let user =  {
                 firstname: req.body.firstname,
                 lastname: req.body.lastname,
@@ -135,6 +142,7 @@ module.exports = {
             }
             let id = usersModel.create(user);
             req.session.user = { id, name: user.firstname, category: user.category };
+            mailer.sendWelcome(user.email, password);
             res.redirect('/');
         } else {
             res.render('users/register-form', { errors: errors.mapped(), user: req.body });
