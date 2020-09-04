@@ -39,7 +39,7 @@ module.exports = {
         check('phone')
             .custom(value => value ? value.isNumeric() : true).withMessage('Debe ingresar sólo números en el campo teléfono'),
         check('password')
-            .custom(value => value.length > 0 ? value.length >= 8 : true).withMessage('La contraseña debe tener al menos 8 caracteres'),
+            .custom(value => value.length ? value.length >= 8 : true).withMessage('La contraseña debe tener al menos 8 caracteres'),
     ],
     registerForm: [
         check('firstname')

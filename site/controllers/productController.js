@@ -43,7 +43,7 @@ let parseCategories = categories => {
 
 let deleteImages = id => {
     let images = productImagesModel.findAll('prodId', id);
-    if (images && images.length > 0) {
+    if (images && images.length) {
         images.forEach(image => {
             const imagePath = path.join(__dirname, '../public/images/products/' + image.name);
             fs.existsSync(imagePath) ? fs.unlinkSync(imagePath) : '';
@@ -56,7 +56,7 @@ let categoryMatch = categoryName => categoriesModel.findByFields(['name'], categ
 
 let findProductsByRelatedCategory = (categories, type) => {
     let filteredByType = categories.filter(category => category.type == type);
-    if(filteredByType.length > 0) {
+    if(filteredByType.length) {
         return filteredByType[0].related.
         map(catId => categoriesModel.findByPK(catId)).
         map(category => productsModel.findByMultivalueField('categories', category.id)).
@@ -71,7 +71,7 @@ module.exports = {
         let results;
         let category = categoryMatch(req.params.category);
         // Search by category
-        if(category && category.length > 0) {
+        if(category && category.length) {
             results = productsModel.findByMultivalueField('categories', category[0].id);
             filter.category = category[0].id;
         }
@@ -94,7 +94,7 @@ module.exports = {
             }
         }
         // Populate
-        if(results && results.length > 0) {
+        if(results && results.length) {
             populate(results);
         };
         // Categories

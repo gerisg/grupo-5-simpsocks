@@ -35,7 +35,7 @@
                 <% products.forEach(product => { %>
                     <div class="row cross-center admin-list-step">
                         <div class=" col 1 col-md-1 row-user-image">
-                            <img src="/images/products/<%= product.images && product.images.length > 0 ? product.images[0].name : '' %>" onerror="this.src='/images/products/default-image.png'" alt="imagen de usuario">
+                            <img src="/images/products/<%= product.images && product.images.length ? product.images[0].name : '' %>" onerror="this.src='/images/products/default-image.png'" alt="imagen de usuario">
                         </div>
                         <div class="col-6 col-md-3 ">
                             <%= product.name %>
