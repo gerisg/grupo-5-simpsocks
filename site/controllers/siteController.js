@@ -31,4 +31,4 @@ module.exports = {
             res.render('site/contact-form', { errors: errors.mapped(), contactMessage: req.body });
         }
     }
-};
+}; 
