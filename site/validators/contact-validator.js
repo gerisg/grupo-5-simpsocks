@@ -11,6 +11,7 @@ module.exports = {
         check('phone')
             .isNumeric().withMessage('Debe ingresar sólo números en el campo teléfono'),
         check('message')
-            .notEmpty().withMessage('Debe escribir un mensaje')
+            .notEmpty().withMessage('Debe escribir un mensaje').bail()
+            .isLength({max: 300})
     ]
 }
