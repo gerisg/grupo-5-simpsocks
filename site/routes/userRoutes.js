@@ -27,25 +27,25 @@ router.get('/profile', userRoute, controller.profile);
 router.get('/login', guestRoute, controller.login);
 router.post('/login', guestRoute, validate.loginForm, controller.authenticate);
 router.post('/logout', controller.logout);
-router.get('/register', guestRoute, controller.register);
+
+// Recuperación de contraseña
 router.get('/recover', guestRoute, controller.recover);
 
-/* FROM HERE ONLY ADMIN ACCESS ROUTES */
-router.use(adminRoute);
+// Registro de usuario (user y admin)
+router.get('/register', guestRoute, controller.registerForm);
+router.post('/register', guestRoute, validate.registerForm, controller.register);
+router.get('/create', adminRoute, controller.create);
+router.post('/', adminRoute, upload.single('image'), validate.createForm, controller.store);
 
 // Listado de usuarios
-router.get('/', controller.list);
-
-// Formulario de creación de usuarios
-router.get('/create', controller.create);
-router.post('/', upload.single('image'), validate.createForm, controller.store);
+router.get('/', adminRoute, controller.list);
 
 // Formulario de edición de usuarios
-router.get('/:id/edit', controller.edit);
-router.put('/:id', upload.single('image'), validate.editForm, controller.update);
-router.delete('/:id', controller.destroy);
+router.get('/:id/edit', adminRoute, controller.edit);
+router.put('/:id', adminRoute, upload.single('image'), validate.editForm, controller.update);
+router.delete('/:id', adminRoute, controller.destroy);
 
 // Detalle de un usuario particular
-router.get('/:id', controller.detail);
+router.get('/:id', adminRoute, controller.detail);
 
 module.exports = router;

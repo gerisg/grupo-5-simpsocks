@@ -94,7 +94,7 @@ module.exports = {
         if (errors.isEmpty()) {
             let user = usersModel.findOne('email', req.body.email);
             if (user && bcrypt.compareSync(req.body.password, user.password)){
-                req.session.user= { id: user.id, name: user.firstname, category: user.category };
+                req.session.user = { id: user.id, name: user.firstname, category: user.category };
                 if (req.body.remember){
                     const token = crypto.randomBytes(64).toString('base64');
                     usersTokensModel.create({ userId: user.id, token });
@@ -119,8 +119,26 @@ module.exports = {
         req.session.destroy();
         res.redirect('/users/login');
     },
+    registerForm: (req,res) => {
+        res.render('users/register-form');
+    },
     register: (req,res) => {
-        res.render('users/register');
+        let errors = validationResult(req);
+        if (errors.isEmpty()) {
+            let encryptedPassword = bcrypt.hashSync(req.body.password, 10);
+            let user =  {
+                firstname: req.body.firstname,
+                lastname: req.body.lastname,
+                email: req.body.email,
+                password: encryptedPassword,
+                category: 'user'
+            }
+            let id = usersModel.create(user);
+            req.session.user = { id, name: user.firstname, category: user.category };
+            res.redirect('/');
+        } else {
+            res.render('users/register-form', { errors: errors.mapped(), user: req.body });
+        }
     },
     recover: (req,res) => {
         res.render('users/recover');
