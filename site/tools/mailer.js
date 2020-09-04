@@ -43,7 +43,6 @@ module.exports = {
             subject: 'Contacto Simpsocks',
             html: messageHTML
         };
-
         transporter.sendMail(mailOptions)
             .then((info) => console.log(info.response))
             .catch(error => console.log(error));

@@ -1,5 +1,3 @@
-const path = require('path');
-const jsonTable = require('../database/jsonTable');
 const { validationResult } = require('express-validator');
 const mailer = require('../tools/mailer');
 
