@@ -38,19 +38,23 @@
                 <form action="" method="post">
                     <div class="form-control">
                         <label for="name">NOMBRE</label>
-                        <input type="text" name="name" id="name">
+                        <input type="text" name="name" id="name" class="<%= locals.errors && errors.email ? 'danger' : '' %>">
+                        <span class="error"><%= locals.errors && errors.name ? errors.name.msg : '' %></span>
                     </div>
                     <div class="form-control">
                         <label for="email">EMAIL</label>
-                        <input type="email" name="email" id="email">
+                        <input type="email" name="email" id="email" class="<%= locals.errors && errors.email ? 'danger' : '' %>">
+                        <span class="error"><%= locals.errors && errors.email ? errors.email.msg : '' %></span>
                     </div>
                     <div class="form-control">
                         <label for="phone">TELEFONO</label>
-                        <input type="text" name="phone" id="phone">
+                        <input type="text" name="phone" id="phone" class="<%= locals.errors && errors.email ? 'danger' : '' %>">
+                        <span class="error"><%= locals.errors && errors.phone ? errors.phone.msg : '' %></span>
                     </div>
                     <div class="form-control">
                         <label for="message">MENSAJE</label>
-                        <textarea name="message" id="message" cols="30" rows="10"></textarea>
+                        <textarea name="message" id="message" cols="30" rows="10" class="<%= locals.errors && errors.email ? 'danger' : '' %>"></textarea>
+                        <span class="error"><%= locals.errors && errors.message? errors.message.msg : '' %></span>
                     </div>
                     <button type="submit">Enviar</button>
                 </form>
