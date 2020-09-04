@@ -33,20 +33,4 @@ module.exports = {
             res.render('site/contact-form', { errors: errors.mapped(), contactMessage: req.body });
         }
     }
-    // store: (req, res) => {
-    //     let errors = validationResult(req);
-    //     if(errors.isEmpty()){
-    //         let contactMessage = {
-    //             name: req.body.name, 
-    //             email: req.body.email,
-    //             phone:req.body.phone,
-    //             message: req.body.message
-    //         }
-    //         // let id = contactModel.create(contactMessage);
-    //         mailer.sendContact(contactMessage);
-    //         res.redirect('/');
-    //     }else {
-    //         res.render('site/contact-form', { errors: errors.mapped(), contactMessage: req.body });
-    //     }
-    // }
 }; 
