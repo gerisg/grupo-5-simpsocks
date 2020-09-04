@@ -177,6 +177,12 @@ a.danger:hover, button.danger:hover { background-color: var(--soft-red); }
   padding: 0;
 }
 
+.info {
+  color: var(--darkgreen);
+  margin: var(--default-margin);
+  padding: 0;
+}
+
 /************/
 /** Header **/
 /************/

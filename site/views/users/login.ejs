@@ -31,11 +31,12 @@
                     <p class="error"><%= locals.errors && errors.form ? errors.form.msg : '' %></p>
                     
                     <div>
-                        <button type="submit" class=" btn btn-primary">Enviar</button>
+                        <button type="submit" class=" btn btn-primary">Iniciar Sesión</button>
+                        <a href="/" class="btn btn-cancel">Volver</a>
                     </div>
                     
                     <div>
-                        <a href="/users/recover">¿Olvidáste tu contraseña?</a>
+                        <a href="/users/recover" class="btn btn-cancel">Olvidé mi contraseña</a>
                     </div>
 
                 </form>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head') %>
+<body>
+    <%- include('../partials/header') %>
+
+    <main class="main-small-form">
+        <section class="row main-center">
+            <div class="col-11 col-md-5 col-lg-5 form-general">
+                <form action="/users/recover" method="POST">
+                    <h2 class="title-forms">Recuperá tu Contraseña</h2>
+                    <div class="form-step">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="amantedelacomida53@aol.com"
+                            value="<%= locals.email ? email : '' %>"
+                            class="<%= locals.errors && errors.email ? 'danger' : '' %>"
+                            <%= locals.msg ? 'disabled' : '' %>>
+                        <span class="error"><%= locals.errors && errors.email ? errors.email.msg : '' %></span>
+                    </div>
+                    <p class="info"><%= locals.msg ? msg : '' %></p>
+                    <div>
+                        <button type="submit" class="btn btn-primary" <%= locals.msg ? 'disabled' : '' %>>Enviar</button>
+                        <a href="/" class="btn btn-cancel">Volver</a>
+                    </div>
+                </form>
+            </div>
+        </section>  
+    </main>
+
+    <%- include('../partials/footer') %>
+</body>
+</html>

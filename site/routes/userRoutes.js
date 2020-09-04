@@ -29,9 +29,10 @@ router.post('/login', guestRoute, validate.loginForm, controller.authenticate);
 router.post('/logout', controller.logout);
 
 // Recuperación de contraseña
-router.get('/recover', guestRoute, controller.recover);
+router.get('/recover', guestRoute, controller.recoverForm);
+router.post('/recover', validate.recoverForm, controller.recover);
 
-// Registro de usuario (user y admin)
+// Registro de usuario
 router.get('/register', guestRoute, controller.registerForm);
 router.post('/register', guestRoute, validate.registerForm, controller.register);
 router.get('/create', adminRoute, controller.create);

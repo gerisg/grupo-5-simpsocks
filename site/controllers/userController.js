@@ -15,8 +15,8 @@ let getCurrentPass = userId => {
 }
 
 let generatePass = () => {
-    let hash = bcrypt.hashSync('simpsocks-secret-to-hash', 10);
-    return hash.slice(1).slice(-8);
+    let hash = bcrypt.hashSync('simpsocks-secret-phrase-to-hash', 10);
+    return hash.slice(-8);
 }
 
 module.exports = {
@@ -148,8 +148,25 @@ module.exports = {
             res.render('users/register-form', { errors: errors.mapped(), user: req.body });
         }
     },
+    recoverForm: (req,res) => {
+        res.render('users/recover-form');
+    },
     recover: (req,res) => {
-        res.render('users/recover');
+        let errors = validationResult(req);
+        if (errors.isEmpty()) {
+            let user = usersModel.findOne('email', req.body.email);
+            if(user) {
+                let password = generatePass();
+                user.password =  bcrypt.hashSync(password, 10);
+                // TODO debería sobreescribir el password cuando el usuario confirma que solicitó el cambio
+                usersModel.update(user); 
+                mailer.sendRecover(user.email, password);
+            }
+            let msg = 'Si el usuario existe recibirá en su correo una nueva contraseña.';
+            res.render('users/recover-form', { msg, email: req.body.email });
+        } else {
+            res.render('users/recover-form', { errors: errors.mapped(), email: req.body.email });
+        }
     },
     favorites: (req, res) => {
         console.log('Not implemented yet');

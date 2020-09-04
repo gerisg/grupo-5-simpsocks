@@ -51,5 +51,10 @@ module.exports = {
         check('email')
             .notEmpty().withMessage('El correo electrónico es obligatorio').bail()
             .isEmail().withMessage('El correo electrónico no posee un formato válido')
+    ],
+    recoverForm: [
+        check('email')
+            .notEmpty().withMessage('El correo electrónico es obligatorio').bail()
+            .isEmail().withMessage('El correo electrónico no posee un formato válido')
     ]
 }
