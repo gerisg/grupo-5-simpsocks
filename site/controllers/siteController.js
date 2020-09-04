@@ -1,7 +1,6 @@
 const path = require('path');
 const jsonTable = require('../database/jsonTable');
 const { validationResult } = require('express-validator');
-const contactModel = jsonTable('contact');
 const mailer = require('../tools/mailer');
 
 module.exports = {
