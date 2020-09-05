@@ -51,5 +51,22 @@ module.exports = {
         check('email')
             .notEmpty().withMessage('El correo electrónico es obligatorio').bail()
             .isEmail().withMessage('El correo electrónico no posee un formato válido')
+    ],
+    profileForm: [
+        check('firstname')
+            .notEmpty().withMessage('El nombre es obligatorio').bail()
+            .isLength({ min: 3 }).withMessage('El nombre debe tener al menos 3 caracteres'),
+        check('lastname')
+            .notEmpty().withMessage('El apellido es obligatorio').bail()
+            .isLength({ min: 3 }).withMessage('El apellido debe tener al menos 3 caracteres'),
+        check('email')
+            .notEmpty().withMessage('El correo electrónico es obligatorio').bail()
+            .isEmail().withMessage('El correo electrónico no posee un formato válido'),
+        check('phone')
+            .custom(value => value ? typeof value != 'number' : true).withMessage('Debe ingresar sólo números en el campo teléfono'),
+        check('password')
+            .notEmpty().withMessage('Ingrese su contraseña actual para guardar los cambios en su perfil'),
+        check('newPassword')
+            .custom(value => value.length ? value.length >= 8 : true).withMessage('La nueva contraseña debe tener al menos 8 caracteres')
     ]
 }

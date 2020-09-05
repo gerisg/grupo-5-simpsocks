@@ -17,7 +17,7 @@
                             <%= locals.msg ? 'disabled' : '' %>>
                         <span class="error"><%= locals.errors && errors.email ? errors.email.msg : '' %></span>
                     </div>
-                    <p class="info"><%= locals.msg ? msg : '' %></p>
+                    <p class="success"><%= locals.msg ? msg : '' %></p>
                     <div>
                         <button type="submit" class="btn btn-primary" <%= locals.msg ? 'disabled' : '' %>>Enviar</button>
                         <a href="/users/login" class="btn btn-cancel">Volver</a>

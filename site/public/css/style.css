@@ -18,7 +18,7 @@
   --primary: var(--yellow);
   --secondary: var(--blue);
   --white: white;
-  --light: #ebebeb;
+  --light: #d9d9d9;
   --dark: #333;
   
   /* https://coolors.co/ffd521-3180bf-d6e69f-424f46-f14e28-f777aa */
@@ -113,12 +113,13 @@ a {
 /* Input / Buttons */
 
 .btn { 
-  display: flex;
+  display: inline-block;
   flex-direction: column; 
   cursor: pointer;
   font-family: "gotham-ultra";
   border-radius: .6rem;
   padding: .5rem 1rem;
+  margin-left: 1rem;
 }
 
 input, select, textarea { width: 100%; }
@@ -170,6 +171,14 @@ a.danger:hover, button.danger:hover { background-color: var(--soft-red); }
 
 /* Validation Messages */
 
+.error-form {
+  background-color: var(--soft-red);
+  color: var(--white);
+  font-size: .75rem;
+  margin-left: 1rem;
+  padding: var(--default-padding);
+}
+
 .error {
   color: var(--red);
   font-size: .75rem;
@@ -177,7 +186,7 @@ a.danger:hover, button.danger:hover { background-color: var(--soft-red); }
   padding: 0;
 }
 
-.info {
+.success {
   color: var(--darkgreen);
   margin: var(--default-margin);
   padding: 0;
@@ -950,7 +959,6 @@ footer {
   padding: 10px;
   border-bottom: 3px solid var(--white);
 }
-  
 
 /* Edit Product */
 
@@ -1000,8 +1008,6 @@ footer {
   padding: 5px 15px 5px 0px;
 }
 
-
-
 /* Simple Slider */
 
 .simple-slider {
@@ -1014,6 +1020,46 @@ footer {
   flex-shrink: 0;
   height: 100%;
   scroll-snap-align: start;
+}
+
+/* Profile */
+
+.profile {
+  margin: var(--default-margin);
+}
+
+.profile-picture {
+  padding: var(--default-padding);
+  max-width: 200px;
+  margin: 0 auto;
+}
+
+.profile-header {
+  text-align: center;
+}
+
+/* Forms */
+
+.form-group {
+  padding-bottom: 0rem;
+  margin: 0 1rem 1.5rem;
+}
+.form-group>label {
+  color: #666666;
+  font-weight: 300;
+  font-size: .75rem;
+}
+.form-group>input {
+  margin: 0;
+  display: block;
+  font-family: Poppins-Medium;
+  font-size: 1rem;
+  color: var(--darkgreen);
+  border: none;
+  border-bottom: 2px solid var(--light);
+}
+.form-group>input:focus {
+  border-bottom: 1px solid var(--dark);
 }
 
 /* Grid system */
@@ -1087,6 +1133,12 @@ footer {
 
   .container {
     margin: 0 var(--default-margin);
+  }
+
+  /* Profile */
+
+  .profile {
+    margin: 1rem 2rem;
   }
   
   /************/
@@ -1330,11 +1382,6 @@ footer {
   .header-end .main-nav ul li form button i {
     font-size: 24px;
     font-weight: bold;
-  }
-
-  /* Button */
-  .btn {
-    display: inline-block;
   }
 }
 

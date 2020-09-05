@@ -109,11 +109,9 @@ module.exports = {
                 }
                 res.redirect('/');
             } else {
-                console.log('credenciales no validas');
                 res.render('users/login', { errors: { form: { msg: 'Credenciales no válidas' }}});
             }
         } else {
-            console.log(errors.mapped());
             res.render('users/login', { errors: errors.mapped() });
         }
     },
@@ -169,11 +167,42 @@ module.exports = {
             res.render('users/recover-form', { errors: errors.mapped(), email: req.body.email });
         }
     },
-    favorites: (req, res) => {
-        console.log('Not implemented yet');
-        res.redirect('/');
-    },
     profile: (req, res) => {
+        let id = req.session.user.id;
+        let user = usersModel.findByPK(id);
+        res.render('users/profile', { user });
+    },
+    updateProfile: (req, res) => {
+        let errors = validationResult(req);
+        if (errors.isEmpty()) {
+            let id = req.session.user.id;
+            let valid = bcrypt.compareSync(req.body.password, getCurrentPass(id));
+            if(valid) {
+                let password = req.body.newPassword ? req.body.newPassword : req.body.password
+                let user =  {
+                    id: id,
+                    firstname: req.body.firstname,
+                    lastname: req.body.lastname,
+                    email: req.body.email,
+                    password: bcrypt.hashSync(password, 10),
+                    category: req.session.user.category,
+                    phone: req.body.phone,
+                    shipping_address: req.body.shipping_address,
+                    payment_address: req.body.payment_address,
+                    image: req.file ? req.file.filename : req.body.currentImage
+                }
+                usersModel.update(user);
+                res.redirect('/users/profile');
+            } else {
+                req.body.image = req.file ? req.file.filename : req.body.currentImage;
+                res.render('users/profile', { errors: { form: { msg: 'Credenciales no válidas' }}, user: req.body });
+            }
+        } else {
+            req.body.image = req.file ? req.file.filename : req.body.currentImage;
+            res.render('users/profile', { errors: errors.mapped(), user: req.body });
+        }
+    },
+    favorites: (req, res) => {
         console.log('Not implemented yet');
         res.redirect('/');
     }

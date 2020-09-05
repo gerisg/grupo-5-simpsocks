@@ -21,7 +21,10 @@ const upload = multer({ storage });
 
 // TODO Not implemented yet
 router.get('/favorites', userRoute, controller.favorites);
+
+// Perfil de usuario
 router.get('/profile', userRoute, controller.profile);
+router.put('/profile', userRoute, upload.single('image'), validate.profileForm, controller.updateProfile);
 
 // Sesion de usuarios
 router.get('/login', guestRoute, controller.login);

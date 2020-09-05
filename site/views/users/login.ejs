@@ -11,6 +11,10 @@
                 <form action="/users/login" method="POST"> 
 
                     <h2 class="title-forms">Que bueno que volviste!</h2>
+                    
+                    <% if (locals.errors && errors.form) { %>
+                        <p class="error-form"><%= errors.form.msg %></p>
+                    <% } %>
 
                     <div class="form-step">
                         <label for="email" >Email</label>
@@ -27,9 +31,7 @@
                         <label for="remember">Recordarme</label>
                         <input type="checkbox" name="remember">
                     </div>
-                    
-                    <p class="error"><%= locals.errors && errors.form ? errors.form.msg : '' %></p>
-                    
+
                     <div>
                         <button type="submit" class=" btn btn-primary">Iniciar Sesión</button>
                         <a href="/" class="btn btn-cancel">Volver</a>
