@@ -12,29 +12,31 @@
             <a href="/categories/create">Nueva</a>
         </nav>
     </section>
-<main class="main-small-form">    
-    <div class="container categories-wrapper">
-        <div class="row main-center form-general col-11 col-md-8">
-            <div>
-                <h2 class="title-forms">Crear categoría</h2>
-            </div>
-            <div class="col-11">
-                <form action="/categories" method="POST">
-                    <div class="row">
-                        <div class="col-12 form-step">
-                            <label for="name">Nombre</label>
-                            <input type="text" id="name" name="name" placeholder="Ej: ofertas">
+
+    <main class="admin">
+        <div class="container">
+            <div class="row main-center form-general col-11 col-md-8">
+                <div>
+                    <h2 class="title-forms">Crear categoría</h2>
+                </div>
+                <div class="col-11">
+                    <form action="/categories" method="POST">
+                        <div class="row">
+                            <div class="col-12 form-group">
+                                <label for="name">Nombre</label>
+                                <input type="text" id="name" name="name" placeholder="Ej: ofertas">
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary">Guardar</button>
+                                <a href="/categories" class="btn-cancel">Cancelar</a>
+                            </div>
                         </div>
-                        <div class="col-12">
-                            <button type="submit" class="btn btn-primary">Guardar</button>
-                            <a href="/categories" class="btn btn-cancel">Cancelar</a>
-                        </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
-</main>
+    </main>
+
     <%- include('../partials/footer') %>
-</body>    
+</body>
 </html>

@@ -34,7 +34,7 @@
                     </div>
                     <div class="filter">
                         <label for="type">Tipo</label>
-                        <% productsTypes.forEach(type => { %>    
+                        <% productsTypes.forEach(type => { %>
                             <div>
                                 <% if (filter.type == type.id) { %>
                                     <a href="/products/find?query=<%= query %>&size=<%= filter.size %>">
@@ -47,7 +47,7 @@
                     </div>
                     <div class="filter">
                         <label for="type">Tamaño</label>
-                        <% productsSize.forEach(size => { %>    
+                        <% productsSize.forEach(size => { %>
                             <div>
                                 <% if (filter.size == size.id) { %>
                                     <a href="/products/find?query=<%= query %>&type=<%= filter.type %>">

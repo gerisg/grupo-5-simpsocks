@@ -29,12 +29,12 @@
             <div class="col-11">
                 <div class="row main-around cross-center"> 
                     <div class="col-10 col-md-6 col-lg-5">
-                        <div><span class="subtitle"> Precio :   </span>  $ <%= product.price %></div>
+                        <div><span class="subtitle"> Precio :   </span>$ <%= product.price %></div>
                         <div><span class="subtitle"> Nombre : </span> <%= product.name %></div> 
                         <div ><span class="subtitle"> Descripción : </span> <%= product.description %></div> 
                         <div><span class="subtitle"> Descuento : </span> <%= product.discount %> % </div> 
                         <div><span class="subtitle"> Size : </span> <%= product.size.name %></div> 
-                        <div><span class="subtitle"> Type : </span>  <%= product.type.name %></div> 
+                        <div><span class="subtitle"> Type : </span><%= product.type.name %></div> 
                         <div>
                             <span class="subtitle"> Categorías </span> 
                             <span class="labels">
@@ -50,11 +50,11 @@
                             <button class="btn btn-secondary" type="submit"><i class="fas fa-trash"></i> Eliminar</button>
                         </form>
                     </div>
-                </div>                
+                </div>
             </div>
         </div>
     </main>
 
     <%- include('../partials/footer') %>
-</body>    
+</body>
 </html>

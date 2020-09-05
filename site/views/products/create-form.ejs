@@ -44,16 +44,16 @@
                         <input type="number" id="discount" name="discount" placeholder= "ingresa el descuento de tus simpsocks"
                             value="<%= locals.product ? product.discount: '' %>"
                             class="<%= locals.errors && errors.discount? 'danger' : '' %>">
-                        <span class="error"><%= locals.errors && errors.discount ? errors.discount.msg : '' %> </span>    
+                        <span class="error"><%= locals.errors && errors.discount ? errors.discount.msg : '' %> </span>
                     </div>
                     <div class="form-step">
                         <label for="size">Talle</label>
                         <select name="size" id="size">
                             <% productsSize.forEach(size => { %>
                                 <option value="<%= size.id %>">
-                                     <%= size.name %>  
-                                </option>        
-                            <% }) %>                                 
+                                     <%= size.name %>
+                                </option>
+                            <% }) %>
                         </select>
                     </div>
                     <div class="form-step">
@@ -61,11 +61,11 @@
                         <select name="type" id="type">
                             <% productsTypes.forEach(type => { %>
                                 <option value="<%= type.id %>">
-                                     <%= type.name %>  
-                                </option>        
-                            <% }) %>                                 
+                                     <%= type.name %>
+                                </option>
+                            <% }) %>
                         </select>
-                    </div>                  
+                    </div>
                     <div class="form-step">
                         <label for="categories">Categorías</label> 
                         <div class="row">

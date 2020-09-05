@@ -30,7 +30,7 @@
                         </div>
                         <div class="col-12 form-step">
                             <label for="price">Precio</label>
-                            <input type="number" id="price" name="price" placeholder=" " value= <%= product.price %>     
+                            <input type="number" id="price" name="price" placeholder=" " value= <%= product.price %>
                             value="<%= locals.product ? product.price: '' %>"
                             class="<%= locals.errors && errors.price? 'danger' : '' %>">
                         <span class="error"><%= locals.errors && errors.price ? errors.price.msg : '' %> </span> 
@@ -40,7 +40,7 @@
                             <input type="number" id="discount" name="discount" placeholder=" " value= <%= product.discount %>
                             value="<%= locals.product ? product.discount: '' %>"
                             class="<%= locals.errors && errors.discount? 'danger' : '' %>">
-                        <span class="error"><%= locals.errors && errors.discount ? errors.discount.msg : '' %> </span>   
+                        <span class="error"><%= locals.errors && errors.discount ? errors.discount.msg : '' %> </span> 
                         </div>
                         <div class="col-12 form-step">
                             <label for="description">Descripción</label>
@@ -54,9 +54,9 @@
                             <select name="size" id="size">
                                 <% productsSize.forEach(size => { %>
                                     <option value="<%= size.id %>" <%= size.id == product.size ? "selected" : " " %>>
-                                         <%= size.name %>  
-                                    </option>        
-                                <% }) %>                                 
+                                         <%= size.name %>
+                                    </option> 
+                                <% }) %>
                             </select>
                         </div>
                         <div class="col-12 form-step">
@@ -64,9 +64,9 @@
                             <select name="type" id="type">
                                 <% productsTypes.forEach(type => { %>
                                     <option value="<%= type.id %>" <%= type.id == product.type ? "selected" : " " %>>
-                                         <%= type.name %>  
-                                    </option>        
-                                <% }) %>                                 
+                                         <%= type.name %>
+                                    </option> 
+                                <% }) %>
                             </select>
                         </div>
                         <div class="col-12 form-step">
@@ -120,5 +120,5 @@
     </div>
 </main>
     <%- include('../partials/footer') %>
-</body>    
+</body>
 </html>
