@@ -15,7 +15,6 @@ module.exports = (req, res, next) => {
                 let userSession = { id: user.id, name: user.firstname, category: user.category };
                 req.session.user = userSession; // Available in session
                 res.locals.auth = userSession; // Available in views
-                console.log('User loaded from cookie');
             }
         }
     }
