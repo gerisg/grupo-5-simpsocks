@@ -896,8 +896,8 @@ footer {
 /* General about forms */
 
 .form-group {
-  padding-bottom: 0rem;
-  margin: .75rem 1rem;
+  margin: .5rem 0;
+  padding: .5rem .5rem 0 .5rem 
 }
 .form-group>label {
   color: #666666;
@@ -913,8 +913,16 @@ footer {
   border: none;
   border-bottom: 2px solid var(--light);
 }
+.form-group>input[type=file] {
+  height: 37px;
+}
 .form-group>input:focus {
   border-bottom: 1px solid var(--dark);
+}
+.form-group>select {
+  border: none;
+  border-bottom: 2px solid var(--light);
+  background-color: initial;
 }
 .form-checkbox {
   margin: 0 1rem .5rem;
@@ -997,6 +1005,7 @@ footer {
 .admin-form .row-content {
   border-bottom: 1px solid var(--light);
   margin-bottom: .75rem;
+  font-size: .8rem;
 }
 
 .admin-form .row-content:first-child {
@@ -1004,14 +1013,26 @@ footer {
   padding-top: .5rem;
 }
 
-.admin-form .row-user-image {
-  padding: 5px 15px 5px 0px;
+.admin-form .row-content.admin {
+  background-color: var(--soft-green);
 }
 
-.admin-form .detail-title {
+.admin-form .row-user-image {
+  padding: 5px;
+}
+
+.admin-form .row-actions {
+  text-align: right;
+}
+
+.admin-form .detail span {
   font-size: 1.25rem;
   font-family: Roboto;
   font-weight: 500;
+}
+
+.admin-form .controls button {
+  margin-left: var(--default-margin);
 }
 
 /* OLD FORM */
@@ -1452,6 +1473,10 @@ footer {
 
   .admin-form {
     padding: 2rem 0;
+  }
+
+  .admin-form .row-content {
+    font-size: 1rem;
   }
 }
 

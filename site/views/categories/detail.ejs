@@ -17,7 +17,7 @@
     <main class="row main-center admin-form">
         <div class="col-11 container">
             <div class="header">
-                <p>Categoria: <span class="entity"><%= category.name %></span></p>
+                <p>Categoria <span class="entity">#<%= category.id %></span></p>
                 <a class="btn btn-primary" href="/categories/<%= category.id %>/edit">
                     <i class="fas fa-edit"></i> Editar
                 </a>
@@ -28,8 +28,8 @@
                 </form>
             </div>
             <div class="row main-around row-content">
-                <div class="col-11">
-                    <span class="detail-title">Nombre: </span> <%= category.name %>
+                <div class="col-11 detail">
+                    <span>Nombre: </span> <%= category.name %>
                 </div>
             </div>
         </div>

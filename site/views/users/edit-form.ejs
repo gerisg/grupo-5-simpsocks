@@ -13,73 +13,71 @@
         </nav>
     </section>
 
-    <div class="admin-wrapper main-with-form">
-        <div class="row main-center form-general col-11">
-            <div class="col-11 title-forms">
-                <h2 class="title">Editando usuario: <i><%= user.firstname %></i></h2>
+    <main class="row main-center admin-form">
+        <div class="col-11 container">
+            <div class="header">
+                <p>Editar Usuario <span class="entity">#<%= user.id %></span></p>
             </div>
-            <div class="col-11 col-md-6">
-                <form action="/users/<%= user.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
-                    <div class="row">
-                        <div class="col-12 form-step">
-                            <label for="firstname">Nombre</label>
-                            <input type="text" id="firstname" name="firstname" placeholder="Ej: Juan"
-                                value="<%= locals.user ? user.firstname : '' %>"
-                                class="<%= locals.errors && errors.firstname ? 'danger' : '' %>">
-                            <span class="error"><%= locals.errors && errors.firstname ? errors.firstname.msg : '' %></span>
-                        </div>
-                        <div class="col-12 form-step">
-                            <label for="lastname">Apellido</label>
-                            <input type="text" id="lastname" name="lastname" placeholder="Ej: Perez"
-                                value="<%= locals.user ? user.lastname : '' %>"
-                                class="<%= locals.errors && errors.lastname ? 'danger' : '' %>">
-                            <span class="error"><%= locals.errors && errors.lastname ? errors.lastname.msg : '' %></span>
-                        </div>
-                        <div class="col-12 form-step">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" placeholder="Ej: juanperez@mail.com"
-                                value="<%= locals.user ? user.email : '' %>"
-                                class="<%= locals.errors && errors.email ? 'danger' : '' %>">
-                            <span class="error"><%= locals.errors && errors.email ? errors.email.msg : '' %></span>
-                        </div>
-                        <div class="col-12 form-step">
-                            <label for="category">Categoría</label>
-                            <select name="category" id="category"
-                                class="<%= locals.errors && errors.category ? 'danger' : '' %>">
-                                <option value="user" <%= locals.user && locals.user.category == 'user' ? 'selected' : '' %>>Usuario</option>
-                                <option value="admin" <%= locals.user && locals.user.category == 'admin' ? 'selected' : '' %>>Administrador</option>
-                            </select>
-                            <span class="error"><%= locals.errors && errors.category ? errors.category.msg : '' %></span>
-                        </div>
-                        <div class="col-12 form-step">
-                            <label for="phone">Teléfono</label>
-                            <input type="number" id="phone" name="phone" placeholder="Ej: 1122223333"
-                                value="<%= locals.user ? user.phone : '' %>"
-                                class="<%= locals.errors && errors.phone ? 'danger' : '' %>">
-                            <span class="error"><%= locals.errors && errors.phone ? errors.phone.msg : '' %></span>
-                        </div>
-                        <div class="col-12 form-step">
-                            <label for="payment_address">Domicilio de facturación</label>
-                            <input type="text" id="payment_address" name="payment_address" placeholder="Ej: Corrientes 9999, Lanus, Buenos Aires"
-                                value="<%= locals.user ? user.payment_address : '' %>">
-                        </div>
-                        <div class="col-12 form-step">
-                            <label for="shipping_address">Domicilio de entrega</label>
-                            <input type="text" id="shipping_address" name="shipping_address" placeholder="Ej: Rivadavia 9999, CABA"
-                                value="<%= locals.user ? user.shipping_address : '' %>">
-                        </div>
-                        <div class="col-12 form-step">
-                            <label for="image">Imagen</label>
-                            <input type="file" id="image" name="image">
-                        </div>
-                        <input type="hidden" name="currentImage" value="<%= locals.user ? user.image : '' %>">
-                        <div class="col-12">
-                            <button type="submit" class="btn btn-primary">Guardar</button>
-                            <a href="/users" class="btn btn-cancel">Cancelar</a>
-                        </div>
+            <form action="/users/<%= user.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+                <div class="row main-between">
+                    <div class="col-12 col-md-6 form-group">
+                        <label for="firstname">Nombre</label>
+                        <input type="text" id="firstname" name="firstname" placeholder="Ej: Juan"
+                            value="<%= locals.user ? user.firstname : '' %>"
+                            class="<%= locals.errors && errors.firstname ? 'danger' : '' %>">
+                        <span class="error"><%= locals.errors && errors.firstname ? errors.firstname.msg : '' %></span>
                     </div>
-                </form>
-            </div>
+                    <div class="col-12 col-md-6 form-group">
+                        <label for="lastname">Apellido</label>
+                        <input type="text" id="lastname" name="lastname" placeholder="Ej: Perez"
+                            value="<%= locals.user ? user.lastname : '' %>"
+                            class="<%= locals.errors && errors.lastname ? 'danger' : '' %>">
+                        <span class="error"><%= locals.errors && errors.lastname ? errors.lastname.msg : '' %></span>
+                    </div>
+                    <div class="col-12 col-md-6 form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Ej: juanperez@mail.com"
+                            value="<%= locals.user ? user.email : '' %>"
+                            class="<%= locals.errors && errors.email ? 'danger' : '' %>">
+                        <span class="error"><%= locals.errors && errors.email ? errors.email.msg : '' %></span>
+                    </div>
+                    <div class="col-12 col-md-6 form-group">
+                        <label for="phone">Teléfono</label>
+                        <input type="number" id="phone" name="phone" placeholder="Ej: 1122223333"
+                            value="<%= locals.user ? user.phone : '' %>"
+                            class="<%= locals.errors && errors.phone ? 'danger' : '' %>">
+                        <span class="error"><%= locals.errors && errors.phone ? errors.phone.msg : '' %></span>
+                    </div>
+                    <div class="col-12 col-md-6 form-group">
+                        <label for="payment_address">Domicilio de facturación</label>
+                        <input type="text" id="payment_address" name="payment_address" placeholder="Ej: Corrientes 9999, Lanus, Buenos Aires"
+                            value="<%= locals.user ? user.payment_address : '' %>">
+                    </div>
+                    <div class="col-12 col-md-6 form-group">
+                        <label for="shipping_address">Domicilio de entrega</label>
+                        <input type="text" id="shipping_address" name="shipping_address" placeholder="Ej: Rivadavia 9999, CABA"
+                            value="<%= locals.user ? user.shipping_address : '' %>">
+                    </div>
+                    <div class="col-12 col-md-6 form-group">
+                        <label for="category">Categoría</label>
+                        <select name="category" id="category"
+                            class="<%= locals.errors && errors.category ? 'danger' : '' %>">
+                            <option value="user" <%= locals.user && locals.user.category == 'user' ? 'selected' : '' %>>Usuario</option>
+                            <option value="admin" <%= locals.user && locals.user.category == 'admin' ? 'selected' : '' %>>Administrador</option>
+                        </select>
+                        <span class="error"><%= locals.errors && errors.category ? errors.category.msg : '' %></span>
+                    </div>
+                    <div class="col-12 col-md-6 form-group">
+                        <label for="image">Imagen</label>
+                        <input type="file" id="image" name="image">
+                    </div>
+                    <input type="hidden" name="currentImage" value="<%= locals.user ? user.image : '' %>">
+                    <div class="col-12 controls">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                        <a href="/users" class="btn-cancel">Cancelar</a>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 

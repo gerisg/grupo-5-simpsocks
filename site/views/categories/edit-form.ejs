@@ -16,7 +16,7 @@
     <main class="row main-center admin-form">
         <div class="col-11 container">
             <div class="header">
-                <p>Categoria: <span class="entity"><%= category.name %></span></p>
+                <p>Editar Categoria <span class="entity">#<%= category.id %></span></p>
             </div>
             <form action="/categories/<%= category.id %>?_method=PUT" method="POST">
                 <div class="form-group">
@@ -31,8 +31,6 @@
         </div>
     </main>
     
-    <!-- footer -->
     <%- include('../partials/footer') %>
-    <!-- /footer -->
 </body>
 </html>
