@@ -903,7 +903,7 @@ footer {
   font-weight: 300;
   font-size: .75rem;
 }
-.form-group>input {
+.form-group>input,.form-group>textarea {
   margin: 0;
   display: block;
   font-family: Poppins-Medium;
