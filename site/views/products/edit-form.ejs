@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <%- include('../partials/head') %>
-<body>
+<body class="form">
     <%- include('../partials/header') %>
 
     <section class="top-nav">
@@ -12,65 +12,77 @@
             <a href="">Editar</a>
         </nav>
     </section>
-<main class="main-with-form">
-    <div class="container admin-wrapper">
-        <div class="row main-center form-general col-11">
-            <div class="col-11 title-forms">
-                <h2 class="title">Editando producto: <i><%= product.name %></i></h2>
+
+    <main class="row main-center admin-form">
+        <div class="col-11 container">
+            <div class="header">
+                <p>Editar Producto <span class="entity">#<%= product.id %></span></p>
             </div>
-            <div class="col-11 col-md-6">
-                <form action="/products/<%= product.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
-                    <div class="row">
-                        <div class="col-12 form-step">
+            <form action="/products/<%= product.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+                <div class="row">
+                    <div class="col-12 col-md-4 col-lg-4">
+                        <div class="form-group">
                             <label for="name">Nombre</label>
                             <input type="text" id="name" name="name" placeholder="Ej: Soquete Lisa Simpson" value="<%= product.name %>"
-                            value="<%= locals.product ? product.name: '' %>"
-                            class="<%= locals.errors && errors.name? 'danger' : '' %>">
-                        <span class="error"><%= locals.errors && errors.name ? errors.name.msg : '' %> </span> 
+                                value="<%= locals.product ? product.name: '' %>"
+                                class="<%= locals.errors && errors.name? 'danger' : '' %>">
+                            <span class="error"><%= locals.errors && errors.name ? errors.name.msg : '' %> </span> 
                         </div>
-                        <div class="col-12 form-step">
+                    </div>
+                    <div class="col-12 col-md-4 col-lg-4">
+                        <div class="form-group">
                             <label for="price">Precio</label>
                             <input type="number" id="price" name="price" placeholder=" " value= <%= product.price %>
-                            value="<%= locals.product ? product.price: '' %>"
-                            class="<%= locals.errors && errors.price? 'danger' : '' %>">
-                        <span class="error"><%= locals.errors && errors.price ? errors.price.msg : '' %> </span> 
+                                value="<%= locals.product ? product.price: '' %>"
+                                class="<%= locals.errors && errors.price? 'danger' : '' %>">
+                            <span class="error"><%= locals.errors && errors.price ? errors.price.msg : '' %> </span> 
                         </div>
-                        <div class="col-12 form-step ">
+                    </div>
+                    <div class="col-12 col-md-4 col-lg-4">
+                        <div class="form-group">
                             <label for="discount">Descuento</label>
                             <input type="number" id="discount" name="discount" placeholder=" " value= <%= product.discount %>
-                            value="<%= locals.product ? product.discount: '' %>"
-                            class="<%= locals.errors && errors.discount? 'danger' : '' %>">
-                        <span class="error"><%= locals.errors && errors.discount ? errors.discount.msg : '' %> </span> 
+                                value="<%= locals.product ? product.discount: '' %>"
+                                class="<%= locals.errors && errors.discount? 'danger' : '' %>">
+                            <span class="error"><%= locals.errors && errors.discount ? errors.discount.msg : '' %> </span> 
                         </div>
-                        <div class="col-12 form-step">
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group">
                             <label for="description">Descripción</label>
                             <textarea id="description" name="description" placeholder="describí tus simpsocks" 
                                 value="<%= locals.product ? product.description : '' %>"
                                 class="<%= locals.errors && errors.description ? 'danger' : '' %>"><%= product.description %></textarea>
                             <span class="error"><%= locals.errors && errors.description ? errors.description.msg : '' %> </span>
                         </div>
-                        <div class="col-12 form-step ">
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-6">
+                        <div class="form-group">
                             <label for="size">Talle</label>
                             <select name="size" id="size">
                                 <% productsSize.forEach(size => { %>
                                     <option value="<%= size.id %>" <%= size.id == product.size ? "selected" : " " %>>
-                                         <%= size.name %>
+                                        <%= size.name %>
                                     </option> 
                                 <% }) %>
                             </select>
                         </div>
-                        <div class="col-12 form-step">
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-6">
+                        <div class="form-group">
                             <label for="type">Tipo</label>
                             <select name="type" id="type">
                                 <% productsTypes.forEach(type => { %>
                                     <option value="<%= type.id %>" <%= type.id == product.type ? "selected" : " " %>>
-                                         <%= type.name %>
+                                        <%= type.name %>
                                     </option> 
                                 <% }) %>
                             </select>
                         </div>
-                        <div class="col-12 form-step">
-                            <label for="categories">Categorías</label>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-checkbox">
+                            <p>Categorías</p>
                             <div class="row">
                                 <% categories.forEach(category => { %>
                                     <div class="col-6 col-md-6 col-lg-3"> <br>
@@ -85,40 +97,44 @@
                                 <% }) %>
                             </div>
                         </div>
-                        <div class="col-12 form-step">
-                            <label>Imágenes existentes</label> 
+                    </div>
+                    <div class="col-12">
+                        <div class="form-checkbox">
+                            <p>Imágenes existentes</p> 
                             <div class="row">
                                 <% if (!productImages || productImages.length == 0) { %>
                                     <p>Producto sin imágenes.</p>
                                 <% } else { %>
-                                    <div class="col-12 form-step">
+                                    <div class="col-12">
                                         <input type="checkbox" name="removeCurrentImages" id="removeCurrentImages" value=true>
                                         <label for="removeCurrentImages">Eliminar imágenes actuales</label>
                                     </div>
                                     <% productImages.forEach(image => { %>
-                                        <div class="col-6">
-                                            <figure>
-                                                <img src="/images/products/<%= image.name %>" alt="imagen de producto">
-                                            </figure>
-                                        </div>
+                                    <div class="col-6">
+                                        <figure>
+                                            <img src="/images/products/<%= image.name %>" alt="imagen de producto">
+                                        </figure>
+                                    </div>
                                     <% }) %>
                                 <% } %>
                             </div>
                         </div>
-                        <div class="col-12 form-step">
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group">
                             <label for="images">Nuevas Imágenes:</label>
                             <input type="file" id="images" name="images" multiple style="border: none;">
                         </div>
-                        <div class="col-12">
-                            <button type="submit" class="btn btn-primary">Guardar</button>
-                            <a href="/products" class="btn btn-cancel">Cancelar</a>
-                        </div>
                     </div>
-                </form>
-            </div>
+                    <div class="controls">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                        <a href="/products" class="btn-cancel">Cancelar</a>
+                    </div>
+                </div>
+            </form>
         </div>
-    </div>
-</main>
+    </main>
+
     <%- include('../partials/footer') %>
 </body>
 </html>
