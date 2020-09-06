@@ -1,46 +1,54 @@
 <!DOCTYPE html>
 <html lang="es">
 <%- include('../partials/head', {title: 'Listado de categorías'}) %>
-<body>
+<body class="form">
     <%- include('../partials/header') %>
     
     <section class="top-nav">
         <nav class="top-nav-start breadcrumb">
             <a href="/">Inicio</a>
             <a href="/admin">Admin</a>
-            <a href="/categories">Categorías</a>
+            <a href="/categories">Categorias</a>
         </nav>
     </section>
     
-    <main class="container categories-wrapper main-with-form">
-        <div class="row main-center col-11 form-general">
-            <div class="col-11 title-forms">
-                <h2 class="title ">Listado de categorías</h2>
-                <a href="/categories/create" class="btn btn-primary">Crear categoría</a>
+    <main class="row main-center admin-form">
+        <div class="col-11 container">
+            <div class="header">
+                <p>Listado de categorias</p>
+                <a href="/categories/create" class="btn btn-primary">Crear categoria</a>
             </div>
-            <!-- table titles -->
-            <div class="col-11">
-                <div class="row row-title">
-                    <div class="col-6 ">Nombre</div>
-                    <div class="col-6 ">Acciones</div>
-                </div>
-            </div>
-            <!-- table content -->
-            <div class="col-11 ">
-                <% categories.forEach(category => { %>
-                    <div class="row cross-center admin-list-step">
-                        <div class="col-6 col-md-6">
-                            <%= category.name %>
-                        </div>
-                        <div class="col-6 col-md-6">
-                            <a class="btn btn-icon" href="/categories/<%= category.id %>"><i class="fas fa-eye"></i></a>
-                            <a class="btn btn-icon" href="/categories/<%= category.id %>/edit"><i class="fas fa-edit"></i></a>
-                            <form class="form-only-btn" action="/categories/<%= category.id %>?_method=delete" method="post">
-                                <button class="btn btn-icon" type="submit"><i class="fas fa-trash"></i></button>
-                            </form>
-                        </div>
+            <div class="row main-center">
+                <!-- table titles -->
+                <div class="col-11">
+                    <div class="row row-title">
+                        <div class="col-6 col-md-10">Nombre</div>
+                        <div class="col-6 col-md-2">Acciones</div>
                     </div>
-                <% }) %>
+                </div>
+                <!-- table content -->
+                <div class="col-11 ">
+                    <% categories.forEach(category => { %>
+                        <div class="row row-content">
+                            <div class="col-6 col-md-10">
+                                <%= category.name %>
+                            </div>
+                            <div class="col-6 col-md-2">
+                                <a class="btn btn-icon" href="/categories/<%= category.id %>">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                                <a class="btn btn-icon" href="/categories/<%= category.id %>/edit">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <form class="form-only-btn" action="/categories/<%= category.id %>?_method=delete" method="post">
+                                    <button class="btn btn-icon" type="submit">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    <% }) %>
+                </div>
             </div>
         </div>
     </main>

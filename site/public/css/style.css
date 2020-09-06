@@ -158,6 +158,7 @@ a.danger:hover, button.danger:hover { background-color: var(--soft-red); }
   border: 0;
   color: var(--blue);
   padding: .25rem;
+  margin: 0 .25rem;
 }
 
 .btn-cancel {
@@ -451,7 +452,7 @@ header {
     padding-bottom: .5rem;
   }
 
-/* Featured Categories */
+/* Featured categories */
 
 .featured-categories {
   margin: 2rem auto;
@@ -555,7 +556,7 @@ footer {
   text-align: center;
 }
 
-/*** Products ***/
+/* Products */
 
 .products-wrapper {
   margin: var(--default-margin);
@@ -892,7 +893,7 @@ footer {
   font-size: 1.2rem;
 }
 
-/* Forms */
+/* General about forms */
 
 .form-group {
   padding-bottom: 0rem;
@@ -917,13 +918,20 @@ footer {
 }
 .form-checkbox {
   margin: 0 1rem .5rem;
+  font-weight: 300;
+  font-size: .9rem;
+}
+.form-checkbox p {
+  margin: var(--default-margin) 0;
+  color: #666666;
+  font-weight: 300;
+  font-size: .75rem;
 }
 
 /* Login & Register forms */
 
 .guest-form {
   padding: 2rem 0;
-  background-color: var(--light);
 }
 
 .guest-form .header {
@@ -949,6 +957,63 @@ footer {
   font-size: .75rem;
 }
 
+/* Admin forms */
+
+.admin-form {
+  padding: 1rem 0;
+}
+
+.admin-form .container {
+  border: gray solid 6px;
+  border-radius: 20px;
+  margin: 0 1rem;
+  background-color: var(--white);
+}
+
+.admin-form .header {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 800;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.admin-form .header a {
+  text-transform: capitalize;
+}
+
+.admin-form .header .entity {
+  font-weight: 300;
+  font-size: 1.25rem;  
+}
+
+.admin-form .row-title {
+  padding: 10px 0px;
+  font-weight: bold;
+  border-top: 3px solid var(--light);
+  margin: 1rem 0 0;
+}
+
+.admin-form .row-content {
+  border-bottom: 1px solid var(--light);
+  margin-bottom: .75rem;
+}
+
+.admin-form .row-content:first-child {
+  border-top: 3px solid var(--light);
+  padding-top: .5rem;
+}
+
+.admin-form .row-user-image {
+  padding: 5px 15px 5px 0px;
+}
+
+.admin-form .detail-title {
+  font-size: 1.25rem;
+  font-family: Roboto;
+  font-weight: 500;
+}
+
 /* OLD FORM */
 
 .form-general {
@@ -964,21 +1029,6 @@ footer {
   background-color: whitesmoke;
   height: 80vh;
   padding-top: 13vh;
-}
-
-.admin-form {
-  background-color: var(--light);
-  margin: 1rem auto;
-  text-align: center; 
-  font-size: 1rem;
-  border-radius: 50px;
-  padding:.5rem;
-  border: white solid 2px;
-}
-
-.admin-list-step {
-  border-bottom: var(--light) solid 6px;
-  margin-bottom: .75rem;
 }
 
 .admin-list-actions {
@@ -1045,20 +1095,6 @@ footer {
   padding-top:15px;
 }
 
-/* Admin */
-
-.admin-wrapper {
-  padding: 1rem 0;
-}
-
-.row-title {
-  padding: 10px 0px;
-  font-weight: bold;
-}
-.row-user-image {
-  padding: 5px 15px 5px 0px;
-}
-
 /* Simple Slider */
 
 .simple-slider {
@@ -1095,6 +1131,7 @@ footer {
   display: flex;
   flex-wrap: wrap;
 }
+
 .row.main-start { justify-content: flex-start; }
 .row.main-center { justify-content: center; }
 .row.main-end { justify-content: flex-end; }
@@ -1409,6 +1446,12 @@ footer {
   .header-end .main-nav ul li form button i {
     font-size: 24px;
     font-weight: bold;
+  }
+
+  /* Admin forms */
+
+  .admin-form {
+    padding: 2rem 0;
   }
 }
 

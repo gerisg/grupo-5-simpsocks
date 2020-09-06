@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <%- include('../partials/head', {title: category.name}) %>
-<body>
+<body class="form">
     <%- include('../partials/header') %>
     
     <section class="top-nav">
@@ -14,22 +14,22 @@
     </section>
 
     <!-- category detail -->
-    <main class="container categories-wrapper">
-        <div class="row main-center">
-            <div class="col-11">
-                <h2 class="title">Detalle de categoría: <%= category.name %></h2>
+    <main class="row main-center admin-form">
+        <div class="col-11 container">
+            <div class="header">
+                <p>Categoria: <span class="entity"><%= category.name %></span></p>
+                <a class="btn btn-primary" href="/categories/<%= category.id %>/edit">
+                    <i class="fas fa-edit"></i> Editar
+                </a>
+                <form class="form-only-btn" action="/categories/<%= category.id %>?_method=delete" method="post">
+                    <button class="btn btn-secondary" type="submit">
+                        <i class="fas fa-trash"></i> Eliminar
+                    </button>
+                </form>
             </div>
-            <div class="col-11">
-                <div class="row main-around cross-center">
-                    <div class="col-10 col-md-6 col-lg-5">
-                        <div><span class="subtitle"> Nombre: </span> <%= category.name %></div>
-                    </div>
-                    <div class="col-10 col-md-3 col-lg-3">
-                        <a class="btn btn-secondary" href="/categories/<%= category.id %>/edit"><i class="fas fa-edit"></i> Editar</a>
-                        <form class="form-only-btn" action="/categories/<%= category.id %>?_method=delete" method="post">
-                            <button class="btn btn-secondary" type="submit"><i class="fas fa-trash"></i> Eliminar</button>
-                        </form>
-                    </div>
+            <div class="row main-around row-content">
+                <div class="col-11">
+                    <span class="detail-title">Nombre: </span> <%= category.name %>
                 </div>
             </div>
         </div>
