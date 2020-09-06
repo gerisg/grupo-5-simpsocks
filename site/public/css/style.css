@@ -66,6 +66,10 @@ body {
   margin-bottom: 216px;
 }
 
+body.form {
+  background-color: var(--light);
+}
+
 ul, ol {
   list-style: none;
   margin: 0;
@@ -328,7 +332,6 @@ header {
 
 #nav-opener.opened { background-color: var(--white); }
 #search-opener.opened { background-color: var(--soft-yellow); }
-
 
 /* Top Navbar / Breadcrumb */
 
@@ -887,11 +890,64 @@ footer {
   font-size: 1.2rem;
 }
 
+/* Forms */
+
+.form-group {
+  padding-bottom: 0rem;
+  margin: .75rem 1rem;
+}
+.form-group>label {
+  color: #666666;
+  font-weight: 300;
+  font-size: .75rem;
+}
+.form-group>input {
+  margin: 0;
+  display: block;
+  font-family: Poppins-Medium;
+  font-size: 1rem;
+  color: var(--darkgreen);
+  border: none;
+  border-bottom: 2px solid var(--light);
+}
+.form-group>input:focus {
+  border-bottom: 1px solid var(--dark);
+}
+.form-checkbox {
+  margin: 0 1rem .5rem;
+}
+
 /* Login & Register forms */
 
-.main-with-form {
-  background-color: whitesmoke;
+.login-form {
+  padding: 2rem 0;
+  background-color: var(--light);
 }
+
+.login-form .header {
+  margin: -.5rem;
+  text-align: center;
+  color: var(--light);
+  background-color: var(--darkgreen);
+}
+
+.login-form .header p {
+  margin: 0;
+  padding: var(--default-padding);
+}
+
+.login-form form {
+  background-color: var(--white);
+  padding: var(--default-padding);
+  box-shadow: 0px 3px 10px 3px rgba(0,0,0,0.5);
+}
+
+.login-form .remember {
+  margin: 0 1rem .5rem;
+  font-size: .75rem;
+}
+
+/* OLD FORM */
 
 .form-general {
   background-color: white;
@@ -901,8 +957,6 @@ footer {
   padding: .5rem;
   border: grey 6px solid;
 }
-
-/* Admin */
 
 .main-small-form { 
   background-color: whitesmoke;
@@ -961,11 +1015,6 @@ footer {
 }
 
 /* Edit Product */
-
-.my-product { display: flex;
-  flex-wrap: wrap;
-  border-bottom: 3px solid white;
-}
 
 .image-container { 
   width:20%;
@@ -1036,30 +1085,6 @@ footer {
 
 .profile-header {
   text-align: center;
-}
-
-/* Forms */
-
-.form-group {
-  padding-bottom: 0rem;
-  margin: 0 1rem 1.5rem;
-}
-.form-group>label {
-  color: #666666;
-  font-weight: 300;
-  font-size: .75rem;
-}
-.form-group>input {
-  margin: 0;
-  display: block;
-  font-family: Poppins-Medium;
-  font-size: 1rem;
-  color: var(--darkgreen);
-  border: none;
-  border-bottom: 2px solid var(--light);
-}
-.form-group>input:focus {
-  border-bottom: 1px solid var(--dark);
 }
 
 /* Grid system */
@@ -1415,7 +1440,7 @@ footer {
   /* Texts */
 
   .title {
-    font-size: 2.25rem;
+    font-size: 2rem;
     text-transform: uppercase;
   }
   .subtitle {

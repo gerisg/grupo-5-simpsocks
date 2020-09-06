@@ -1,46 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include('../partials/head') %> 
-<body>
+<body class="form">
     <%- include('../partials/header') %>
     
-    <main class="main-with-form">
+    <main class="login-form">
         <section class="row main-center">
-            <div class="col-11  col-md-5 col-lg-4 form-general">
-
+            <div class="col-11 col-md-5 col-lg-4">
+                
                 <form action="/users/login" method="POST"> 
-
-                    <h2 class="title-forms">Que bueno que volviste!</h2>
-                    
+                    <div class="header">
+                        <p>¡Qué bueno que volviste!</p>
+                        <p class="title">Ingresar</p>
+                    </div>
                     <% if (locals.errors && errors.form) { %>
                         <p class="error-form"><%= errors.form.msg %></p>
                     <% } %>
-
-                    <div class="form-step">
+                    <div class="form-group">
                         <label for="email" >Email</label>
                         <input type="email" id="email" name="email" class="<%= locals.errors && errors.email ? 'danger' : '' %>">
                         <span class="error"><%= locals.errors && errors.email ? errors.email.msg : '' %></span>
                     </div>
-
-                    <div class="form-step">
+                    <div class="form-group">
                         <label for="password" >Contraseña</label>
                         <input type="password" id="password" name="password"> 
                     </div>
-
-                    <div class="form-step">
-                        <label for="remember">Recordarme</label>
-                        <input type="checkbox" name="remember">
+                    <div class="remember row main-between cross-center">
+                        <div>
+                            <input type="checkbox" name="remember">
+                            <label for="remember">Recordarme</label>
+                        </div>
+                        <div>
+                            <a href="/users/recover" class="btn-cancel">Olvidó?</a>
+                        </div>
                     </div>
-
-                    <div>
-                        <button type="submit" class=" btn btn-primary">Iniciar Sesión</button>
-                        <a href="/" class="btn btn-cancel">Volver</a>
+                    <div class="controls">
+                        <button type="submit" class=" btn btn-primary">Ingresar</button>
                     </div>
-                    
-                    <div>
-                        <a href="/users/recover" class="btn btn-cancel">Olvidé mi contraseña</a>
-                    </div>
-
                 </form>
             </div>
         </section>
