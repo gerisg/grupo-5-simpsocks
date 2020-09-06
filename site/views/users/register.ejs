@@ -20,7 +20,7 @@
                         <span class="error"><%= locals.errors && errors.firstname ? errors.firstname.msg : '' %></span>
                     </div>
                     <div class="form-group">
-                        <label for="lastname" >Apellido</label>
+                        <label for="lastname">Apellido</label>
                         <input type="text" id="lastname" name="lastname" placeholder="Fulanito"
                             value="<%= locals.user ? user.lastname : '' %>"
                             class="<%= locals.errors && errors.lastname ? 'danger' : '' %>">
@@ -32,6 +32,12 @@
                             value="<%= locals.user ? user.email : '' %>"
                             class="<%= locals.errors && errors.email ? 'danger' : '' %>">
                         <span class="error"><%= locals.errors && errors.email ? errors.email.msg : '' %></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Contraseña</label>
+                        <input type="password" name="password" id="password"
+                            class="<%= locals.errors && errors.password ? 'danger' : '' %>">
+                        <span class="error"><%= locals.errors && errors.password ? errors.password.msg : '' %></span>
                     </div>
                     <div class="controls">
                         <button type="submit" class="btn btn-primary">Registrar</button>

@@ -130,8 +130,7 @@ module.exports = {
     register: (req,res) => {
         let errors = validationResult(req);
         if (errors.isEmpty()) {
-            let password = generatePass();
-            let encryptedPassword = bcrypt.hashSync(password, 10);
+            let encryptedPassword = bcrypt.hashSync(req.body.password, 10);
             let user =  {
                 firstname: req.body.firstname,
                 lastname: req.body.lastname,
@@ -141,7 +140,6 @@ module.exports = {
             }
             let id = usersModel.create(user);
             req.session.user = { id, name: user.firstname, category: user.category };
-            mailer.sendWelcome(user.email, password);
             res.redirect('/');
         } else {
             res.render('users/register', { errors: errors.mapped(), user: req.body });
