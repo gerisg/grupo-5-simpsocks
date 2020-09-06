@@ -4,10 +4,9 @@
 <body class="form">
     <%- include('../partials/header') %>
     
-    <main class="login-form">
+    <main class="guest-form">
         <section class="row main-center">
             <div class="col-11 col-md-5 col-lg-4">
-                
                 <form action="/users/login" method="POST"> 
                     <div class="header">
                         <p>¡Qué bueno que volviste!</p>
@@ -17,7 +16,7 @@
                         <p class="error-form"><%= errors.form.msg %></p>
                     <% } %>
                     <div class="form-group">
-                        <label for="email" >Email</label>
+                        <label for="email">Correo electrónico</label>
                         <input type="email" id="email" name="email" class="<%= locals.errors && errors.email ? 'danger' : '' %>">
                         <span class="error"><%= locals.errors && errors.email ? errors.email.msg : '' %></span>
                     </div>
@@ -35,7 +34,7 @@
                         </div>
                     </div>
                     <div class="controls">
-                        <button type="submit" class=" btn btn-primary">Ingresar</button>
+                        <button type="submit" class="btn btn-primary">Ingresar</button>
                     </div>
                 </form>
             </div>

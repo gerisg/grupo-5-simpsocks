@@ -192,8 +192,10 @@ a.danger:hover, button.danger:hover { background-color: var(--soft-red); }
 
 .success {
   color: var(--darkgreen);
-  margin: var(--default-margin);
-  padding: 0;
+  background-color: var(--green);
+  padding: var(--default-padding);
+  margin: -.5rem;
+  font-size: .75rem;
 }
 
 /************/
