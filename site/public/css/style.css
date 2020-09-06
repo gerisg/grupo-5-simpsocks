@@ -180,7 +180,6 @@ a.danger:hover, button.danger:hover { background-color: var(--soft-red); }
   background-color: var(--soft-red);
   color: var(--white);
   font-size: .75rem;
-  margin-left: 1rem;
   padding: var(--default-padding);
 }
 
