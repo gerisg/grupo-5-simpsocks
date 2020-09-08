@@ -125,13 +125,12 @@ module.exports = {
         res.redirect('/users/login');
     },
     registerForm: (req,res) => {
-        res.render('users/register-form');
+        res.render('users/register');
     },
     register: (req,res) => {
         let errors = validationResult(req);
         if (errors.isEmpty()) {
-            let password = generatePass();
-            let encryptedPassword = bcrypt.hashSync(password, 10);
+            let encryptedPassword = bcrypt.hashSync(req.body.password, 10);
             let user =  {
                 firstname: req.body.firstname,
                 lastname: req.body.lastname,
@@ -141,14 +140,13 @@ module.exports = {
             }
             let id = usersModel.create(user);
             req.session.user = { id, name: user.firstname, category: user.category };
-            mailer.sendWelcome(user.email, password);
             res.redirect('/');
         } else {
-            res.render('users/register-form', { errors: errors.mapped(), user: req.body });
+            res.render('users/register', { errors: errors.mapped(), user: req.body });
         }
     },
     recoverForm: (req,res) => {
-        res.render('users/recover-form');
+        res.render('users/recover');
     },
     recover: (req,res) => {
         let errors = validationResult(req);
@@ -161,10 +159,10 @@ module.exports = {
                 usersModel.update(user); 
                 mailer.sendRecover(user.email, password);
             }
-            let msg = 'Si el usuario existe recibirá en su correo una nueva contraseña.';
-            res.render('users/recover-form', { msg, email: req.body.email });
+            let msg = 'Enviamos un email con la nueva contraseña de acceso.';
+            res.render('users/recover', { msg, email: req.body.email });
         } else {
-            res.render('users/recover-form', { errors: errors.mapped(), email: req.body.email });
+            res.render('users/recover', { errors: errors.mapped(), email: req.body.email });
         }
     },
     profile: (req, res) => {

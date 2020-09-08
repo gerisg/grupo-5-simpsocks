@@ -1,38 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include('../partials/head') %>
-<body>
+<body class="form">
     <%- include('../partials/header') %>
 
-    <main class="main-with-form">
-        <section class="row main-center ">
-            <div class="col-11 col-md-5 col-lg-4 form-general">
+    <main class="guest-form">
+        <section class="row main-center">
+            <div class="col-11 col-md-5 col-lg-4">
                 <form action="/users/register" method="POST">
-                    <h2 class="title-forms">¡Bienvenid@!</h2>
-                    <div class="form-step">
+                    <div class="header">
+                        <p>¡Bienvenid@!</p>
+                        <p class="title">Registrarme</p>
+                    </div>
+                    <div class="form-group">
                         <label for="firstname">Nombre</label> 
                         <input type="text" id="firstname" name="firstname" placeholder="Cosme"
                             value="<%= locals.user ? user.firstname : '' %>"
                             class="<%= locals.errors && errors.firstname ? 'danger' : '' %>">
                         <span class="error"><%= locals.errors && errors.firstname ? errors.firstname.msg : '' %></span>
                     </div>
-                    <div class="form-step">
-                        <label for="lastname" >Apellido</label>
+                    <div class="form-group">
+                        <label for="lastname">Apellido</label>
                         <input type="text" id="lastname" name="lastname" placeholder="Fulanito"
                             value="<%= locals.user ? user.lastname : '' %>"
                             class="<%= locals.errors && errors.lastname ? 'danger' : '' %>">
                         <span class="error"><%= locals.errors && errors.lastname ? errors.lastname.msg : '' %></span>
                     </div>
-                    <div class="form-step">
-                        <label for="email">Email</label>
+                    <div class="form-group">
+                        <label for="email">Correo electrónico</label>
                         <input type="email" id="email" name="email" placeholder="amantedelacomida53@aol.com"
                             value="<%= locals.user ? user.email : '' %>"
                             class="<%= locals.errors && errors.email ? 'danger' : '' %>">
                         <span class="error"><%= locals.errors && errors.email ? errors.email.msg : '' %></span>
                     </div>
-                    <div>
-                        <button type="submit" class="btn btn-primary">Registrarme</button>
-                        <a href="/" class="btn btn-cancel">Volver</a>
+                    <div class="form-group">
+                        <label for="password">Contraseña</label>
+                        <input type="password" name="password" id="password"
+                            class="<%= locals.errors && errors.password ? 'danger' : '' %>">
+                        <span class="error"><%= locals.errors && errors.password ? errors.password.msg : '' %></span>
+                    </div>
+                    <div class="controls">
+                        <button type="submit" class="btn btn-primary">Registrar</button>
+                        <a href="/users/login" class="btn-cancel">Cancelar</a>
                     </div>
                 </form>
             </div>

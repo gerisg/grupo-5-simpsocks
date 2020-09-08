@@ -1,6 +1,6 @@
 <html lang="en">
 <%- include("../partials/head", { title: 'Panel de Administrador'}) %>
-<body>
+<body class="form">
     <%- include('../partials/header')%>
     
     <section class="top-nav">
@@ -10,13 +10,19 @@
         </nav>
     </section>
     
-    <main class="main-small-form">
+    <main class="admin-form">
+        <div class="header">
+            <h2>¡Bienvenid@!</h2>
+            <h3>¿Qué desea gestionar?</h3>
+        </div>
         <section class="row main-center" >
-            <div class="col-11 col-md-5 col-lg-4 form-general">
-                <h1 class="title-forms">¡Bienvenid@!</h1>
-                <h2>¿Qué vamos a gestionar?</h2>
+            <div class="col-2">
                 <a class="btn btn-primary" href="/users">Usuarios</a>
+            </div>
+            <div class="col-2">
                 <a class="btn btn-primary" href="/products">Productos</a>
+            </div>
+            <div class="col-2">
                 <a class="btn btn-primary" href="/categories">Categorías</a>
             </div>
         </section>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <%- include('../partials/head', {title: 'Crear Categorías'}) %>
-<body>
+<body class="form">
     <%- include('../partials/header') %>
 
     <section class="top-nav">
@@ -13,27 +13,23 @@
         </nav>
     </section>
 
-    <main class="admin">
-        <div class="container">
-            <div class="row main-center form-general col-11 col-md-8">
-                <div>
-                    <h2 class="title-forms">Crear categoría</h2>
-                </div>
-                <div class="col-11">
-                    <form action="/categories" method="POST">
-                        <div class="row">
-                            <div class="col-12 form-group">
-                                <label for="name">Nombre</label>
-                                <input type="text" id="name" name="name" placeholder="Ej: ofertas">
-                            </div>
-                            <div class="col-12">
-                                <button type="submit" class="btn btn-primary">Guardar</button>
-                                <a href="/categories" class="btn-cancel">Cancelar</a>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+    <main class="row main-center admin-form">
+        <div class="col-11 container">
+            <div class="header">
+                <p>Crear categoria</p>
             </div>
+            <form action="/categories" method="POST">
+                <div class="row main-between">
+                    <div class="col-12 form-group">
+                        <label for="name">Nombre</label>
+                        <input type="text" id="name" name="name" placeholder="Ej: ofertas">
+                    </div>
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                        <a href="/categories" class="btn-cancel">Cancelar</a>
+                    </div>
+                </div>
+            </form>
         </div>
     </main>
 

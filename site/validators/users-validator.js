@@ -45,7 +45,10 @@ module.exports = {
             .isLength({ min: 3 }).withMessage('El apellido debe tener al menos 3 caracteres'),
         check('email')
             .notEmpty().withMessage('El correo electrónico es obligatorio').bail()
-            .isEmail().withMessage('El correo electrónico no posee un formato válido')
+            .isEmail().withMessage('El correo electrónico no posee un formato válido'),
+        check('password')
+            .notEmpty().withMessage('La contraseña es obligatoria').bail()
+            .custom(value => value.length ? value.length >= 8 : true).withMessage('La contraseña debe tener al menos 8 caracteres')
     ],
     recoverForm: [
         check('email')
