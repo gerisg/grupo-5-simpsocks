@@ -22,7 +22,9 @@
                 <div class="row main-between">
                     <div class="col-12 form-group">
                         <label for="name">Nombre</label>
-                        <input type="text" id="name" name="name" placeholder="Ej: ofertas">
+                        <input type="text" id="name" name="name" placeholder="Ej: ofertas"
+                            class="<%= locals.errors && errors.name ? 'danger' : '' %>">
+                        <span class="error"><%= locals.errors && errors.name ? errors.name.msg : '' %> </span>
                     </div>
                     <div class="col-12">
                         <button type="submit" class="btn btn-primary">Guardar</button>
