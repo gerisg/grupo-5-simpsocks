@@ -12,12 +12,12 @@ router.get('/', controller.list);
 // Formulario de creación de categorías
 router.get('/create', controller.create);
 // Acción de creación
-router.post('/', validate.createCategory, controller.store);
+router.post('/', validate.createForm, controller.store);
 
 // Formulario de edición de categorías
 router.get('/:id/edit', controller.edit);
 // Acción de edición
-router.put('/:id',validate.editCategory,  controller.update);
+router.put('/:id',validate.editForm,  controller.update);
 // Acción de borrado
 router.delete('/:id', controller.destroy);
 

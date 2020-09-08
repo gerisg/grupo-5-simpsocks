@@ -23,9 +23,13 @@
                     <label for="name">Nombre</label>
                     <input type="text" id="name" name="name" placeholder="Ej: ofertas" value="<%= category.name %>"
                         value="<%= locals.category ? category.name: '' %>"
-                        class="<%= locals.errors && errors.name? 'danger' : '' %>">
+                        class="<%= locals.errors && errors.name ? 'danger' : '' %>">
                     <span class="error"><%= locals.errors && errors.name ? errors.name.msg : '' %> </span>
                 </div>
+                <input type="hidden" name="type" value="<%= category.type %>">
+                <% category.related.forEach(r => { %>
+                    <input type="hidden" name="related" value="<%= r %>">
+                <% }) %>
                 <div class="controls">
                     <button type="submit" class="btn btn-primary">Guardar</button>
                     <a href="/categories" class="btn-cancel">Cancelar</a>

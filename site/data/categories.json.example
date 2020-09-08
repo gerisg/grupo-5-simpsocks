@@ -2,7 +2,7 @@
   {
     "id": 1,
     "name": "destacados",
-    "related": "",
+    "related": [],
     "type": "destacado"
   },
   {

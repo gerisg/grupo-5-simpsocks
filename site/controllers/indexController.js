@@ -6,7 +6,7 @@ const productsModel = jsonTable('products');
 const productImagesModel = jsonTable('productImages');
 const categoriesModel = jsonTable('categories');
 
-let categoryMatch = categoryName => categoriesModel.findByFields(['name'], categoryName);
+let categoryMatch = categoryName => categoriesModel.findByFields(['type'], categoryName);
 
 let priceWithDiscount = (price, discount) => discount > 0 ? Math.round(price * ((100 - discount) / 100)) : price;
 
@@ -20,7 +20,7 @@ let populateProduct = product => {
 
 module.exports = {
     index: (req,res) => {
-        let category = categoryMatch('destacados');
+        let category = categoryMatch('destacado');
         let featured = productsModel.findByMultivalueField('categories', category[0].id);
         featured.map(p => populateProduct(p));
         res.render('index', { featured } );

@@ -18,14 +18,15 @@ module.exports = {
     store: (req, res) => {
         let errors = validationResult(req);
         if (errors.isEmpty()){
-        let category =  { 
-            name: req.body.name,
-            related: null
-        };
-        let id = categoryModel.create(category);  
-        res.redirect('/categories/' + id);
+            let category =  { 
+                name: req.body.name,
+                related: [],
+                type: ""
+            };
+            let id = categoryModel.create(category);  
+            res.redirect('/categories/' + id);
         }  else {
-        res.render('categories/create-form', { errors: errors.mapped()})
+            res.render('categories/create-form', { errors: errors.mapped()})
         }
     },
 
@@ -36,16 +37,19 @@ module.exports = {
     update: (req, res) => {
         let errors = validationResult(req);
         if (errors.isEmpty()){
-        let id = parseInt(req.params.id);
-        let category =  {
-            id: id,
-            name: req.body.name,
-            related: null
-        } 
-        let _id = categoryModel.update(category);
-        res.redirect('/categories/' + _id);
+            let id = parseInt(req.params.id);
+            let category =  {
+                id: id,
+                name: req.body.name,
+                related: req.body.related,
+                type: req.body.type
+            }
+            category.related = category.related.map(r => parseInt(r));
+            let _id = categoryModel.update(category);
+            res.redirect('/categories/' + _id);
         } else {
-            res.render('categories/edit-form', { category, errors: errors.mapped()})
+            req.body.id = req.params.id;
+            res.render('categories/edit-form', { category: req.body, errors: errors.mapped()})
         }
     },
     destroy : (req, res) => {

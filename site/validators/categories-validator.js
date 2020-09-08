@@ -1,14 +1,14 @@
 const { check } = require('express-validator'); 
  
 module.exports = {
-    createCategory: [
+    createForm: [
         check('name')
-            .notEmpty().withMessage('Debe completar el nombre de la categoría')
-            .isLength({min:5}).withMessage('El nombre debe tener al menos 5 caracteres'),
-           ],
-    editCategory: [
+            .notEmpty().withMessage('Debe completar el nombre de la categoría').bail()
+            .isLength({min:3}).withMessage('El nombre debe tener al menos 3 caracteres'),
+    ],
+    editForm: [
         check('name')
-            .notEmpty().withMessage('Debe completar el nombre de la categoría')
-            .isLength({min:5}).withMessage('El nombre debe tener al menos 5 caracteres'),
-            ]
+            .notEmpty().withMessage('Debe completar el nombre de la categoría').bail()
+            .isLength({min:3}).withMessage('El nombre debe tener al menos 3 caracteres'),
+    ]
 }
