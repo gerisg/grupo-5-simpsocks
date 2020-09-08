@@ -65,3 +65,15 @@ __Asistentes__: Vale, Martin, Gera
 | __Gera__: Refactor de métodos find. Fix bug eliminar imagenes. Refactor de header unificado para todos los roles. Validaciones de usuario (login, create y edit). Filtro de productos por categoría, tipo y tamaño. |
 
 ---
+
+__Fecha__: 8/9
+
+__Asistentes__: Vale, Martin, Gera
+
+| Resumen |
+| -------- |
+| __Vale__: Implementación de validaciones en formularios de producto y de contacto. |
+| __Martin__: Implementación de validaciones en formularios de categorías. |
+| __Gera__: Registro de usuario. Perfil de usuario. Recuperar contraseña. Enviar contraseña por email. Refactor de estilos de formularios. Fix admin middleware. |
+
+---
