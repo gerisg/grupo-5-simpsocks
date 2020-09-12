@@ -9,6 +9,8 @@ const jsonTable = require('../database/jsonTable');
 const usersModel = jsonTable('users');
 const usersTokensModel = jsonTable('usersTokens');
 
+let { user, role, address }   = require('../database/models');
+
 let getCurrentPass = userId => {
     let user = usersModel.findByPK(userId);
     return user ? user.password : null; // TODO If not found throw error
@@ -20,13 +22,13 @@ let generatePass = () => {
 }
 
 module.exports = {
-    list: (req, res) => {
-        let users = usersModel.all();
+    list: async (req, res) => {
+        let users = await user.findAll({ include: role });
         res.render('users/list', { users });
     },
-    detail: (req, res) => {
-        let user = usersModel.findByPK(req.params.id);
-        res.render('users/detail', { user });
+    detail: async (req, res) => {
+        let userDetail = await user.findByPk(req.params.id, { include: [role, address]});
+        res.render('users/detail', { user: userDetail });
     },
     create: (req, res) => {
         res.render('users/create-form');

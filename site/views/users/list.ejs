@@ -32,7 +32,7 @@
                 <!-- table content -->
                 <div class="col-11">
                     <% users.forEach(user => { %>
-                        <div class="row row-content <%= user.category %>">
+                        <div class="row row-content <%= user.role.name %>">
                             <div class="col-2 col-md-1 row-image">
                                 <img src="/images/users/<%= user.image ? user.image : '' %>" onerror="this.src='/images/users/default-image.png'" alt="imagen de usuario">
                             </div>

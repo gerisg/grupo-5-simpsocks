@@ -35,10 +35,21 @@
                     <p><span>Nombre: </span> <%= user.firstname %></p>
                     <p><span>Apellido: </span> <%= user.lastname %></p>
                     <p><span>Email: </span> <%= user.email %></p>
-                    <p><span>Categoría: </span> <%= user.category %></p>
+                    <p><span>Categoría: </span> <%= user.role.name %></p>
                     <p><span>Teléfono: </span> <%= user.phone %></p>
-                    <p><span>Domicilio de facturación: </span> <%= user.payment_address %></p>
-                    <p><span>Domicilio de entrega: </span> <%= user.shipping_address %></p>
+                    <% user.addresses.forEach(address => { %>
+                        <% if (address.type == 'billing') { %>
+                            <p>
+                                <span>Domicilio de facturación: </span>
+                                <%= address.street %> <%= address.number %>,<%= address.city %>
+                            </p>
+                        <% } else if (address.type == 'shipping') { %>
+                            <p>
+                                <span>Domicilio de entrega: </span>
+                                <%= address.street %> <%= address.number %>,<%= address.city %>
+                            </p>
+                        <% } %>
+                    <% }) %>
                 </div>
             </div>
         </div>
