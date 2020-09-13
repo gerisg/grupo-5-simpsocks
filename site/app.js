@@ -11,7 +11,6 @@ const userRoutes = require('./routes/userRoutes');
 const productRoutes = require('./routes/productRoutes');
 const categoryRoutes = require('./routes/categoryRoutes');
 const siteRoutes = require('./routes/siteRoutes');
-const adminRoutes = require ('./routes/adminRoutes');
 
 // Configuration
 app.set('view engine', 'ejs'); // views extension ejs
