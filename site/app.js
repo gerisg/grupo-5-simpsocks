@@ -31,8 +31,7 @@ app.use('/', indexRoutes);
 app.use('/users', userRoutes);
 app.use('/products', productRoutes);
 app.use('/categories', categoryRoutes);
-app.use('/site', siteRoutes)
-app.use('/admin', adminRoutes);
+app.use('/site', siteRoutes);
 
 // Errors
 app.use((req, res, next) => {
