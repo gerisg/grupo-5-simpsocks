@@ -37,7 +37,7 @@ CREATE TABLE addresses (
     number INT(11) NOT NULL,
     city VARCHAR(255) NOT NULL,
     type VARCHAR(255) NOT NULL,
-	user_id INT(11),
+	user_id INT(11) NOT NULL,
     PRIMARY KEY (id)
 );
 
