@@ -1,7 +1,5 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
+const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     static associate(models) {
@@ -15,8 +13,7 @@ module.exports = (sequelize, DataTypes) => {
     email: { type: DataTypes.STRING(255), allowNull: false, unique: true },
     password: { type: DataTypes.STRING(255), allowNull: false },
     image: DataTypes.STRING(255),
-    phone: DataTypes.STRING(255),
-    role_id: { type: DataTypes.INTEGER(11), allowNull: false, defaultValue: 1 }
+    phone: DataTypes.STRING(255)
   }, {
     sequelize,
     modelName: 'user',
