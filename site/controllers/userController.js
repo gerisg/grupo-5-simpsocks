@@ -9,11 +9,6 @@ const usersTokensModel = jsonTable('usersTokens');
 
 let { user, role, address }   = require('../database/models');
 
-let getCurrentPass = async userId => {
-    let currentUser = await user.findByPk(userId);
-    return currentUser ? currentUser.password : null;
-}
-
 let generatePass = () => {
     let hash = bcrypt.hashSync('simpsocks-secret-phrase-to-hash', 10);
     return hash.slice(-8);
@@ -63,12 +58,13 @@ module.exports = {
         let errors = validationResult(req);
         if (errors.isEmpty()) {
             let id = parseInt(req.params.id);
+            let userResult = await user.findByPk(id);
             let user =  {
                 id: id,
                 firstname: req.body.firstname,
                 lastname: req.body.lastname,
                 email: req.body.email,
-                password: getCurrentPass(id),
+                password: userResult.password,
                 category: req.body.category,
                 phone: req.body.phone,
                 shipping_address: req.body.shipping_address,
