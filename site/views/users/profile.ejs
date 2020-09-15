@@ -14,9 +14,9 @@
     <main class="row profile">
         <div class="col-12 col-md-5 col-lg-3 profile-header">
             <figure class="profile-picture"> 
-                <img src="/images/users/<%= user.image %>" onerror="this.src='/images/users/default-image.png'" alt="imagen de perfil">
+                <img src="/images/users/<%= newUser.image %>" onerror="this.src='/images/users/default-image.png'" alt="imagen de perfil">
             </figure>
-            <h2><%= user.firstname %> <%= user.lastname %></h2>
+            <h2><%= newUser.firstname %> <%= newUser.lastname %></h2>
         </div>
         <div class="col-12 col-md-7 col-lg-9">
             <form action="/users/profile?_method=PUT" method="POST" enctype="multipart/form-data">
@@ -26,31 +26,31 @@
                 <div class="row">
                     <div class="col-12 col-lg-6 form-group">
                         <label for="firstname">Nombre</label>
-                        <input type="text" name="firstname" id="firstname" value="<%= user.firstname %>">
+                        <input type="text" name="firstname" id="firstname" value="<%= newUser.firstname %>">
                         <span class="error"><%= locals.errors && errors.firstname ? errors.firstname.msg : '' %></span>
                     </div>
                     <div class="col-12 col-lg-6 form-group">
                         <label for="lastname">Apellido</label>
-                        <input type="text" name="lastname" id="lastname" value="<%= user.lastname %>">
+                        <input type="text" name="lastname" id="lastname" value="<%= newUser.lastname %>">
                         <span class="error"><%= locals.errors && errors.lastname ? errors.lastname.msg : '' %></span>
                     </div>
                     <div class="col-12 col-lg-6 form-group">
                         <label for="phone">Teléfono</label>
-                        <input type="text" name="phone" id="phone" value="<%= user.phone %>">
+                        <input type="text" name="phone" id="phone" value="<%= newUser.phone %>">
                         <span class="error"><%= locals.errors && errors.phone ? errors.phone.msg : '' %></span>
                     </div>
                     <div class="col-12 col-lg-6 form-group">
                         <label for="email">Email</label>
-                        <input type="email" name="email" id="email" value="<%= user.email %>">
+                        <input type="email" name="email" id="email" value="<%= newUser.email %>">
                         <span class="error"><%= locals.errors && errors.email ? errors.email.msg : '' %></span>
                     </div>
                     <div class="col-12 col-lg-6 form-group">
                         <label for="shipping_address">Domicilio de Entrega</label>
-                        <input type="text" name="shipping_address" id="shipping_address" value="<%= user.shipping_address %>">
+                        <input type="text" name="shipping_address" id="shipping_address" value="<%= newUser.shipping_address %>">
                     </div>
                     <div class="col-12 col-lg-6 form-group">
                         <label for="payment_address">Domicilio de Facturación</label>
-                        <input type="text" name="payment_address" id="payment_address" value="<%= user.payment_address %>">
+                        <input type="text" name="payment_address" id="payment_address" value="<%= newUser.payment_address %>">
                     </div>
                     <div class="col-12 col-lg-6 form-group">
                         <label for="password">Contraseña</label>
@@ -66,7 +66,7 @@
                         <label for="image">Nueva imagen de perfil</label>
                         <input type="file" name="image" id="image">
                     </div>
-                    <input type="hidden" name="currentImage" value="<%= locals.user ? user.image : '' %>">
+                    <input type="hidden" name="currentImage" value="<%= locals.newUser ? newUser.image : '' %>">
                     <div class="col-12">
                         <button type="submit" class="btn btn-primary">Guardar</button>
                         <a href="/" class="btn-cancel">Cancelar</a>
