@@ -1,19 +1,17 @@
-const path = require('path');
-const fs = require('fs');
 const crypto = require('crypto');
 const bcrypt = require('bcryptjs');
 const { validationResult } = require('express-validator');
 const mailer = require('../tools/mailer');
 const jsonTable = require('../database/jsonTable');
 
-const usersModel = jsonTable('users');//remmplazar por query de DB
+const usersModel = jsonTable('users');
 const usersTokensModel = jsonTable('usersTokens');
 
 let { user, role, address }   = require('../database/models');
 
 let getCurrentPass = async userId => {
-    let currentUser = await user.findByPk(userId);//user.findByPk
-    return currentUser ? currentUser.password : null; // TODO If not found throw error
+    let currentUser = await user.findByPk(userId);
+    return currentUser ? currentUser.password : null;
 }
 
 let generatePass = () => {
@@ -77,7 +75,7 @@ module.exports = {
                 payment_address: req.body.payment_address,
                 image: req.file ? req.file.filename : req.body.currentImage
             }
-            let updatedUserId = user.update(user);
+            let updatedUserId = usersModel.update(user);
             res.redirect('/users/' + updatedUserId);
         } else {
             req.body.id = req.params.id;
@@ -112,8 +110,8 @@ module.exports = {
     authenticate: async (req,res) => {
         let errors = validationResult(req);
         if (errors.isEmpty()) {
-            try { //si hay error ejecuta el catch
-                let userAuthenticated = await user.findOne({ include: role },{where: {email: req.body.email}});
+            try {
+                let userAuthenticated = await user.findOne({ where: { email: req.body.email }, include: [ role ]});
                 if (bcrypt.compareSync(req.body.password, userAuthenticated.password)){
                     req.session.user = { id: userAuthenticated.id, name: userAuthenticated.firstname, category: userAuthenticated.role.name};
                     if (req.body.remember){
@@ -123,7 +121,7 @@ module.exports = {
                     }
                     res.redirect('/');
                 } else {
-                    return res.render('users/login', { errors: { form: { msg: 'Credenciales no válidas' }}});
+                    res.render('users/login', { errors: { form: { msg: 'Credenciales no válidas' }}});
                 }
             } catch (error) {
                 console.log(error);
@@ -149,17 +147,17 @@ module.exports = {
         let errors = validationResult(req);
         if (errors.isEmpty()) {
             let encryptedPassword = bcrypt.hashSync(req.body.password, 10);
-            let newUser = await user.create ({
+            let newUser = {
                 firstname: req.body.firstname,
                 lastname: req.body.lastname,
                 email: req.body.email,
                 password: encryptedPassword,
-                role_id: 1 //user
-            });
-            // .catch(error => res.render('error-404', error))
-            res.redirect('/'); 
-            // let id = usersModel.create(user);
-            req.session.newUser = { newUser, id, name: user.firstname, category: user.category };
+                role_id: 1 // user
+            }
+            let userResult = await user.create(newUser);
+            let roleResult = await role.findByPk(newUser.role_id);
+            req.session.user = { id: userResult.id, name: userResult.firstname, category: roleResult.name };
+            res.redirect('/');
         } else {
             res.render('users/register', { errors: errors.mapped(), user: req.body });
         }
@@ -170,49 +168,44 @@ module.exports = {
     recover: async (req,res) => {
         let errors = validationResult(req);
         if (errors.isEmpty()) {
-            let recover = await user.findOne({where: {email: req.body.email}});
-            console.log('recover',recover);
+            let email = req.body.email;
             let password = generatePass();
-            recover.password =  bcrypt.hashSync(password, 10);
-            // TODO debería sobreescribir el password cuando el usuario confirma que solicitó el cambio
-            user.update(recover); 
-            mailer.sendRecover(req.body.email, password);
+            let userResult = await user.findOne({ where: { email }});
+            userResult.password =  bcrypt.hashSync(password, 10);
+            await userResult.save();
+            mailer.sendRecover(email, password);
             let msg = 'Enviamos un email con la nueva contraseña de acceso.';
-            return res.render('users/recover', { recover, msg, email: req.body.email });
+            res.render('users/recover', { msg, email });
         } else {
-            res.render('users/recover', { errors: errors.mapped(), email: req.body.email });
+            let email = req.body.email;
+            res.render('users/recover', { errors: errors.mapped(), email });
         }   
     },
     profile: async (req, res) => {
-        let id = req.session.user.id;
-        // let user = usersModel.findByPK(id);
-        console.log(user);
-        let newUser = await user.findByPk(id);
-        // res.render('users/profile', { user });
-        res.render('users/profile', {newUser});
+        let userResult = await user.findByPk(req.session.user.id);
+        res.render('users/profile', { user: userResult });
     },
     updateProfile: async (req, res) => {
         let errors = validationResult(req);
         if (errors.isEmpty()) {
-            let userId = req.session.user.id;
-        
-            let valid = bcrypt.compareSync(req.body.password, await getCurrentPass(userId));
-            if(valid) {
-                let password = req.body.newPassword ? req.body.newPassword : req.body.password;
-                let userProfile =  {
-                    id: userId,
-                    firstname: req.body.firstname,
-                    lastname: req.body.lastname,
-                    email: req.body.email,
-                    password: bcrypt.hashSync(password, 10),
-                    role_id: req.session.user.category,
-                    phone: req.body.phone,
-                    // shipping_address: req.body.shipping_address,
-                    // payment_address: req.body.payment_address,
-                    image: req.file ? req.file.filename : req.body.currentImage
+            let id = req.session.user.id;
+            let userResult = await user.findByPk(id);
+            let valid = bcrypt.compareSync(req.body.password, userResult.password);
+            if (valid) {
+                if (req.body.newPassword) {
+                    userResult.password = bcrypt.hashSync(req.body.newPassword, 10);
                 }
-                await user.update(userProfile, { where: {id: userId}});
-                res.redirect('users/profile');
+                if (req.file) {
+                    userResult.image = req.file.filename;
+                }
+                userResult.firstname = req.body.firstname;
+                userResult.lastname = req.body.lastname;
+                userResult.email = req.body.email;
+                userResult.phone = req.body.phone;
+                // shipping_address: req.body.shipping_address,
+                // payment_address: req.body.payment_address,
+                await userResult.save();
+                res.redirect('/users/profile');
             } else {
                 req.body.image = req.file ? req.file.filename : req.body.currentImage;
                 res.render('users/profile', { errors: { form: { msg: 'Credenciales no válidas' }}, user: req.body });
