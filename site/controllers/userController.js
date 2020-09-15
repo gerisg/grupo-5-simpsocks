@@ -1,13 +1,15 @@
+const path = require('path');
+const fs = require('fs');
 const crypto = require('crypto');
 const bcrypt = require('bcryptjs');
 const { validationResult } = require('express-validator');
 const mailer = require('../tools/mailer');
-const jsonTable = require('../database/jsonTable');
 
+const jsonTable = require('../database/jsonTable');
 const usersModel = jsonTable('users');
 const usersTokensModel = jsonTable('usersTokens');
 
-let { user, role, address }   = require('../database/models');
+let { user, role, address } = require('../database/models');
 
 let generatePass = () => {
     let hash = bcrypt.hashSync('simpsocks-secret-phrase-to-hash', 10);
@@ -54,7 +56,7 @@ module.exports = {
         delete user.password;
         res.render('users/edit-form', { user });
     },
-    update: (req, res) => {
+    update: async (req, res) => {
         let errors = validationResult(req);
         if (errors.isEmpty()) {
             let id = parseInt(req.params.id);
@@ -80,24 +82,16 @@ module.exports = {
         }
     },
     destroy: async (req, res) => {
-        // let id = req.params.id;
-        // remove image
-        // let image = usersModel.findByPK(id).image;
-        // const imagePath = path.join(__dirname, '../public/images/users/' + image);
-        // fs.existsSync(imagePath) && fs.lstatSync(imagePath).isFile() ? fs.unlinkSync(imagePath) : '';
-        // remove users
-        // usersModel.delete(id);
-        // res.redirect('/users');
-
-        // let existingUser = await user.findByPk(req.params.id);
-        // const imagePath = path.join(__dirname, '../public/images/users/' + image) // va existingUser.image?
         try {
-            await user.destroy({ where: { id: req.params.id }})
-            // TODO image not implemented yet: fs.existsSync(imagePath) && fs.lstatSync(imagePath).isFile() ? fs.unlinkSync(imagePath) : '';
-            return res.redirect ("/users");
+            let id = req.params.id;
+            let userResult = await user.findByPk(id);
+            const imagePath = path.join(__dirname, '../public/images/users/' + userResult.image);
+            fs.existsSync(imagePath) && fs.lstatSync(imagePath).isFile() ? fs.unlinkSync(imagePath) : '';
+            await userResult.destroy();
+            res.redirect("/users");
         } catch (error) {
             console.log(error);
-            res.status(500).render('error-404', error); // TODO error 500 view
+            res.status(500).render('error-500', error);
         }
     },
     login: (req,res) => {
