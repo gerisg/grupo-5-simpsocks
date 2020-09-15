@@ -85,27 +85,26 @@ module.exports = {
             res.render('users/edit-form', { errors: errors.mapped(), user: req.body });
         }
     },
-    destroy :  async (req, res) => {
-        //let id = req.params.id;
+    destroy: async (req, res) => {
+        // let id = req.params.id;
         // remove image
-       // let image = usersModel.findByPK(id).image;
-       // const imagePath = path.join(__dirname, '../public/images/users/' + image);
-       // fs.existsSync(imagePath) && fs.lstatSync(imagePath).isFile() ? fs.unlinkSync(imagePath) : '';
+        // let image = usersModel.findByPK(id).image;
+        // const imagePath = path.join(__dirname, '../public/images/users/' + image);
+        // fs.existsSync(imagePath) && fs.lstatSync(imagePath).isFile() ? fs.unlinkSync(imagePath) : '';
         // remove users
-       // usersModel.delete(id);
-       // res.redirect('/users');
+        // usersModel.delete(id);
+        // res.redirect('/users');
 
-       existingUser = await user.findByPk(req.params.id);
-       const imagePath = path.join(__dirname, '../public/images/users/' + image) // va existingUser.image?
-       
-       user.destroy( {where: {id : req.params.id}})
-        .then (deletedUser=> {
-            fs.existsSync(imagePath) && fs.lstatSync(imagePath).isFile() ? fs.unlinkSync(imagePath) : '';
-           
+        // let existingUser = await user.findByPk(req.params.id);
+        // const imagePath = path.join(__dirname, '../public/images/users/' + image) // va existingUser.image?
+        try {
+            await user.destroy({ where: { id: req.params.id }})
+            // TODO image not implemented yet: fs.existsSync(imagePath) && fs.lstatSync(imagePath).isFile() ? fs.unlinkSync(imagePath) : '';
             return res.redirect ("/users");
-        })      
-
-
+        } catch (error) {
+            console.log(error);
+            res.status(500).render('error-404', error); // TODO error 500 view
+        }
     },
     login: (req,res) => {
         res.render('users/login');
