@@ -1,7 +1,7 @@
 {
   "development": {
-    "username": "simpsocks",
-    "password": "S1mps0ck$",
+    "username": "root",
+    "password": "my-secret-pw",
     "database": "simpsocks_dev",
     "host": "127.0.0.1",
     "dialect": "mysql",
