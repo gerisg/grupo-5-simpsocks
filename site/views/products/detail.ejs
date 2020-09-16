@@ -42,8 +42,8 @@
                     <p><span>Nombre: </span> <%= product.name %></p>
                     <p><span>Descripción: </span> <%= product.description %></p>
                     <p><span>Descuento: </span> <%= product.discount %>% </p>
-                    <p><span>Tamaño: </span> <%= product.size.name %></p>
-                    <p><span>Tipo: </span> <%= product.type.name %></p>
+                    <p><span>Tamaño: </span> <%= product.size && product.size.name %></p>
+                    <p><span>Tipo: </span> <%= product.type && product.type.name %></p>
                     <p><span>Categorias</span> 
                         <% product.categories.forEach(category => { %>
                             <span><%= category.name %></span>

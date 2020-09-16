@@ -7,6 +7,8 @@ const categoriesModel = jsonTable('categories');
 const productsModel = jsonTable('products');
 const productImagesModel = jsonTable('productImages');
 
+let { product, image, category } = require('../database/models');
+
 // const userRoute = require('../middlewares/userRoute'); //requiero el mw de usuario log
 
 let productsTypes = [{ id: 1, name: 'Soquete' }, { id: 2, name: 'Media Larga' }, { id: 3, name: 'Bucanera' }];
@@ -106,10 +108,9 @@ module.exports = {
         populate(products);
         res.render('products/list', { products, productsTypes, productsSize });
     },
-    detail: (req,res) => {
-        let product = productsModel.findByPK(req.params.id);
-        populateProduct(product);
-        res.render('products/detail', { product });
+    detail: async (req,res) => {
+        let productResult = await product.findByPk(req.params.id, { include: [image, category] });
+        res.render('products/detail', { product: productResult });
     },
     show: (req,res) => {
         let product = productsModel.findByPK(req.params.id);
