@@ -1,8 +1,3 @@
--- Create user and gran privileges
-CREATE USER 'simpsocks'@'localhost' IDENTIFIED BY 'S1mps0ck$';
-GRANT ALL PRIVILEGES ON simpsocks_dev . * TO 'simpsocks'@'localhost';
-FLUSH PRIVILEGES;
-
 -- Create database
 CREATE DATABASE simpsocks_dev charset utf8mb4 collate utf8mb4_unicode_ci;
 USE simpsocks_dev;

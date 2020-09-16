@@ -26,6 +26,17 @@
                             class="<%= locals.errors && errors.name ? 'danger' : '' %>">
                         <span class="error"><%= locals.errors && errors.name ? errors.name.msg : '' %> </span>
                     </div>
+                    <div class="col-12 form-group">
+                        <label for="parent">Padre</label>
+                        <select name="parent" id="parent">
+                            <option value=""></option>
+                            <% parents.forEach(parentCategory => { %>
+                                <option value="<%= parentCategory.id %>">
+                                     <%= parentCategory.name %>
+                                </option>
+                            <% }) %>
+                        </select>
+                    </div>
                     <div class="col-12">
                         <button type="submit" class="btn btn-primary">Guardar</button>
                         <a href="/categories" class="btn-cancel">Cancelar</a>

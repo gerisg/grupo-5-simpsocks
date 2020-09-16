@@ -29,7 +29,10 @@
             </div>
             <div class="row main-around row-content">
                 <div class="col-11 detail">
-                    <span>Nombre: </span> <%= category.name %>
+                    <span>Nombre de categoría: </span> <%= category.name %>
+                </div>
+                <div class="col-11 detail">
+                    <span>Categoría padre: </span> <%= category.parent && category.parent.name %>
                 </div>
             </div>
         </div>
