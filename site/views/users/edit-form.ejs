@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
-<%- include('../partials/head', {title: 'Editando: ' + user.firstname}) %>
+<%- include('../partials/head', {title: 'Editando: ' + editedUser.firstname}) %>
 <body class="form">
     <%- include('../partials/header') %>
     
@@ -9,61 +9,61 @@
             <a href="/">Inicio</a>
             <a href="/admin">Admin</a>
             <a href="/users">Usuarios</a>
-            <a href="/users/<%= user.firstname %>/edit">Editar</a>
+            <a href="/users/<%= editedUser.firstname %>/edit">Editar</a>
         </nav>
     </section>
 
     <main class="row main-center admin-form">
         <div class="col-11 container">
             <div class="header">
-                <p>Editar Usuario <span class="entity">#<%= user.id %></span></p>
+                <p>Editar Usuario <span class="entity">#<%= editedUser.id %></span></p>
             </div>
-            <form action="/users/<%= user.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+            <form action="/users/<%= editedUser.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
                 <div class="row main-between">
                     <div class="col-12 col-md-6 form-group">
                         <label for="firstname">Nombre</label>
                         <input type="text" id="firstname" name="firstname" placeholder="Ej: Juan"
-                            value="<%= locals.user ? user.firstname : '' %>"
+                            value="<%= locals.editedUser ? editedUser.firstname : '' %>"
                             class="<%= locals.errors && errors.firstname ? 'danger' : '' %>">
                         <span class="error"><%= locals.errors && errors.firstname ? errors.firstname.msg : '' %></span>
                     </div>
                     <div class="col-12 col-md-6 form-group">
                         <label for="lastname">Apellido</label>
                         <input type="text" id="lastname" name="lastname" placeholder="Ej: Perez"
-                            value="<%= locals.user ? user.lastname : '' %>"
+                            value="<%= locals.editedUser ? editedUser.lastname : '' %>"
                             class="<%= locals.errors && errors.lastname ? 'danger' : '' %>">
                         <span class="error"><%= locals.errors && errors.lastname ? errors.lastname.msg : '' %></span>
                     </div>
                     <div class="col-12 col-md-6 form-group">
                         <label for="email">Email</label>
                         <input type="email" id="email" name="email" placeholder="Ej: juanperez@mail.com"
-                            value="<%= locals.user ? user.email : '' %>"
+                            value="<%= locals.editedUser ? editedUser.email : '' %>"
                             class="<%= locals.errors && errors.email ? 'danger' : '' %>">
                         <span class="error"><%= locals.errors && errors.email ? errors.email.msg : '' %></span>
                     </div>
                     <div class="col-12 col-md-6 form-group">
                         <label for="phone">Teléfono</label>
                         <input type="number" id="phone" name="phone" placeholder="Ej: 1122223333"
-                            value="<%= locals.user ? user.phone : '' %>"
+                            value="<%= locals.editedUser ? editedUser.phone : '' %>"
                             class="<%= locals.errors && errors.phone ? 'danger' : '' %>">
                         <span class="error"><%= locals.errors && errors.phone ? errors.phone.msg : '' %></span>
                     </div>
                     <div class="col-12 col-md-6 form-group">
                         <label for="payment_address">Domicilio de facturación</label>
                         <input type="text" id="payment_address" name="payment_address" placeholder="Ej: Corrientes 9999, Lanus, Buenos Aires"
-                            value="<%= locals.user ? user.payment_address : '' %>">
+                            value="<%= locals.editedUser ? editedUser.payment_address : '' %>">
                     </div>
                     <div class="col-12 col-md-6 form-group">
                         <label for="shipping_address">Domicilio de entrega</label>
                         <input type="text" id="shipping_address" name="shipping_address" placeholder="Ej: Rivadavia 9999, CABA"
-                            value="<%= locals.user ? user.shipping_address : '' %>">
+                            value="<%= locals.editedUser ? editedUser.shipping_address : '' %>">
                     </div>
                     <div class="col-12 col-md-6 form-group">
                         <label for="category">Categoría</label>
                         <select name="category" id="category"
                             class="<%= locals.errors && errors.category ? 'danger' : '' %>">
-                            <option value="user" <%= locals.user && locals.user.category == 'user' ? 'selected' : '' %>>Usuario</option>
-                            <option value="admin" <%= locals.user && locals.user.category == 'admin' ? 'selected' : '' %>>Administrador</option>
+                            <option value="user" <%= locals.editedUser && locals.editedUser.category == 'user' ? 'selected' : '' %>>Usuario</option>
+                            <option value="admin" <%= locals.editedUser && locals.editedUser.category == 'admin' ? 'selected' : '' %>>Administrador</option>
                         </select>
                         <span class="error"><%= locals.errors && errors.category ? errors.category.msg : '' %></span>
                     </div>
@@ -71,7 +71,7 @@
                         <label for="image">Imagen</label>
                         <input type="file" id="image" name="image">
                     </div>
-                    <input type="hidden" name="currentImage" value="<%= locals.user ? user.image : '' %>">
+                    <input type="hidden" name="currentImage" value="<%= locals.editedUser ? editedUser.image : '' %>">
                     <div class="col-12 controls">
                         <button type="submit" class="btn btn-primary">Guardar</button>
                         <a href="/users" class="btn-cancel">Cancelar</a>

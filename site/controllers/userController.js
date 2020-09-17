@@ -28,12 +28,12 @@ module.exports = {
     create: (req, res) => {
         res.render('users/create-form');
     },
-    store: (req, res) => {
+    store: async (req, res) => {
         let errors = validationResult(req);
         if (errors.isEmpty()) {
             let password = generatePass();
             let encryptedPassword = bcrypt.hashSync(password, 10);
-            let user =  {
+            let newUser = {
                 firstname: req.body.firstname,
                 lastname: req.body.lastname,
                 email: req.body.email,
@@ -44,17 +44,17 @@ module.exports = {
                 payment_address: req.body.payment_address,
                 image: req.file ? req.file.filename : null
             }
-            let id = usersModel.create(user);
-            mailer.sendWelcome(user.email, password);
-            res.redirect('/users/' + id);
+            await user.create(newUser)   
+            mailer.sendWelcome(newUser.email, password);
+            return res.redirect('/users/' + newUser.id);
         } else {
             res.render('users/create-form', { errors: errors.mapped(), user: req.body });
         }
     },
     edit: (req, res) => {
-        let user = usersModel.findByPK(req.params.id);
-        delete user.password;
-        res.render('users/edit-form', { user });
+        let editedUser = user.findByPk(req.params.id);
+        delete editedUser.password;
+        res.render('users/edit-form', {editedUser});
     },
     update: async (req, res) => {
         let errors = validationResult(req);
