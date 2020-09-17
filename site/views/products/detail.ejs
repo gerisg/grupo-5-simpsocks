@@ -38,28 +38,37 @@
                     </div>
                 </div>
                 <div class="col-11 col-md-6 detail">
-                    <p><span>Precio: </span>$ <%= product.price %></p>
                     <p><span>Nombre: </span> <%= product.name %></p>
                     <p><span>Descripción: </span> <%= product.description %></p>
-                    <p><span>Descuento: </span> <%= product.discount %>% </p>
-                    <p><span>Tamaño: </span> <%= product.size && product.size.name %></p>
-                    <p><span>Tipo: </span> <%= product.type && product.type.name %></p>
+                    <p><span>Precio: </span> $<%= product.price %></p>
+                    <p><span>Descuento: </span> <%= product.discount %>%</p>
                     <p><span>Categorias</span> 
                         <% product.categories.forEach(category => { %>
                             <span><%= category.name %></span>
                         <% }) %>
                     </p>
+                    <table>
+                        <tr>
+                            <th>SKU</th>
+                            <th>Stock</th>
+                            <th>Detalle</th>
+                        </tr>
+                        <% product.skus.forEach(sku => { %>
+                            <tr>
+                                <td><%= sku.sku %></td>
+                                <td><%= sku.stock %></td>
+                                <td>
+                                    <% sku.properties.forEach(property => { %>
+                                        <b><%= property.name %></b>     
+                                    <% }) %>
+                                </td>
+                            </tr>
+                        <% }) %>
+                    </table>
                 </div>
             </div>
         </div>
     </main>
-
-    
-    <div class="col-11">
-        <div class="row main-around cross-center"> 
-            
-        </div>
-    </div>
 
     <%- include('../partials/footer') %>
 </body>

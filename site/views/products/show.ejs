@@ -55,18 +55,22 @@
                                 <p class="stock">stock disponible</p>
                             </div>
                             <p class="product-description text"><%= product.description %> </p>
-                            <div class="select-size">
-                                <label for="size">Talle:</label>
-                                <select name="size" id="size">
-                                    <% productsSize.forEach(size => { %>
-                                        <option value="<%= size.id %>">
-                                            <%= size.name %>
-                                        </option> 
-                                    <% }) %>
-                                </select>
-                            </div>
-                            <!-- Tipo de simpsocks -->
-                            <span> Tipo: <%= product.type.name%></span>
+                            
+                            <!-- Variants -->
+                            <% product.variants.forEach(variant => { %>
+                                <div class="select-variant">
+                                    <label for="<%= variant.name %>"><%= variant.display %></label>
+                                    <select name="<%= variant.name %>" id="variant-<%= variant.id %>">
+                                        <% variant.variant_values.forEach(v_value => { %>
+                                            <option value="<%= v_value.id %>">
+                                                <%= v_value.name %>
+                                            </option> 
+                                        <% }) %>
+                                    </select>
+                                </div>
+                            <% }) %>
+                            
+                            <!-- Categories -->
                             <div>Categorías:
                                 <span class="labels">
                                     <% product.categories.forEach(category => { %>

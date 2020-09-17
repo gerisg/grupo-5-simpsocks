@@ -1,5 +1,6 @@
 const path = require('path');
 const fs = require('fs');
+const { Op } = require("sequelize");
 const { validationResult } = require('express-validator');
 const jsonTable = require('../database/jsonTable');
 
@@ -18,14 +19,6 @@ let populate = products => products.map(p => populateProduct(p));
 let populateProduct = product => {
     // Add price with discount
     product.offerPrice = priceWithDiscount(product.price, product.discount);
-    // Populate images
-    product.images = productImagesModel.findAll('prodId', product.id);
-    // Populate categories
-    product.categories = product.categories.map(catId => categoriesModel.findByPK(catId));
-    // Populate types
-    product.type = productsTypes.find(type => product.type == type.id);
-    // Populate size
-    product.size = productsSize.find(size => product.size == size.id);
     return product;
 };
 
@@ -106,15 +99,38 @@ module.exports = {
         res.render('products/list', { products });
     },
     detail: async (req,res) => {
-        let productResult = await product.findByPk(req.params.id, { include: [image, category] });
+        let productResult = await product.findByPk(parseInt(req.params.id), 
+            { include: [
+                { model: image },
+                { model: category },
+                { model: sku, include: { model: variant_value, as: 'properties' }}
+            ]}
+        );
         res.render('products/detail', { product: productResult });
     },
-    show: (req,res) => {
-        let product = productsModel.findByPK(req.params.id);
-        populateProduct(product);
-        let related = findProductsByRelatedCategory(product.categories, 'personaje');
-        populate(related);
-        res.render('products/show', { product, related, productsSize});
+    show: async (req,res) => {
+        // Producto a Mostrar
+        let productResult = await product.findByPk(parseInt(req.params.id),
+            { include: [
+                { model: image },
+                { model: category, include: 'parent' },
+                { model: variant, include: variant_value }
+            ]}
+        );
+        // Relacionados: otros productos en la misma categoría de tipo 'personaje'
+        let matchCategory = productResult.categories.find(category => category.parent && category.parent.name == 'personajes');
+        let relatedResults = await product.findAll(
+            { include: [
+                { model: image },
+                { model: category, where: { id: matchCategory.id }}
+            ]},
+            { where: { id: { [Op.not]: productResult.id }}}
+        );
+        // Calcular descuentos
+        productResult.offerPrice = priceWithDiscount(productResult.price, productResult.discount);
+        relatedResults.forEach(related => related.offerPrice = priceWithDiscount(related.price, related.discount));
+
+        res.render('products/show', { product: productResult, related: relatedResults});
     },
     create: (req,res) => {
         let categories = categoriesModel.all();
