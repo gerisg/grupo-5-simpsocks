@@ -3,12 +3,8 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.bulkInsert('variants', [
-      {
-        name: "sock-type"
-      },
-      {
-        name: "sock-size"
-      }
+      { name: "sock-type", display: "tipo" },
+      { name: "sock-size", display: "talle" }
     ], {});
   },
 

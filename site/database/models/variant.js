@@ -8,7 +8,8 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Variant.init({
-    name: DataTypes.STRING
+    name: DataTypes.STRING,
+    display: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'variant',
