@@ -22,40 +22,28 @@
                 <!-- table titles -->
                 <div class="col-11">
                     <div class="row row-title">
-                        <div class="col-3 col-md-1">Foto</div>
-                        <div class="col-6 col-md-3">Nombre</div>
-                        <div class="col-2 col-md-1">Precio</div>
-                        <div class="col-md-2 hidden-sm">Talle</div>
-                        <div class="col-md-2 hidden-sm">Tipo</div>
-                        <div class="col-md-2 hidden-sm">Categorias</div>
-                        <div class="col-md-1 hidden-sm">Acciones</div>
+                        <div class="col-3 col-md-2">Foto</div>
+                        <div class="col-6 col-md-5">Nombre</div>
+                        <div class="col-md-3 hidden-sm">Categorias</div>
+                        <div class="col-md-2 hidden-sm">Acciones</div>
                     </div>
                 </div>
                 <!-- table content -->
                 <div class="col-11">
                     <% products.forEach(product => { %>
                         <div class="row row-content">
-                            <div class="col-3 col-md-1 row-image">
+                            <div class="col-3 col-md-2 row-image">
                                 <img src="/images/products/<%= product.images && product.images.length ? product.images[0].name : '' %>" onerror="this.src='/images/products/default-image.png'" alt="imagen de usuario">
                             </div>
-                            <div class="col-6 col-md-3 ">
+                            <div class="col-6 col-md-5 ">
                                 <%= product.name %>
                             </div>
-                            <div class="col-3 col-md-1">
-                                $<%= product.price %>
-                            </div>
-                            <div class="col-md-2 hidden-sm">
-                                <%= product.size.name %>
-                            </div>
-                            <div class="col-md-2 hidden-sm">
-                                <%= product.type.name %>
-                            </div>
-                            <div class="col-md-2 hidden-sm labels">
+                            <div class="col-md-3 hidden-sm labels">
                                 <% product.categories.forEach(category => { %>
                                     <span><%= category.name %></span>
                                 <% }) %>
                             </div>
-                            <div class="col-12 col-md-1 row-actions">
+                            <div class="col-12 col-md-2 row-actions">
                                 <a class="btn btn-icon" href="/products/<%= product.id %>">
                                     <i class="fas fa-eye"></i>
                                 </a>
