@@ -52,9 +52,9 @@ module.exports = {
         }
     },
     edit: (req, res) => {
-        let editedUser = user.findByPk(req.params.id);
-        delete editedUser.password;
-        res.render('users/edit-form', {editedUser});
+        let userResult = user.findByPk(req.params.id);
+        delete userResult.password;
+        res.render('users/edit-form', { user: userResult });
     },
     update: async (req, res) => {
         let errors = validationResult(req);
