@@ -1,14 +1,13 @@
 const path = require('path');
 const fs = require('fs');
-const { Op } = require("sequelize");
 const { validationResult } = require('express-validator');
-const jsonTable = require('../database/jsonTable');
+const { Op } = require("sequelize");
+const { product, image, category, variant, variant_value, sku } = require('../database/models');
 
+const jsonTable = require('../database/jsonTable');
 const categoriesModel = jsonTable('categories');
 const productsModel = jsonTable('products');
 const productImagesModel = jsonTable('productImages');
-
-let { product, image, category, variant, variant_value, sku }   = require('../database/models');
 
 let productsTypes = [{ id: 1, name: 'Soquete' }, { id: 2, name: 'Media Larga' }, { id: 3, name: 'Bucanera' }];
 let productsSize = [{ id: 1, name: 'Pequeño' }, { id: 2, name: 'Mediano' }, { id: 3, name: 'Grande' }];
@@ -129,12 +128,12 @@ module.exports = {
         // Calcular descuentos
         productResult.offerPrice = priceWithDiscount(productResult.price, productResult.discount);
         relatedResults.forEach(related => related.offerPrice = priceWithDiscount(related.price, related.discount));
-
         res.render('products/show', { product: productResult, related: relatedResults});
     },
-    create: (req,res) => {
-        let categories = categoriesModel.all();
-        res.render('products/create-form', { productsTypes, productsSize, categories });
+    create: async (req,res) => {
+        let categories = await category.findAll();
+        let variants = await variant.findAll({ include: variant_value });
+        res.render('products/create-form', { variants, categories });
     },
     store: (req,res) => {
         let errors = validationResult(req);
