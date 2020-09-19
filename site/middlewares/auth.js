@@ -1,18 +1,16 @@
-const jsonTable = require('../database/jsonTable');
-const usersModel = jsonTable('users');
-const usersTokensModel = jsonTable('usersTokens');
+let { user, token } = require('../database/models');
 
 module.exports = (req, res, next) => {
-    let user = req.session.user;
+    let sessionUser = req.session.user;
     let utCookie = req.cookies.userToken;
-    if(user) {
-        res.locals.auth = user; // Available in views
+    if(sessionUser) {
+        res.locals.auth = sessionUser; // Available in views
     } else if (utCookie) {
-        let userToken = usersTokensModel.findOne('token', utCookie);
+        let userToken = token.findOne({ where: { token: utCookie }});
         if (userToken) {
-            let user = usersModel.findByPK(userToken.userId);
-            if (user) {
-                let userSession = { id: user.id, name: user.firstname, category: user.category };
+            let cookieUser = user.findByPk(userToken.userId);
+            if (cookieUser) {
+                let userSession = { id: cookieUser.id, name: cookieUser.firstname, category: cookieUser.category };
                 req.session.user = userSession; // Available in session
                 res.locals.auth = userSession; // Available in views
             }
