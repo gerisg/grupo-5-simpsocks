@@ -1,50 +1,11 @@
 const path = require('path');
 const fs = require('fs');
-const { validationResult } = require('express-validator');
 const { Op } = require('sequelize');
+const { validationResult } = require('express-validator');
 const { product, image, category, variant, variant_value, sku } = require('../database/models');
 const parser = require('../tools/parser');
 
-const jsonTable = require('../database/jsonTable');
-const categoriesModel = jsonTable('categories');
-const productsModel = jsonTable('products');
-const productImagesModel = jsonTable('productImages');
-
-let productsTypes = [{ id: 1, name: 'Soquete' }, { id: 2, name: 'Media Larga' }, { id: 3, name: 'Bucanera' }];
-let productsSize = [{ id: 1, name: 'Pequeño' }, { id: 2, name: 'Mediano' }, { id: 3, name: 'Grande' }];
-
-let priceWithDiscount = (price, discount) => discount > 0 ? Math.round(price * ((100 - discount) / 100)) : price;
-
-let populate = products => products.map(p => populateProduct(p));
-let populateProduct = product => {
-    // Add price with discount
-    product.offerPrice = priceWithDiscount(product.price, product.discount);
-    return product;
-};
-
-let deleteImages = id => {
-    let images = productImagesModel.findAll('prodId', id);
-    if (images && images.length) {
-        images.forEach(image => {
-            const imagePath = path.join(__dirname, '../public/images/products/' + image.name);
-            fs.existsSync(imagePath) ? fs.unlinkSync(imagePath) : '';
-            productImagesModel.delete(image.id);
-        });
-    }
-}
-
-let categoryMatch = categoryName => categoriesModel.findByFields(['name'], categoryName);
-
-let findProductsByRelatedCategory = (categories, type) => {
-    let filteredByType = categories.filter(category => category.type == type);
-    if(filteredByType.length) {
-        return filteredByType[0].related.
-        map(catId => categoriesModel.findByPK(catId)).
-        map(category => productsModel.findByMultivalueField('categories', category.id)).
-        flat(1);
-    }
-    return [];
-}
+let categoryMatch = categoryName => category.findAll({ where: { name: categoryName }});
 
 module.exports = {
     list: async (req, res) => {
@@ -152,13 +113,23 @@ module.exports = {
             res.status(500).render('error-500', { error });
         }
     },
-    edit: (req,res) => {
-        let categories = categoriesModel.all();
-        let product = productsModel.findByPK(req.params.id);
-        let productImages = productImagesModel.findAll('prodId', req.params.id);
-        res.render('products/edit-form', { product, productImages, productsTypes, productsSize, categories });
+    edit: async (req,res) => {
+        try {
+            let [productResult, categories] = await Promise.all([
+                product.findByPk(parseInt(req.params.id), { include: [
+                    { model: image },
+                    { model: category },
+                    { model: sku, include: 'properties' }
+                ]}),
+                category.findAll()
+            ]);
+            res.render('products/edit-form', { product: productResult, categories });
+        } catch (error) {
+            console.log(error);
+            res.status(500).render('error-500', { error });
+        }
     },
-    update: (req, res) => {
+    update: async (req, res) => {
         let errors = validationResult(req);
         if (errors.isEmpty()){
             let product = {
@@ -174,7 +145,14 @@ module.exports = {
             let id = productsModel.update(product);
             // Eliminar imágenes actuales
             if(req.body.removeCurrentImages) {
-                deleteImages(id);
+                let images = await image.findAll({ where: { product_id: id }});
+                if (images && images.length) {
+                    images.forEach(img => {
+                        const imagePath = path.join(__dirname, '../public/images/products/' + img.name);
+                        fs.existsSync(imagePath) ? fs.unlinkSync(imagePath) : '';
+                        image.destroy(img.id);
+                    });
+                }
             }
             // Guardar nuevas imágenes
             req.files.forEach(file => productImagesModel.create({ prodId: id, name: file.filename }));
