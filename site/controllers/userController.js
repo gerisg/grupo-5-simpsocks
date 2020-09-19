@@ -9,7 +9,7 @@ const jsonTable = require('../database/jsonTable');
 const usersModel = jsonTable('users');
 const usersTokensModel = jsonTable('usersTokens');
 
-let { user, role, address } = require('../database/models');
+let { user, role, address, token } = require('../database/models');
 
 let generatePass = () => {
     let hash = bcrypt.hashSync('simpsocks-secret-phrase-to-hash', 10);
@@ -105,9 +105,9 @@ module.exports = {
                 if (bcrypt.compareSync(req.body.password, userAuthenticated.password)){
                     req.session.user = { id: userAuthenticated.id, name: userAuthenticated.firstname, category: userAuthenticated.role.name};
                     if (req.body.remember){
-                        const token = crypto.randomBytes(64).toString('base64');
-                        usersTokensModel.create({ userId: userAuthenticated.id, token });
-                        res.cookie('userToken', token, { maxAge: 1000 * 60 * 60 * 24 * 30 })
+                        const tokenCrypto = crypto.randomBytes(64).toString('base64');
+                        await token.create({ user_id: userAuthenticated.id, token: tokenCrypto });
+                        res.cookie('userToken', tokenCrypto, { maxAge: 1000 * 60 * 60 * 24 * 30 });
                     }
                     res.redirect('/');
                 } else {
@@ -121,14 +121,12 @@ module.exports = {
             res.render('users/login', { errors: errors.mapped() });
         }
     },
-    logout: (req, res) => {
-        let userToken = usersTokensModel.findOne('token', req.cookies.userToken);
-        if (userToken) {
-            usersTokensModel.delete(userToken.id);
-        }
+    logout: async (req, res) => {
+        await token.destroy({ where: { token: req.cookies.userToken }});
         res.clearCookie('userToken');
         req.session.destroy();
         res.redirect('/users/login');
+         
     },
     registerForm: (req,res) => {
         res.render('users/register');
