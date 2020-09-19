@@ -9,10 +9,12 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       sku: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
       },
       stock: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        defaultValue: 0
       }
     });
   },

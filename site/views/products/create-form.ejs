@@ -50,16 +50,17 @@
                     </div>
                     <!-- Variants -->
                     <% variants.forEach(variant => { %>
-                        <div class="col-12 col-md-6 form-group">
-                            <label for="<%= variant.name %>"><%= variant.display %></label>
-                            <select name="<%= variant.name %>" id="variant-<%= variant.id %>">
-                                <% variant.variant_values.forEach(v_value => { %>
-                                    <option value="<%= v_value.id %>">
-                                        <%= v_value.name %>
-                                    </option> 
-                                <% }) %>
-                            </select>
+                    <div class="col-12 form-group">
+                        <label for="<%= variant.name %>"><%= variant.display %></label>
+                        <div class="row">
+                            <% variant.variant_values.forEach(v_value => { %>
+                                <div class="col-6 col-md-3"> 
+                                    <input type="checkbox" name="variants" id="<%= v_value.id %>" value="<%= variant.id %>-<%= v_value.id %>">
+                                    <span><%= v_value.name %></span>
+                                </div>
+                            <% }) %>
                         </div>
+                    </div>
                     <% }) %>
                     <!-- Categories -->
                     <div class="col-12 form-group">

@@ -47,24 +47,20 @@
                             <span><%= category.name %></span>
                         <% }) %>
                     </p>
-                    <table>
-                        <tr>
-                            <th>SKU</th>
-                            <th>Stock</th>
-                            <th>Detalle</th>
-                        </tr>
+                    <div class="row">
+                        <div class="col-2">SKU</div>
+                        <div class="col-2">Stock</div>
+                        <div class="col-8">Detalle</div>
                         <% product.skus.forEach(sku => { %>
-                            <tr>
-                                <td><%= sku.sku %></td>
-                                <td><%= sku.stock %></td>
-                                <td>
-                                    <% sku.properties.forEach(property => { %>
-                                        <b><%= property.name %></b>     
-                                    <% }) %>
-                                </td>
-                            </tr>
+                            <div class="col-2"><%= sku.sku %></div>
+                            <div class="col-2"><%= sku.stock %></div>
+                            <div class="col-8">
+                                <% sku.properties.forEach(property => { %>
+                                    <b><%= property.name %></b>     
+                                <% }) %>
+                            </div>
                         <% }) %>
-                    </table>
+                    </div>
                 </div>
             </div>
         </div>

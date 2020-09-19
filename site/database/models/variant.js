@@ -4,7 +4,7 @@ module.exports = (sequelize, DataTypes) => {
   class Variant extends Model {
     static associate(models) {
       this.hasMany(models.variant_value, { foreignKey: 'variant_id' });
-      this.belongsToMany(models.product, { through:'products_variants' });
+      this.belongsToMany(models.product, { through: 'products_variants' });
     }
   };
   Variant.init({
