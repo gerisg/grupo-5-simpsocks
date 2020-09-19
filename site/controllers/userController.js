@@ -149,11 +149,13 @@ module.exports = {
             res.status(500).render('error-500', {error});
         }s
     },
-    logout: async (req, res) => {
+    logout: (req, res) => {
         try {
-            await token.destroy({ where: { token: req.cookies.userToken }});
+            if(req.cookies.userToken) {
+                token.destroy({ where: { token: req.cookies.userToken }});
+                res.clearCookie('userToken');
+            }
             req.session.destroy();
-            res.clearCookie('userToken');
             res.redirect('/users/login');
         } catch (error) {
             console.log(error);

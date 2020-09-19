@@ -15,7 +15,7 @@
     <div class="header-end">
         <nav id="main-nav" class="main-nav">
             <ul>
-                <% if (locals.auth && auth.category == 'user') { %>
+                <% if (locals.auth && auth.category == 1) { %>
                 <!-- Aparece con session de tipo USER -->
                 <li>
                     <a href="/products/cart">
@@ -43,7 +43,7 @@
                         </button>
                     </form>
                 </li>
-                <% } else if (locals.auth && auth.category == 'admin') { %>
+                <% } else if (locals.auth && auth.category == 2) { %>
                 <!-- Aparece con session de tipo ADMIN -->
                 <li>
                     <a href="/users/">
