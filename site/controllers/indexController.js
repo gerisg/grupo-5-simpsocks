@@ -1,28 +1,15 @@
-const path = require('path');
-const fs = require('fs');
-const jsonTable = require('../database/jsonTable');
-
-const productsModel = jsonTable('products');
-const productImagesModel = jsonTable('productImages');
-const categoriesModel = jsonTable('categories');
-
-let categoryMatch = categoryName => categoriesModel.findByFields(['type'], categoryName);
-
-let priceWithDiscount = (price, discount) => discount > 0 ? Math.round(price * ((100 - discount) / 100)) : price;
-
-let populateProduct = product => {
-    // Add price with discount
-    product.offerPrice = priceWithDiscount(product.price, product.discount);
-    // Populate images
-    product.images = productImagesModel.findAll('prodId', product.id);
-    return product;
-};
+let { category, image, product } = require('../database/models');
 
 module.exports = {
-    index: (req,res) => {
-        let category = categoryMatch('destacado');
-        let featured = productsModel.findByMultivalueField('categories', category[0].id);
-        featured.map(p => populateProduct(p));
-        res.render('index', { featured } );
+    index: async (req,res) => {
+        let featuredCategory = await category.findOne({ where: { name: 'destacados' }});
+        let featuredProducts = await product.findAll(
+            { include: [
+                { model: image },
+                { model: category, where: { id: featuredCategory.id }}
+            ]}
+        );
+        featuredProducts.forEach(prod => prod.offerPrice = prod.discount > 0 ? Math.round(prod.price * ((100 - prod.discount) / 100)) : prod.price);
+        res.render('index', { featured: featuredProducts } );
     }
 }
