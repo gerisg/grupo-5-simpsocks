@@ -208,12 +208,17 @@ module.exports = {
         }
         res.redirect('/products');
     },
-    cart: (req,res) => {
+    cart: async (req,res) => {
         console.log('Not implemented yet');
-        let category = categoryMatch('destacados');
-        let featured = productsModel.findByMultivalueField('categories', category[0].id);
-        populate(featured);
-        res.render('products/cart', { featured });
+        let featuredCategory = await category.findOne({ where: { name: 'destacados' }});
+        let featuredProducts = await product.findAll(
+            { include: [
+                { model: image },
+                { model: category, where: { id: featuredCategory.id }}
+            ]}
+        );
+        featuredProducts.forEach(prod => prod.offerPrice = prod.discount > 0 ? Math.round(prod.price * ((100 - prod.discount) / 100)) : prod.price);
+        res.render('products/cart', { featured: featuredProducts } );
     },
     find: (req, res) => {
         let filter = {};
