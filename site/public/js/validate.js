@@ -14,7 +14,7 @@ email.addEventListener('input', event => {
 
 // chequeamos si hay errores antes de enviar 
 form.addEventListener('submit', event => {
-    if(!email.validity.valid) {
+    if (!email.validity.valid) {
       showError();
       event.preventDefault(); 
     }
@@ -22,11 +22,11 @@ form.addEventListener('submit', event => {
 
 function showError() {
     // Mensaje personalizado según el error
-    if(email.validity.valueMissing) {
+    if (email.validity.valueMissing) {
       emailError.textContent = "Debe introducir una dirección de correo electrónico.";
-    } else if(email.validity.typeMismatch) {
+    } else if (email.validity.typeMismatch) {
       emailError.textContent = "El valor introducido debe ser una dirección de correo electrónico.";
-    } else if(email.validity.tooShort) {
+    } else if (email.validity.tooShort) {
       emailError.textContent = `El correo electrónico debe tener al menos ${ email.minLength } caracteres; ha introducido ${ email.value.length }.`;
     }
     // Agrego class para mostrar error

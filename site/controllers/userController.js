@@ -147,7 +147,7 @@ module.exports = {
     },
     logout: (req, res) => {
         try {
-            if(req.cookies.userToken) {
+            if (req.cookies.userToken) {
                 token.destroy({ where: { token: req.cookies.userToken }});
                 res.clearCookie('userToken');
             }

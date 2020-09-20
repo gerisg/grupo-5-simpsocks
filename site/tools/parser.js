@@ -11,9 +11,9 @@ module.exports = {
         return files ? files.map(file => { return { name: file.filename }}) : null
     },
     parseCategories: categoryParams => {
-        if(!categoryParams)
+        if (!categoryParams)
             return [];
-        if(categoryParams && typeof(categoryParams) == 'string')
+        if (categoryParams && typeof(categoryParams) == 'string')
             return [parseInt(categoryParams)];
         return categoryParams.map(category => parseInt(category));
     },
@@ -28,7 +28,7 @@ module.exports = {
             variantsMap.has(variant) ? variantsMap.get(variant).push(variantValue) : variantsMap.set(variant, [ variantValue ]);
         });
         const values  = [ ...variantsMap.values() ]; 
-        if(values.length) {
+        if (values.length) {
             let cartesian = values[0];
             for (let i = 1; i < values.length; i++)
                 cartesian = combine(cartesian, values[i]);
