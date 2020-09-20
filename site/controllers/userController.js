@@ -84,30 +84,15 @@ module.exports = {
             if (errors.isEmpty()) {
                 let id = parseInt(req.params.id);
                 let userResult = await user.findByPk(id);
-                // TODO No hace falta crear el objeto de esta manera para actualizar
-                  // let user =  {
-                //     id: id,
-                //     firstname: req.body.firstname,
-                //     lastname: req.body.lastname,
-                //     email: req.body.email,
-                //     password: req.bodypassword,
-                //     category: req.body.category,
-                //     phone: req.body.phone,
-                //     // shipping_address: req.body.shipping_address,
-                //     // payment_address: req.body.payment_address,
-                //     image: req.file ? req.file.filename : req.body.currentImage
-                // }
-                // let updatedUserId = usersModel.update(user);
                 userResult.id = req.body,
                 userResult.firstname = req.body.firstname,
                 userResult.lastname = req.body.lastname,
                 userResult.email = req.body.email,
-                userResult.password = req.body.password,
                 userResult.category = req.body.category,
                 userResult.phone = req.body.phone,
                 // userResult.shipping_address = req.body.shipping_address,
                 // userResult.payment_address = req.body.payment_address,
-                userRsesult.image = req.file ? req.file.filename : req.body.currentImage
+                userResult.image = req.file ? req.file.filename : req.body.currentImage
                 await userResult.save();
                 res.redirect('/users/' + id);
             } else {
