@@ -32,32 +32,22 @@
                             </div>
                         <% }) %>
                     </div>
+                    <!-- Variants -->
+                    <% variants.forEach(variant => { %>
                     <div class="filter">
-                        <label for="type">Tipo</label>
-                        <% productsTypes.forEach(type => { %>
+                        <label for="<%= variant.name %>"><%= variant.display %></label>
+                        <% variant.variant_values.forEach(v_value => { %>
                             <div>
-                                <% if (filter.type == type.id) { %>
-                                    <a href="/products/find?query=<%= query %>&size=<%= filter.size %>">
+                                <% if (filter[v_value.id]) { %>
+                                    <a href="/products/find?query=<%= query %>&<%= v_value.name %>=<%= filter[v_value.id] %>">
                                         [<i class="fas fa-times"></i>]
                                     </a>
                                 <% } %>
-                                <a href="/products/find?query=<%= query %>&size=<%= filter.size %>&type=<%= type.id %>"><%= type.name %></a>
+                                <a href="/products/find?query=<%= query %>&<%= v_value.name %>=<%= filter.size %>"><%= v_value.name %></a>
                             </div>
                         <% }) %>
                     </div>
-                    <div class="filter">
-                        <label for="type">Tamaño</label>
-                        <% productsSize.forEach(size => { %>
-                            <div>
-                                <% if (filter.size == size.id) { %>
-                                    <a href="/products/find?query=<%= query %>&type=<%= filter.type %>">
-                                        [<i class="fas fa-times"></i>]
-                                    </a>
-                                <% } %>
-                                <a href="/products/find?query=<%= query %>&type=<%= filter.type %>&size=<%= size.id %>"><%= size.name %></a>
-                            </div>
-                        <% }) %>
-                    </div>
+                    <% }) %>
                 </aside>
             </div>
             <div class="col-12 col-md-10 col-lg-9">

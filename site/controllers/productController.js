@@ -5,8 +5,6 @@ const { validationResult } = require('express-validator');
 const { product, image, category, variant, variant_value, sku } = require('../database/models');
 const parser = require('../tools/parser');
 
-let categoryMatch = categoryName => category.findAll({ where: { name: categoryName }});
-
 module.exports = {
     list: async (req, res) => {
         try {
@@ -44,16 +42,16 @@ module.exports = {
             );
             // Relacionados: otros productos en la misma categoría de tipo 'personaje'
             let matchCategory = productResult.categories.find(category => category.parent && category.parent.name == 'personajes');
-            let relatedResults = await product.findAll(
-                { include: [
+            let relatedResults = await product.findAll({ where: {
+                id: { [Op.not]: productResult.id }},
+                include: [
                     { model: image },
                     { model: category, where: { id: matchCategory.id }}
-                ]},
-                { where: { id: { [Op.not]: productResult.id }}}
-            );
+                ]
+            });
             // Calcular descuentos
-            productResult.offerPrice = priceWithDiscount(productResult.price, productResult.discount);
-            relatedResults.forEach(related => related.offerPrice = priceWithDiscount(related.price, related.discount));
+            productResult.offerPrice = productResult.discount > 0 ? Math.round(productResult.price * ((100 - productResult.discount) / 100)) : productResult.price;
+            relatedResults.forEach(related => related.offerPrice = related.discount > 0 ? Math.round(related.price * ((100 - related.discount) / 100)) : related.price);
             // Render
             res.render('products/show', { product: productResult, related: relatedResults});
         } catch (error) {
@@ -64,10 +62,14 @@ module.exports = {
     create: async (req,res) => {
         try {
             let [categories, variants] = await Promise.all([
-                category.findAll(), 
+                category.findAll({ where: {
+                    [Op.or]: [
+                        { name: 'destacados' }, 
+                        { parent_id: { [Op.ne]: null }}
+                    ]
+                }}), 
                 variant.findAll({ include: variant_value })
             ]);
-            categories = categories.filter(cat => cat.name == 'destacados' || cat.parent_id != null);
             res.render('products/create-form', { variants, categories });
         } catch (error) {
             console.log(error);
@@ -148,7 +150,7 @@ module.exports = {
                 productResult.description = req.body.description;
                 await productResult.save();
                 // Delete images
-                if(req.body.removeCurrentImages) {
+                if (req.body.removeCurrentImages) {
                     let productImages = await productResult.getImages();
                     if (productImages && productImages.length) {
                         productImages.forEach(img => {
@@ -159,7 +161,7 @@ module.exports = {
                     }
                 }
                 // Add new images
-                if(parsedImages.length)
+                if (parsedImages.length)
                     parsedImages.forEach(async (img) => await productResult.createImage(img));
                 // Update categories
                 productResult.setCategories(parsedCategories);
@@ -220,39 +222,51 @@ module.exports = {
         featuredProducts.forEach(prod => prod.offerPrice = prod.discount > 0 ? Math.round(prod.price * ((100 - prod.discount) / 100)) : prod.price);
         res.render('products/cart', { featured: featuredProducts } );
     },
-    find: (req, res) => {
+    find: async (req, res) => {
         let filter = {};
-        let results;
-        let category = categoryMatch(req.params.category);
+        let productResults;
+        let categorySearchTerms = req.params.category;
+        let querySearchTerms = req.query.query;
         // Search by category
-        if(category && category.length) {
-            results = productsModel.findByMultivalueField('categories', category[0].id);
-            filter.category = category[0].id;
+        if (categorySearchTerms) {
+            let categoryMatch = await category.findOne({ where: { name: categorySearchTerms }});
+            if (categoryMatch) {
+                productResults = await product.findAll(
+                    { include: [
+                        { model: image },
+                        { model: category, where: { id: categoryMatch.id }}
+                    ]}
+                );
+                filter.category = categoryMatch.id;
+            }
         }
         // Search by keywords
-        let query = req.query.query;
-        if(!results){
-            results = productsModel.findByFields(['name', 'description'], query);
-            if(!results || results.length == 0) {
-                results = productsModel.all();
-            }
-            let size = req.query.size;
-            if(size) { 
-                results = results.filter(product => product.size == size);
-                filter.size = size;
-            }
-            let type = req.query.type;
-            if(type) {
-                results = results.filter(product => product.type == type);
-                filter.type = type;
-            }
+        if (querySearchTerms && !productResults) {
+            productResults = await product.findAll(
+                { where: 
+                    { [Op.or]: [
+                        { name: { [Op.like]: `%${querySearchTerms}%` }},
+                        { description: { [Op.like]: `%${querySearchTerms}%` }}
+                    ]},
+                    include: [ image, category ]
+                }
+            );
         }
-        // Populate
-        if(results && results.length) {
-            populate(results);
-        };
-        // Categories
-        let categories = categoriesModel.all();
-        res.render('products/find', { results, query, filter, productsTypes, productsSize, categories });
+        if (!productResults) {
+            productResults = await product.findAll({ include: [ image, category ]});
+        }
+        // Add offer price
+        productResults.forEach(prod => prod.offerPrice = prod.discount > 0 ? Math.round(prod.price * ((100 - prod.discount) / 100)) : prod.price);
+        // Get categories and variants
+        let [categories, variants] = await Promise.all([
+            category.findAll({ where: {
+                [Op.or]: [
+                    { name: 'destacados' }, 
+                    { parent_id: { [Op.ne]: null }}
+                ]
+            }}), 
+            variant.findAll({ include: variant_value })
+        ]);
+        res.render('products/find', { results: productResults, query: querySearchTerms, filter, categories, variants });
     }
 };
