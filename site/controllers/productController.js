@@ -67,6 +67,7 @@ module.exports = {
                 category.findAll(), 
                 variant.findAll({ include: variant_value })
             ]);
+            categories = categories.filter(cat => cat.name == 'destacados' || cat.parent_id != null);
             res.render('products/create-form', { variants, categories });
         } catch (error) {
             console.log(error);
@@ -123,6 +124,7 @@ module.exports = {
                 ]}),
                 category.findAll()
             ]);
+            categories = categories.filter(cat => cat.name == 'destacados' || cat.parent_id != null);
             res.render('products/edit-form', { product: productResult, categories });
         } catch (error) {
             console.log(error);
@@ -130,45 +132,80 @@ module.exports = {
         }
     },
     update: async (req, res) => {
-        let errors = validationResult(req);
-        if (errors.isEmpty()){
-            let product = {
-                id: parseInt(req.params.id),
-                name: req.body.name,
-                price: parseFloat(req.body.price),
-                discount: req.body.discount,
-                description: req.body.description,
-                size: parseInt(req.body.size),
-                type: parseInt(req.body.type),
-                categories: parser.parseCategories(req.body.categories)
-            };
-            let id = productsModel.update(product);
-            // Eliminar imágenes actuales
-            if(req.body.removeCurrentImages) {
-                let images = await image.findAll({ where: { product_id: id }});
-                if (images && images.length) {
-                    images.forEach(img => {
-                        const imagePath = path.join(__dirname, '../public/images/products/' + img.name);
-                        fs.existsSync(imagePath) ? fs.unlinkSync(imagePath) : '';
-                        image.destroy(img.id);
-                    });
+        try {
+            let errors = validationResult(req);
+            if (errors.isEmpty()){
+                // Prepare data
+                let id = parseInt(req.params.id);
+                let stocks = req.body.stocks;
+                let parsedImages = parser.parseImages(req.files);
+                let parsedCategories = parser.parseCategories(req.body.categories);
+                // Update product
+                let productResult = await product.findByPk(id);
+                productResult.name = req.body.name;
+                productResult.price = parseFloat(req.body.price);
+                productResult.discount = parseInt(req.body.discount);
+                productResult.description = req.body.description;
+                await productResult.save();
+                // Delete images
+                if(req.body.removeCurrentImages) {
+                    let productImages = await productResult.getImages();
+                    if (productImages && productImages.length) {
+                        productImages.forEach(img => {
+                            const imagePath = path.join(__dirname, '../public/images/products/' + img.name);
+                            fs.existsSync(imagePath) ? fs.unlinkSync(imagePath) : '';
+                        });
+                        await productResult.setImages([]);
+                    }
                 }
+                // Add new images
+                if(parsedImages.length)
+                    parsedImages.forEach(async (img) => await productResult.createImage(img));
+                // Update categories
+                productResult.setCategories(parsedCategories);
+                // Update stocks 
+                // FIX asumimos mismo orden
+                let i = 0; 
+                let skusResult = await productResult.getSkus();
+                await Promise.all(skusResult.map(async (skuResult) => await skuResult.update({ stock: stocks[i++] })));
+                res.redirect('/products/' + id);
+            } else {
+                let parsedCategories = parser.parseCategories(req.body.categories);
+                let [productResult, categories] = await Promise.all([
+                    product.findByPk(parseInt(req.params.id), { include: [
+                        { model: image },
+                        { model: category },
+                        { model: sku, include: 'properties' }
+                    ]}),
+                    category.findAll()
+                ]);
+                // Prepare product
+                productResult.name = req.body.name;
+                productResult.price = req.body.price;
+                productResult.discount = req.body.discount;
+                productResult.description = req.body.description;
+                productResult.categories = categories.filter(cat => parsedCategories.includes(cat.id));
+                // Prepare categories
+                categories = categories.filter(cat => cat.name == 'destacados' || cat.parent_id != null);
+                // Prepare stocks
+                res.render('products/edit-form', { errors: errors.mapped(), product: productResult, categories, stocks: req.body.stocks });
             }
-            // Guardar nuevas imágenes
-            req.files.forEach(file => productImagesModel.create({ prodId: id, name: file.filename }));
-            res.redirect('/products/' + id);
-        } else {
-            let productImages = productImagesModel.findAll('prodId', req.params.id);
-            let categories = categoriesModel.all();
-            req.body.id = req.params.id;
-            req.body.image = req.file ? req.file.filename : req.body.currentImage;
-            res.render('products/edit-form', { errors: errors.mapped(), product: req.body, productsTypes,productsSize, productImages, categories });
+        } catch (error) {
+            console.log(error);
+            res.status(500).render('error-500', { error });
         }
     },
-    destroy: (req, res) => {
-        let id = req.params.id;
+    destroy: async (req, res) => {
+        let id = parseInt(req.params.id);
         // remove image
-        deleteImages(id);
+        let images = await image.findAll({ where: { product_id: id }});
+        if (images && images.length) {
+            await Promise.all(images.forEach(async (img) => {
+                const imagePath = path.join(__dirname, '../public/images/products/' + img.name);
+                fs.existsSync(imagePath) ? fs.unlink(imagePath) : '';
+                await image.destroy(img.id);
+            }));
+        }
         // remove product
         productsModel.delete(id);
         res.redirect('/products');

@@ -29,15 +29,6 @@
                             <span class="error"><%= locals.errors && errors.name ? errors.name.msg : '' %> </span> 
                         </div>
                     </div>
-                    <div class="col-12">
-                        <div class="form-group">
-                            <label for="description">Descripción</label>
-                            <textarea id="description" name="description" placeholder="describí tus simpsocks" 
-                                value="<%= locals.product ? product.description : '' %>"
-                                class="<%= locals.errors && errors.description ? 'danger' : '' %>"><%= product.description %></textarea>
-                            <span class="error"><%= locals.errors && errors.description ? errors.description.msg : '' %> </span>
-                        </div>
-                    </div>
                     <div class="col-12 col-md-4 col-lg-4">
                         <div class="form-group">
                             <label for="price">Precio</label>
@@ -56,28 +47,46 @@
                             <span class="error"><%= locals.errors && errors.discount ? errors.discount.msg : '' %> </span> 
                         </div>
                     </div>
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label for="description">Descripción</label>
+                            <textarea id="description" name="description" placeholder="describí tus simpsocks" 
+                                value="<%= locals.product ? product.description : '' %>"
+                                class="<%= locals.errors && errors.description ? 'danger' : '' %>"><%= product.description %></textarea>
+                            <span class="error"><%= locals.errors && errors.description ? errors.description.msg : '' %> </span>
+                        </div>
+                    </div>
                     <div class="col-12 col-md-8 form-group">
                         <label for="discount">Tabla de SKU</label>
                         <div class="row">
                             <div class="col-3 col-md-2">#</div>
                             <div class="col-5 col-md-4">Stock</div>
                             <div class="col-4 col-md-6">Detalle</div>
-                            <% product.skus.forEach(sku => { %>
-                                <div class="col-3 col-md-2"><%= sku.sku %></div>
+                            <% for( let i = 0; i < product.skus.length; i++ ) { %>
+                                <div class="col-3 col-md-2"><%= product.skus[i].sku %></div>
                                 <div class="col-5 col-md-4">
                                     <div class="form-group">
-                                        <input type="number" id="stock-<%= sku.id %>" name="<%= sku.id %>" value="<%= sku.stock %>">
+                                        <% if (locals.errors) { %>
+                                            <input type="number" 
+                                                id="<%= product.skus[i].id %>"
+                                                name="stocks"
+                                                value="<%= stocks[i] %>">
+                                        <% } else { %>
+                                            <input type="number" 
+                                                id="<%= product.skus[i].id %>"
+                                                name="stocks"
+                                                value="<%= product.skus[i].stock %>">
+                                        <% } %>
                                     </div>
                                 </div>
                                 <div class="col-4 col-md-6">
-                                    <% sku.properties.forEach(property => { %>
+                                    <% product.skus[i].properties.forEach(property => { %>
                                         <b><%= property.name %></b>     
                                     <% }) %>
                                 </div>
-                            <% }) %>
+                            <% } %>
                         </div>
                     </div>
-
                     <div class="col-12">
                         <div class="form-checkbox">
                             <p>Categorías</p>

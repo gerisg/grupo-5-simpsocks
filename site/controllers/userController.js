@@ -142,7 +142,7 @@ module.exports = {
             if (errors.isEmpty()) {
                 let userAuthenticated = await user.findOne({ where: { email: req.body.email }, include: role });
                 if (bcrypt.compareSync(req.body.password, userAuthenticated.password)){
-                    req.session.user = { id: userAuthenticated.id, name: userAuthenticated.firstname, category: userAuthenticated.role.name};
+                    req.session.user = { id: userAuthenticated.id, name: userAuthenticated.firstname, category: userAuthenticated.role.id};
                     if (req.body.remember){
                         const tokenCrypto = crypto.randomBytes(64).toString('base64');
                         await token.create({ user_id: userAuthenticated.id, token: tokenCrypto });

@@ -19,7 +19,6 @@ module.exports = {
     },
     parseVariants: variantParams => {
         let skus;
-        let skuVariantValuesMap = new Map();
         let variantsMap = new Map();
         variantParams.forEach(param => {
             // Nomenclature defined in views>products>create-form>variants (checkbox)
