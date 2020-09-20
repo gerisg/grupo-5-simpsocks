@@ -4,13 +4,18 @@ module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('skus_variant_values', {
       id: { type: Sequelize.INTEGER(11), allowNull: false, autoIncrement: true, primaryKey: true },
-      sku_id: { type: Sequelize.INTEGER(11), allowNull: false,
+      sku_id: {
+        type: Sequelize.INTEGER(11),
+        allowNull: false,
+        onDelete: 'CASCADE',
         references: {
           model: 'skus',
           key: 'id'
         }
       },
-      variant_value_id: { type: Sequelize.INTEGER(11), allowNull: false, 
+      variant_value_id: {
+        type: Sequelize.INTEGER(11),
+        allowNull: false, 
         references: {
           model: 'variant_values',
           key: 'id'
