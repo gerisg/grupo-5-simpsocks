@@ -51,7 +51,7 @@ module.exports = {
                     lastname: req.body.lastname,
                     email: req.body.email,
                     password: encryptedPassword,
-                    role_id: req.body.category, 
+                    role_id: req.body.category, // TODO Verificar si toma el role
                     phone: req.body.phone,
                     shipping_address: req.body.shipping_address, // TODO Esto es una tabla relacionada
                     payment_address: req.body.payment_address, // TODO Esto es una tabla relacionada
@@ -89,7 +89,7 @@ module.exports = {
                 userResult.firstname = req.body.firstname,
                 userResult.lastname = req.body.lastname,
                 userResult.email = req.body.email,
-                userResult.category = req.body.category,
+                userResult.role_id = req.body.category,
                 userResult.phone = req.body.phone,
                 // userResult.shipping_address = req.body.shipping_address,
                 // userResult.payment_address = req.body.payment_address,
