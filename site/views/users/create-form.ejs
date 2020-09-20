@@ -62,8 +62,8 @@
                         <label for="category">Categoría</label>
                         <select name="category" id="category"
                             class="<%= locals.errors && errors.category ? 'danger' : '' %>">
-                            <option value="user" <%= locals.user && locals.user.category == 1 ? 'selected' : '' %>>Usuario</option>
-                            <option value="admin" <%= locals.user && locals.user.category == 2 ? 'selected' : '' %>>Administrador</option>
+                            <option value="1" <%= locals.user && locals.user.category == 1 ? 'selected' : '' %>>Usuario</option>
+                            <option value="2" <%= locals.user && locals.user.category == 2 ? 'selected' : '' %>>Administrador</option>
                         </select>
                         <span class="error"><%= locals.errors && errors.category ? errors.category.msg : '' %></span>
                     </div>
