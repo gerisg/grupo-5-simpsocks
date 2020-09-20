@@ -196,18 +196,16 @@ module.exports = {
         }
     },
     destroy: async (req, res) => {
-        let id = parseInt(req.params.id);
-        // remove image
-        let images = await image.findAll({ where: { product_id: id }});
-        if (images && images.length) {
-            await Promise.all(images.forEach(async (img) => {
+        let productResult = await product.findByPk(parseInt(req.params.id));
+        let productImages = await productResult.getImages();
+        await productResult.destroy();
+        // remove local images
+        if (productImages && productImages.length) {
+            productImages.forEach(img => {
                 const imagePath = path.join(__dirname, '../public/images/products/' + img.name);
-                fs.existsSync(imagePath) ? fs.unlink(imagePath) : '';
-                await image.destroy(img.id);
-            }));
+                fs.existsSync(imagePath) ? fs.unlinkSync(imagePath) : '';
+            });
         }
-        // remove product
-        productsModel.delete(id);
         res.redirect('/products');
     },
     cart: (req,res) => {
