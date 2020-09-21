@@ -33,7 +33,7 @@ module.exports = {
     create: (req, res) => {
         try {
             // TODO: enviar los roles a la vista
-            // TODO: modificar en la vista los campos de los domicilios
+            // TODO: modificar en la vista los campos de los domicilios // HECHO
             res.render('users/create-form');
         } catch (error) {
             console.log(error);
@@ -51,14 +51,13 @@ module.exports = {
                     lastname: req.body.lastname,
                     email: req.body.email,
                     password: encryptedPassword,
-                    role_id: req.body.category, // TODO Verificar si toma el role
+                    role_id: req.body.category, // TODO Verificar si toma el role// HECHO?
                     phone: req.body.phone,
                     shipping_address: req.body.shipping_address, // TODO Esto es una tabla relacionada
                     payment_address: req.body.payment_address, // TODO Esto es una tabla relacionada
                     image: req.file ? req.file.filename : null
                 }
-                let newUser = await user.create(newUserData); 
-                console.log(newUser)
+                let newUser = await user.create(newUserData);             
                 mailer.sendWelcome(newUser.email, password);
                 return res.redirect('/users/' + newUser.id);
             } else {
