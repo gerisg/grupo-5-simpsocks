@@ -46,18 +46,29 @@ module.exports = {
             if (errors.isEmpty()) {
                 let password = generatePass();
                 let encryptedPassword = bcrypt.hashSync(password, 10);
-                let newUserData = {
+                let newUser= await user.create({
                     firstname: req.body.firstname,
                     lastname: req.body.lastname,
                     email: req.body.email,
                     password: encryptedPassword,
                     role_id: req.body.category, // TODO Verificar si toma el role// HECHO?
                     phone: req.body.phone,
-                    shipping_address: req.body.shipping_address, // TODO Esto es una tabla relacionada
-                    payment_address: req.body.payment_address, // TODO Esto es una tabla relacionada
-                    image: req.file ? req.file.filename : null
-                }
-                let newUser = await user.create(newUserData);             
+                    image: req.file ? req.file.filename : null,
+                    addresses: [{
+                        type: "shipping",                        
+                        street: req.body.shipping_address, 
+                        number: req.body.shipping_number,
+                        city: req.body.shipping_city
+                    }, {
+                        type: "billing",                        
+                        street: req.body.payment_address, 
+                        number: req.body.payment_number,
+                        city: req.body.payment_city
+                    }] 
+                }, {
+                    include: [{ model: address }]
+                });             
+               
                 mailer.sendWelcome(newUser.email, password);
                 return res.redirect('/users/' + newUser.id);
             } else {

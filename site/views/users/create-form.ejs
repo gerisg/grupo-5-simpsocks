@@ -54,13 +54,13 @@
                             value="<%= locals.address ? address.street : '' %>">
                     </div>
                     <div class="col-12 col-md-3 form-group">
-                        <label for="">Codigo Postal</label>
-                        <input type="text" id="" name="" placeholder=""
+                        <label for="zipcode">Codigo Postal</label>
+                        <input type="text" id="zipcode" name="payment_number" placeholder=""
                             value="<%= locals.address ? address.number : '' %>">
                     </div>
                     <div class="col-12 col-md-4 form-group">
                         <label for="city">Provincia y Localidad</label>
-                        <input type="text" id="city" name="city" placeholder="Buenos Aires"
+                        <input type="text" id="city" name="payment_city" placeholder="Buenos Aires"
                             value="<%= locals.address ? address.city : '' %>">
                     </div>
                     <div class="col-12 col-md-5 form-group">
@@ -70,12 +70,12 @@
                     </div>
                     <div class="col-12 col-md-3 form-group">
                         <label for="zipcode">Codigo Postal</label>
-                        <input type="text" id="zipcode" name="number" placeholder=""
+                        <input type="text" id="zipcode" name="shipping_number" placeholder=""
                             value="<%= locals.address ? address.number : '' %>">
                     </div>
                     <div class="col-12 col-md-4 form-group">
                         <label for="city">Provincia y Localidad</label>
-                        <input type="text" id="city" name="city" placeholder="Buenos Aires"
+                        <input type="text" id="city" name="shipping_city" placeholder="Buenos Aires"
                             value="<%= locals.address ? address.city : '' %>">
                     </div>
                     <div class="col-12 col-md-6 form-group">
