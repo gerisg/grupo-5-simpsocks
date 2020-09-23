@@ -48,7 +48,25 @@
                             class="<%= locals.errors && errors.phone ? 'danger' : '' %>">
                         <span class="error"><%= locals.errors && errors.phone ? errors.phone.msg : '' %></span>
                     </div>
+                    <div class="col-12 col-md-12 form-group">
+                       <label> Domicilio de Facturacion</label>
+                    </div>
                     <div class="col-12 col-md-5 form-group">
+                        <label for="payment_address">Calle</label>
+                        <input type="text" id="payment_address" name="payment_address" placeholder="Ej: Av.Corrientes 1234, Piso 2 Dpto 6"
+                            value="<%= locals.address ? address.street : '' %>">
+                    </div>
+                    <div class="col-12 col-md-3 form-group">
+                        <label for="zipcode">Número</label>
+                        <input type="text" id="zipcode" name="payment_number" placeholder=""
+                            value="<%= locals.address ? address.number : '' %>">
+                    </div>
+                    <div class="col-12 col-md-4 form-group">
+                        <label for="city">Ciudad</label>
+                        <input type="text" id="city" name="payment_city" placeholder="Buenos Aires"
+                            value="<%= locals.address ? address.city : '' %>">
+                    </div>
+                   <!-- <div class="col-12 col-md-5 form-group">
                         <label for="payment_address">Domicilio de facturación</label>
                         <input type="text" id="payment_address" name="payment_address" placeholder="Ej: Av.Corrientes 1234, Piso 2 Dpto 6"
                             value="<%= locals.address ? address.street : '' %>">
@@ -76,8 +94,8 @@
                     <div class="col-12 col-md-4 form-group">
                         <label for="city">Provincia y Localidad</label>
                         <input type="text" id="city" name="shipping_city" placeholder="Buenos Aires"
-                            value="<%= locals.address ? address.city : '' %>">
-                    </div>
+                            value="<%= locals.address ? address.city : '' %>"> 
+                    </div>-->
                     <div class="col-12 col-md-6 form-group">
                         <label for="category">Categoría</label>
                         <select name="category" id="category"

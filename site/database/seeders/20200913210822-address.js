@@ -8,6 +8,7 @@ module.exports = {
         number: 4484,
         city: 'Cam Lam',
         type: 'shipping',
+        display: 'Entrega',
         user_id: 2
       },
       {
@@ -15,6 +16,7 @@ module.exports = {
         number: 38,
         city: 'Jandiala Sher Khan',
         type: 'billing',
+        display: 'Facturación',
         user_id: 2
       },
       {
@@ -22,6 +24,7 @@ module.exports = {
         number: 13669,
         city: 'Kitakata',
         type: 'shipping',
+        display: 'Entrega',
         user_id: 3
       },
       {
@@ -29,6 +32,7 @@ module.exports = {
         number: 0,
         city: 'Gribanovskiy',
         type: 'shipping',
+        display: 'Entrega',
         user_id: 4
       },
       {
@@ -36,6 +40,7 @@ module.exports = {
         number: 26,
         city: 'Lajeosa do Mondego',
         type: 'billing',
+        display: 'Facturación',
         user_id: 5
       },
       {
@@ -43,6 +48,7 @@ module.exports = {
         number: 16,
         city: '‘Asirah al Qibliyah',
         type: 'billing',
+        display: 'Facturación',
         user_id: 6
       },
       {
@@ -50,6 +56,7 @@ module.exports = {
         number: 591,
         city: 'Syracuse',
         type: 'billing',
+        display: 'Facturación',
         user_id: 7
       },
       {
@@ -57,6 +64,7 @@ module.exports = {
         number: 49,
         city: 'Philipsburg',
         type: 'billing',
+        display: 'Facturación',
         user_id: 8
       },
       {
@@ -64,6 +72,7 @@ module.exports = {
         number: 5057,
         city: 'Zhangduangu',
         type: 'shipping',
+        display: 'Entrega',
         user_id: 8
       },
       {
@@ -71,6 +80,7 @@ module.exports = {
         number: 5,
         city: 'Alkmaar',
         type: 'shipping',
+        display: 'Entrega',
         user_id: 9
       },
       {
@@ -78,6 +88,7 @@ module.exports = {
         number: 19090,
         city: 'Eshan',
         type: 'billing',
+        display: 'Facturación',
         user_id: 10
       },
       {
@@ -85,6 +96,7 @@ module.exports = {
         number: 35,
         city: 'Casisang',
         type: 'shipping',
+        display: 'Entrega',
         user_id: 11
       },
       {
@@ -92,6 +104,7 @@ module.exports = {
         number: 8720,
         city: 'Pachir wa Agam',
         type: 'billing',
+        display: 'Facturación',
         user_id: 12
       },
       {
@@ -99,6 +112,7 @@ module.exports = {
         number: 4,
         city: 'Tylicz',
         type: 'billing',
+        display: 'Facturación',
         user_id: 13
       },
       {
@@ -106,6 +120,7 @@ module.exports = {
         number: 676,
         city: 'Shali',
         type: 'billing',
+        display: 'Facturación',
         user_id: 13
       },
       {
@@ -113,6 +128,7 @@ module.exports = {
         number: 41,
         city: 'Olafulihaa',
         type: 'shipping',
+        display: 'Entrega',
         user_id: 14
       },
       {
@@ -120,6 +136,7 @@ module.exports = {
         number: 3256,
         city: 'Tost',
         type: 'billing',
+        display: 'Facturación',
         user_id: 15
       },
       {
@@ -127,6 +144,7 @@ module.exports = {
         number: 431,
         city: 'Luodian',
         type: 'billing',
+        display: 'Facturación',
         user_id: 16
       },
       {
@@ -134,6 +152,7 @@ module.exports = {
         number: 683,
         city: 'Pelabuhanratu',
         type: 'shipping',
+        display: 'Entrega',
         user_id: 16
       },
       {
@@ -141,6 +160,7 @@ module.exports = {
         number: 49782,
         city: 'Tuopu Luke',
         type: 'billing',
+        display: 'Facturación',
         user_id: 17
       },
       {
@@ -148,6 +168,7 @@ module.exports = {
         number: 386,
         city: 'Aguas Corrientes',
         type: 'shipping',
+        display: 'Entrega',
         user_id: 18
       },
       {
@@ -155,6 +176,7 @@ module.exports = {
         number: 90,
         city: 'Phu Loc',
         type: 'shipping',
+        display: 'Entrega',
         user_id: 19
       }
     ], {});
