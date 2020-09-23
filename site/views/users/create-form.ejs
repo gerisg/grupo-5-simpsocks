@@ -49,7 +49,7 @@
                         <span class="error"><%= locals.errors && errors.phone ? errors.phone.msg : '' %></span>
                     </div>
                     <div class="col-12 col-md-12 form-group">
-                       <label> Domicilio de Facturacion</label>
+                        <label>Domicilio de Facturacion</label>
                     </div>
                     <div class="col-12 col-md-5 form-group">
                         <label for="payment_address">Calle</label>
@@ -57,7 +57,7 @@
                             value="<%= locals.address ? address.street : '' %>">
                     </div>
                     <div class="col-12 col-md-3 form-group">
-                        <label for="zipcode">Número</label>
+                        <label for="zipcode">Numero</label>
                         <input type="text" id="zipcode" name="payment_number" placeholder=""
                             value="<%= locals.address ? address.number : '' %>">
                     </div>
@@ -66,42 +66,32 @@
                         <input type="text" id="city" name="payment_city" placeholder="Buenos Aires"
                             value="<%= locals.address ? address.city : '' %>">
                     </div>
-                   <!-- <div class="col-12 col-md-5 form-group">
-                        <label for="payment_address">Domicilio de facturación</label>
-                        <input type="text" id="payment_address" name="payment_address" placeholder="Ej: Av.Corrientes 1234, Piso 2 Dpto 6"
-                            value="<%= locals.address ? address.street : '' %>">
-                    </div>
-                    <div class="col-12 col-md-3 form-group">
-                        <label for="zipcode">Codigo Postal</label>
-                        <input type="text" id="zipcode" name="payment_number" placeholder=""
-                            value="<%= locals.address ? address.number : '' %>">
-                    </div>
-                    <div class="col-12 col-md-4 form-group">
-                        <label for="city">Provincia y Localidad</label>
-                        <input type="text" id="city" name="payment_city" placeholder="Buenos Aires"
-                            value="<%= locals.address ? address.city : '' %>">
+                    <div class="col-12 col-md-12 form-group">
+                        <label>Domicilio de Entrega</label>
                     </div>
                     <div class="col-12 col-md-5 form-group">
-                        <label for="shipping_address">Domicilio de entrega</label>
+                        <label for="shipping_address">Calle</label>
                         <input type="text" id="shipping_address" name="shipping_address" placeholder="Ej: Rivadavia 9999, CABA"
                             value="<%= locals.address ? address.street : '' %>">
                     </div>
                     <div class="col-12 col-md-3 form-group">
-                        <label for="zipcode">Codigo Postal</label>
+                        <label for="zipcode">Numero</label>
                         <input type="text" id="zipcode" name="shipping_number" placeholder=""
                             value="<%= locals.address ? address.number : '' %>">
                     </div>
                     <div class="col-12 col-md-4 form-group">
-                        <label for="city">Provincia y Localidad</label>
+                        <label for="city">Ciudad</label>
                         <input type="text" id="city" name="shipping_city" placeholder="Buenos Aires"
                             value="<%= locals.address ? address.city : '' %>"> 
-                    </div>-->
+                    </div>
                     <div class="col-12 col-md-6 form-group">
                         <label for="category">Categoría</label>
                         <select name="category" id="category"
                             class="<%= locals.errors && errors.category ? 'danger' : '' %>">
-                            <option value="1" <%= locals.user && locals.user.category == 1 ? 'selected' : '' %>>Usuario</option>
-                            <option value="2" <%= locals.user && locals.user.category == 2 ? 'selected' : '' %>>Administrador</option>
+                        <% roles.forEach(role => { %>
+                            <option value="<%=role.id %>"><%=role.name%></option>
+                        
+                        <% }) %>
                         </select>
                         <span class="error"><%= locals.errors && errors.category ? errors.category.msg : '' %></span>
                     </div>

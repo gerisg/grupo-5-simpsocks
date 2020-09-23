@@ -30,11 +30,15 @@ module.exports = {
             res.status(500).render('error-500', { error });
         }
     },
-    create: (req, res) => {
+    create: async (req, res) => {
         try {
-            // TODO: enviar los roles a la vista
-            // TODO: modificar en la vista los campos de los domicilios // HECHO
-            res.render('users/create-form');
+            let roles = await role.findAll();
+
+            {
+                include: [{model: role}]
+            }
+            
+            res.render('users/create-form', {roles});
         } catch (error) {
             console.log(error);
             res.status(500).render('error-500', { error });
