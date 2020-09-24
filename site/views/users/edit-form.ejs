@@ -48,41 +48,43 @@
                             class="<%= locals.errors && errors.phone ? 'danger' : '' %>">
                         <span class="error"><%= locals.errors && errors.phone ? errors.phone.msg : '' %></span>
                     </div>
+                      <!-- Facturacion -->
                     <div class="col-12 col-md-12 form-group">
                         <label>Domicilio de Facturacion</label>
                     </div>
                     <div class="col-12 col-md-5 form-group">
                         <label for="payment_address">Calle</label>
-                        <input type="text" id="payment_address" name="payment_address" placeholder="Ej: Av.Corrientes 1234, Piso 2 Dpto 6"
-                            value="<%= locals.address && locals.address [1] ? address[1].street : '' %>">
+                        <input type="text" id="payment_address" name="payment_address" placeholder="Ej: Av.Corrientes"
+                            value="<%= locals.address ? billingAddress.street : '' %>">
                     </div>
                     <div class="col-12 col-md-3 form-group">
                         <label for="zipcode">Numero</label>
                         <input type="text" id="zipcode" name="payment_number" placeholder=""
-                            value="<%= locals.address && locals.address [1] ? address[1].number : '' %>">
+                            value="<%= locals.address ? billingAddress.number : '' %>">
                     </div>
                     <div class="col-12 col-md-4 form-group">
                         <label for="city">Ciudad</label>
                         <input type="text" id="city" name="payment_city" placeholder="Buenos Aires"
-                            value="<%= locals.address && locals.address [1] ? address[1].city : '' %>">
+                            value="<%= locals.address ? billingAddress.city : '' %>">
                     </div>
+                      <!-- Entrega  -->
                     <div class="col-12 col-md-12 form-group">
                         <label>Domicilio de Entrega</label>
                     </div>
                     <div class="col-12 col-md-5 form-group">
                         <label for="shipping_address">Calle</label>
-                        <input type="text" id="shipping_address" name="shipping_address" placeholder="Ej: Rivadavia 9999, CABA"
-                            value="<%= locals.address && locals.address [0] ? address[0].street : '' %>">
+                        <input type="text" id="shipping_address" name="shipping_address" placeholder="Ej: Rivadavia"
+                            value="<%= locals.address ? shippingAddress.street : '' %>">
                     </div>
                     <div class="col-12 col-md-3 form-group">
                         <label for="zipcode">Numero</label>
                         <input type="text" id="zipcode" name="shipping_number" placeholder=""
-                            value="<%= locals.address && locals.address [0] ? address[0].number : '' %>">
+                            value="<%= locals.address ? shippingAddress.number : '' %>">
                     </div>
                     <div class="col-12 col-md-4 form-group">
                         <label for="city">Ciudad</label>
                         <input type="text" id="city" name="shipping_city" placeholder="Buenos Aires"
-                            value="<%= locals.address && locals.address [0] ? address[0].city : '' %>"> 
+                            value="<%= locals.address ? shippingAddress.city : '' %>"> 
                     </div>
                     <div class="col-12 col-md-6 form-group">
                         <label for="category">Categoría</label>

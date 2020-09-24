@@ -70,7 +70,7 @@ module.exports = {
                         { model: address }
                     ]
                 });             
-               
+               console.log('userCreate', newUser);
                 mailer.sendWelcome(newUser.email, password);
                 return res.redirect('/users/' + newUser.id);
             } else {
@@ -83,23 +83,15 @@ module.exports = {
     },
     edit: async (req, res) => {
         try {
-            let roles = await role.findAll();
             let userResult = await user.findByPk(parseInt(req.params.id));
-            let addresses =await address.findAll();
-            let userAddresses = await addresses.filter(address=>address.user_id == req.params.id);
+            let shippingAddress = await address.findOne({ where: {user_id: req.params.id, type:'shipping' }});
+            let billingAddress = await address.findOne({ where: {user_id: req.params.id, type:'billing' }});
+            console.log(shippingAddress.get());
+            console.log(billingAddress.get());
+            console.log(userResult);
+             // TODO faltan las tablas relacionadas
             delete userResult.password;
-      
-            {include: [
-                { model: address },
-                {model:user},
-                {model:role}
-              ]
-        
-            }
-            //console.log(addresses)
-            //res.send({ user: userResult,/*roles,*/ address:userAddresses })
-           res.render('users/edit-form', { user: userResult,roles, address:userAddresses });
-           
+            res.render('users/edit-form', { user: userResult, shippingAddress: shippingAddress, billingAddress: billingAddress });
         } catch (error) {
             console.log(error);
             res.status(500).render('error-500', { error });
@@ -110,17 +102,43 @@ module.exports = {
             let errors = validationResult(req);
             if (errors.isEmpty()) {
                 let id = parseInt(req.params.id);
-                let userResult = await user.findByPk(id);
-                userResult.id = req.body,
-                userResult.firstname = req.body.firstname,
-                userResult.lastname = req.body.lastname,
-                userResult.email = req.body.email,
-                userResult.role_id = req.body.category,
-                userResult.phone = req.body.phone,
-                // userResult.shipping_address = req.body.shipping_address,
-                // userResult.payment_address = req.body.payment_address,
-                userResult.image = req.file ? req.file.filename : req.body.currentImage
+                let userResult = await user.findByPk(id, {
+                    include: [{ model: address }]
+                });
+                userResult.id = req.body.id;
+                userResult.firstname = req.body.firstname;
+                userResult.lastname = req.body.lastname;
+                userResult.email = req.body.email;
+                userResult.role_id = req.body.category;
+                userResult.phone = req.body.phone;
+                userResult.image = req.file ? req.file.filename : req.body.currentImage;
+                userResult.addresses[0].get().number = 1990;
+                console.log(userResult.get().addresses);
                 await userResult.save();
+                // userResult.addresses.map(async function(addr){
+                //     if(addr.get().type == 'shipping'){
+                        await address.update( { number: req.body.shipping_number, street: req.body.shipping_address,city: req.body.shipping_city}, {where: {user_id: req.params.id, type: 'shipping'}});
+
+                        await address.update( { number: req.body.payment_number, street: req.body.payment_address,city: req.body.payment_city}, {where: {user_id: req.params.id, type: 'billing'}});
+
+                        // console.log('antes',currentAddress);
+                        // if (!currentAddress){
+                        //     await address.create({user_id: req.params.id,
+                        //                         street: req.body.shipping_address,
+                        //                         number: req.body.shipping_number,
+                        //                         city: req.body.shipping_city,
+                        //                         type: addr.get().type});
+                        // }
+                        // else{
+                        //     currentAddress.dataValues.street = req.body.shipping_address,
+                        //     currentAddress.dataValues.number = req.body.shipping_number,
+                        //     currentAddress.dataValues.city = req.body.shipping_city
+                        // }
+
+                    // console.log('meh',currentAddress, 'despues');
+
+               
+                // await currentAddress.save();
                 res.redirect('/users/' + id);
             } else {
                 req.body.id = req.params.id;

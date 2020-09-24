@@ -48,6 +48,7 @@
                             class="<%= locals.errors && errors.phone ? 'danger' : '' %>">
                         <span class="error"><%= locals.errors && errors.phone ? errors.phone.msg : '' %></span>
                     </div>
+                    <!-- Facturacion -->
                     <div class="col-12 col-md-12 form-group">
                         <label>Domicilio de Facturacion</label>
                     </div>
@@ -66,6 +67,7 @@
                         <input type="text" id="city" name="payment_city" placeholder="Buenos Aires"
                             value="<%= locals.address ? address.city : '' %>">
                     </div>
+                    <!-- Entrega  -->
                     <div class="col-12 col-md-12 form-group">
                         <label>Domicilio de Entrega</label>
                     </div>
