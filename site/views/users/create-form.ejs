@@ -89,8 +89,7 @@
                         <select name="category" id="category"
                             class="<%= locals.errors && errors.category ? 'danger' : '' %>">
                         <% roles.forEach(role => { %>
-                            <option value="<%=role.id %>"><%=role.name%></option>
-                        
+                            <option value="<%=role.id %>"><%=role.name%></option>         
                         <% }) %>
                         </select>
                         <span class="error"><%= locals.errors && errors.category ? errors.category.msg : '' %></span>

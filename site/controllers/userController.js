@@ -85,9 +85,10 @@ module.exports = {
     },
     edit: async (req, res) => {
         try {
+            let roles = await role.findAll();
             let userResult = await user.findByPk(parseInt(req.params.id)); // TODO faltan las tablas relacionadas
             delete userResult.password;
-            res.render('users/edit-form', { user: userResult });
+            res.render('users/edit-form', { user: userResult,roles });
         } catch (error) {
             console.log(error);
             res.status(500).render('error-500', { error });

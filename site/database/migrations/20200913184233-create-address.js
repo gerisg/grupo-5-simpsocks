@@ -7,7 +7,6 @@ module.exports = {
       number: { type: Sequelize.INTEGER(11), allowNull: false },
       city: { type: Sequelize.STRING(255), allowNull: false },
       type: { type: Sequelize.STRING(255), allowNull: false },
-      display:{ type: Sequelize.STRING(255), allowNull: false },
     });
   },
   down: async (queryInterface, Sequelize) => {
