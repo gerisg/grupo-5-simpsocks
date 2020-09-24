@@ -131,7 +131,7 @@ module.exports = {
             res.redirect("/users");
         } catch (error) {
             console.log(error);
-            res.status(500).render('error-500', error);
+            res.status(500).render('error-500', {error});
         }
     },
     login: (req,res) => {

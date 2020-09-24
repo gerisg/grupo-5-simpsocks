@@ -6,7 +6,9 @@ module.exports = {
       'addresses', // name of Source table
       'user_id', // name of the key we're adding 
       {
+        
         type: Sequelize.INTEGER,
+        onDelete: 'CASCADE',
         references: {
           model: 'users', // name of Target table
           key: 'id', // key in Target table that we're referencing
