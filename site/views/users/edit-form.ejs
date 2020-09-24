@@ -32,7 +32,7 @@
                         <input type="text" id="lastname" name="lastname" placeholder="Ej: Perez"
                             value="<%= locals.user ? user.lastname : '' %>"
                             class="<%= locals.errors && errors.lastname ? 'danger' : '' %>">
-                        <span class="error"><%= locals.errors && errors.lastname ? errors.lastname.msg : '' %></span>
+                        <span class="error"><%= locals.errors && errors.lastname ? errors.lastname.msg : '' %></span> 
                     </div>
                     <div class="col-12 col-md-6 form-group">
                         <label for="email">Email</label>
