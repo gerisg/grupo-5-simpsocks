@@ -1,4 +1,4 @@
 node_modules/
 **/data/*.json
-**/database/config.json
+**/database/config/config.json
 **/public/images/users/user-*
