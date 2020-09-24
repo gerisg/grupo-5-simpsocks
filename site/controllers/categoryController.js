@@ -84,7 +84,12 @@ module.exports = {
     },
     destroy: async (req, res) => {
         try {
-            await category.destroy({ where: { id: parseInt(req.params.id) }});
+            let id = parseInt(req.params.id);
+            // TODO Implement a better way. Don't remove 'destacados'
+            if(id == 1) { 
+                throw new Error('La categoría "destacados" no puede ser eliminada del sistema');
+            }
+            await category.destroy({ where: { id }});
             res.redirect('/categories');
         } catch (error) {
             console.log(error);
