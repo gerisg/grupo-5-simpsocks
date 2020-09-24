@@ -175,6 +175,9 @@ module.exports = {
         try {
             let errors = validationResult(req);
             if (errors.isEmpty()) {
+                let exist = await user.findOne({ where: { email: req.body.email }});
+                if(exist)
+                    return res.render('users/register', { errors: { email: { msg: 'Ya existe un usuario registrado con este e-mail.' }}, user: req.body });
                 let encryptedPassword = bcrypt.hashSync(req.body.password, 10);
                 let newUser = {
                     firstname: req.body.firstname,
