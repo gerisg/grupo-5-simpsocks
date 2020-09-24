@@ -184,8 +184,7 @@ module.exports = {
                     role_id: 1 // user
                 }
                 let userResult = await user.create(newUser);
-                let roleResult = await role.findByPk(newUser.role_id);
-                req.session.user = { id: userResult.id, name: userResult.firstname, category: roleResult.name };
+                req.session.user = { id: userResult.id, name: userResult.firstname, category: 1 };
                 res.redirect('/');
             } else {
                 res.render('users/register', { errors: errors.mapped(), user: req.body });
