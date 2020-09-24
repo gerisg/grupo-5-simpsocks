@@ -55,7 +55,7 @@ module.exports = {
                     lastname: req.body.lastname,
                     email: req.body.email,
                     password: encryptedPassword,
-                    role_id: req.body.category, // TODO Verificar si toma el role// HECHO?
+                    role_id: req.body.category, 
                     phone: req.body.phone,
                     image: req.file ? req.file.filename : null,
                     addresses: [{
@@ -70,7 +70,9 @@ module.exports = {
                         city: req.body.payment_city
                     }] 
                 }, {
-                    include: [{ model: address }]
+                    include: [
+                        { model: address }
+                    ]
                 });             
                
                 mailer.sendWelcome(newUser.email, password);
@@ -86,9 +88,22 @@ module.exports = {
     edit: async (req, res) => {
         try {
             let roles = await role.findAll();
-            let userResult = await user.findByPk(parseInt(req.params.id)); // TODO faltan las tablas relacionadas
+            let userResult = await user.findByPk(parseInt(req.params.id));
+            let addresses =await address.findAll();
+            let userAddresses = await addresses.filter(address=>address.user_id == req.params.id);
             delete userResult.password;
-            res.render('users/edit-form', { user: userResult,roles });
+      
+            {include: [
+                { model: address },
+                {model:user},
+                {model:role}
+              ]
+        
+            }
+            //console.log(addresses)
+            //res.send({ user: userResult,/*roles,*/ address:userAddresses })
+           res.render('users/edit-form', { user: userResult,roles, address:userAddresses });
+           
         } catch (error) {
             console.log(error);
             res.status(500).render('error-500', { error });
