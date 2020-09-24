@@ -92,3 +92,10 @@ Destacamos el uso de los post-it para que todos participemos en la confección d
 | + **Seguir haciendo**: Pair programming. Review del proyecto. Comunicación fluida. Mantener motivación del equipo. |
 | + **Empezar a hacer**: Resolver funcionalidad seleccionada en grupo. Hacer estimaciones de tiempo. Explicaciones de resolución. Temario de reuniones. |
 | + **Hacer menos**: HTML/CSS repetido o complejo. |
+
+
+### Sprint 5
+
+| Resumen |
+| -------- |
+| Si bien realizamos la reunión mensual en la cuál conversamos respecto al Sprint 5, decidimos poner el foco en el Sprint 6 el cuál veíamos con mucho trabajo por delante. Esta es la razón por la cuál no confeccionamos el tablero de la metodología estrella y decidimos retomar esta actividad con la retro del Sprint 6. |
