@@ -78,46 +78,80 @@ La arquitectura de la información se muestra desplegada de forma sencilla. En l
 
 >Es un tema que tomamos de referencia por contener una estética atractiva. Además, es destacable el proceso de compra y checkout.
 
-## Instrucciones para iniciar nuestra aplicación
+## Instrucciones para iniciar Simpsocks
 
 1. Abrir una consola y clonar el proyecto.
 
-```
-git clone https://github.com/gerisg/grupo-5-simpsocks
-```
+    ```
+    git clone https://github.com/gerisg/grupo-5-simpsocks
+    ```
 
-2. Deberás posicionarte en el directorio donde se encuentran los archivos de la aplicación.
+2. Posicionar en el directorio donde se encuentran los archivos de la aplicación.
 
-```
-cd grupo-5-simpsocks/site
-```
+    ```sh
+    cd grupo-5-simpsocks/site
+    ```
 
 3. Usamos algunas dependencias que deberás instalar para el funcionamiento de la aplicación con el siguiente comando. _Importante:_ deberás tener instalado __npm__.
 
-```
-npm install
-```
+    ```sh
+    npm install
+    ```
 
-4. Si deseas hacer uso de todas las funcionalidades te recomendamos utilizar los datos de prueba que se encuentran en la carpeta __data__. Deberás renombrar su extensión a _.json_. __Importante:__ si tenés permiso de escritura no deberías commitear cambios en los archivos con extensión _*.example_.
+4. Configurar la base de datos. Deberás contar con un servicio de MySQL iniciado en tu sistema [(más info)](https://github.com/gerisg/grupo-5-simpsocks/blob/master/database/README.md) y configurar la conexión en el archivo de condiguración. Para facilitar esta tarea, renombar el archivo _/site/database/config/___config.json.example__ a _/site/database/config/___config.json__.
 
-```
-cd data
-mv users.json.example users.json
-mv products.json.example products.json
-mv categories.json.example categories.json
-mv productImages.json.example productImages.json
-cd ..
-```
+    ```sh
+    cd database/config
+    mv config.json.example config.json
+    cd ..
+    ```
 
-5. Ahora iniciar la aplicación ejecutando el siguiente comando en la Terminal. _Importante:_ deberás tener instalado __node__.
+5. Editar el archivo de configuración y configurar las siguientes propiedades para la sección _development_:
 
-```
-node app.js
-```
+    - _username_: nombre de usuario para conectar a MySQL, si no creaste un usuario específico podés usar "root".
+    - _password_: la contraseña del usuario configurado en la propiedad anterior.
+    - _database_: nombre de la base de datos para Simpsocks.
+    - _host_: si estas ejecutando MySQL de forma local la configuración es "127.0.0.1".
+    - _dialect_: la base de datos que utilizamos es "mysql".
+
+    __IMPORTANTE__: _si creaste un nuevo archivo de configuración no olvides de añadir las siguientes propiedades adicionales_.
+
+    ```json
+    "define": {
+        "charset": "utf8mb4",
+        "collate": "utf8mb4_unicode_ci",
+        "timestamps": false,
+        "underscored": true
+    }
+    ```
+
+6. Si la configuración es correcta ahora podemos proceder con la creación de la base de datos, creación de tablas y asociaciones y carga de datos de prueba. Para ello ejecutamos los siguientes comandos (verificar que estamos posicionados en la carpeta _site_ para la correcta ejecución).
+
+    ```sh
+    sequelize db:create
+    sequelize db:migrate
+    sequelize db:seed:all
+    ```
+
+7. Ahora iniciar la aplicación ejecutando el siguiente comando en la Terminal.
+
+    ```
+    npm start
+    ```
 
 6. Abrir un browser e ingresar a [localhost:3000](localhost:3000).
 
-7. Disfrutá de SimpSocks !! Y te agredecemos que reportes [acá](https://github.com/gerisg/grupo-5-simpsocks/issues) los errores o sugerencias.
+    ### Credenciales
+
+    #### Acceso Administrador:
+    - Usuario: admin@mail.com
+    - Contraseña: 12345678
+
+    #### Acceso Usuario:
+    - Usuario: user@mail.com
+    - Contraseña: 12345678
+
+7. Disfrutá de SimpSocks !! Y si querés reportarnos errores o solicitar nuevas funcionalidades, podés crear un ticket [acá](https://github.com/gerisg/grupo-5-simpsocks/issues).
 
 ## Links útiles
 

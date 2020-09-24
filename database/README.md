@@ -1,8 +1,6 @@
 # Simpsocks Database
 
-Este documento cuenta con información para crear una base de datos con datos de prueba para la aplicación Simpsocks.
-
-Se puede optar por la ejecución de comando con sequelize-cli o bien realizarlo manualmente en workbench.
+Este documento cuenta con información para crear una base de datos de prueba para la aplicación Simpsocks.
 
 ## Datos Técnicos
 
@@ -11,7 +9,7 @@ Se puede optar por la ejecución de comando con sequelize-cli o bien realizarlo 
 - Charset: utf8mb4
 - Collate: utf8mb4_unicode_ci
 
-## Configuración con sequelize-cli (recomendado)
+## Configuración con sequelize-cli
 
 ### Requisitos previos
 
@@ -30,30 +28,24 @@ Se puede optar por la ejecución de comando con sequelize-cli o bien realizarlo 
 
 3. Iniciar _MySQL_ en el puerto _3306_. Dependiendo de la plataforma que utiliza el procedimiento es ligeramaente diferente.
 
-    - __Linux__: ```sudo service mysql start```
+    - __Linux__: iniciar el servicio de MySQL que por lo general ya viene instalado: ```sudo service mysql start```
 
     - __Windows__: instalar XAMPP e iniciar el servicio MySQL.
     
-    - __Docker__ (recomendado):
+    - __Docker__: opción recomendada porque sólo requiere docker instalado, el resto se instala y ejecuta dentro del contenedor.
 
         1. Si no tenés Docker primero seguir este [tutorial para instalar Docker](https://docs.docker.com/engine/install/) dependiendo de tu sistema operativo.
 
-        2. Iniciar un container con la imagen de MySQL. [Más info](https://hub.docker.com/_/mysql). IMPORTANTE: si deseas mantener la base de datos cuando el container sea eliminado debes usar docker volume.
+        2. Iniciar un container con la imagen de MySQL. [Más info](https://hub.docker.com/_/mysql). Recordar el password del usuario root para luego configurarlo en Sequelize.IMPORTANTE: si deseas mantener la base de datos cuando el container sea eliminado debes usar docker volume.
 
             ```sh
             docker run -p 3306:3306 --name dh-mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:latest
             ```
 
-        3. Ingresar a la consola del container
+        3. Verificar que se encuentra funcionando correctamente iniciando sessión en MySQL ejecutando el siguiente comando e ingresando la contraseña previamente configurada cuando lo solicite.
 
             ```sh
-            docker exec -it dh-mysql bash
-            ```
-        
-        4. Loguear en MySQL con el usuario root. Cuando pida password colocar el configurado en MYSQL_ROOT_PASSWORD del paso 1. 
-
-            ```sh
-            mysql -u root -p
+            docker exec -it dh-mysql mysql -u root -p
             ```
 
 ### Crear base de datos
@@ -69,7 +61,7 @@ Se puede optar por la ejecución de comando con sequelize-cli o bien realizarlo 
 3. Ejecutar el comando de sequelize-cli para crear una base de datos
 
     ```sh
-    sequelize db:create --charset 'utf8mb4' --collate 'utf8mb4_unicode_ci'
+    sequelize db:create
     ```
 
 ### Crear tablas y asociaciones
@@ -101,72 +93,3 @@ Se puede optar por la ejecución de comando con sequelize-cli o bien realizarlo 
     sequelize db:migrate:undo
     sequelize db:migrate:undo:all
     ```
-
-
-
-## Configuración manual
-
-### Requisitos previos
-
-1. Proyecto Simpsocks
-
-    ```sh
-    git clone https://github.com/gerisg/grupo-5-simpsocks
-    cd grupo-5-simpsocks
-    ```
-
-2. Iniciar _MySQL_ en el puerto _3306_. Dependiendo de la plataforma que utiliza el procedimiento es ligeramaente diferente.
-
-    - __Linux__: ```sudo service mysql start```
-
-    - __Windows__: instalar XAMPP e iniciar el servicio MySQL.
-    
-    - __Docker__ (recomendado):
-
-        1. Si no tenés Docker primero seguir este [tutorial para instalar Docker](https://docs.docker.com/engine/install/) dependiendo de tu sistema operativo.
-
-        2. Iniciar un container con la imagen de MySQL. [Más info](https://hub.docker.com/_/mysql). IMPORTANTE: si deseas mantener la base de datos cuando el container sea eliminado debes usar docker volume.
-
-            ```sh
-            docker run -p 3306:3306 --name dh-mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:latest
-            ```
-
-        3. Ingresar a la consola del container
-
-            ```sh
-            docker exec -it dh-mysql bash
-            ```
-        
-        4. Loguear en MySQL con el usuario root. Cuando pida password colocar el configurado en MYSQL_ROOT_PASSWORD del paso 1. 
-
-            ```sh
-            mysql -u root -p
-            ```
-
-### Crear tablas y asociaciones
-
-1. Abrir Workbench
-
-2. Conectar con MySQL
-
-3. En el menú _File_ seleccionar _Open SQL Script_
-
-4. Seleccionar el archivo __structure.sql__ que se encuentra acompañando este instructivo dentro de la carpeta __grupo-5-simpsocks/database/scripts__.
-
-5. Ejecutar todo el contenido del script.
-
-6. Refrescar workbench y verificar que se crearon las tablas.
-
-### Agregar datos de prueba
-
-1. Abrir Workbench
-
-2. Conectar con MySQL
-
-3. En el menú _File_ seleccionar _Open SQL Script_
-
-4. Seleccionar el archivo __data.sql__ que se encuentra acompañando este instructivo dentro de la carpeta __grupo-5-simpsocks/database/scripts__.
-
-5. Ejecutar todo el contenido del script.
-
-6. Refrescar workbench y verificar que se crearon registros en todas las tablas.
