@@ -51,48 +51,49 @@
                     <!-- Facturacion -->
                     <div class="col-12 col-md-12 form-group">
                         <label>Domicilio de Facturacion</label>
+                        <input type="hidden" name="addresses[0][type]" value="payment">
                     </div>
                     <div class="col-12 col-md-5 form-group">
-                        <label for="payment_address">Calle</label>
-                        <input type="text" id="payment_address" name="payment_address" placeholder="Ej: Av.Corrientes 1234, Piso 2 Dpto 6"
-                            value="<%= locals.address ? address.street : '' %>">
+                        <label for="addresses[0][street]">Calle</label>
+                        <input type="text" id="addresses[0][street]" name="addresses[0][street]" placeholder="Av de Mayo"
+                            value="<%= locals.user && user.addresses[0] ? user.addresses[0].street : '' %>">
                     </div>
                     <div class="col-12 col-md-3 form-group">
-                        <label for="zipcode">Numero</label>
-                        <input type="text" id="zipcode" name="payment_number" placeholder=""
-                            value="<%= locals.address ? address.number : '' %>">
+                        <label for="addresses[0][number]">Numero</label>
+                        <input type="number" id="addresses[0][number]" name="addresses[0][number]" placeholder="1234"
+                            value="<%= locals.user && user.addresses && user.addresses[0] ? user.addresses[0].number : '' %>">
                     </div>
                     <div class="col-12 col-md-4 form-group">
-                        <label for="city">Ciudad</label>
-                        <input type="text" id="city" name="payment_city" placeholder="Buenos Aires"
-                            value="<%= locals.address ? address.city : '' %>">
+                        <label for="addresses[0][city]">Ciudad</label>
+                        <input type="text" id="addresses[0][city]" name="addresses[0][city]" placeholder="Buenos Aires"
+                            value="<%= locals.user && user.addresses && user.addresses[0] ? user.addresses[0].city : '' %>">
                     </div>
                     <!-- Entrega  -->
                     <div class="col-12 col-md-12 form-group">
                         <label>Domicilio de Entrega</label>
+                        <input type="hidden" name="addresses[1][type]" value="shipping">
                     </div>
                     <div class="col-12 col-md-5 form-group">
-                        <label for="shipping_address">Calle</label>
-                        <input type="text" id="shipping_address" name="shipping_address" placeholder="Ej: Rivadavia 9999, CABA"
-                            value="<%= locals.address ? address.street : '' %>">
+                        <label for="addresses[1][street]">Calle</label>
+                        <input type="text" id="addresses[1][street]" name="addresses[1][street]" placeholder="Av de Mayo"
+                            value="<%= locals.user && user.addresses && user.addresses[1] ? user.addresses[1].street : '' %>">
                     </div>
                     <div class="col-12 col-md-3 form-group">
-                        <label for="zipcode">Numero</label>
-                        <input type="text" id="zipcode" name="shipping_number" placeholder=""
-                            value="<%= locals.address ? address.number : '' %>">
+                        <label for="addresses[1][number]">Numero</label>
+                        <input type="number" id="addresses[1][number]" name="addresses[1][number]" placeholder="1234"
+                            value="<%= locals.user && user.addresses && user.addresses[1] ? user.addresses[1].number : '' %>">
                     </div>
                     <div class="col-12 col-md-4 form-group">
-                        <label for="city">Ciudad</label>
-                        <input type="text" id="city" name="shipping_city" placeholder="Buenos Aires"
-                            value="<%= locals.address ? address.city : '' %>"> 
+                        <label for="addresses[1][city]">Ciudad</label>
+                        <input type="text" id="addresses[1][city]" name="addresses[1][city]" placeholder="Buenos Aires"
+                            value="<%= locals.user && user.addresses && user.addresses[1] ? user.addresses[1].city : '' %>">
                     </div>
                     <div class="col-12 col-md-6 form-group">
                         <label for="category">Categoría</label>
-                        <select name="category" id="category"
-                            class="<%= locals.errors && errors.category ? 'danger' : '' %>">
-                        <% roles.forEach(role => { %>
-                            <option value="<%=role.id %>"><%=role.name%></option>         
-                        <% }) %>
+                        <select name="category" id="category" class="<%= locals.errors && errors.category ? 'danger' : '' %>">
+                            <% roles.forEach(role => { %>
+                                <option value="<%=role.id %>"><%=role.name%></option>         
+                            <% }) %>
                         </select>
                         <span class="error"><%= locals.errors && errors.category ? errors.category.msg : '' %></span>
                     </div>

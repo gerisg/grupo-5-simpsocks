@@ -48,51 +48,33 @@
                             class="<%= locals.errors && errors.phone ? 'danger' : '' %>">
                         <span class="error"><%= locals.errors && errors.phone ? errors.phone.msg : '' %></span>
                     </div>
-                      <!-- Facturacion -->
-                    <div class="col-12 col-md-12 form-group">
-                        <label>Domicilio de Facturacion</label>
-                    </div>
-                    <div class="col-12 col-md-5 form-group">
-                        <label for="payment_address">Calle</label>
-                        <input type="text" id="payment_address" name="payment_address" placeholder="Ej: Av.Corrientes"
-                            value="<%= locals.address ? billingAddress.street : '' %>">
-                    </div>
-                    <div class="col-12 col-md-3 form-group">
-                        <label for="zipcode">Numero</label>
-                        <input type="text" id="zipcode" name="payment_number" placeholder=""
-                            value="<%= locals.address ? billingAddress.number : '' %>">
-                    </div>
-                    <div class="col-12 col-md-4 form-group">
-                        <label for="city">Ciudad</label>
-                        <input type="text" id="city" name="payment_city" placeholder="Buenos Aires"
-                            value="<%= locals.address ? billingAddress.city : '' %>">
-                    </div>
-                      <!-- Entrega  -->
-                    <div class="col-12 col-md-12 form-group">
-                        <label>Domicilio de Entrega</label>
-                    </div>
-                    <div class="col-12 col-md-5 form-group">
-                        <label for="shipping_address">Calle</label>
-                        <input type="text" id="shipping_address" name="shipping_address" placeholder="Ej: Rivadavia"
-                            value="<%= locals.address ? shippingAddress.street : '' %>">
-                    </div>
-                    <div class="col-12 col-md-3 form-group">
-                        <label for="zipcode">Numero</label>
-                        <input type="text" id="zipcode" name="shipping_number" placeholder=""
-                            value="<%= locals.address ? shippingAddress.number : '' %>">
-                    </div>
-                    <div class="col-12 col-md-4 form-group">
-                        <label for="city">Ciudad</label>
-                        <input type="text" id="city" name="shipping_city" placeholder="Buenos Aires"
-                            value="<%= locals.address ? shippingAddress.city : '' %>"> 
-                    </div>
+                    <% for( let i = 0; i < user.addresses.length; i++ ) { %>
+                        <div class="col-12 form-title">
+                            <p>Domicilio de <%= user.addresses[i].type == 'payment' ? 'facturación' : 'entrega' %> </p>
+                            <input type="hidden" name="addresses[<%= i %>][type]" value="<%= user.addresses[i].type %>">
+                        </div>
+                        <div class="col-12 col-md-5 form-group">
+                            <label for="addresses[<%= i %>][street]">Calle</label>
+                            <input type="text" id="addresses[<%= i %>][street]" name="addresses[<%= i %>][street]"
+                                placeholder="Av de Mayo" value="<%= user.addresses[i].street %>">
+                        </div>
+                        <div class="col-12 col-md-3 form-group">
+                            <label for="addresses[<%= i %>][number]">Numero</label>
+                            <input type="number" id="addresses[<%= i %>][number]" name="addresses[<%= i %>][number]"
+                                placeholder="1234" value="<%= user.addresses[i].number %>">
+                        </div>
+                        <div class="col-12 col-md-4 form-group">
+                            <label for="addresses[<%= i %>][city]">Ciudad</label>
+                            <input type="text" id="addresses[<%= i %>][city]" name="addresses[<%= i %>][city]"
+                                placeholder="Buenos Aires" value="<%= user.addresses[i].city %>">
+                        </div>
+                    <% } %>
                     <div class="col-12 col-md-6 form-group">
                         <label for="category">Categoría</label>
-                        <select name="category" id="category"
-                            class="<%= locals.errors && errors.category ? 'danger' : '' %>">
-                        <% roles.forEach(role => { %>
-                            <option value="<%=role.id %>"><%=role.name%></option>         
-                        <% }) %>
+                        <select name="category" id="category" class="<%= locals.errors && errors.category ? 'danger' : '' %>">
+                            <% roles.forEach(role => { %>
+                                <option value="<%= role.id %>" <%= role.id == user.role_id ? 'selected' : '' %>><%= role.name %></option>         
+                            <% }) %>
                         </select>
                         <span class="error"><%= locals.errors && errors.category ? errors.category.msg : '' %></span>
                     </div>

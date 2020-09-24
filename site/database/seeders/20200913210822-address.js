@@ -14,7 +14,7 @@ module.exports = {
         street: 'Almo',
         number: 38,
         city: 'Jandiala Sher Khan',
-        type: 'billing',
+        type: 'payment',
         user_id: 2
       },
       {
@@ -35,28 +35,28 @@ module.exports = {
         street: 'Eagle Crest',
         number: 26,
         city: 'Lajeosa do Mondego',
-        type: 'billing',
+        type: 'payment',
         user_id: 5
       },
       {
         street: 'Morningstar',
         number: 16,
         city: '‘Asirah al Qibliyah',
-        type: 'billing',
+        type: 'payment',
         user_id: 6
       },
       {
         street: 'Meadow Ridge',
         number: 591,
         city: 'Syracuse',
-        type: 'billing',
+        type: 'payment',
         user_id: 7
       },
       {
         street: 'Johnson',
         number: 49,
         city: 'Philipsburg',
-        type: 'billing',
+        type: 'payment',
         user_id: 8
       },
       {
@@ -77,7 +77,7 @@ module.exports = {
         street: 'Delladonna',
         number: 19090,
         city: 'Eshan',
-        type: 'billing',
+        type: 'payment',
         user_id: 10
       },
       {
@@ -91,21 +91,21 @@ module.exports = {
         street: 'Heffernan',
         number: 8720,
         city: 'Pachir wa Agam',
-        type: 'billing',
+        type: 'payment',
         user_id: 12
       },
       {
         street: 'Macpherson',
         number: 4,
         city: 'Tylicz',
-        type: 'billing',
+        type: 'payment',
         user_id: 13
       },
       {
         street: 'Loomis',
         number: 676,
         city: 'Shali',
-        type: 'billing',
+        type: 'payment',
         user_id: 13
       },
       {
@@ -119,14 +119,14 @@ module.exports = {
         street: 'Continental',
         number: 3256,
         city: 'Tost',
-        type: 'billing',
+        type: 'payment',
         user_id: 15
       },
       {
         street: 'New Castle',
         number: 431,
         city: 'Luodian',
-        type: 'billing',
+        type: 'payment',
         user_id: 16
       },
       {
@@ -140,7 +140,7 @@ module.exports = {
         street: 'Coleman',
         number: 49782,
         city: 'Tuopu Luke',
-        type: 'billing',
+        type: 'payment',
         user_id: 17
       },
       {

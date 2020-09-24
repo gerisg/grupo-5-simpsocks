@@ -51,30 +51,16 @@ module.exports = {
                     lastname: req.body.lastname,
                     email: req.body.email,
                     password: encryptedPassword,
-                    role_id: req.body.category, 
+                    role_id: parseInt(req.body.category), 
                     phone: req.body.phone,
                     image: req.file ? req.file.filename : null,
-                    addresses: [{
-                        type: "shipping",                        
-                        street: req.body.shipping_address, 
-                        number: req.body.shipping_number,
-                        city: req.body.shipping_city
-                    }, {
-                        type: "billing",                        
-                        street: req.body.payment_address, 
-                        number: req.body.payment_number,
-                        city: req.body.payment_city
-                    }] 
-                }, {
-                    include: [
-                        { model: address }
-                    ]
-                });             
-               console.log('userCreate', newUser);
+                    addresses: parser.parseAddresses(req.body.addresses)
+                }, { include: address });             
                 mailer.sendWelcome(newUser.email, password);
                 return res.redirect('/users/' + newUser.id);
             } else {
-                res.render('users/create-form', { errors: errors.mapped(), user: req.body });
+                let roles = await role.findAll();
+                res.render('users/create-form', { errors: errors.mapped(), user: req.body, roles });
             }
         } catch (error) {
             console.log(error);
@@ -83,14 +69,12 @@ module.exports = {
     },
     edit: async (req, res) => { 
         try {
-            let userResult = await user.findByPk(parseInt(req.params.id));
-            let shippingAddress = await address.findOne({ where: {user_id: req.params.id, type:'shipping' }});
-            let billingAddress = await address.findOne({ where: {user_id: req.params.id, type:'billing' }});
-            console.log(shippingAddress.get());
-            console.log(billingAddress.get());
-            console.log(userResult);
+            let [userResult, roles] = await Promise.all([
+                user.findByPk(parseInt(req.params.id), { include: address }),
+                role.findAll()
+            ]);
             delete userResult.password;
-            res.render('users/edit-form', { user: userResult, shippingAddress, billingAddress });
+            res.render('users/edit-form', { user: userResult, roles });
         } catch (error) {
             console.log(error);
             res.status(500).render('error-500', { error });
@@ -101,9 +85,7 @@ module.exports = {
             let errors = validationResult(req);
             if (errors.isEmpty()) {
                 let id = parseInt(req.params.id);
-                let userResult = await user.findByPk(id, {
-                    include: [{ model: address }]
-                });
+                let userResult = await user.findByPk(id, { include: address });
                 userResult.id = req.body.id;
                 userResult.firstname = req.body.firstname;
                 userResult.lastname = req.body.lastname;
@@ -111,18 +93,21 @@ module.exports = {
                 userResult.role_id = req.body.category;
                 userResult.phone = req.body.phone;
                 userResult.image = req.file ? req.file.filename : req.body.currentImage;
-                
                 await userResult.save();
-                
-                await address.update( { number: req.body.shipping_number, street: req.body.shipping_address,city: req.body.shipping_city}, {where: {user_id: req.params.id, type: 'shipping'}});
-
-                await address.update( { number: req.body.payment_number, street: req.body.payment_address,city: req.body.payment_city}, {where: {user_id: req.params.id, type: 'billing'}});
-
+                // Update addresses
+                await userResult.setAddresses([]);
+                let adrrs = parser.parseAddresses(req.body.addresses);
+                await Promise.all(
+                    adrrs.map(async (adr) => {
+                        let newAdr = await address.create(adr);
+                        await userResult.addAddress(newAdr);
+                    }));
                 res.redirect('/users/' + id);
             } else {
+                let roles = await role.findAll();
                 req.body.id = req.params.id;
                 req.body.image = req.file ? req.file.filename : req.body.currentImage;
-                res.render('users/edit-form', { errors: errors.mapped(), user: req.body });
+                res.render('users/edit-form', { errors: errors.mapped(), user: req.body, roles });
             }
         } catch (error) {
             console.log(error);
@@ -150,7 +135,7 @@ module.exports = {
             let errors = validationResult(req);
             if (errors.isEmpty()) {
                 let userAuthenticated = await user.findOne({ where: { email: req.body.email }, include: role });
-                if (bcrypt.compareSync(req.body.password, userAuthenticated.password)){
+                if (userAuthenticated && bcrypt.compareSync(req.body.password, userAuthenticated.password)){
                     req.session.user = { id: userAuthenticated.id, name: userAuthenticated.firstname, category: userAuthenticated.role.id};
                     if (req.body.remember){
                         const tokenCrypto = crypto.randomBytes(64).toString('base64');
@@ -271,10 +256,12 @@ module.exports = {
                     userResult.phone = req.body.phone;
                     await userResult.save();
                     // Update addresses
-                    let i = 0;
-                    let addresses = parser.parseAddresses(req.body.addresses)
-                    let addrsResult = await userResult.getAddresses();
-                    await Promise.all(addrsResult.map(async (addrResult) => await addrResult.update(addresses[i++])));
+                    await userResult.setAddresses([]);
+                    await Promise.all(
+                        parser.parseAddresses(req.body.addresses).map(async (adr) => {
+                            let newAdr = await address.create(adr);
+                            await userResult.addAddress(newAdr);
+                        }));
                     res.redirect('/users/profile');
                 } else {
                     req.body.image = req.file ? req.file.filename : req.body.currentImage;

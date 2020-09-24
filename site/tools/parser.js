@@ -43,15 +43,17 @@ module.exports = {
     },
     parseAddresses: addressesBody => {
         let addresses = [];
-        addressesBody.forEach(param => { 
-            addresses.push({
-                street: param.street,
-                number: param.number,
-                city: param.city,
-                type: param.type
+        if(addressesBody)
+            addressesBody.forEach(param => { 
+                if(param.street) {
+                    addresses.push({
+                        street: param.street,
+                        number: param.number,
+                        city: param.city,
+                        type: param.type
+                    });
+                }
             });
-        });
-        console.log(addresses);
         return addresses;
     }
 }

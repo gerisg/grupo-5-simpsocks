@@ -27,7 +27,7 @@
             <p><span>Teléfono: </span> <%= user.phone %></p>
             <% user.addresses.forEach(address => { %>
                 <p>
-                    <span>Domicilio de <%= address.type == 'billing' ? 'facturación' : 'entrega' %>: </span>
+                    <span>Domicilio de <%= address.type == 'payment' ? 'facturación' : 'entrega' %>: </span>
                     <%= address.street %> <%= address.number %>, <%= address.city %>
                 </p>
             <% }) %>
