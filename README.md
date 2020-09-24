@@ -103,10 +103,10 @@ La arquitectura de la información se muestra desplegada de forma sencilla. En l
     ```sh
     cd database/config
     mv config.json.example config.json
-    cd ..
+    cd ../..
     ```
 
-5. Editar el archivo de configuración y configurar las siguientes propiedades para la sección _development_:
+5. Editar el archivo de configuración que renombraron en el paso anterior y configurar las siguientes propiedades para la sección _development_:
 
     - _username_: nombre de usuario para conectar a MySQL, si no creaste un usuario específico podés usar "root".
     - _password_: la contraseña del usuario configurado en la propiedad anterior.
@@ -151,7 +151,7 @@ La arquitectura de la información se muestra desplegada de forma sencilla. En l
     - Usuario: user@mail.com
     - Contraseña: 12345678
 
-7. Disfrutá de SimpSocks !! Y si querés reportarnos errores o solicitar nuevas funcionalidades, podés crear un ticket [acá](https://github.com/gerisg/grupo-5-simpsocks/issues).
+7. Disfrutá de SimpSocks !! Y si querés reportarnos errores o solicitar nuevas funcionalidades, podés crear un ticket [acá](https://github.com/gerisg/grupo-5-simpsocks/issues/new).
 
 ## Links útiles
 
