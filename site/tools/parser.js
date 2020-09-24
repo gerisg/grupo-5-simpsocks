@@ -40,5 +40,18 @@ module.exports = {
             );
         }
         return { skus, variants: [ ...variantsMap.keys() ]};
+    },
+    parseAddresses: addressesBody => {
+        let addresses = [];
+        addressesBody.forEach(param => { 
+            addresses.push({
+                street: param.street,
+                number: param.number,
+                city: param.city,
+                type: param.type
+            });
+        });
+        console.log(addresses);
+        return addresses;
     }
 }

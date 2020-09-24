@@ -5,6 +5,7 @@ const bcrypt = require('bcryptjs');
 const { validationResult } = require('express-validator');
 const { user, role, address, token } = require('../database/models');
 const mailer = require('../tools/mailer');
+const parser = require('../tools/parser');
 
 let generatePass = () => {
     let hash = bcrypt.hashSync('simpsocks-secret-phrase-to-hash', 10);
@@ -33,12 +34,7 @@ module.exports = {
     create: async (req, res) => {
         try {
             let roles = await role.findAll();
-
-            {
-                include: [{model: role}]
-            }
-            
-            res.render('users/create-form', {roles});
+            res.render('users/create-form', { roles });
         } catch (error) {
             console.log(error);
             res.status(500).render('error-500', { error });
@@ -242,8 +238,19 @@ module.exports = {
     },
     profile: async (req, res) => {
         try {
-            let userResult = await user.findByPk(req.session.user.id);
+            let id = parseInt(req.session.user.id);
+            let userResult = await user.findByPk(id, { include: [ role, address ]});
             res.render('users/profile', { user: userResult });
+        } catch (error) {
+            console.log(error);
+            res.status(500).render('error-500', {error});
+        }
+    },
+    profileForm: async (req, res) => {
+        try {
+            let id = parseInt(req.session.user.id);
+            let userResult = await user.findByPk(id, { include: [ role, address ]});
+            res.render('users/edit-profile', { user: userResult });
         } catch (error) {
             console.log(error);
             res.status(500).render('error-500', {error});
@@ -253,31 +260,32 @@ module.exports = {
         try {
             let errors = validationResult(req);
             if (errors.isEmpty()) {
-                let id = req.session.user.id;
+                let id = parseInt(req.session.user.id);
                 let userResult = await user.findByPk(id);
                 let valid = bcrypt.compareSync(req.body.password, userResult.password);
                 if (valid) {
-                    if (req.body.newPassword) {
+                    if (req.body.newPassword)
                         userResult.password = bcrypt.hashSync(req.body.newPassword, 10);
-                    }
-                    if (req.file) {
+                    if (req.file)
                         userResult.image = req.file.filename;
-                    }
                     userResult.firstname = req.body.firstname;
                     userResult.lastname = req.body.lastname;
                     userResult.email = req.body.email;
                     userResult.phone = req.body.phone;
-                    // TODO: shipping_address: req.body.shipping_address,
-                    // TODO: payment_address: req.body.payment_address,
                     await userResult.save();
+                    // Update addresses
+                    let i = 0;
+                    let addresses = parser.parseAddresses(req.body.addresses)
+                    let addrsResult = await userResult.getAddresses();
+                    await Promise.all(addrsResult.map(async (addrResult) => await addrResult.update(addresses[i++])));
                     res.redirect('/users/profile');
                 } else {
                     req.body.image = req.file ? req.file.filename : req.body.currentImage;
-                    res.render('users/profile', { errors: { form: { msg: 'Credenciales no válidas' }}, user: req.body });
+                    res.render('users/edit-profile', { errors: { form: { msg: 'Credenciales no válidas' }}, user: req.body });
                 }
             } else {
                 req.body.image = req.file ? req.file.filename : req.body.currentImage;
-                res.render('users/profile', { errors: errors.mapped(), user: req.body});
+                res.render('users/edit-profile', { errors: errors.mapped(), user: req.body});
             }
         } catch (error) {
             console.log(error);

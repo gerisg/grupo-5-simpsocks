@@ -23,6 +23,7 @@ const upload = multer({ storage });
 router.get('/favorites', userRoute, controller.favorites);
 
 // Perfil de usuario
+router.get('/profile/edit', userRoute, controller.profileForm);
 router.get('/profile', userRoute, controller.profile);
 router.put('/profile', userRoute, upload.single('image'), validate.profileForm, controller.updateProfile);
 

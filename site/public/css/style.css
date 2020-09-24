@@ -930,6 +930,11 @@ footer {
   font-weight: 300;
   font-size: .75rem;
 }
+.form-title p {
+  font-weight: 400;
+  font-size: .9rem;
+  margin: .75rem 0 0;
+}
 
 /* Login & Register forms */
 
@@ -1054,6 +1059,10 @@ footer {
 
 .profile {
   margin: var(--default-margin);
+}
+
+.profile span {
+  font-weight: bold;
 }
 
 .profile-picture {
