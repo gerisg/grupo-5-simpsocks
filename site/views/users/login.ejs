@@ -25,6 +25,7 @@
                     <div class="form-group">
                         <label for="password" >Contraseña</label>
                         <input type="password" id="password" name="password"> 
+                        <span class="error"><%= locals.errors && errors.password ? errors.password.msg : '' %></span>
                     </div>
                     <div class="remember row main-between cross-center">
                         <div>

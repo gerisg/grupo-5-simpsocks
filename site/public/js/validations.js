@@ -16,7 +16,7 @@ window.addEventListener('load', function() {
             feedback = 'El email debe incluir @';
         }
 
-        if(feedback != "") {
+        if(feedback != '') {
             email.classList.add('error');
             feedbackElement.classList.add('error');
             errors.email = feedback;
@@ -26,16 +26,43 @@ window.addEventListener('load', function() {
             delete errors.mail;
         }
 
-        email.nextElementSibling.innerText = feedback;
+        feedbackElement.innerText = feedback;
+        // email.nextElementSibling.innerText = feedback;
         console.log(errors);
     }
+
+    let validatePassword = function(){
+        let feedback = '';
+        let feedbackElement = password.nextElementSibling;
+
+        if(validator.isEmpty(password.value)){
+            feedback = 'La contraseña es obligatoria';
+        }
+
+        if(feedback != ''){
+            password.classList.add('error');
+            feedbackElement.classList.add('error');
+            errors.password = feedback;
+        }else{
+            password.classList.remove('error');
+            feedbackElement.classList.remove('error');
+            delete errors.password;
+        }
+
+        feedbackElement.innerText = feedback;
+        console.log(errors);
     
+
+    }
+
     //Agregado de listeners 
 
     email.addEventListener('blur', validateEmail);
+    password.addEventListener('blur', validatePassword);
 
     registerForm.addEventListener('submit', function(e){
-        validateEmail()
+        validateEmail();
+        validatePassword();
 
         if(object.keys(errors).length) {
             e.preventDefault();

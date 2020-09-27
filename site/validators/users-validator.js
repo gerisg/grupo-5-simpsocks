@@ -4,7 +4,9 @@ module.exports = {
     loginForm: [
         check('email')
             .notEmpty().withMessage('Ingrese su correo electrónico').bail()
-            .isEmail().withMessage('Debe ingresar un correo electrónico válido')
+            .isEmail().withMessage('Debe ingresar un correo electrónico válido').bail(),
+        check('password')
+            .notEmpty().withMessage('La contraseña es obligatoria')
     ],
     createForm: [
         check('firstname')
