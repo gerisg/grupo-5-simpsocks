@@ -5,6 +5,7 @@ window.addEventListener('load', function() {
     let registerForm = document.getElementById('registerForm');
     let email = document.getElementById('email');
     let password = document.getElementById('password');
+    let recoverForm = document.getElementById('recoverForm');
 
     let validateEmail = function() {
         let feedback = '';
@@ -56,9 +57,15 @@ window.addEventListener('load', function() {
     }
 
     let validateRegister = function(e){
-        validateEmail();
-        validatePassword();
-
+        if(email){
+            validateEmail();
+        }
+        
+        if(password){
+            validatePassword();
+        }
+        console.log(object);
+        console.log(object.keys(errors));
         if(object.keys(errors).length) {
             e.preventDefault();
         }
@@ -66,14 +73,18 @@ window.addEventListener('load', function() {
 
     //Agregado de listeners 
 
-    email.addEventListener('blur', validateEmail);
-    password.addEventListener('blur', validatePassword);
-    registerForm.addEventListener('submit', validateRegister);
+    if(email){
+        email.addEventListener('blur', validateEmail);
+    }
 
-    
+    if(password){
+        password.addEventListener('blur', validatePassword);
+    }
 
-
-
-
-
+    if(registerForm){   
+        registerForm.addEventListener('submit', validateRegister);
+    }
+    if(recoverForm){   
+        recoverForm.addEventListener('submit', validateRegister);
+    }
 })
