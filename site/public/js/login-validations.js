@@ -57,7 +57,7 @@ window.addEventListener('load', function() {
 
     }
 
-    let validateRegister = function(e){
+    let validateLogin = function(e){
         // if(email){
         //     validateEmail();
         // }
@@ -88,11 +88,11 @@ window.addEventListener('load', function() {
     // }
     password.addEventListener('blur', validatePassword);
 
-    // if(loginForm){   
-    //     loginForm.addEventListener('submit', validateRegister);
+    // if(registerForm){   
+    //     registerForm.addEventListener('submit', validateLogin);
     // }
-    loginForm.addEventListener('submit', validateRegister);
+    loginForm.addEventListener('submit', validateLogin);
     // if(recoverForm){   
-    //     recoverForm.addEventListener('submit', validateRegister);
+    //     recoverForm.addEventListener('submit', validateLogin);
     // }
 })
