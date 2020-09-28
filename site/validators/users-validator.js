@@ -9,10 +9,10 @@ module.exports = {
     createForm: [
         check('firstname')
             .notEmpty().withMessage('El nombre es obligatorio').bail()
-            .isLength({ min: 3 }).withMessage('El nombre debe tener al menos 3 caracteres'),
+            .isLength({ min: 2 }).withMessage('El nombre debe tener al menos 2 caracteres'),
         check('lastname')
             .notEmpty().withMessage('El apellido es obligatorio').bail()
-            .isLength({ min: 3 }).withMessage('El apellido debe tener al menos 3 caracteres'),
+            .isLength({ min: 2 }).withMessage('El apellido debe tener al menos 2 caracteres'),
         check('email')
             .notEmpty().withMessage('El correo electrónico es obligatorio').bail()
             .isEmail().withMessage('El correo electrónico no posee un formato válido'),
@@ -24,10 +24,10 @@ module.exports = {
     editForm: [
         check('firstname')
             .notEmpty().withMessage('El nombre es obligatorio').bail()
-            .isLength({ min: 3 }).withMessage('El nombre debe tener al menos 3 caracteres'),
+            .isLength({ min: 2 }).withMessage('El nombre debe tener al menos 2 caracteres'),
         check('lastname')
             .notEmpty().withMessage('El apellido es obligatorio').bail()
-            .isLength({ min: 3 }).withMessage('El apellido debe tener al menos 3 caracteres'),
+            .isLength({ min: 2 }).withMessage('El apellido debe tener al menos 2 caracteres'),
         check('email')
             .notEmpty().withMessage('El correo electrónico es obligatorio').bail()
             .isEmail().withMessage('El correo electrónico no posee un formato válido'),
@@ -39,10 +39,10 @@ module.exports = {
     registerForm: [
         check('firstname')
             .notEmpty().withMessage('El nombre es obligatorio').bail()
-            .isLength({ min: 3 }).withMessage('El nombre debe tener al menos 3 caracteres'),
+            .isLength({ min: 2 }).withMessage('El nombre debe tener al menos 2 caracteres'),
         check('lastname')
             .notEmpty().withMessage('El apellido es obligatorio').bail()
-            .isLength({ min: 3 }).withMessage('El apellido debe tener al menos 3 caracteres'),
+            .isLength({ min: 2 }).withMessage('El apellido debe tener al menos 2 caracteres'),
         check('email')
             .notEmpty().withMessage('El correo electrónico es obligatorio').bail()
             .isEmail().withMessage('El correo electrónico no posee un formato válido'),
