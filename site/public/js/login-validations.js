@@ -2,10 +2,10 @@ window.addEventListener('load', function() {
 
     let errors = {};
 
-    let registerForm = document.getElementById('registerForm');
+    let loginForm = document.getElementById('loginForm');
     let email = document.getElementById('email');
     let password = document.getElementById('password');
-    let recoverForm = document.getElementById('recoverForm');
+    // let recoverForm = document.getElementById('recoverForm');
 
     let validateEmail = function() {
         let feedback = '';
@@ -27,7 +27,8 @@ window.addEventListener('load', function() {
             delete errors.mail;
         }
 
-        feedbackElement.innerText = feedback;
+        feedbackElement.innerText = feedback; //Le agregamos texto a feedback
+
         // email.nextElementSibling.innerText = feedback;
         console.log(errors);
     }
@@ -57,34 +58,41 @@ window.addEventListener('load', function() {
     }
 
     let validateRegister = function(e){
-        if(email){
-            validateEmail();
-        }
+        // if(email){
+        //     validateEmail();
+        // }
+        validateEmail();
         
-        if(password){
-            validatePassword();
-        }
-        console.log(object);
-        console.log(object.keys(errors));
-        if(object.keys(errors).length) {
+        // if(password){
+        //     validatePassword();
+        // }
+
+        validatePassword();
+
+        // console.log(object);
+        // console.log(object.keys(errors));
+        if(object.keys(errors).length) { //objeto con arrays de propiedades
             e.preventDefault();
         }
     }
 
     //Agregado de listeners 
 
-    if(email){
-        email.addEventListener('blur', validateEmail);
-    }
+    // if(email){
+    //     email.addEventListener('blur', validateEmail);
+    // }
+    email.addEventListener('blur', validateEmail);
 
-    if(password){
-        password.addEventListener('blur', validatePassword);
-    }
+    // if(password){
+    //     password.addEventListener('blur', validatePassword);
+    // }
+    password.addEventListener('blur', validatePassword);
 
-    if(registerForm){   
-        registerForm.addEventListener('submit', validateRegister);
-    }
-    if(recoverForm){   
-        recoverForm.addEventListener('submit', validateRegister);
-    }
+    // if(loginForm){   
+    //     loginForm.addEventListener('submit', validateRegister);
+    // }
+    loginForm.addEventListener('submit', validateRegister);
+    // if(recoverForm){   
+    //     recoverForm.addEventListener('submit', validateRegister);
+    // }
 })
