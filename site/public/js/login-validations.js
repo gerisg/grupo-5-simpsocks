@@ -39,6 +39,8 @@ window.addEventListener('load', function() {
 
         if(validator.isEmpty(password.value)){
             feedback = 'La contraseña es obligatoria';
+        }else if(!validator.isLength(password.value, { min: 8 }))  {
+            feedback = 'La contraseña debe tener al menos 8 caracteres';
         }
 
         if(feedback != ''){
