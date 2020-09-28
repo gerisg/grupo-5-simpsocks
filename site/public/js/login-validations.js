@@ -9,7 +9,7 @@ window.addEventListener('load', function() {
 
     let validateEmail = function() {
         let feedback = '';
-        let feedbackElement = email.nextElementSibling;
+        // let feedbackElement = email.nextElementSibling;
 
         if(validator.isEmpty(email.value, {ignore_whitespace:true })) {
             feedback = 'El campo no puede estar vacío';
@@ -17,62 +17,71 @@ window.addEventListener('load', function() {
             feedback = 'El email debe incluir @';
         }
 
-        if(feedback != '') {
-            email.classList.add('error');
-            feedbackElement.classList.add('error');
-            errors.email = feedback;
-        } else {
-            email.classList.remove('error');
-            feedbackElement.classList.remove('error');
-            delete errors.mail;
-        }
+        handleFeedback(email, feedback) //recibe el elemento(nombre del input)
 
-        feedbackElement.innerText = feedback; //Le agregamos texto a feedback
+        // if(feedback != '') {
+        //     email.classList.add('error');
+        //     feedbackElement.classList.add('error');
+        //     errors.email = feedback;
+        // } else {
+        //     email.classList.remove('error');
+        //     feedbackElement.classList.remove('error');
+        //     delete errors.mail;
+        // }
 
-        // email.nextElementSibling.innerText = feedback;
-        console.log(errors);
+        // feedbackElement.innerText = feedback; //Le agregamos texto a feedback
+
+        // // email.nextElementSibling.innerText = feedback;
+        // console.log(errors);
     }
 
     let validatePassword = function(){
         let feedback = '';
-        let feedbackElement = password.nextElementSibling;
+        // let feedbackElement = password.nextElementSibling;
 
         if(validator.isEmpty(password.value)){
             feedback = 'La contraseña es obligatoria';
         }else if(!validator.isLength(password.value, { min: 8 }))  {
             feedback = 'La contraseña debe tener al menos 8 caracteres';
         }
+        handleFeedback(password, feedback);
+        // if(feedback != ''){
+        //     password.classList.add('error');
+        //     feedbackElement.classList.add('error');
+        //     errors.password = feedback;
+        // }else{
+        //     password.classList.remove('error');
+        //     feedbackElement.classList.remove('error');
+        //     delete errors.password;
+        // }
+
+        // feedbackElement.innerText = feedback;
+        // console.log(errors);
+
+    };
+//Modularizar la funcion para mostrar feedback 
+    let handleFeedback = function (element, feedback){
+        let feedbackElement = password.nextElementSibling;
 
         if(feedback != ''){
-            password.classList.add('error');
+            element.classList.add('error');
             feedbackElement.classList.add('error');
-            errors.password = feedback;
+            errors[element.name] = feedback; //[element. nombre del imput]
+
         }else{
-            password.classList.remove('error');
+            element.classList.remove('error');
             feedbackElement.classList.remove('error');
             delete errors.password;
         }
 
         feedbackElement.innerText = feedback;
         console.log(errors);
-    
-
     }
 
     let validateLogin = function(e){
-        // if(email){
-        //     validateEmail();
-        // }
         validateEmail();
-        
-        // if(password){
-        //     validatePassword();
-        // }
-
         validatePassword();
 
-        // console.log(object);
-        // console.log(object.keys(errors));
         if(object.keys(errors).length) { //objeto con arrays de propiedades
             e.preventDefault();
         }
@@ -80,21 +89,7 @@ window.addEventListener('load', function() {
 
     //Agregado de listeners 
 
-    // if(email){
-    //     email.addEventListener('blur', validateEmail);
-    // }
     email.addEventListener('blur', validateEmail);
-
-    // if(password){
-    //     password.addEventListener('blur', validatePassword);
-    // }
     password.addEventListener('blur', validatePassword);
-
-    // if(registerForm){   
-    //     registerForm.addEventListener('submit', validateLogin);
-    // }
     loginForm.addEventListener('submit', validateLogin);
-    // if(recoverForm){   
-    //     recoverForm.addEventListener('submit', validateLogin);
-    // }
 })
