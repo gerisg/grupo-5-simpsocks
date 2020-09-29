@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include('../partials/head') %>
+<script src="/js/validator.min.js"></script>
+<script src="/js/createProduct-validations.js"></script>
 <body class="form">
     <%- include('../partials/header') %>
 
@@ -18,7 +20,7 @@
             <div class="header">
                 <p>Crear producto</p>
             </div>
-            <form action="/products/" method="POST" enctype="multipart/form-data">
+            <form action="/products/" id="createProductForm" method="POST" enctype="multipart/form-data">
                 <div class="row main-between">
                     <div class="col-12 form-group">
                         <label for="name">Nombre</label> 
