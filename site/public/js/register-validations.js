@@ -59,7 +59,7 @@ window.addEventListener('load', function(){
 
     //Modularizar la funcion para mostrar feedback 
     let handleFeedback = function (element, feedback){
-        let feedbackElement = password.nextElementSibling;
+        let feedbackElement = element.nextElementSibling;
 
         if(feedback != ''){
             element.classList.add('error');
@@ -69,7 +69,7 @@ window.addEventListener('load', function(){
         }else{
             element.classList.remove('error');
             feedbackElement.classList.remove('error');
-            delete errors.password;
+            delete errors[element.name];
         }
 
         feedbackElement.innerText = feedback;
