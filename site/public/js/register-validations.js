@@ -25,7 +25,7 @@ window.addEventListener('load', function(){
 
         if(validator.isEmpty(lastName.value, {ignore_whitespace:true })) {
             feedback = 'El apellido es obligatorio';
-        } else if(!validator.isLength(firstName.value, { min: 3 }))  {
+        } else if(!validator.isLength(lastName.value, { min: 3 }))  {
             feedback = 'El apellido debe tener al menos 3 caracteres';
         }
 
