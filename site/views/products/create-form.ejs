@@ -54,7 +54,7 @@
                     <% variants.forEach(variant => { %>
                     <div class="col-12 form-group">
                         <label for="<%= variant.name %>"><%= variant.display %></label>
-                        <div class="row">
+                        <div class="row" id="checkbox">
                             <% variant.variant_values.forEach(v_value => { %>
                                 <div class="col-6 col-md-3"> 
                                     <input type="checkbox" name="variants" id="<%= v_value.id %>" value="<%= variant.id %>-<%= v_value.id %>">
@@ -62,18 +62,20 @@
                                 </div>
                             <% }) %>
                         </div>
+                        <span class="error"><%= locals.errors && errors.checkbox ? errors.checkbox.msg : '' %> </span>
                     </div>
                     <% }) %>
                     <!-- Categories -->
                     <div class="col-12 form-group">
                         <label for="categories">Categorías</label> 
-                        <div class="row">
+                        <div class="row" id="categories">
                             <% categories.forEach(category => { %>
                                 <div class="col-6 col-md-3"> 
                                     <input type="checkbox" name="categories" id="<%= category.id %>" value=<%= category.id %>><span><%= category.name %></span>
                                 </div>
                             <% }) %>
                         </div>
+                        <span class="error"><%= locals.errors && errors.checkbox ? errors.checkbox.msg : '' %> </span>
                     </div>
                     <div class="col-12 form-group">
                         <label for="images">Subí las fotos de tus Simpsocks</label>

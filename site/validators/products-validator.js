@@ -13,7 +13,9 @@ module.exports = {
         check('discount')
             .notEmpty().withMessage('Debe completar el descuento del producto').bail()
             .isNumeric().withMessage('El descuento debe ser un campo numérico (sin el símbolo %)').bail()
-            .isInt({min: 0, max:100}).withMessage('El descuento debe ser entre 0 y 100')
+            .isInt({min: 0, max:100}).withMessage('El descuento debe ser entre 0 y 100'),
+        check('checkbox')
+            .notEmpty().withMessage('El campo no puede estar vacío')
     ],
     editForm: [
         check('name')

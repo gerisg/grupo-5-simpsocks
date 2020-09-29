@@ -6,7 +6,10 @@ window.addEventListener('load', function(){
     let description = document.getElementById('description');
     let price = document.getElementById('price');
     let discount = document.getElementById('discount');
-    let images = document.getElementById('images');
+    let checkbox = document.getElementById('checkbox');
+    // let size = document.getElementById('checkbox');
+    let categories = document.getElementById('categories');
+   
 
     let validateName = function (){
         let feedback = '';
@@ -37,7 +40,7 @@ window.addEventListener('load', function(){
      
         if(validator.isEmpty(price.value, {ignore_whitespace:true })) {
             feedback = 'El campo no puede estar vacío';
-        }else if(!validator.isFloat(price.value, { min: 20 }))  {
+        }else if(!validator.isFloat(price.value))  {
             feedback = 'El precio debe ser númerico';
         }
 
@@ -48,7 +51,7 @@ window.addEventListener('load', function(){
         let feedback = '';
      
         if(validator.isEmpty(discount.value, {ignore_whitespace:true })) {
-            feedback = 'Debe completar el descuento del producto';
+            feedback = 'Debe completar el descuento del producto con valores numéricos ';
         }else if(!validator.isInt(discount.value, { min: 0, max: 100 }))  {
             feedback = 'El descuento debe ser entre 0 y 100';
         }
@@ -56,12 +59,29 @@ window.addEventListener('load', function(){
         handleFeedback(discount, feedback)
     }
 
-    let validateImages = function() {
-        let feedbackElement = '';
+    let validateCheckbox = function() {
+        let feedback = 'El campo no puede estar vacío';
+        console.log(checkbox);
 
-        if(validator.isFile){
-            
+        for(let i = 0; i < checkbox.children.length; i++){
+            if(checkbox.children[i].children[0].checked){
+                feedback = ''
+            }
         }
+        handleFeedback(checkbox, feedback);
+    }
+
+    let validateCategories = function() {
+        let feedback = 'El campo no puede estar vacío';
+        console.log(checkbox);
+
+        for(let i = 0; i < categories.children.length; i++){
+            if(categories.children[i].children[0].checked){
+                feedback = ''
+            }
+        }
+        handleFeedback(categories, feedback);
+
     }
     //Modularizar la funcion para mostrar feedback 
     let handleFeedback = function (element, feedback){
@@ -88,6 +108,8 @@ window.addEventListener('load', function(){
         validateDescription();
         validatePrice();
         validateDiscount();
+        validateCheckbox();
+        validateCategories();
        
         if(object.keys(errors).length) { //objeto con arrays de propiedades
             e.preventDefault();
@@ -100,6 +122,9 @@ window.addEventListener('load', function(){
     description.addEventListener('blur', validateDescription);
     price.addEventListener('blur', validatePrice);
     discount.addEventListener('blur', validateDiscount);
+    checkbox.addEventListener('change', validateCheckbox);
+    categories.addEventListener('change', validateCategories);
+
     
     createProductForm.addEventListener('submit', validateCreateProduct);
 })
