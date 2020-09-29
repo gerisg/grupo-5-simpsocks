@@ -75,7 +75,7 @@ window.addEventListener('load', function(){
         }else{
             element.classList.remove('error');
             feedbackElement.classList.remove('error');
-            delete errors.password;
+            delete errors[element.name];
         }
 
         feedbackElement.innerText = feedback;
