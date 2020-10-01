@@ -16,10 +16,30 @@ module.exports = {
         check('email')
             .notEmpty().withMessage('El correo electrónico es obligatorio').bail()
             .isEmail().withMessage('El correo electrónico no posee un formato válido'),
+        check('phone')
+            .notEmpty().withMessage('Necestiamos un telefono').bail()
+            .custom(value => value ? typeof value != 'number' : true).withMessage('Debe ingresar sólo números en el campo teléfono'),
         check('category')
             .notEmpty().withMessage('Debe seleccionar una categoría'),
-        check('phone')
-            .custom(value => value ? typeof value != 'number' : true).withMessage('Debe ingresar sólo números en el campo teléfono')
+        check('addresses[0][street]')
+            .notEmpty().withMessage('Debes completar una calle').bail()
+            .isLength({ min: 5 }).withMessage('Debe tener al menos 5 letras'),
+        check('addresses[1][street]')
+            .notEmpty().withMessage('Debes completar una calle').bail()
+            .isLength({ min: 5 }).withMessage('Debe tener al menos 5 letras'),
+        check('addresses[0][number]')
+            .notEmpty().withMessage('Debes completar la altura de la direccion').bail()
+            .custom(value => value ? typeof value != 'number' : true).withMessage('Debe ingresar sólo números en este campo'),             
+        check('addresses[1][number]')
+            .notEmpty().withMessage('Debes completar la altura de la direccion').bail()
+            .custom(value => value ? typeof value != 'number' : true).withMessage('Debe ingresar sólo números en este campo'),     
+        check('addresses[0][city]')
+            .notEmpty().withMessage('Debes completar el nombre de tu ciudad').bail()
+            .custom(value => value ? typeof value != 'string' : true).withMessage('Debe ingresar sólo letras en este campo'),           
+        check('addresses[1][city]')
+            .notEmpty().withMessage('Debes completar el nombre de tu ciudad').bail()
+            .custom(value => value ? typeof value != 'string' : true).withMessage('Debe ingresar sólo letras en este campo'),          
+
     ],
     editForm: [
         check('firstname')

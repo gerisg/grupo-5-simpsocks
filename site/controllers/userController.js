@@ -60,7 +60,9 @@ module.exports = {
                 return res.redirect('/users/' + newUser.id);
             } else {
                 let roles = await role.findAll();
-                res.render('users/create-form', { errors: errors.mapped(), user: req.body, roles });
+                //res.render('users/create-form', { errors: errors.mapped(), user: req.body, roles });
+                res.send({ errors: errors.mapped()});
+                
             }
         } catch (error) {
             console.log(error);
