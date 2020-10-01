@@ -10,4 +10,4 @@ RUN npm install -g sequelize-cli
 COPY . .
 
 EXPOSE 3000
-CMD ["npm", "run", "startdev"]
+CMD ["npm", "start"]
