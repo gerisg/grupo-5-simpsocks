@@ -77,3 +77,15 @@ __Asistentes__: Vale, Martin, Gera
 | __Gera__: Registro de usuario. Perfil de usuario. Recuperar contraseña. Enviar contraseña por email. Refactor de estilos de formularios. Fix admin middleware. |
 
 ---
+
+__Fecha__: 23/9
+
+__Asistentes__: Vale, Martin, Gera
+
+| Resumen |
+| -------- |
+| __Vale__: Diseño DER. Error 500. Migración de Usuarios: auth (session y cookies), login, logout, registro, recuperación. Migración de Productos: imágenes. |
+| __Martin__: Diseño DER. Migración de Usuarios: crear, editar, eliminar. |
+| __Gera__: Diseño DER. Configuración de Sequelize. Creación de models, migration y seeders. Migración de Productos y Categorías. Limpieza datos JSON. Reviews de usuarios. |
+
+---

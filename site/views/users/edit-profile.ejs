@@ -48,26 +48,28 @@
                         <input type="email" name="email" id="email" value="<%= user.email %>">
                         <span class="error"><%= locals.errors && errors.email ? errors.email.msg : '' %></span>
                     </div>
-                    <% for( let i = 0; i < user.addresses.length; i++ ) { %>
-                        <div class="col-12 form-title">
-                            <p>Domicilio de <%= user.addresses[i].type == 'payment' ? 'facturación' : 'entrega' %> </p>
-                            <input type="hidden" name="addresses[<%= i %>][type]" value="<%= user.addresses[i].type %>">
-                        </div>
-                        <div class="col-12 col-md-5 form-group">
-                            <label for="addresses[<%= i %>][street]">Calle</label>
-                            <input type="text" id="addresses[<%= i %>][street]" name="addresses[<%= i %>][street]"
-                                placeholder="Av de Mayo" value="<%= user.addresses[i].street %>">
-                        </div>
-                        <div class="col-12 col-md-3 form-group">
-                            <label for="addresses[<%= i %>][number]">Numero</label>
-                            <input type="number" id="addresses[<%= i %>][number]" name="addresses[<%= i %>][number]"
-                                placeholder="1234" value="<%= user.addresses[i].number %>">
-                        </div>
-                        <div class="col-12 col-md-4 form-group">
-                            <label for="addresses[<%= i %>][city]">Ciudad</label>
-                            <input type="text" id="addresses[<%= i %>][city]" name="addresses[<%= i %>][city]"
-                                placeholder="Buenos Aires" value="<%= user.addresses[i].city %>">
-                        </div>
+                    <% if (locals.user && user.addresses){ %> 
+                        <% for( let i = 0; i < user.addresses.length; i++ ) { %>
+                            <div class="col-12 form-title">
+                                <p>Domicilio de <%= user.addresses[i].type == 'payment' ? 'facturación' : 'entrega' %> </p>
+                                <input type="hidden" name="addresses[<%= i %>][type]" value="<%= user.addresses[i].type %>">
+                            </div>
+                            <div class="col-12 col-md-5 form-group">
+                                <label for="addresses[<%= i %>][street]">Calle</label>
+                                <input type="text" id="addresses[<%= i %>][street]" name="addresses[<%= i %>][street]"
+                                    placeholder="Av de Mayo" value="<%= user.addresses[i].street %>">
+                            </div>
+                            <div class="col-12 col-md-3 form-group">
+                                <label for="addresses[<%= i %>][number]">Numero</label>
+                                <input type="number" id="addresses[<%= i %>][number]" name="addresses[<%= i %>][number]"
+                                    placeholder="1234" value="<%= user.addresses[i].number %>">
+                            </div>
+                            <div class="col-12 col-md-4 form-group">
+                                <label for="addresses[<%= i %>][city]">Ciudad</label>
+                                <input type="text" id="addresses[<%= i %>][city]" name="addresses[<%= i %>][city]"
+                                    placeholder="Buenos Aires" value="<%= user.addresses[i].city %>">
+                            </div>
+                        <% } %>
                     <% } %>
                     <div class="col-12 form-title">
                         <p>Credenciales</p>

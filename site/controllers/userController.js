@@ -75,7 +75,8 @@ module.exports = {
                 user.findByPk(parseInt(req.params.id), { include: address }),
                 role.findAll()
             ]);
-            delete userResult.password;
+            if (userResult)
+                delete userResult.password;
             res.render('users/edit-form', { user: userResult, roles });
         } catch (error) {
             console.log(error);
@@ -176,6 +177,9 @@ module.exports = {
         try {
             let errors = validationResult(req);
             if (errors.isEmpty()) {
+                let exist = await user.findOne({ where: { email: req.body.email }});
+                if(exist)
+                    return res.render('users/register', { errors: { email: { msg: 'Ya existe un usuario registrado con este e-mail.' }}, user: req.body });
                 let encryptedPassword = bcrypt.hashSync(req.body.password, 10);
                 let newUser = {
                     firstname: req.body.firstname,
@@ -185,8 +189,7 @@ module.exports = {
                     role_id: 1 // user
                 }
                 let userResult = await user.create(newUser);
-                let roleResult = await role.findByPk(newUser.role_id);
-                req.session.user = { id: userResult.id, name: userResult.firstname, category: roleResult.name };
+                req.session.user = { id: userResult.id, name: userResult.firstname, category: 1 };
                 res.redirect('/');
             } else {
                 res.render('users/register', { errors: errors.mapped(), user: req.body });
@@ -206,9 +209,11 @@ module.exports = {
                 let email = req.body.email;
                 let password = generatePass();
                 let userResult = await user.findOne({ where: { email }});
-                userResult.password =  bcrypt.hashSync(password, 10);
-                await userResult.save();
-                mailer.sendRecover(email, password);
+                if(userResult) {
+                    userResult.password =  bcrypt.hashSync(password, 10);
+                    await userResult.save();
+                    mailer.sendRecover(email, password);
+                }
                 let msg = 'Enviamos un email con la nueva contraseña de acceso.';
                 res.render('users/recover', { msg, email });
             } else {
@@ -245,7 +250,9 @@ module.exports = {
             let errors = validationResult(req);
             if (errors.isEmpty()) {
                 let id = parseInt(req.session.user.id);
-                let userResult = await user.findByPk(id);
+                let userResult = await user.findByPk(100);
+                if(!userResult)
+                    throw new Error('Usuario no válido');
                 let valid = bcrypt.compareSync(req.body.password, userResult.password);
                 if (valid) {
                     if (req.body.newPassword)
