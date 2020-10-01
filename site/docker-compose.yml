@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  dev:
+    build: .
+    container_name: simpsocks_dev
+    ports:
+      - 3000:3000
+    env_file: .env
+    volumes:
+      - .:/user/src/app
+    depends_on:
+      - mysql
+  mysql:
+    image: mysql:8.0
+    container_name: simpsocks_mysql
+    environment:
+      - MYSQL_USER
+      - MYSQL_ROOT_PASSWORD
+      - MYSQL_DATABASE
+    command: --character-set-server=utf8mb4
+    restart: always
+    volumes:
+      - db:/var/lib/mysql
+volumes:
+  db:

@@ -39,4 +39,5 @@ app.use((req, res, next) => {
 });
 
 // Start server
-app.listen (3000, ()=> (console.log('Server listening (3000)')));
+const port = parseInt(process.env.NODE_PORT, 10) || 3000;
+app.listen(port, ()=> (console.log(`Server running on port ${port}`)));
