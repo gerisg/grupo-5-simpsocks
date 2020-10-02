@@ -54,7 +54,7 @@
                     <% variants.forEach(variant => { %>
                     <div class="col-12 form-group">
                         <label for="<%= variant.name %>"><%= variant.display %></label>
-                        <div class="row" id="checkbox">
+                        <div class="row" id="checkbox_<%= variant.name %>">
                             <% variant.variant_values.forEach(v_value => { %>
                                 <div class="col-6 col-md-3"> 
                                     <input type="checkbox" name="variants" id="<%= v_value.id %>" value="<%= variant.id %>-<%= v_value.id %>">

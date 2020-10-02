@@ -6,11 +6,10 @@ window.addEventListener('load', function(){
     let description = document.getElementById('description');
     let price = document.getElementById('price');
     let discount = document.getElementById('discount');
-    let checkbox = document.getElementById('checkbox');
-    // let size = document.getElementById('checkbox');
+    let type = document.getElementById('checkbox_sock-type');
+    let size = document.getElementById('checkbox_sock-size');
     let categories = document.getElementById('categories');
    
-
     let validateName = function (){
         let feedback = '';
      
@@ -59,47 +58,59 @@ window.addEventListener('load', function(){
         handleFeedback(discount, feedback)
     }
 
-    let validateCheckbox = function() {
-        let feedback = 'El campo no puede estar vacío';
-        console.log(checkbox);
+    let validateType = function() {
+        let showError = true;
 
-        for(let i = 0; i < checkbox.children.length; i++){
-            if(checkbox.children[i].children[0].checked){
-                feedback = ''
+        for(let i = 0; i < type.children.length; i++){
+            if(type.children[i].children[0].checked){
+                showError = false;
             }
         }
-        handleFeedback(checkbox, feedback);
+        let feedback = showError ? 'El campo no puede estar vacío': '';
+        handleFeedback(type, feedback);
+    }
+
+    let validateSize = function() {
+        let showError = true;
+
+        for(let i = 0; i < size.children.length; i++){
+            if(size.children[i].children[0].checked){
+             showError = false;
+            }
+        }
+        let feedback = showError ? 'El campo no puede estar vacío': '';
+        handleFeedback(size, feedback);
     }
 
     let validateCategories = function() {
-        let feedback = 'El campo no puede estar vacío';
-        console.log(checkbox);
+        let showError = true;
 
         for(let i = 0; i < categories.children.length; i++){
             if(categories.children[i].children[0].checked){
-                feedback = ''
+                showError = false;
             }
         }
+        let feedback = showError ? 'El campo no puede estar vacío': '';
         handleFeedback(categories, feedback);
 
     }
+
     //Modularizar la funcion para mostrar feedback 
     let handleFeedback = function (element, feedback){
         let feedbackElement = element.nextElementSibling;
 
         if(feedback != ''){
-            element.classList.add('error');
+            // element.classList.add('error');
             feedbackElement.classList.add('error');
             errors[element.name] = feedback; //[element. nombre del imput]
 
         }else{
-            element.classList.remove('error');
+            // element.classList.remove('error');
             feedbackElement.classList.remove('error');
             delete errors[element.name];
         }
 
         feedbackElement.innerText = feedback;
-        console.log(errors);
     };
 
 
@@ -108,12 +119,18 @@ window.addEventListener('load', function(){
         validateDescription();
         validatePrice();
         validateDiscount();
-        validateCheckbox();
+        validateType();
+        validateSize();
         validateCategories();
+        console.log(Object.keys(errors));
        
-        if(object.keys(errors).length) { //objeto con arrays de propiedades
+        if(Object.keys(errors).length) { //objeto con arrays de propiedades
+            console.log(Object.keys(errors).length);
             e.preventDefault();
+            
         }
+        console.log(Object.keys(errors).length);
+
     };
 
     //Agregado de listeners 
@@ -122,7 +139,8 @@ window.addEventListener('load', function(){
     description.addEventListener('blur', validateDescription);
     price.addEventListener('blur', validatePrice);
     discount.addEventListener('blur', validateDiscount);
-    checkbox.addEventListener('change', validateCheckbox);
+    type.addEventListener('change', validateType);
+    size.addEventListener('change', validateSize);
     categories.addEventListener('change', validateCategories);
 
     

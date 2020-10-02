@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
 <%- include('../partials/head') %>
+<script src="/js/validator.min.js"></script>
+<script src="/js/editProduct-validations.js"></script>
 <body class="form">
     <%- include('../partials/header') %>
 
@@ -18,7 +20,7 @@
             <div class="header">
                 <p>Editar Producto <span class="entity">#<%= product.id %></span></p>
             </div>
-            <form action="/products/<%= product.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+            <form action="/products/<%= product.id %>?_method=PUT"  id="editProductForm" method="POST" enctype="multipart/form-data">
                 <div class="row">
                     <div class="col-12 col-md-4 col-lg-4">
                         <div class="form-group">
@@ -65,7 +67,7 @@
                             <% for( let i = 0; i < product.skus.length; i++ ) { %>
                                 <div class="col-3 col-md-2"><%= product.skus[i].sku %></div>
                                 <div class="col-5 col-md-4">
-                                    <div class="form-group">
+                                    <div class="form-group" id="stock">
                                         <% if (locals.errors) { %>
                                             <input type="number" 
                                                 id="<%= product.skus[i].id %>"
@@ -77,6 +79,7 @@
                                                 name="stocks"
                                                 value="<%= product.skus[i].stock %>">
                                         <% } %>
+                                        <span class="error"><%= locals.errors && errors.sku ? errors.sku.msg : '' %> </span>
                                     </div>
                                 </div>
                                 <div class="col-4 col-md-6">
@@ -90,7 +93,7 @@
                     <div class="col-12">
                         <div class="form-checkbox">
                             <p>Categorías</p>
-                            <div class="row">
+                            <div class="row" id="categories">
                                 <% categories.forEach(category => { %>
                                     <div class="col-6 col-md-6 col-lg-3"> <br>
                                         <input 
@@ -103,6 +106,7 @@
                                     </div>
                                 <% }) %>
                             </div>
+                            <span class="error"><%= locals.errors && errors.checkbox ? errors.checkbox.msg : '' %> </span>
                         </div>
                     </div>
                     <div class="col-12">
@@ -128,7 +132,7 @@
                         </div>
                     </div>
                     <div class="col-12">
-                        <div class="form-group">
+                        <div class="form-group" id="files">
                             <label for="images">Nuevas Imágenes:</label>
                             <input type="file" id="images" name="images" multiple style="border: none;">
                         </div>
