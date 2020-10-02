@@ -60,7 +60,7 @@ window.addEventListener('load', function () {
             handleFeedback(description, feedback);
         };
 
-        //REVISAR
+        //REVISAR No se muestra el msj de feedback 
         let validateStock = function () {
             console.log('jola');
             let feedback = '';
