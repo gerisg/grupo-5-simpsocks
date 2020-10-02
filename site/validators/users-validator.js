@@ -1,4 +1,5 @@
 const { check } = require('express-validator');
+const { user } = require("../database/models")
 
 module.exports = {
     loginForm: [
@@ -15,7 +16,15 @@ module.exports = {
             .isLength({ min: 2 }).withMessage('El apellido debe tener al menos 2 caracteres'),
         check('email')
             .notEmpty().withMessage('El correo electrónico es obligatorio').bail()
-            .isEmail().withMessage('El correo electrónico no posee un formato válido'),
+            .isEmail().withMessage('El correo electrónico no posee un formato válido')
+            .custom(async value => { 
+                let result = await user.findOne({ where : { email : value } });
+                    if(result == null){
+                    return Promise.resolve();
+                } else {
+                    return Promise.reject();
+                }
+            }).withMessage("Ingresa otro email"),
         check('phone')
             .notEmpty().withMessage('Necestiamos un telefono').bail()
             .custom(value => value ? typeof value != 'number' : true).withMessage('Debe ingresar sólo números en el campo teléfono'),
@@ -50,7 +59,15 @@ module.exports = {
             .isLength({ min: 2 }).withMessage('El apellido debe tener al menos 2 caracteres'),
         check('email')
             .notEmpty().withMessage('El correo electrónico es obligatorio').bail()
-            .isEmail().withMessage('El correo electrónico no posee un formato válido'),
+            .isEmail().withMessage('El correo electrónico no posee un formato válido')
+            .custom(async value => { 
+                let result = await user.findOne({ where : { email : value } });
+                    if(result == null){
+                    return Promise.resolve();
+                } else {
+                    return Promise.reject();
+                }
+            }).withMessage("Ingresa otro email"),
         check('category')
             .notEmpty().withMessage('Debe seleccionar una categoría'),
         check('phone')
@@ -65,7 +82,15 @@ module.exports = {
             .isLength({ min: 2 }).withMessage('El apellido debe tener al menos 2 caracteres'),
         check('email')
             .notEmpty().withMessage('El correo electrónico es obligatorio').bail()
-            .isEmail().withMessage('El correo electrónico no posee un formato válido'),
+            .isEmail().withMessage('El correo electrónico no posee un formato válido')
+            .custom(async value => { 
+                let result = await user.findOne({ where : { email : value } });
+                    if(result == null){
+                    return Promise.resolve();
+                } else {
+                    return Promise.reject();
+                }
+            }).withMessage("Ingresa otro email"),
         check('password')
             .notEmpty().withMessage('La contraseña es obligatoria').bail()
             .custom(value => value.length ? value.length >= 8 : true).withMessage('La contraseña debe tener al menos 8 caracteres')
@@ -84,7 +109,15 @@ module.exports = {
             .isLength({ min: 3 }).withMessage('El apellido debe tener al menos 3 caracteres'),
         check('email')
             .notEmpty().withMessage('El correo electrónico es obligatorio').bail()
-            .isEmail().withMessage('El correo electrónico no posee un formato válido'),
+            .isEmail().withMessage('El correo electrónico no posee un formato válido')
+            .custom(async value => { 
+                let result = await user.findOne({ where : { email : value } });
+                    if(result == null){
+                    return Promise.resolve();
+                } else {
+                    return Promise.reject();
+                }
+            }).withMessage("Ingresa otro email"),
         check('phone')
             .custom(value => value ? typeof value != 'number' : true).withMessage('Debe ingresar sólo números en el campo teléfono'),
         check('password')

@@ -54,11 +54,13 @@
                         <label for="<%= variant.name %>"><%= variant.display %></label>
                         <div class="row">
                             <% variant.variant_values.forEach(v_value => { %>
-                                <div class="col-6 col-md-3"> 
-                                    <input type="checkbox" name="variants" id="<%= v_value.id %>" value="<%= variant.id %>-<%= v_value.id %>">
-                                    <span><%= v_value.name %></span>
+                                <div class="col-6 col-md-4"> 
+                                    <input type="checkbox" name="variants" id="<%= v_value.id %>" value="<%= variant.id %>-<%= v_value.id %>"
+                                    class="<%= locals.errors && errors.variants ? 'danger' : '' %>">
+                                    <span><%= v_value.name %></span>                                
                                 </div>
                             <% }) %>
+                            <span class="error"><%= locals.errors && errors.variants? errors.variants.msg : '' %> </span>
                         </div>
                     </div>
                     <% }) %>
@@ -68,9 +70,12 @@
                         <div class="row">
                             <% categories.forEach(category => { %>
                                 <div class="col-6 col-md-3"> 
-                                    <input type="checkbox" name="categories" id="<%= category.id %>" value=<%= category.id %>><span><%= category.name %></span>
+                                    <input type="checkbox" name="categories" id="<%= category.id %>" value=<%= category.id %>
+                                    class="<%= locals.errors && errors.categories ? 'danger' : '' %>">
+                                    <span><%= category.name %></span>                                    
                                 </div>
                             <% }) %>
+                            <span class="error"><%= locals.errors && errors.categories? errors.categories.msg : '' %> </span>
                         </div>
                     </div>
                     <div class="col-12 form-group">

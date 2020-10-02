@@ -1,4 +1,5 @@
 const { check } = require('express-validator'); //usa destructuración
+const { variants, categories } = require("../database/models")
  
 module.exports = {
     createForm: [
@@ -13,7 +14,12 @@ module.exports = {
         check('discount')
             .notEmpty().withMessage('Debe completar el descuento del producto').bail()
             .isNumeric().withMessage('El descuento debe ser un campo numérico (sin el símbolo %)').bail()
-            .isInt({min: 0, max:100}).withMessage('El descuento debe ser entre 0 y 100')
+            .isInt({min: 0, max:100}).withMessage('El descuento debe ser entre 0 y 100'),
+        check('variants')
+            .notEmpty().withMessage('Debes escoger el tipo y talle de tu Simpsock'),
+        check('categories')
+            .notEmpty().withMessage('Debes escoger al menos una categoria'),
+
     ],
     editForm: [
         check('name')
