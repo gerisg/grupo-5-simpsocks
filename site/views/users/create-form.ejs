@@ -57,22 +57,22 @@
                         <label for="addresses[0][street]">Calle</label>
                         <input type="text" id="addresses[0][street]" name="addresses[0][street]" placeholder="Av de Mayo"
                             value="<%= locals.user && user.addresses[0] ? user.addresses[0].street : '' %>"
-                            class="<%= locals.errors && errors.addresses[0].street ? 'danger' : '' %>">
-                        <span class="error"><%= locals.errors && errors.addresses[0].street? errors.addresses[0].street.msg : '' %></span>    
+                            class="<%= locals.errors && errors['addresses[0].street'] ? 'danger' : '' %>">
+                        <span class="error"><%= locals.errors && errors['addresses[0].street'] ? errors['addresses[0].street'].msg : '' %></span>    
                     </div>
                     <div class="col-12 col-md-3 form-group">
                         <label for="addresses[0][number]">Numero</label>
                         <input type="number" id="addresses[0][number]" name="addresses[0][number]" placeholder="1234"
                             value="<%= locals.user && user.addresses && user.addresses[0] ? user.addresses[0].number : '' %>"
-                            class="<%= locals.errors && errors.addresses[0][number] ? 'danger' : '' %>">
-                        <span class="error"><%= locals.errors && errors.addresses[0][number]? errors.addresses[0][number].msg : '' %></span>    
+                            class="<%= locals.errors && errors['addresses[0].number'] ? 'danger' : '' %>">
+                        <span class="error"><%= locals.errors && errors['addresses[0].number'] ? errors['addresses[0].number'].msg : '' %></span>    
                     </div>
                     <div class="col-12 col-md-4 form-group">
                         <label for="addresses[0][city]">Ciudad</label>
                         <input type="text" id="addresses[0][city]" name="addresses[0][city]" placeholder="Buenos Aires"
                             value="<%= locals.user && user.addresses && user.addresses[0] ? user.addresses[0].city : '' %>"
-                            class="<%= locals.errors && errors.addresses[0][city] ? 'danger' : '' %>">
-                        <span class="error"><%= locals.errors && errors.addresses[0][city]? errors.addresses[0][city].msg : '' %></span>    
+                            class="<%= locals.errors && errors['addresses[0].city'] ? 'danger' : '' %>">
+                        <span class="error"><%= locals.errors && errors['addresses[0].city'] ? errors['addresses[0].city'].msg : '' %></span>    
                     </div>
                     <!-- Entrega  -->
                     <div class="col-12 col-md-12 form-group">
@@ -82,23 +82,23 @@
                     <div class="col-12 col-md-5 form-group">
                         <label for="addresses[1][street]">Calle</label>
                         <input type="text" id="addresses[1][street]" name="addresses[1][street]" placeholder="Av de Mayo"
-                            value="<%= locals.user && user.addresses && user.addresses[1] ? user.addresses[1].street : '' %>"
-                           class="<%= locals.errors && errors.addresses[1][street] ? 'danger' : '' %>">
-                        <span class="error"><%= locals.errors && errors.addresses[1][street]? errors.addresses[1][street].msg : '' %></span>   
+                            value="<%= locals.user && user.addresses[1] ? user.addresses[1].street : '' %>"
+                            class="<%= locals.errors && errors['addresses[1].street'] ? 'danger' : '' %>">
+                        <span class="error"><%= locals.errors && errors['addresses[1].street'] ? errors['addresses[1].street'].msg : '' %></span>    
                     </div>
                     <div class="col-12 col-md-3 form-group">
                         <label for="addresses[1][number]">Numero</label>
                         <input type="number" id="addresses[1][number]" name="addresses[1][number]" placeholder="1234"
                             value="<%= locals.user && user.addresses && user.addresses[1] ? user.addresses[1].number : '' %>"
-                                  class="<%= locals.errors && errors.addresses[1][number] ? 'danger' : '' %>">
-                        <span class="error"><%= locals.errors && errors.addresses[1][number]? errors.addresses[1][number].msg : '' %></span>    
+                            class="<%= locals.errors && errors['addresses[1].number'] ? 'danger' : '' %>">
+                        <span class="error"><%= locals.errors && errors['addresses[1].number'] ? errors['addresses[1].number'].msg : '' %></span>    
                     </div>
                     <div class="col-12 col-md-4 form-group">
                         <label for="addresses[1][city]">Ciudad</label>
                         <input type="text" id="addresses[1][city]" name="addresses[1][city]" placeholder="Buenos Aires"
                             value="<%= locals.user && user.addresses && user.addresses[1] ? user.addresses[1].city : '' %>"
-                            class="<%= locals.errors && errors.addresses[1][city] ? 'danger' : '' %>">
-                        <span class="error"><%= locals.errors && errors.addresses[1][city]? errors.addresses[1][city].msg : '' %></span>    
+                            class="<%= locals.errors && errors['addresses[1].city'] ? 'danger' : '' %>">
+                        <span class="error"><%= locals.errors && errors['addresses[1].city'] ? errors['addresses[1].city'].msg : '' %></span>    
                     </div>
                     <div class="col-12 col-md-6 form-group">
                         <label for="category">Categoría</label>

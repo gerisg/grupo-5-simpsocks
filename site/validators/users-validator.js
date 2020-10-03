@@ -19,36 +19,27 @@ module.exports = {
             .isEmail().withMessage('El correo electrónico no posee un formato válido')
             .custom(async value => { 
                 let result = await user.findOne({ where : { email : value } });
-                    if(result == null){
+                if(result == null) {
                     return Promise.resolve();
                 } else {
                     return Promise.reject();
                 }
             }).withMessage("Ingresa otro email"),
         check('phone')
-            .notEmpty().withMessage('Necestiamos un telefono').bail()
+            .notEmpty().withMessage('Necesitamos un telefono').bail()
             .custom(value => value ? typeof value != 'number' : true).withMessage('Debe ingresar sólo números en el campo teléfono'),
         check('category')
             .notEmpty().withMessage('Debe seleccionar una categoría'),
-        check('addresses[0][street]')
+        check('addresses.*.street')
+            // https://express-validator.github.io/docs/wildcards.html
             .notEmpty().withMessage('Debes completar una calle').bail()
             .isLength({ min: 5 }).withMessage('Debe tener al menos 5 letras'),
-        check('addresses[1][street]')
-            .notEmpty().withMessage('Debes completar una calle').bail()
-            .isLength({ min: 5 }).withMessage('Debe tener al menos 5 letras'),
-        check('addresses[0][number]')
-            .notEmpty().withMessage('Debes completar la altura de la direccion').bail()
-            .custom(value => value ? typeof value != 'number' : true).withMessage('Debe ingresar sólo números en este campo'),             
-        check('addresses[1][number]')
+        check('addresses.*.number')
             .notEmpty().withMessage('Debes completar la altura de la direccion').bail()
             .custom(value => value ? typeof value != 'number' : true).withMessage('Debe ingresar sólo números en este campo'),     
-        check('addresses[0][city]')
+        check('addresses.*.city')
             .notEmpty().withMessage('Debes completar el nombre de tu ciudad').bail()
-            .custom(value => value ? typeof value != 'string' : true).withMessage('Debe ingresar sólo letras en este campo'),           
-        check('addresses[1][city]')
-            .notEmpty().withMessage('Debes completar el nombre de tu ciudad').bail()
-            .custom(value => value ? typeof value != 'string' : true).withMessage('Debe ingresar sólo letras en este campo'),          
-
+            .custom(value => value ? typeof value != 'string' : true).withMessage('Debe ingresar sólo letras en este campo'),
     ],
     editForm: [
         check('firstname')
