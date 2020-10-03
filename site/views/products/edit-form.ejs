@@ -67,19 +67,22 @@
                             <% for( let i = 0; i < product.skus.length; i++ ) { %>
                                 <div class="col-3 col-md-2"><%= product.skus[i].sku %></div>
                                 <div class="col-5 col-md-4">
-                                    <div class="form-group" id="stock">
+                                    <div class="form-group">
                                         <% if (locals.errors) { %>
                                             <input type="number" 
                                                 id="<%= product.skus[i].id %>"
                                                 name="stocks"
-                                                value="<%= stocks[i] %>">
+                                                value="<%= stocks[i] %>"
+                                                class="stock-in">
+                                            <span class="error"><%= locals.errors && errors.sku ? errors.sku.msg : '' %> </span>
                                         <% } else { %>
                                             <input type="number" 
                                                 id="<%= product.skus[i].id %>"
                                                 name="stocks"
-                                                value="<%= product.skus[i].stock %>">
+                                                value="<%= product.skus[i].stock %>"
+                                                class="stock-in">
+                                            <span class="error"><%= locals.errors && errors.sku ? errors.sku.msg : '' %> </span>
                                         <% } %>
-                                        <span class="error"><%= locals.errors && errors.sku ? errors.sku.msg : '' %> </span>
                                     </div>
                                 </div>
                                 <div class="col-4 col-md-6">
@@ -99,6 +102,7 @@
                                         <input 
                                             type="checkbox"
                                             name="categories"
+                                            class="cat-in"
                                             id="<%= category.id %>"
                                             value=<%= category.id %>
                                             <%= product.categories.find(cat => cat.id == category.id) ? 'checked' : '' %>>
@@ -132,9 +136,10 @@
                         </div>
                     </div>
                     <div class="col-12">
-                        <div class="form-group" id="files">
+                        <div class="form-group">
                             <label for="images">Nuevas Imágenes:</label>
                             <input type="file" id="images" name="images" multiple style="border: none;">
+                            <span class="error"></span>
                         </div>
                     </div>
                     <div class="controls">
