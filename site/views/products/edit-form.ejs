@@ -98,11 +98,13 @@
                                             name="categories"
                                             id="<%= category.id %>"
                                             value=<%= category.id %>
-                                            <%= product.categories.find(cat => cat.id == category.id) ? 'checked' : '' %>>
+                                            <%= product.categories.find(cat => cat.id == category.id) ? 'checked' : '' %>
+                                        class="<%= locals.errors && errors.categories ? 'danger' : '' %>">
                                         <span><%= category.name %></span>
                                     </div>
-                                <% }) %>
+                                <% }) %>                         
                             </div>
+                            <span class="error"><%= locals.errors && errors.categories? errors.categories.msg : '' %> </span>
                         </div>
                     </div>
                     <div class="col-12">
