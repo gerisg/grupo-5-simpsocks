@@ -55,7 +55,14 @@ module.exports = {
                     phone: req.body.phone,
                     image: req.file ? req.file.filename : null,
                     addresses: parser.parseAddresses(req.body.addresses)
-                }, { include: address });             
+                }, { include: address });
+                // Save image
+                if(req.file) {
+                    fs.rename(req.file.path, req.file.path.replace('/tmp', ''), (err) => {
+                        if (err) throw err;
+                    });
+                }
+                // Send welcome email
                 mailer.sendWelcome(newUser.email, password);
                 return res.redirect('/users/' + newUser.id);
             } else {
@@ -103,6 +110,12 @@ module.exports = {
                         let newAdr = await address.create(adr);
                         await userResult.addAddress(newAdr);
                     }));
+                // Update image
+                if(req.file) {
+                    fs.rename(req.file.path, req.file.path.replace('/tmp', ''), (err) => {
+                        if (err) throw err;
+                    });
+                }
                 res.redirect('/users/' + id);
             } else {
                 let roles = await role.findAll();
@@ -263,8 +276,14 @@ module.exports = {
                         return res.render('users/edit-profile', { errors: { password: { msg: 'Credenciales no válidas' }}, user: req.body });
                     }
                 }
+                // Save image
+                if (req.file) { 
+                    fs.rename(req.file.path, req.file.path.replace('/tmp', ''), (err) => {
+                        if (err) throw err;
+                    });
+                    userResult.image = req.file.filename;
+                }
                 // Update user
-                if (req.file) { userResult.image = req.file.filename; }
                 userResult.firstname = req.body.firstname;
                 userResult.lastname = req.body.lastname;
                 userResult.email = req.body.email;

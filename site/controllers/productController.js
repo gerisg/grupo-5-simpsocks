@@ -102,6 +102,14 @@ module.exports = {
                 newProduct.skus.forEach(sku => {
                     sku.addProperties(parsedVariants.skus.find(e => e.sku == sku.sku).properties);
                 });
+                // Save images
+                if(req.files) {
+                    req.files.forEach(file => {
+                        fs.rename(file.path, file.path.replace('/tmp', ''), (err) => {
+                            if (err) throw err;
+                        });
+                    });
+                }
                 // Render
                 res.redirect('/products/' + newProduct.id);
             } else {
@@ -163,6 +171,14 @@ module.exports = {
                 // Add new images
                 if (parsedImages.length)
                     parsedImages.forEach(async (img) => await productResult.createImage(img));
+                // Save images
+                if(req.files) {
+                    req.files.forEach(file => {
+                        fs.rename(file.path, file.path.replace('/tmp', ''), (err) => {
+                            if (err) throw err;
+                        });
+                    });
+                }
                 // Update categories
                 productResult.setCategories(parsedCategories);
                 // Update stocks 

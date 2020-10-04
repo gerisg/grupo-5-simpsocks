@@ -1,22 +1,9 @@
-const path = require('path');
 const express = require('express');
 const router = express.Router();
 const controller = require('../controllers/productController');
 const validate = require('../validators/products-validator');
-
-const userRoute = require('../middlewares/userRoute');
+const upload = require('../tools/uploader')('products');
 const adminRoute = require('../middlewares/adminRoute');
-
-const multer = require('multer');
-
-// Configure multer
-const storage = multer.diskStorage({
-    destination: path.join(__dirname, '../public/images/products'),
-    filename: (req, file, callback) => {
-        callback(null,  file.fieldname + '-' + Date.now() + path.extname(file.originalname));
-    }
-});
-const upload = multer({ storage });
 
 // Listado de productos
 router.get('/find/:category?', controller.find);

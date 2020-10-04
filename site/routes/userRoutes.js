@@ -8,16 +8,7 @@ const guestRoute = require('../middlewares/guestRoute');
 const userRoute = require('../middlewares/userRoute');
 const adminRoute = require('../middlewares/adminRoute');
 
-const multer = require('multer');
-
-// Configure multer
-const storage = multer.diskStorage({
-    destination: path.join(__dirname, '../public/images/users'),
-    filename: (req, file, callback) => {
-        callback(null, 'user-' + Date.now() + path.extname(file.originalname));
-    }
-});
-const upload = multer({ storage });
+const upload = require('../tools/uploader')('users');
 
 // TODO Not implemented yet
 router.get('/favorites', userRoute, controller.favorites);
