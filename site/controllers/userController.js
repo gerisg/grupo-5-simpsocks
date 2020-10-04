@@ -248,32 +248,36 @@ module.exports = {
             let errors = validationResult(req);
             if (errors.isEmpty()) {
                 let id = parseInt(req.session.user.id);
+                // Get current user
                 let userResult = await user.findByPk(id);
-                if(!userResult)
+                if(!userResult) {
                     throw new Error('Usuario no válido');
-                let valid = bcrypt.compareSync(req.body.password, userResult.password);
-                if (valid) {
-                    if (req.body.newPassword)
-                        userResult.password = bcrypt.hashSync(req.body.newPassword, 10);
-                    if (req.file)
-                        userResult.image = req.file.filename;
-                    userResult.firstname = req.body.firstname;
-                    userResult.lastname = req.body.lastname;
-                    userResult.email = req.body.email;
-                    userResult.phone = req.body.phone;
-                    await userResult.save();
-                    // Update addresses
-                    await userResult.setAddresses([]);
-                    await Promise.all(
-                        parser.parseAddresses(req.body.addresses).map(async (adr) => {
-                            let newAdr = await address.create(adr);
-                            await userResult.addAddress(newAdr);
-                        }));
-                    res.redirect('/users/profile');
-                } else {
-                    req.body.image = req.file ? req.file.filename : req.body.currentImage;
-                    res.render('users/edit-profile', { errors: { form: { msg: 'Credenciales no válidas' }}, user: req.body });
                 }
+                // Validate old password to update new password
+                if(req.body.newPassword) {
+                    let valid = bcrypt.compareSync(req.body.password, userResult.password);
+                    if(valid) {
+                        userResult.password = bcrypt.hashSync(req.body.newPassword, 10);
+                    } else {
+                        req.body.image = req.file ? req.file.filename : req.body.currentImage;
+                        return res.render('users/edit-profile', { errors: { password: { msg: 'Credenciales no válidas' }}, user: req.body });
+                    }
+                }
+                // Update user
+                if (req.file) { userResult.image = req.file.filename; }
+                userResult.firstname = req.body.firstname;
+                userResult.lastname = req.body.lastname;
+                userResult.email = req.body.email;
+                userResult.phone = req.body.phone;
+                await userResult.save();
+                // Update addresses
+                await userResult.setAddresses([]);
+                await Promise.all(
+                    parser.parseAddresses(req.body.addresses).map(async (adr) => {
+                        let newAdr = await address.create(adr);
+                        await userResult.addAddress(newAdr);
+                    }));
+                res.redirect('/users/profile');
             } else {
                 req.body.image = req.file ? req.file.filename : req.body.currentImage;
                 res.render('users/edit-profile', { errors: errors.mapped(), user: req.body});

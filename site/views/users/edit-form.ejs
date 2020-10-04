@@ -36,6 +36,7 @@
                     </div>
                     <div class="col-12 col-md-6 form-group">
                         <label for="email">Email</label>
+                        <input type="hidden" name="oldEmail" id="oldEmail" value="<%= locals.user ? user.email : '' %>">
                         <input type="email" id="email" name="email" placeholder="Ej: juanperez@mail.com"
                             value="<%= locals.user ? user.email : '' %>"
                             class="<%= locals.errors && errors.email ? 'danger' : '' %>">
@@ -56,17 +57,23 @@
                         <div class="col-12 col-md-5 form-group">
                             <label for="addresses[<%= i %>][street]">Calle</label>
                             <input type="text" id="addresses[<%= i %>][street]" name="addresses[<%= i %>][street]"
-                                placeholder="Av de Mayo" value="<%= user.addresses[i].street %>">
+                                placeholder="Av de Mayo" value="<%= user.addresses[i].street %>"
+                                class="<%= locals.errors && errors[`addresses[${i}].street`] ? 'danger' : '' %>">
+                                <span class="error"><%= locals.errors && errors[`addresses[${i}].street`] ? errors[`addresses[${i}].street`].msg : '' %></span>
                         </div>
                         <div class="col-12 col-md-3 form-group">
                             <label for="addresses[<%= i %>][number]">Numero</label>
                             <input type="number" id="addresses[<%= i %>][number]" name="addresses[<%= i %>][number]"
-                                placeholder="1234" value="<%= user.addresses[i].number %>">
+                                placeholder="1234" value="<%= user.addresses[i].number %>"
+                                class="<%= locals.errors && errors[`addresses[${i}].number`] ? 'danger' : '' %>">
+                                <span class="error"><%= locals.errors && errors[`addresses[${i}].number`] ? errors[`addresses[${i}].number`].msg : '' %></span>
                         </div>
                         <div class="col-12 col-md-4 form-group">
                             <label for="addresses[<%= i %>][city]">Ciudad</label>
                             <input type="text" id="addresses[<%= i %>][city]" name="addresses[<%= i %>][city]"
-                                placeholder="Buenos Aires" value="<%= user.addresses[i].city %>">
+                                placeholder="Buenos Aires" value="<%= user.addresses[i].city %>"
+                                class="<%= locals.errors && errors[`addresses[${i}].city`] ? 'danger' : '' %>">
+                                <span class="error"><%= locals.errors && errors[`addresses[${i}].city`] ? errors[`addresses[${i}].city`].msg : '' %></span>
                         </div>
                     <% } %>
                     <div class="col-12 col-md-6 form-group">
