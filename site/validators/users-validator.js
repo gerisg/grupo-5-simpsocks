@@ -18,28 +18,26 @@ module.exports = {
             .notEmpty().withMessage('El correo electrónico es obligatorio').bail()
             .isEmail().withMessage('El correo electrónico no posee un formato válido')
             .custom(async value => { 
-                let result = await user.findOne({ where : { email : value } });
-                if(result == null) {
-                    return Promise.resolve();
-                } else {
-                    return Promise.reject();
+                let userResult = await user.findOne({ where : { email : value } });
+                if(userResult) {
+                    return Promise.reject('Este e-mail ya fue utilizado');
                 }
-            }).withMessage("Ingresa otro email"),
+            }),
         check('phone')
-            .notEmpty().withMessage('Necesitamos un telefono').bail()
-            .custom(value => value ? typeof value != 'number' : true).withMessage('Debe ingresar sólo números en el campo teléfono'),
+            .notEmpty().withMessage('Debe ingresar un teléfono').bail()
+            .isNumeric().withMessage('Debe ingresar sólo números en este campo'),
         check('category')
             .notEmpty().withMessage('Debe seleccionar una categoría'),
         check('addresses.*.street')
             // https://express-validator.github.io/docs/wildcards.html
-            .notEmpty().withMessage('Debes completar una calle').bail()
-            .isLength({ min: 5 }).withMessage('Debe tener al menos 5 letras'),
+            .notEmpty().withMessage('Debe completar una calle').bail()
+            .isLength({ min: 2 }).withMessage('Debe tener al menos 2 letras'),
         check('addresses.*.number')
-            .notEmpty().withMessage('Debes completar la altura de la direccion').bail()
-            .custom(value => value ? typeof value != 'number' : true).withMessage('Debe ingresar sólo números en este campo'),     
+            .notEmpty().withMessage('Debe completar la altura de la calle').bail()
+            .isNumeric().withMessage('Debe ingresar sólo números en este campo'),   
         check('addresses.*.city')
-            .notEmpty().withMessage('Debes completar el nombre de tu ciudad').bail()
-            .custom(value => value ? typeof value != 'string' : true).withMessage('Debe ingresar sólo letras en este campo'),
+            .notEmpty().withMessage('Debe completar el nombre de la ciudad').bail()
+            .isAlpha().withMessage('Debe ingresar sólo letras en este campo'),
     ],
     editForm: [
         check('firstname')
@@ -52,17 +50,15 @@ module.exports = {
             .notEmpty().withMessage('El correo electrónico es obligatorio').bail()
             .isEmail().withMessage('El correo electrónico no posee un formato válido')
             .custom(async value => { 
-                let result = await user.findOne({ where : { email : value } });
-                    if(result == null){
-                    return Promise.resolve();
-                } else {
-                    return Promise.reject();
+                let userResult = await user.findOne({ where : { email : value } });
+                if(userResult) {
+                    return Promise.reject('Este e-mail ya fue utilizado');
                 }
-            }).withMessage("Ingresa otro email"),
+            }),
         check('category')
             .notEmpty().withMessage('Debe seleccionar una categoría'),
         check('phone')
-            .custom(value => value ? typeof value != 'number' : true).withMessage('Debe ingresar sólo números en el campo teléfono')
+            .isNumeric().withMessage('Debe ingresar sólo números en este campo')
     ],
     registerForm: [
         check('firstname')
@@ -75,16 +71,14 @@ module.exports = {
             .notEmpty().withMessage('El correo electrónico es obligatorio').bail()
             .isEmail().withMessage('El correo electrónico no posee un formato válido')
             .custom(async value => { 
-                let result = await user.findOne({ where : { email : value } });
-                    if(result == null){
-                    return Promise.resolve();
-                } else {
-                    return Promise.reject();
+                let userResult = await user.findOne({ where : { email : value } });
+                if(userResult) {
+                    return Promise.reject('Este e-mail ya fue utilizado');
                 }
-            }).withMessage("Ingresa otro email"),
+            }),
         check('password')
             .notEmpty().withMessage('La contraseña es obligatoria').bail()
-            .custom(value => value.length ? value.length >= 8 : true).withMessage('La contraseña debe tener al menos 8 caracteres')
+            .custom(value => value.length >= 8).withMessage('La contraseña debe tener al menos 8 caracteres')
     ],
     recoverForm: [
         check('email')
@@ -100,20 +94,12 @@ module.exports = {
             .isLength({ min: 3 }).withMessage('El apellido debe tener al menos 3 caracteres'),
         check('email')
             .notEmpty().withMessage('El correo electrónico es obligatorio').bail()
-            .isEmail().withMessage('El correo electrónico no posee un formato válido')
-            .custom(async value => { 
-                let result = await user.findOne({ where : { email : value } });
-                    if(result == null){
-                    return Promise.resolve();
-                } else {
-                    return Promise.reject();
-                }
-            }).withMessage("Ingresa otro email"),
+            .isEmail().withMessage('El correo electrónico no posee un formato válido'),
         check('phone')
-            .custom(value => value ? typeof value != 'number' : true).withMessage('Debe ingresar sólo números en el campo teléfono'),
+            .isNumeric().withMessage('Debe ingresar sólo números en este campo'),
         check('password')
             .notEmpty().withMessage('Ingrese su contraseña actual para guardar los cambios en su perfil'),
         check('newPassword')
-            .custom(value => value.length ? value.length >= 8 : true).withMessage('La nueva contraseña debe tener al menos 8 caracteres')
+            .custom(value => value.length ?value.length >= 8 : true).withMessage('La nueva contraseña debe tener al menos 8 caracteres')
     ]
 }
