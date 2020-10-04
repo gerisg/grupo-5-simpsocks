@@ -248,7 +248,7 @@ module.exports = {
             let errors = validationResult(req);
             if (errors.isEmpty()) {
                 let id = parseInt(req.session.user.id);
-                let userResult = await user.findByPk(100);
+                let userResult = await user.findByPk(id);
                 if(!userResult)
                     throw new Error('Usuario no válido');
                 let valid = bcrypt.compareSync(req.body.password, userResult.password);
