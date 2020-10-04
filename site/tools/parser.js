@@ -45,14 +45,12 @@ module.exports = {
         let addresses = [];
         if(addressesBody)
             addressesBody.forEach(param => { 
-                if(param.street) {
-                    addresses.push({
-                        street: param.street,
-                        number: param.number,
-                        city: param.city,
-                        type: param.type
-                    });
-                }
+                addresses.push({
+                    street: param.street,
+                    number: param.number,
+                    city: param.city,
+                    type: param.type
+                });
             });
         return addresses;
     }
