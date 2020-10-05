@@ -98,6 +98,7 @@
                     </div>
                     <div class="col-12 col-lg-6 form-group">
                         <input type="file" name="image" id="image">
+                        <span class="error"><%= locals.errors && errors.image ? errors.image.msg : '' %></span>
                     </div>
                     <input type="hidden" name="currentImage" value="<%= locals.user ? user.image : '' %>">
                     <div class="col-12">

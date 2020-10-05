@@ -40,6 +40,13 @@ module.exports = {
         check('addresses.*.city')
             .notEmpty().withMessage('Debe completar el nombre de la ciudad').bail()
             .isLength({ min: 2 }).withMessage('Debe tener al menos 2 letras'),
+        check('image')
+            .custom((value, { req }) => {
+                if (req.file && req.file.error === 'type') {
+                    throw new Error('Debe subir un archivo de tipo imagen (jpg, jpeg, png, gif, webp)');
+                }
+                return true;
+            })
     ],
     editForm: [
         check('firstname')
@@ -72,6 +79,13 @@ module.exports = {
         check('addresses.*.city')
             .notEmpty().withMessage('Debe completar el nombre de la ciudad').bail()
             .isLength({ min: 2 }).withMessage('Debe tener al menos 2 letras'),
+        check('image')
+            .custom((value, { req }) => {
+                if (req.file && req.file.error === 'type') {
+                    throw new Error('Debe subir un archivo de tipo imagen (jpg, jpeg, png, gif, webp)');
+                }
+                return true;
+            })
     ],
     registerForm: [
         check('firstname')
@@ -131,6 +145,13 @@ module.exports = {
             .if((value, { req }) => req.body.newPassword).notEmpty().withMessage('Ingrese contraseña actual para cambiar su contraseña').bail()
             .custom((value, { req }) => value !== req.body.newPassword).withMessage('Las contraseñas no pueden ser iguales'),
         check('newPassword')
-            .custom(value => value.length ? value.length >= 8 : true).withMessage('La nueva contraseña debe tener al menos 8 caracteres')
+            .custom(value => value.length ? value.length >= 8 : true).withMessage('La nueva contraseña debe tener al menos 8 caracteres'),
+        check('image')
+            .custom((value, { req }) => {
+                if (req.file && req.file.error === 'type') {
+                    throw new Error('Debe subir un archivo de tipo imagen (jpg, jpeg, png, gif, webp)');
+                }
+                return true;
+            })
     ]
 }

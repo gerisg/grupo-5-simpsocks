@@ -53,14 +53,18 @@ module.exports = {
                     password: encryptedPassword,
                     role_id: parseInt(req.body.category), 
                     phone: req.body.phone,
-                    image: req.file ? req.file.filename : null,
                     addresses: parser.parseAddresses(req.body.addresses)
                 }, { include: address });
                 // Save image
                 if(req.file) {
-                    fs.rename(req.file.path, req.file.path.replace('/tmp', ''), (err) => {
-                        if (err) throw err;
+                    let imageFilename =  newUser.id + path.extname(req.file.originalname);
+                    let oldPath = req.file.path;
+                    let newPath = req.file.destination.replace('tmp', imageFilename);
+                    fs.rename(oldPath, newPath, (err) => {
+                        if(err) throw err;
                     });
+                    newUser.image = imageFilename;
+                    await newUser.save();
                 }
                 // Send welcome email
                 mailer.sendWelcome(newUser.email, password);
@@ -93,6 +97,16 @@ module.exports = {
             let errors = validationResult(req);
             if (errors.isEmpty()) {
                 let id = parseInt(req.params.id);
+                // Update image
+                let imageFilename = req.body.currentImage;
+                if(req.file) {
+                    imageFilename = id + path.extname(req.file.originalname)
+                    let oldPath = req.file.path;
+                    let newPath = req.file.destination.replace('tmp', imageFilename);
+                    fs.rename(oldPath, newPath, (err) => {
+                        if(err) throw err;
+                    });
+                }
                 let userResult = await user.findByPk(id, { include: address });
                 userResult.id = req.body.id;
                 userResult.firstname = req.body.firstname;
@@ -100,7 +114,7 @@ module.exports = {
                 userResult.email = req.body.email;
                 userResult.role_id = req.body.category;
                 userResult.phone = req.body.phone;
-                userResult.image = req.file ? req.file.filename : req.body.currentImage;
+                userResult.image = imageFilename;
                 await userResult.save();
                 // Update addresses
                 await userResult.setAddresses([]);
@@ -110,12 +124,6 @@ module.exports = {
                         let newAdr = await address.create(adr);
                         await userResult.addAddress(newAdr);
                     }));
-                // Update image
-                if(req.file) {
-                    fs.rename(req.file.path, req.file.path.replace('/tmp', ''), (err) => {
-                        if (err) throw err;
-                    });
-                }
                 res.redirect('/users/' + id);
             } else {
                 let roles = await role.findAll();
@@ -277,11 +285,14 @@ module.exports = {
                     }
                 }
                 // Save image
-                if (req.file) { 
-                    fs.rename(req.file.path, req.file.path.replace('/tmp', ''), (err) => {
-                        if (err) throw err;
+                if(req.file) {
+                    let newFilename = userResult.id + path.extname(req.file.originalname)
+                    let oldPath = req.file.path;
+                    let newPath = req.file.destination.replace('tmp', newFilename);
+                    fs.rename(oldPath, newPath, (err) => {
+                        if(err) throw err;
                     });
-                    userResult.image = req.file.filename;
+                    userResult.image = newFilename;
                 }
                 // Update user
                 userResult.firstname = req.body.firstname;
