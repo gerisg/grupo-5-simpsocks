@@ -935,6 +935,15 @@ footer {
   font-size: .9rem;
   margin: .75rem 0 0;
 }
+.stock-table input {
+  border: 0;
+  border-bottom: 2px solid var(--light);
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  padding: 0 1rem;
+  margin: 0;
+  outline: none;
+}
 
 /* Login & Register forms */
 

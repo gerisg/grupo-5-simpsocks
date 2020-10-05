@@ -58,16 +58,21 @@
                             <span class="error"><%= locals.errors && errors.description ? errors.description.msg : '' %> </span>
                         </div>
                     </div>
-                    <div class="col-12 col-md-8 form-group">
+                    <div class="col-12 col-md-9 form-group">
                         <label for="discount">Tabla de SKU</label>
                         <div class="row">
-                            <div class="col-3 col-md-2">#</div>
-                            <div class="col-5 col-md-4">Stock</div>
-                            <div class="col-4 col-md-6">Detalle</div>
+                            <div class="col-4 col-md-4">#</div>
+                            <div class="col-6 col-md-6">Detalle</div>
+                            <div class="col-2 col-md-2">Stock</div>
                             <% for( let i = 0; i < product.skus.length; i++ ) { %>
-                                <div class="col-3 col-md-2"><%= product.skus[i].sku %></div>
-                                <div class="col-5 col-md-4">
-                                    <div class="form-group">
+                                <div class="col-4 col-md-4"><%= product.skus[i].sku %></div>
+                                <div class="col-6 col-md-6">
+                                    <% product.skus[i].properties.forEach(property => { %>
+                                        <b><%= property.name %></b>     
+                                    <% }) %>
+                                </div>
+                                <div class="col-2 col-md-2">
+                                    <div class="stock-table">
                                         <% if (locals.errors) { %>
                                             <input type="number" 
                                                 id="<%= product.skus[i].id %>"
@@ -84,11 +89,6 @@
                                             <span class="error"><%= locals.errors && errors.sku ? errors.sku.msg : '' %> </span>
                                         <% } %>
                                     </div>
-                                </div>
-                                <div class="col-4 col-md-6">
-                                    <% product.skus[i].properties.forEach(property => { %>
-                                        <b><%= property.name %></b>     
-                                    <% }) %>
                                 </div>
                             <% } %>
                         </div>
@@ -117,7 +117,7 @@
                     <div class="col-12">
                         <div class="form-checkbox">
                             <p>Imágenes existentes</p> 
-                            <div class="row">
+                            <div class="row main-around">
                                 <% if (!product.images || product.images.length == 0) { %>
                                     <p>Producto sin imágenes.</p>
                                 <% } else { %>
@@ -126,7 +126,7 @@
                                         <label for="removeCurrentImages">Eliminar imágenes actuales</label>
                                     </div>
                                     <% product.images.forEach(image => { %>
-                                    <div class="col-6">
+                                    <div class="col-5 col-md-2">
                                         <figure>
                                             <img src="/images/products/<%= image.name %>" alt="imagen de producto">
                                         </figure>
