@@ -36,7 +36,7 @@
                     </div>
                     <div class="col-12 col-md-6 form-group">
                         <label for="email">Email</label>
-                        <input type="hidden" name="oldEmail" id="oldEmail" value="<%= locals.user ? user.email : '' %>">
+                        <input type="hidden" name="oldEmail" id="oldEmail" value="<%= locals.user && locals.user.oldEmail ? user.oldEmail : user.email %>">
                         <input type="email" id="email" name="email" placeholder="Ej: juanperez@mail.com"
                             value="<%= locals.user ? user.email : '' %>"
                             class="<%= locals.errors && errors.email ? 'danger' : '' %>">

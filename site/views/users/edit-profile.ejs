@@ -47,7 +47,7 @@
                     </div>
                     <div class="col-12 col-lg-6 form-group">
                         <label for="email">Email</label>
-                        <input type="hidden" name="oldEmail" id="oldEmail" value="<%= user.email %>">
+                        <input type="hidden" name="oldEmail" id="oldEmail" value="<%= user.oldEmail ? user.oldEmail : user.email %>">
                         <input type="email" name="email" id="email" value="<%= user.email %>">
                         <span class="error"><%= locals.errors && errors.email ? errors.email.msg : '' %></span>
                     </div>
