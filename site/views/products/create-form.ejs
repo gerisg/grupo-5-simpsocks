@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include('../partials/head') %>
+<script src="/js/validator.min.js"></script>
+<script src="/js/createProduct-validations.js"></script>
 <body class="form">
     <%- include('../partials/header') %>
 
@@ -18,7 +20,7 @@
             <div class="header">
                 <p>Crear producto</p>
             </div>
-            <form action="/products/" method="POST" enctype="multipart/form-data">
+            <form action="/products/" id="createProductForm" method="POST" enctype="multipart/form-data">
                 <div class="row main-between">
                     <div class="col-12 form-group">
                         <label for="name">Nombre</label> 
@@ -52,7 +54,7 @@
                     <% variants.forEach(variant => { %>
                     <div class="col-12 form-group">
                         <label for="<%= variant.name %>"><%= variant.display %></label>
-                        <div class="row">
+                        <div class="row" id="checkbox_<%= variant.name %>">
                             <% variant.variant_values.forEach(v_value => { %>
                                 <div class="col-6 col-md-4"> 
                                     <input type="checkbox" name="variants" id="<%= v_value.id %>" value="<%= variant.id %>-<%= v_value.id %>"
@@ -62,12 +64,13 @@
                             <% }) %>
                             <span class="error"><%= locals.errors && errors.variants? errors.variants.msg : '' %> </span>
                         </div>
+                        <span class="error"><%= locals.errors && errors.checkbox ? errors.checkbox.msg : '' %> </span>
                     </div>
                     <% }) %>
                     <!-- Categories -->
                     <div class="col-12 form-group">
                         <label for="categories">Categorías</label> 
-                        <div class="row">
+                        <div class="row" id="categories">
                             <% categories.forEach(category => { %>
                                 <div class="col-6 col-md-3"> 
                                     <input type="checkbox" name="categories" id="<%= category.id %>" value=<%= category.id %>
@@ -77,6 +80,7 @@
                             <% }) %>
                             <span class="error"><%= locals.errors && errors.categories? errors.categories.msg : '' %> </span>
                         </div>
+                        <span class="error"><%= locals.errors && errors.checkbox ? errors.checkbox.msg : '' %> </span>
                     </div>
                     <div class="col-12 form-group">
                         <label for="images">Subí las fotos de tus Simpsocks</label>

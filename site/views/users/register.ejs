@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include('../partials/head') %>
+<script src="/js/validator.min.js"></script>
+<script src="/js/register-validations.js"></script>
 <body class="form">
     <%- include('../partials/header') %>
 
     <main class="guest-form">
         <section class="row main-center">
             <div class="col-11 col-md-5 col-lg-4">
-                <form action="/users/register" method="POST">
+                <form action="/users/register"  id="registerForm" method="POST">
                     <div class="header">
                         <p>¡Bienvenid@!</p>
                         <p class="title">Registrarme</p>
