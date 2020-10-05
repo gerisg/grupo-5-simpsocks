@@ -58,7 +58,6 @@ window.addEventListener('load', function () {
         handleFeedback(description, feedback);
     };
 
-    // REVISAR No se muestra el msj de feedback 
     let validateStock = function() {
         let feedback = '';
         if (validator.isEmpty(this.value, { ignore_whitespace: true })) {

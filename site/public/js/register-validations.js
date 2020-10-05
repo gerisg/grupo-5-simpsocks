@@ -2,10 +2,10 @@ window.addEventListener('load', function(){
     let errors = {};
 
     let registerForm = document.getElementById('registerForm');
-    let firstName = document.getElementById('firstname');
-    let lastName = document.getElementById('lastname');
-    let email = document.getElementById('email');
-    let password = document.getElementById('password');
+    let firstName = registerForm[0];
+    let lastName = registerForm[1];
+    let email = registerForm[2];
+    let password = registerForm[3];
 
     let validateFisrtName = function() {
         let feedback = '';

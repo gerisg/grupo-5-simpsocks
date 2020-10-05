@@ -3,8 +3,8 @@ window.addEventListener('load', function() {
     let errors = {};
 
     let loginForm = document.getElementById('loginForm');
-    let email = document.getElementById('email');
-    let password = document.getElementById('password');
+    let email = loginForm[0]
+    let password = loginForm[1]
 
     let validateEmail = function() {
         let feedback = '';

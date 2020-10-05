@@ -2,10 +2,10 @@ window.addEventListener('load', function(){
     let errors = {};
 
     let createProductForm = document.getElementById('createProductForm');
-    let name = document.getElementById('name');
-    let description = document.getElementById('description');
-    let price = document.getElementById('price');
-    let discount = document.getElementById('discount');
+    let name = createProductForm[0];
+    let description = createProductForm[1];
+    let price = createProductForm[2];
+    let discount = createProductForm[3];
     let type = document.getElementById('checkbox_sock-type');
     let size = document.getElementById('checkbox_sock-size');
     let categories = document.getElementById('categories');

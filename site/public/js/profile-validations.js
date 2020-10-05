@@ -2,11 +2,13 @@ window.addEventListener('load', function(){
     let errors = {};
 
     let profileForm = document.getElementById('profileForm');
-    let firstName = document.getElementById('firstname');
-    let lastName = document.getElementById('lastname');
-    let phone = document.getElementById('phone');
-    let email = document.getElementById('email');
-    let password = document.getElementById('password');
+    let firstName = profileForm[0]
+    let lastName = profileForm[1]
+    let phone = profileForm[2]
+    let email = profileForm[3]
+    // let password = document.getElementById('password');
+    let password = profileForm[12];
+    let images = profileForm[14];
 
 
     let validateFisrtName = function() {
@@ -59,6 +61,11 @@ window.addEventListener('load', function(){
         handleFeedback(email, feedback);
     };
 
+    let validateImages = function (event){ //captura el path y nombre del archivo
+        let regex = new RegExp('^.*\.(jpg|gif|png|jpeg)$');
+        handleFeedback(images, regex.test(event.target.value) ? '' : 'Debe ser jpg, gif, png o jpeg');
+    }
+
     let validatePassword = function(){
         let feedback = '';
 
@@ -95,6 +102,7 @@ window.addEventListener('load', function(){
         validateLastName();
         validatePhone();
         validateEmail();
+        validateImages();
         validatePassword();
 
         if(object.keys(errors).length) { //objeto con arrays de propiedades
@@ -109,6 +117,7 @@ window.addEventListener('load', function(){
     phone.addEventListener('blur', validatePhone);
     email.addEventListener('blur', validateEmail);
     password.addEventListener('blur', validatePassword);
+    images.addEventListener('change', validateImages);
     profileForm.addEventListener('submit', validateProfileForm);
 
 
