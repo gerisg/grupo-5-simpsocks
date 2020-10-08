@@ -97,13 +97,11 @@ window.addEventListener('load', function () {
         let feedbackElement = element.nextElementSibling;
 
         if (feedback != '') {
-            // element.classList.add('error');
             feedbackElement.classList.add('error');
             console.log(element);
-            errors[element.name] = feedback; //[element. nombre del imput]
+            errors[element.name] = feedback; //[element. nombre del input]
 
         } else {
-            // element.classList.remove('error');
             feedbackElement.classList.remove('error');
             delete errors[element.name];
         }
@@ -118,8 +116,6 @@ window.addEventListener('load', function () {
         validateDescription();
         validatePrice();
         validateDiscount();
-        // TODO validateType();
-        // TODO validateSize();
         validateStocks();
         validateCategories();
         validateImages();
