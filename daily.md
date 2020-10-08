@@ -89,3 +89,15 @@ __Asistentes__: Vale, Martin, Gera
 | __Gera__: Diseño DER. Configuración de Sequelize. Creación de models, migration y seeders. Migración de Productos y Categorías. Limpieza datos JSON. Reviews de usuarios. |
 
 ---
+
+__Fecha__: 7/10
+
+__Asistentes__: Vale, Martin, Gera
+
+| Resumen |
+| -------- |
+| __Vale__: Validaciones de Front End : Login, Register, Create Product, Edit Product, Profile. |
+| __Martin__: Validaciones de Back End : Login, Register, Create Product, Edit Product, Profile.| 
+| __Gera__:  Review  y fixeo de validaciones, validacion de Imagenes, Password Opcional.|
+
+---
