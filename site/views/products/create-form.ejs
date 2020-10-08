@@ -62,7 +62,6 @@
                                     <span><%= v_value.name %></span>                                
                                 </div>
                             <% }) %>
-                            <span class="error"><%= locals.errors && errors.variants? errors.variants.msg : '' %> </span>
                         </div>
                         <span class="error"><%= locals.errors && errors.checkbox ? errors.checkbox.msg : '' %> </span>
                     </div>
@@ -78,7 +77,6 @@
                                     <span><%= category.name %></span>                                    
                                 </div>
                             <% }) %>
-                            <span class="error"><%= locals.errors && errors.categories? errors.categories.msg : '' %> </span>
                         </div>
                         <span class="error"><%= locals.errors && errors.checkbox ? errors.checkbox.msg : '' %> </span>
                     </div>

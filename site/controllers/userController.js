@@ -100,7 +100,7 @@ module.exports = {
                 // Update image
                 let imageFilename = req.body.currentImage;
                 if(req.file) {
-                    imageFilename = id + path.extname(req.file.originalname)
+                    imageFilename = id + path.extname(req.file.originalname);
                     let oldPath = req.file.path;
                     let newPath = req.file.destination.replace('tmp', imageFilename);
                     fs.rename(oldPath, newPath, (err) => {

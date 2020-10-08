@@ -54,7 +54,7 @@ window.addEventListener('load', function() {
         validateEmail();
         validatePassword();
 
-        if(object.keys(errors).length) { //objeto con arrays de propiedades
+        if(Object.keys(errors).length) { //objeto con arrays de propiedades
             e.preventDefault();
         }
     };

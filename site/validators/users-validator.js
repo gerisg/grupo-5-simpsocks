@@ -61,7 +61,6 @@ module.exports = {
             .custom(async (value, { req }) => { 
                 let userResult = await user.findOne({ where : { email : value } });
                 if(userResult && userResult.email != req.body.oldEmail) {
-                    console.log(userResult.email, req.body.oldEmail);
                     return Promise.reject('Este e-mail ya fue utilizado por otro usuario');
                 }
             }),
@@ -125,7 +124,6 @@ module.exports = {
             .custom(async (value, { req }) => { 
                 let userResult = await user.findOne({ where : { email : value } });
                 if(userResult && userResult.email != req.body.oldEmail) {
-                    console.log(userResult.email, req.body.oldEmail);
                     return Promise.reject('Este e-mail ya fue utilizado por otro usuario');
                 }
             }),

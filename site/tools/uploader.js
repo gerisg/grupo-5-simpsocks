@@ -14,8 +14,8 @@ module.exports = function(destination) {
                 file.error = 'type';
                 req.file = file;
                 return cb(null, false);
-             }
-             return cb(null, true);
+            }
+            return cb(null, true);
         }
     })
 };

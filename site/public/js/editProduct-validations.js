@@ -58,7 +58,7 @@ window.addEventListener('load', function () {
         handleFeedback(description, feedback);
     };
 
-    let validateStock = function() {
+    let validateStock = function(event) {
         let feedback = '';
         if (validator.isEmpty(this.value, { ignore_whitespace: true })) {
             feedback = 'El campo no puede estar vacío';
@@ -67,6 +67,19 @@ window.addEventListener('load', function () {
         }
         console.log(this.value);
         handleFeedback(this, feedback);
+    };
+
+    let validateStocks = function() {
+        Array.prototype.forEach.call(stocks, function(stock) {
+            let feedback = '';
+            if (validator.isEmpty(stock.value, { ignore_whitespace: true })) {
+                feedback = 'El campo no puede estar vacío';
+            } else if (!validator.isInt(stock.value, { min: 0, max: 100 })) {
+                feedback = 'Ingrese su stock';
+            }
+            console.log(stock.value);
+            handleFeedback(stock, feedback);
+        });
     };
 
     let validateCategories = function () {
@@ -86,6 +99,7 @@ window.addEventListener('load', function () {
         if (feedback != '') {
             // element.classList.add('error');
             feedbackElement.classList.add('error');
+            console.log(element);
             errors[element.name] = feedback; //[element. nombre del imput]
 
         } else {
@@ -99,25 +113,22 @@ window.addEventListener('load', function () {
 
 
     let validateEditProduct = function (e) {
+
         validateName();
         validateDescription();
         validatePrice();
         validateDiscount();
-        validateType();
-        validateSize();
-        validateStock();
+        // TODO validateType();
+        // TODO validateSize();
+        validateStocks();
         validateCategories();
         validateImages();
 
         console.log(Object.keys(errors));
 
         if (Object.keys(errors).length) { //objeto con arrays de propiedades
-            console.log(Object.keys(errors).length);
             e.preventDefault();
-
         }
-        console.log(Object.keys(errors).length);
-
     };
 
     //Agregado de listeners 
@@ -126,12 +137,11 @@ window.addEventListener('load', function () {
     discount.addEventListener('blur', validateDiscount);
     description.addEventListener('blur', validateDescription);
     Array.prototype.forEach.call(stocks, function(stock) {
-        stock.addEventListener('blur', validateStock)
+        stock.addEventListener('blur', validateStock, false)
     });
     categories[0].parentElement.parentElement.addEventListener('change', validateCategories);
     images.addEventListener('change', validateImages);
-
-
+    
     editProductForm.addEventListener('submit', validateEditProduct);
 
 })

@@ -105,7 +105,8 @@ window.addEventListener('load', function(){
         validateImages();
         validatePassword();
 
-        if(object.keys(errors).length) { //objeto con arrays de propiedades
+        if(Object.keys(errors).length) { //objeto con arrays de propiedades
+            alert('prevent');
             e.preventDefault();
         }
     }

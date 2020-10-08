@@ -9,7 +9,7 @@ module.exports = {
         email: 'admin@mail.com',
         password: '$2a$10$hhvZDtpcjxDoaDRLiMnoEeBJsOT.sVgEGRcE0kTDMFzLuwGR750Xq',
         image: 'admin.png',
-        phone: '446-875-3008',
+        phone: '4468753008',
         role_id: 2
       },
       {
@@ -18,7 +18,7 @@ module.exports = {
         email: 'user@mail.com',
         password: '$2a$10$hhvZDtpcjxDoaDRLiMnoEeBJsOT.sVgEGRcE0kTDMFzLuwGR750Xq',
         image: 'user.png',
-        phone: '399-284-4638',
+        phone: '3992844638',
         role_id: 1
       },
       {
@@ -27,7 +27,7 @@ module.exports = {
         email: 'gnewstead2@salon.com',
         password: '$2a$10$hhvZDtpcjxDoaDRLiMnoEeBJsOT.sVgEGRcE0kTDMFzLuwGR750Xq',
         image: null,
-        phone: '698-846-1120',
+        phone: '6988461120',
         role_id: 1
       },
       {
@@ -36,7 +36,7 @@ module.exports = {
         email: 'mlangfield3@wix.com',
         password: '$2a$10$hhvZDtpcjxDoaDRLiMnoEeBJsOT.sVgEGRcE0kTDMFzLuwGR750Xq',
         image: null,
-        phone: '908-541-2344',
+        phone: '9085412344',
         role_id: 1
       },
       {
@@ -45,7 +45,7 @@ module.exports = {
         email: 'gpiatti4@boston.com',
         password: '$2a$10$hhvZDtpcjxDoaDRLiMnoEeBJsOT.sVgEGRcE0kTDMFzLuwGR750Xq',
         image: null,
-        phone: '695-601-3650',
+        phone: '6956013650',
         role_id: 1
       },
       {
@@ -53,8 +53,8 @@ module.exports = {
         lastname: 'Gobeau',
         email: 'agobeau5@mozilla.com',
         password: '$2a$10$hhvZDtpcjxDoaDRLiMnoEeBJsOT.sVgEGRcE0kTDMFzLuwGR750Xq',
-        image: 'user_6.jpg',
-        phone: '413-113-5090',
+        image: null,
+        phone: '4131135090',
         role_id: 1
       },
       {
@@ -62,8 +62,8 @@ module.exports = {
         lastname: 'Steers',
         email: 'nsteers6@youku.com',
         password: '$2a$10$hhvZDtpcjxDoaDRLiMnoEeBJsOT.sVgEGRcE0kTDMFzLuwGR750Xq',
-        image: 'user_7.jpg',
-        phone: '707-604-7975',
+        image: null,
+        phone: '7076047975',
         role_id: 1
       },
       {
@@ -71,8 +71,8 @@ module.exports = {
         lastname: 'Ertel',
         email: 'gertel7@istockphoto.com',
         password: '$2a$10$hhvZDtpcjxDoaDRLiMnoEeBJsOT.sVgEGRcE0kTDMFzLuwGR750Xq',
-        image: 'user_8.jpg',
-        phone: '568-306-3901',
+        image: null,
+        phone: '5683063901',
         role_id: 1
       },
       {
@@ -81,7 +81,7 @@ module.exports = {
         email: 'bbauldry8@elegantthemes.com',
         password: '$2a$10$hhvZDtpcjxDoaDRLiMnoEeBJsOT.sVgEGRcE0kTDMFzLuwGR750Xq',
         image: null,
-        phone: '643-847-4104',
+        phone: '6438474104',
         role_id: 1
       },
       {
@@ -90,7 +90,7 @@ module.exports = {
         email: 'rhuxley9@si.edu',
         password: '$2a$10$hhvZDtpcjxDoaDRLiMnoEeBJsOT.sVgEGRcE0kTDMFzLuwGR750Xq',
         image: null,
-        phone: '511-334-3597',
+        phone: '5113343597',
         role_id: 1
       },
       {
@@ -99,7 +99,7 @@ module.exports = {
         email: 'rkenwella@nytimes.com',
         password: '$2a$10$hhvZDtpcjxDoaDRLiMnoEeBJsOT.sVgEGRcE0kTDMFzLuwGR750Xq',
         image: null,
-        phone: '894-222-2435',
+        phone: '8942222435',
         role_id: 1
       },
       {
@@ -117,7 +117,7 @@ module.exports = {
         email: 'loconnellc@spiegel.de',
         password: '$2a$10$hhvZDtpcjxDoaDRLiMnoEeBJsOT.sVgEGRcE0kTDMFzLuwGR750Xq',
         image: null,
-        phone: '105-331-2606',
+        phone: '1053312606',
         role_id: 1
       },
       {
@@ -144,7 +144,7 @@ module.exports = {
         email: 'bbynertf@flickr.com',
         password: '$2a$10$hhvZDtpcjxDoaDRLiMnoEeBJsOT.sVgEGRcE0kTDMFzLuwGR750Xq',
         image: null,
-        phone: '627-319-2724',
+        phone: '6273192724',
         role_id: 1
       },
       {
@@ -153,7 +153,7 @@ module.exports = {
         email: 'estorckeg@aboutads.info',
         password: '$2a$10$hhvZDtpcjxDoaDRLiMnoEeBJsOT.sVgEGRcE0kTDMFzLuwGR750Xq',
         image: null,
-        phone: '678-254-0554',
+        phone: '6782540554',
         role_id: 1
       },
       {
@@ -161,8 +161,8 @@ module.exports = {
         lastname: 'Sattin',
         email: 'ssattinh@mashable.com',
         password: '$2a$10$hhvZDtpcjxDoaDRLiMnoEeBJsOT.sVgEGRcE0kTDMFzLuwGR750Xq',
-        image: 'user_18.jpg',
-        phone: '629-701-8266',
+        image: null,
+        phone: '6297018266',
         role_id: 1
       },
       {
@@ -170,8 +170,8 @@ module.exports = {
         lastname: 'Scheu',
         email: 'hscheui@engadget.com',
         password: '$2a$10$hhvZDtpcjxDoaDRLiMnoEeBJsOT.sVgEGRcE0kTDMFzLuwGR750Xq',
-        image: 'user_19.jpg',
-        phone: '596-318-0719',
+        image: null,
+        phone: '5963180719',
         role_id: 1
       },
       {
@@ -179,8 +179,8 @@ module.exports = {
         lastname: 'Skeermer',
         email: 'askeermerj@ustream.tv',
         password: '$2a$10$hhvZDtpcjxDoaDRLiMnoEeBJsOT.sVgEGRcE0kTDMFzLuwGR750Xq',
-        image: 'user_20.jpg',
-        phone: '906-654-7659',
+        image: null,
+        phone: '9066547659',
         role_id: 1
       }
     ], {});

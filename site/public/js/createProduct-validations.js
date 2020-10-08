@@ -122,15 +122,11 @@ window.addEventListener('load', function(){
         validateType();
         validateSize();
         validateCategories();
-        console.log(Object.keys(errors));
        
         if(Object.keys(errors).length) { //objeto con arrays de propiedades
-            console.log(Object.keys(errors).length);
+            console.log(Object.keys(errors));
             e.preventDefault();
-            
         }
-        console.log(Object.keys(errors).length);
-
     };
 
     //Agregado de listeners 
