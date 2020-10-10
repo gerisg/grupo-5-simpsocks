@@ -6,9 +6,10 @@ window.addEventListener('load', function () {
     let price = editProductForm[1];
     let discount = editProductForm[2];
     let description = editProductForm[3];
-    let stocks = editProductForm.getElementsByClassName('stock-in');
-    let categories = editProductForm.getElementsByClassName('cat-in');
-    let images = editProductForm.getElementsByTagName('input').images;
+    let stocks = editProductForm.stocks; // filter by name
+    let categoriesWrapper = document.getElementById('categories');
+    let categories = editProductForm.categories; // filter by name
+    let images = editProductForm.images;
     
     let validateName = function () {
         let feedback = '';
@@ -58,59 +59,39 @@ window.addEventListener('load', function () {
         handleFeedback(description, feedback);
     };
 
-    let validateStock = function(event) {
+    let validateStock = function(stock) {
         let feedback = '';
-        if (validator.isEmpty(this.value, { ignore_whitespace: true })) {
+        if (validator.isEmpty(stock.value, { ignore_whitespace: true })) {
             feedback = 'El campo no puede estar vacío';
-        } else if (!validator.isInt(this.value, { min: 0, max: 100 })) {
-            feedback = 'Ingrese su stock';
+        } else if (!validator.isInt(stock.value, { min: 0 })) {
+            feedback = 'Stock inválido';
         }
-        console.log(this.value);
-        handleFeedback(this, feedback);
-    };
-
-    let validateStocks = function() {
-        Array.prototype.forEach.call(stocks, function(stock) {
-            let feedback = '';
-            if (validator.isEmpty(stock.value, { ignore_whitespace: true })) {
-                feedback = 'El campo no puede estar vacío';
-            } else if (!validator.isInt(stock.value, { min: 0, max: 100 })) {
-                feedback = 'Ingrese su stock';
-            }
-            console.log(stock.value);
-            handleFeedback(stock, feedback);
-        });
+        handleFeedback(stock, feedback , `${stock.name}-${stock.id}`);
     };
 
     let validateCategories = function () {
         let someoneChecked = Array.prototype.filter.call(categories, cat => cat.checked);
-        handleFeedback(categories[0].parentElement.parentElement, someoneChecked.length == 0 ? 'El campo no puede estar vacío' : '');
+        handleFeedback(categoriesWrapper, someoneChecked.length == 0 ? 'El campo no puede estar vacío' : '', 'categories');
     };
 
-    let validateImages = function (event){ //captura el path y nombre del archivo
+    let validateImages = function (event){
         let regex = new RegExp('^.*\.(jpg|gif|png|jpeg)$');
         handleFeedback(images, regex.test(event.target.value) ? '' : 'Debe ser jpg, gif, png o jpeg');
     }
 
-    //Modularizar la funcion para mostrar feedback 
-    let handleFeedback = function (element, feedback) {
+    let handleFeedback = function (element, feedback, name=element.name) {
         let feedbackElement = element.nextElementSibling;
 
         if (feedback != '') {
-            // element.classList.add('error');
             feedbackElement.classList.add('error');
-            console.log(element);
-            errors[element.name] = feedback; //[element. nombre del imput]
-
+            errors[name] = feedback;
         } else {
-            // element.classList.remove('error');
             feedbackElement.classList.remove('error');
-            delete errors[element.name];
+            delete errors[name];
         }
 
         feedbackElement.innerText = feedback;
     };
-
 
     let validateEditProduct = function (e) {
 
@@ -118,29 +99,29 @@ window.addEventListener('load', function () {
         validateDescription();
         validatePrice();
         validateDiscount();
+        validateCategories();
         // TODO validateType();
         // TODO validateSize();
-        validateStocks();
-        validateCategories();
-        validateImages();
 
-        console.log(Object.keys(errors));
+        Array.prototype.forEach.call(stocks, function(stock) {
+            validateStock(stock);
+        });
 
-        if (Object.keys(errors).length) { //objeto con arrays de propiedades
+        if (Object.keys(errors).length) {
             e.preventDefault();
         }
     };
 
-    //Agregado de listeners 
+    // Agregado de listeners 
     name.addEventListener('blur', validateName);
     price.addEventListener('blur', validatePrice);
     discount.addEventListener('blur', validateDiscount);
     description.addEventListener('blur', validateDescription);
-    Array.prototype.forEach.call(stocks, function(stock) {
-        stock.addEventListener('blur', validateStock, false)
-    });
-    categories[0].parentElement.parentElement.addEventListener('change', validateCategories);
+    categoriesWrapper.addEventListener('change', validateCategories);
     images.addEventListener('change', validateImages);
+    Array.prototype.forEach.call(stocks, function(stock) {
+        stock.addEventListener('change', validateStock.bind(this, stock));
+    });
     
     editProductForm.addEventListener('submit', validateEditProduct);
 
