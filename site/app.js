@@ -11,6 +11,7 @@ const userRoutes = require('./routes/userRoutes');
 const productRoutes = require('./routes/productRoutes');
 const categoryRoutes = require('./routes/categoryRoutes');
 const siteRoutes = require('./routes/siteRoutes');
+const apiRoutes = require('./routes/apiRoutes');
 
 // Configuration
 app.set('view engine', 'ejs'); // views extension ejs
@@ -31,6 +32,7 @@ app.use('/users', userRoutes);
 app.use('/products', productRoutes);
 app.use('/categories', categoryRoutes);
 app.use('/site', siteRoutes);
+app.use('/api', apiRoutes);
 
 // Errors
 app.use((req, res, next) => {
