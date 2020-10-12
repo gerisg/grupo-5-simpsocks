@@ -1,4 +1,4 @@
-const create = require('../../tools/creator');
+const sender = require('../../tools/sender');
 const { user, role, address } = require('../../database/models');
 
 module.exports = {
@@ -8,14 +8,9 @@ module.exports = {
                 include: { model: role, attributes: ['name'] }, 
                 attributes: { exclude: ['password', 'role_id'] }
             });
-            let response = create.OK(req);
-            response.data = data;
-            response.meta.count = data.length;
-            res.json(response);
+            sender.OK(req, res, data);
         } catch (error) {
-            let response = create.Error(req);
-            response.error = error.message;
-            res.status(500).json(response);
+            sender.Error(req, res, error.message);
         }
     },
     detail: async (req,res) => {
@@ -27,13 +22,23 @@ module.exports = {
                 ],
                 attributes: { exclude: ['password', 'role_id'] },
             });
-            let response = create.OK(req);
-            response.data = data;
-            res.json(response);
+            sender.OK(req, res, data);
         } catch (error) {
-            let response = create.Error(req);
-            response.error = error.message;
-            res.status(500).json(response);
+            sender.Error(req, res, error.message);
+        }
+    },
+    latest: async (req,res) => {
+        try {
+            let data = await user.findAll({
+                limit: 1,
+                include: { model: role, attributes: ['name'] },
+                attributes: { exclude: ['password', 'role_id'] },
+                order: [['created_at', 'DESC']]
+            });
+            sender.OK(req, res, data);
+        } catch (error) {
+            console.log('error')
+            sender.Error(req, res, error.message);
         }
     }
 };

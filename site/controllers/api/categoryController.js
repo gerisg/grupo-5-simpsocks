@@ -1,4 +1,4 @@
-const create = require('../../tools/creator');
+const sender = require('../../tools/sender');
 const { category } = require('../../database/models');
 
 module.exports = {
@@ -12,14 +12,9 @@ module.exports = {
                 }],
                 attributes: { exclude: ['parent_id'] }
             });
-            let response = create.OK(req);
-            response.data = data;
-            response.meta.count = data.length;
-            res.json(response);
+            sender.OK(req, res, data);
         } catch (error) {
-            let response = create.Error(req);
-            response.error = error.message;
-            res.status(500).json(response);
+            sender.Error(req, res, error.message);
         }
     }
 };

@@ -53,7 +53,8 @@ module.exports = {
                     password: encryptedPassword,
                     role_id: parseInt(req.body.category), 
                     phone: req.body.phone,
-                    addresses: parser.parseAddresses(req.body.addresses)
+                    addresses: parser.parseAddresses(req.body.addresses),
+                    created_at: new Date()
                 }, { include: address });
                 // Save image
                 if(req.file) {

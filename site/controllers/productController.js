@@ -91,7 +91,8 @@ module.exports = {
                     discount: parseInt(req.body.discount),
                     description: req.body.description,
                     images: parsedImages,
-                    skus: parsedVariants.skus
+                    skus: parsedVariants.skus,
+                    created_at: new Date()
                 }, {
                     include: [{ model: image }, { model: sku }]
                 });

@@ -13,7 +13,8 @@ module.exports = (sequelize, DataTypes) => {
     name: { type: DataTypes.STRING(255), allowNull: false },
     description: { type: DataTypes.STRING(255) },
     discount: { type: DataTypes.INTEGER(11), defaultValue: 0 },
-    price: { type: DataTypes.FLOAT, allowNull: false }
+    price: { type: DataTypes.FLOAT, allowNull: false },
+    created_at: { type: DataTypes.DATE, allowNull: false }
   }, {
     sequelize,
     modelName: 'product',

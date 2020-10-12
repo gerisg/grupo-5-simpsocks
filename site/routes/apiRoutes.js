@@ -6,12 +6,16 @@ const userController = require('../controllers/api/userController');
 
 // Listado de usuarios
 router.get('/users', userController.list);
-// Detalle de un usuario
+// Ultimo usuario creado
+router.get('/users/latest', userController.latest);
+// Detalle de usuario
 router.get('/users/:id', userController.detail);
 
 // Detalle de producto
 router.get('/products', productController.list);
-// Detalle de un producto
+// Ultimo producto creado
+router.get('/products/latest', productController.latest);
+// Detalle de producto
 router.get('/products/:id', productController.detail);
 
 // Listado de categorías

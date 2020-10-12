@@ -6,7 +6,8 @@ module.exports = {
       name: { type: Sequelize.STRING(255), allowNull: false },
       description: { type: Sequelize.STRING(255), allowNull: false },
       discount: { type: Sequelize.INTEGER, defaultValue: 0 },
-      price: { type: Sequelize.FLOAT, allowNull: false }
+      price: { type: Sequelize.FLOAT, allowNull: false },
+      created_at: { allowNull: false, type: Sequelize.DATE, defaultValue: Sequelize.literal('NOW()') }
     });
   },
   down: async (queryInterface, Sequelize) => {
