@@ -78,6 +78,51 @@ La arquitectura de la información se muestra desplegada de forma sencilla. En l
 
 >Es un tema que tomamos de referencia por contener una estética atractiva. Además, es destacable el proceso de compra y checkout.
 
+
+## Instrucciones para iniciar Simpsocks con Docker Compose
+
+1. Abrir una consola y clonar el proyecto.
+
+    ```
+    git clone https://github.com/gerisg/grupo-5-simpsocks
+    ```
+
+2. Posicionar en el directorio donde se encuentran los archivos de la aplicación.
+
+    ```sh
+    cd grupo-5-simpsocks/site
+    ```
+
+3. Renombrar el archivo .env-example a .env
+
+4. Ejecutar el siguiente comando para iniciar los contenedores de la aplicación y base de datos.
+
+    ```sh
+    docker-compose up
+    ```
+
+5. En una nueva consola ejecuta los siguientes comandos para crear la base de datos, migrar las tablas con sus relaciones y anexar datos de prueba.
+
+    ```sh
+    docker exec -it simpsocks_dev sequelize db:create
+    docker exec -it simpsocks_dev sequelize db:migrate
+    docker exec -it simpsocks_dev sequelize db:seed:all
+    ```
+6. Abrir un browser e ingresar a [localhost:3000](localhost:3000).
+
+    ### Credenciales
+
+    #### Acceso Administrador:
+    - Usuario: admin@mail.com
+    - Contraseña: 12345678
+
+    #### Acceso Usuario:
+    - Usuario: user@mail.com
+    - Contraseña: 12345678
+
+7. Disfrutá de SimpSocks !! Y si querés reportarnos errores o solicitar nuevas funcionalidades, podés crear un ticket [acá](https://github.com/gerisg/grupo-5-simpsocks/issues/new).
+
+
 ## Instrucciones para iniciar Simpsocks
 
 1. Abrir una consola y clonar el proyecto.
@@ -139,7 +184,7 @@ La arquitectura de la información se muestra desplegada de forma sencilla. En l
     npm start
     ```
 
-6. Abrir un browser e ingresar a [localhost:3000](localhost:3000).
+8. Abrir un browser e ingresar a [localhost:3000](localhost:3000).
 
     ### Credenciales
 
@@ -151,7 +196,8 @@ La arquitectura de la información se muestra desplegada de forma sencilla. En l
     - Usuario: user@mail.com
     - Contraseña: 12345678
 
-7. Disfrutá de SimpSocks !! Y si querés reportarnos errores o solicitar nuevas funcionalidades, podés crear un ticket [acá](https://github.com/gerisg/grupo-5-simpsocks/issues/new).
+9. Disfrutá de SimpSocks !! Y si querés reportarnos errores o solicitar nuevas funcionalidades, podés crear un ticket [acá](https://github.com/gerisg/grupo-5-simpsocks/issues/new).
+
 
 ## Links útiles
 
