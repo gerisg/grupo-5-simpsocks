@@ -1,0 +1,18 @@
+.sidebar-brand-icon {
+    width: 75%;
+}
+
+.sidebar-brand-icon > img {
+    width: 100%;
+}
+
+.ultra {
+    font-weight: 400;
+    font-style: italic;
+}
+
+@media (min-width: 768px) {
+    .sidebar-brand-icon {
+        width: 25%;
+    }
+}
