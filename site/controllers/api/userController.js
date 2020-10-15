@@ -6,10 +6,9 @@ module.exports = {
     list: async (req, res) => {
         try {
             let result = await user.findAndCountAll({ 
-                include: { model: role, attributes: ['name'] }, 
                 attributes: { 
                     exclude: ['password', 'role_id'], 
-                    include: [[fn('concat', `${req.protocol}://${req.get('host')}/images/users/`, col('image')), 'image_url']]
+                    include: [[fn('concat', `${req.protocol}://${req.get('host')}/api/users/`, col('id')), 'detail']]
                 }
             });
             sender.OK(req, res, result);
@@ -21,7 +20,6 @@ module.exports = {
         try {
             let data = await user.findByPk(Number(req.params.id), { 
                 include: [
-                    { model: role, attributes: ['name'] },
                     { model: address, attributes: { exclude: ['user_id'] }}
                 ],
                 attributes: { 
