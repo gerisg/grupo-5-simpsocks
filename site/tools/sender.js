@@ -5,7 +5,7 @@ function OK(req, res, result) {
             url: `${req.protocol}://${req.get('host')}${req.originalUrl}`,
             count: result.count ? result.count : 1
         },
-        data: result
+        data: result.rows ? result.rows : result
     });
 }
 

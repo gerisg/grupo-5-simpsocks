@@ -1,4 +1,5 @@
 const sender = require('../../tools/sender');
+const { fn, col } = require('sequelize');
 const { user, role, address } = require('../../database/models');
 
 module.exports = {
@@ -6,7 +7,10 @@ module.exports = {
         try {
             let result = await user.findAndCountAll({ 
                 include: { model: role, attributes: ['name'] }, 
-                attributes: { exclude: ['password', 'role_id'] }
+                attributes: { 
+                    exclude: ['password', 'role_id'], 
+                    include: [[fn('concat', `${req.protocol}://${req.get('host')}/images/users/`, col('image')), 'image_url']]
+                }
             });
             sender.OK(req, res, result);
         } catch (error) {
@@ -20,7 +24,10 @@ module.exports = {
                     { model: role, attributes: ['name'] },
                     { model: address, attributes: { exclude: ['user_id'] }}
                 ],
-                attributes: { exclude: ['password', 'role_id'] },
+                attributes: { 
+                    exclude: ['password', 'role_id'], 
+                    include: [[fn('concat', `${req.protocol}://${req.get('host')}/images/users/`, col('image')), 'image_url']]
+                }
             });
             sender.OK(req, res, data);
         } catch (error) {
@@ -32,7 +39,10 @@ module.exports = {
             let data = await user.findAll({
                 limit: 1,
                 include: { model: role, attributes: ['name'] },
-                attributes: { exclude: ['password', 'role_id'] },
+                attributes: { 
+                    exclude: ['password', 'role_id'], 
+                    include: [[fn('concat', `${req.protocol}://${req.get('host')}/images/users/`, col('image')), 'image_url']]
+                },
                 order: [['created_at', 'DESC']]
             });
             sender.OK(req, res, data);

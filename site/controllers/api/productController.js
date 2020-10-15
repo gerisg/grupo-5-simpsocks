@@ -1,4 +1,5 @@
 const sender = require('../../tools/sender');
+const { fn, col } = require('sequelize');
 const { product, image, category, variant_value, sku } = require('../../database/models');
 
 module.exports = {
@@ -6,7 +7,7 @@ module.exports = {
         try {
             let result = await product.findAndCountAll({
                 include: [ 
-                    { model: image, attributes: ['id', 'name'] },
+                    { model: image, attributes: ['id', 'name', [fn('concat', `${req.protocol}://${req.get('host')}/images/products/`, col('images.name')), 'url']]},
                     { model: category, through: { attributes: [] }, attributes: { exclude: ['parent_id'] }}
                 ]
             });
@@ -19,7 +20,7 @@ module.exports = {
         try {
             let data = await product.findByPk(Number(req.params.id), { 
                 include: [
-                    { model: image, attributes: ['id', 'name'] },
+                    { model: image, attributes: ['id', 'name', [fn('concat', `${req.protocol}://${req.get('host')}/images/products/`, col('images.name')), 'url']] },
                     { model: category, through: { attributes: [] }},
                     { model: sku, include: { model: variant_value, as: 'properties', through: { attributes: [] }}}
                 ]
@@ -34,7 +35,7 @@ module.exports = {
             let data = await product.findAll({
                 limit: 1,
                 include: [
-                    { model: image, attributes: ['id', 'name'] },
+                    { model: image, attributes: ['id', 'name', [fn('concat', `${req.protocol}://${req.get('host')}/images/products/`, col('images.name')), 'url']] },
                     { model: category, through: { attributes: [] }},
                     { model: sku, include: { model: variant_value, as: 'properties', through: { attributes: [] }}}
                 ],
