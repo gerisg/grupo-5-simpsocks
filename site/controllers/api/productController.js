@@ -4,13 +4,13 @@ const { product, image, category, variant_value, sku } = require('../../database
 module.exports = {
     list: async (req, res) => {
         try {
-            let data = await product.findAll({
+            let result = await product.findAndCountAll({
                 include: [ 
                     { model: image, attributes: ['id', 'name'] },
                     { model: category, through: { attributes: [] }, attributes: { exclude: ['parent_id'] }}
                 ]
             });
-            sender.OK(req, res, data);
+            sender.OK(req, res, result);
         } catch (error) {
             sender.Error(req, res, error.message);
         }

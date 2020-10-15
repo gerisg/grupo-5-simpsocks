@@ -1,11 +1,11 @@
-function OK(req, res, data) {
+function OK(req, res, result) {
     res.json({
         meta: {
             status: 200,
             url: `${req.protocol}://${req.get('host')}${req.originalUrl}`,
-            count: data.length
+            count: result.count ? result.count : 1
         },
-        data: data
+        data: result
     });
 }
 

@@ -4,11 +4,11 @@ const { user, role, address } = require('../../database/models');
 module.exports = {
     list: async (req, res) => {
         try {
-            let data = await user.findAll({ 
+            let result = await user.findAndCountAll({ 
                 include: { model: role, attributes: ['name'] }, 
                 attributes: { exclude: ['password', 'role_id'] }
             });
-            sender.OK(req, res, data);
+            sender.OK(req, res, result);
         } catch (error) {
             sender.Error(req, res, error.message);
         }
