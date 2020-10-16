@@ -11,6 +11,7 @@ const userRoutes = require('./routes/userRoutes');
 const productRoutes = require('./routes/productRoutes');
 const categoryRoutes = require('./routes/categoryRoutes');
 const siteRoutes = require('./routes/siteRoutes');
+const apiRoutes = require('./routes/apiRoutes');
 
 // Configuration
 app.set('view engine', 'ejs'); // views extension ejs
@@ -31,6 +32,7 @@ app.use('/users', userRoutes);
 app.use('/products', productRoutes);
 app.use('/categories', categoryRoutes);
 app.use('/site', siteRoutes);
+app.use('/api', apiRoutes);
 
 // Errors
 app.use((req, res, next) => {
@@ -39,4 +41,5 @@ app.use((req, res, next) => {
 });
 
 // Start server
-app.listen (3000, ()=> (console.log('Server listening (3000)')));
+const port = parseInt(process.env.NODE_PORT, 10) || 3000;
+app.listen(port, ()=> (console.log(`Server running on port ${port}`)));

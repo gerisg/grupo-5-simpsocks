@@ -53,7 +53,8 @@ module.exports = {
                     password: encryptedPassword,
                     role_id: parseInt(req.body.category), 
                     phone: req.body.phone,
-                    addresses: parser.parseAddresses(req.body.addresses)
+                    addresses: parser.parseAddresses(req.body.addresses),
+                    created_at: new Date()
                 }, { include: address });
                 // Save image
                 if(req.file) {
@@ -205,7 +206,8 @@ module.exports = {
                     lastname: req.body.lastname,
                     email: req.body.email,
                     password: encryptedPassword,
-                    role_id: 1 // user
+                    role_id: 1, // user
+                    created_at: new Date()
                 }
                 let userResult = await user.create(newUser);
                 req.session.user = { id: userResult.id, name: userResult.firstname, category: 1 };
@@ -309,7 +311,7 @@ module.exports = {
                     }));
                 res.redirect('/users/profile');
             } else {
-                req.body.image = req.file ? req.file.filename : req.body.currentImage;
+                req.body.image = req.body.currentImage;
                 res.render('users/edit-profile', { errors: errors.mapped(), user: req.body});
             }
         } catch (error) {

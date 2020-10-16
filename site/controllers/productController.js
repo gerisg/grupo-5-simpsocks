@@ -40,18 +40,21 @@ module.exports = {
                     { model: variant, include: variant_value }
                 ]}
             );
-            // Relacionados: otros productos en la misma categoría de tipo 'personaje'
-            let matchCategory = productResult.categories.find(category => category.parent && category.parent.name == 'personajes');
-            let relatedResults = await product.findAll({ where: {
-                id: { [Op.not]: productResult.id }},
-                include: [
-                    { model: image },
-                    { model: category, where: { id: matchCategory.id }}
-                ]
-            });
             // Calcular descuentos
             productResult.offerPrice = productResult.discount > 0 ? Math.round(productResult.price * ((100 - productResult.discount) / 100)) : productResult.price;
-            relatedResults.forEach(related => related.offerPrice = related.discount > 0 ? Math.round(related.price * ((100 - related.discount) / 100)) : related.price);
+            // Relacionados: otros productos en la misma categoría de tipo 'personaje'
+            let relatedResults = [];
+            let matchCategory = productResult.categories.find(category => category.parent && category.parent.name == 'personajes');
+            if(matchCategory) {
+                relatedResults = await product.findAll({ where: {
+                    id: { [Op.not]: productResult.id }},
+                    include: [
+                        { model: image },
+                        { model: category, where: { id: matchCategory.id }}
+                    ]
+                });
+                relatedResults.forEach(related => related.offerPrice = related.discount > 0 ? Math.round(related.price * ((100 - related.discount) / 100)) : related.price);
+            }
             // Render
             res.render('products/show', { product: productResult, related: relatedResults});
         } catch (error) {
@@ -91,7 +94,8 @@ module.exports = {
                     discount: parseInt(req.body.discount),
                     description: req.body.description,
                     images: parsedImages,
-                    skus: parsedVariants.skus
+                    skus: parsedVariants.skus,
+                    created_at: new Date()
                 }, {
                     include: [{ model: image }, { model: sku }]
                 });
