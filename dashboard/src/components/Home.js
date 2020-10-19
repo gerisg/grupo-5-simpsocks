@@ -84,10 +84,10 @@ class Home extends Component {
                     }
 
                     {/* LAST ITEM CARDS */}
-                    { this.state.lastUser ?
+                    { this.state.lastUser.length ?
                         <LastUserCard lastItem={ this.state.lastUser } /> : loading
                     }
-                    { this.state.lastProduct ?
+                    { this.state.lastProduct.length ?
                         <LastProductCard lastItem={ this.state.lastProduct } /> : loading
                     }
                     

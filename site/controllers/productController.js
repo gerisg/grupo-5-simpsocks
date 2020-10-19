@@ -244,49 +244,53 @@ module.exports = {
     },
     find: async (req, res) => {
         let filter = {};
-        let productResults;
+        let productResults = [];
         let categorySearchTerms = req.params.category;
         let querySearchTerms = req.query.query;
-        // Search by category
-        if (categorySearchTerms) {
-            let categoryMatch = await category.findOne({ where: { name: categorySearchTerms }});
-            if (categoryMatch) {
-                productResults = await product.findAll(
-                    { include: [
-                        { model: image },
-                        { model: category, where: { id: categoryMatch.id }}
-                    ]}
-                );
-                filter.category = categoryMatch.id;
-            }
-        }
-        // Search by keywords
-        if (querySearchTerms && !productResults) {
-            productResults = await product.findAll(
-                { where: 
-                    { [Op.or]: [
-                        { name: { [Op.like]: `%${querySearchTerms}%` }},
-                        { description: { [Op.like]: `%${querySearchTerms}%` }}
-                    ]},
-                    include: [ image, category ]
+        try {
+            // Search by category
+            if (categorySearchTerms) {
+                let categoryMatch = await category.findOne({ where: { name: categorySearchTerms }});
+                if (categoryMatch) {
+                    productResults = await product.findAll(
+                        { include: [
+                            { model: image },
+                            { model: category, where: { id: categoryMatch.id }}
+                        ]}
+                    );
+                    filter.category = categoryMatch.id;
                 }
-            );
+            }
+            // Search by keywords
+            if (querySearchTerms && !productResults) {
+                productResults = await product.findAll(
+                    { where: 
+                        { [Op.or]: [
+                            { name: { [Op.like]: `%${querySearchTerms}%` }},
+                            { description: { [Op.like]: `%${querySearchTerms}%` }}
+                        ]},
+                        include: [ image, category ]
+                    }
+                );
+            }
+            if (!productResults) {
+                productResults = await product.findAll({ include: [ image, category ]});
+            }
+            // Add offer price
+            productResults.forEach(prod => prod.offerPrice = prod.discount > 0 ? Math.round(prod.price * ((100 - prod.discount) / 100)) : prod.price);
+            // Get categories and variants
+            let [categories, variants] = await Promise.all([
+                category.findAll({ where: {
+                    [Op.or]: [
+                        { name: 'destacados' }, 
+                        { parent_id: { [Op.ne]: null }}
+                    ]
+                }}), 
+                variant.findAll({ include: variant_value })
+            ]);
+            res.render('products/find', { results: productResults, query: querySearchTerms, filter, categories, variants });
+        } catch (error) {
+            res.render('products/find', { results: productResults, query: querySearchTerms, filter });
         }
-        if (!productResults) {
-            productResults = await product.findAll({ include: [ image, category ]});
-        }
-        // Add offer price
-        productResults.forEach(prod => prod.offerPrice = prod.discount > 0 ? Math.round(prod.price * ((100 - prod.discount) / 100)) : prod.price);
-        // Get categories and variants
-        let [categories, variants] = await Promise.all([
-            category.findAll({ where: {
-                [Op.or]: [
-                    { name: 'destacados' }, 
-                    { parent_id: { [Op.ne]: null }}
-                ]
-            }}), 
-            variant.findAll({ include: variant_value })
-        ]);
-        res.render('products/find', { results: productResults, query: querySearchTerms, filter, categories, variants });
     }
 };
