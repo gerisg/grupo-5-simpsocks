@@ -36,7 +36,6 @@ module.exports = {
         try {
             let data = await user.findAll({
                 limit: 1,
-                include: { model: role, attributes: ['name'] },
                 attributes: { 
                     exclude: ['password', 'role_id'], 
                     include: [[fn('concat', `${req.protocol}://${req.get('host')}/images/users/`, col('image')), 'image_url']]
