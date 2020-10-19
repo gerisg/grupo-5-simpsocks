@@ -5,15 +5,18 @@ const { product, image, category, variant_value, sku } = require('../../database
 module.exports = {
     list: async (req, res) => {
         try {
-            let result = await product.findAndCountAll({
+            let results = await product.findAndCountAll({
                 include: [{ model: category, through: { attributes: [] }, attributes: { exclude: ['parent_id'] }}],
                 attributes: { 
                     exclude: ['discount', 'price', 'created_at'], 
                     include: [[fn('concat', `${req.protocol}://${req.get('host')}/api/products/`, col('product.id')), 'detail']]
-                },
-                group: ['categories.name']
+                }
             });
-            sender.OK(req, res, result);
+            results.countByCategory = await category.count({
+                include: product,
+                group: ['name']
+            });
+            sender.OK(req, res, results);
         } catch (error) {
             if(error.original.code == 'ER_WRONG_FIELD_WITH_GROUP') {
                 // FIXME Buscar alternativas para hacerlo funcionar sin desactivar el modo estandar
