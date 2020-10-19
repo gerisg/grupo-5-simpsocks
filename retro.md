@@ -94,8 +94,18 @@ Destacamos el uso de los post-it para que todos participemos en la confección d
 | + **Hacer menos**: HTML/CSS repetido o complejo. |
 
 
-### Sprint 5
+### Sprint 5 y 6
 
 | Resumen |
 | -------- |
-| Si bien realizamos la reunión mensual en la cuál conversamos respecto al Sprint 5, decidimos poner el foco en el Sprint 6 el cuál veíamos con mucho trabajo por delante. Esta es la razón por la cuál no confeccionamos el tablero de la metodología estrella y decidimos retomar esta actividad con la retro del Sprint 6. |
+| Si bien realizamos la reunión mensual en la cuál conversamos respecto al Sprint 5, decidimos poner el foco en el Sprint 6 el cuál veíamos con mucho trabajo por delante. Esta es la razón por la cuál no confeccionamos el tablero de la metodología estrella y decidimos retomar esta actividad con la retro del Sprint 7. |
+
+### Sprint 7
+
+| Resumen |
+| -------- |
+| + **Hacer más**: Tareas de planeamiento con plazos alcanzables. Entender que se está haciend para ayudar a convivir con la "frustración" y alcanzar mayor participación en el grupo en cuanto a la resolución de los problemas. Trabajar en pair programming y practicar lo aprendido. |
+| + **Seguir haciendo**:  Seguir creciendo el proyecto integrador manteniendo la curiosidad y las ganas de aprender. Pedir ayuda cuando hay algo que no se pudo resolver. Nuevas capacitaciones. |
+| + **Empezar a hacer**: Investigar nuevas librerías. Participar en nuevos proyectos y refactorizar código propio.  |
+| + **Dejar de hacer**: Dejar de creer que es dificil o no se puede realizar la tarea para dar lugar a las ideas frescas. |
+| + **Hacer menos**: Evitar que pase mucho tiempo sin programar. |
