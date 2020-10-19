@@ -1,7 +1,7 @@
 import React from 'react';
 import TopbarItemIcon from './TopbarItemIcon';
 import TopbarItemImage from './TopbarItemImage';
-import './topbar.css';
+import './Topbar.css';
 
 function Navbar() {
     return (
