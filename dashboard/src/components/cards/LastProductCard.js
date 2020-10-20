@@ -18,7 +18,7 @@ function LastProductCard(props) {
                     <div className="card-footer">
                         {props.lastItem.skus.map((sku, i) =>
                             <div className="sku-props" key={`sku-${i}`}>
-                                <div>{sku.properties.map(property => <span className="sku-prop">{property.name}</span>)}</div>
+                                <div>{sku.properties.map((property, j) => <span key={`sku-prop-${i}-${j}`} className="sku-prop">{property.name}</span>)}</div>
                                 {sku.stock > 10 ? <span className="badge badge-pill badge-success">{sku.stock}</span> : <span className="badge badge-pill badge-danger">{sku.stock}</span>}
                             </div>
                         )}
