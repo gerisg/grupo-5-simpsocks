@@ -1,21 +1,22 @@
-window.addEventListener('load', function () {
-    let btn = document.getElementById('addToCartBtn');
-    console.log(btn);
+window.addEventListener('load', () => {  
+  let form = document.getElementById('addToCartForm');
+  form.addEventListener('submit', function(e){ 
+      
+    e.preventDefault();
+    let variantId = [e.target[0].value, e.target[1].value];
+    let productId = e.target[2].value;    
 
-    btn.addEventListener('click', (event) => {
-        event.preventDefault();
-        console.log(JSON.stringify(event));
-        let id = Math.floor(Math.random() * 1000);
-        let product = {
-            id: id,
-            name: 'medias bla',
-            price: 150,
-        };
-        console.log('id', id);
+    axios.get('http://localhost:3000/api/products/stock', { variantId, productId })
+      .then(function (response) {
+        if(response.status==200) {
+          localStorage.setItem('prodcutsInCart', JSON.stringify(response.data));
+        } else {
+          console.log(response);
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  });
 
-        localStorage.setItem('medias' + id, JSON.stringify(product));
-        console.log('storage', localStorage);
-        let data = localStorage.getItem('medias' + id);
-        console.log(JSON.parse(data));
-    });
-});
+})
