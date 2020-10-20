@@ -21,22 +21,19 @@
                         <div class="col-md-3 col-lg-3">
                             <aside>
                                 <% for(let i=0; i<product.images.length; i++) { %>
-                                <figure class="box-container">
-                                    <a onclick="showSlides(<%= i+1 %>)">
-                                        <img src="/images/products/<%= product.images[i] ? product.images[i].name : '' %>"
-                                            onerror="this.src='/images/products/default-image.png'"
-                                            alt="foto miniatura del producto">
-                                    </a>
-                                </figure>
+                                    <figure class="box-container">
+                                        <a onclick="showSlides(<%= i+1 %>)">
+                                            <img src="/images/products/<%= product.images[i] ? product.images[i].name : '' %>" onerror="this.src='/images/products/default-image.png'" alt="foto miniatura del producto">
+                                        </a>
+                                    </figure>
                                 <% } %>
                             </aside>
                         </div>
                         <div class="col-md-9 col-lg-9">
                             <% for(let i=0; i<product.images.length; i++) { %>
-                            <figure class="slide-container img-<%= i+1 %>">
-                                <img src="/images/products/<%= product.images[i] ? product.images[i].name : '' %>"
-                                    onerror="this.src='/images/products/default-image.png'" alt="foto del producto">
-                            </figure>
+                                <figure class="slide-container img-<%= i+1 %>">
+                                    <img src="/images/products/<%= product.images[i] ? product.images[i].name : '' %>" onerror="this.src='/images/products/default-image.png'" alt="foto del producto">
+                                </figure>
                             <% } %>
                         </div>
                         <a class="prev-link show-mobile" onclick="prevSlide()">&#10094;</a>
@@ -48,47 +45,44 @@
                 </div>
                 <div class="col-12 col-md-6 col-lg-5">
                     <article class="product-details row main-center">
-                        <i class="far fa-heart heart-icon right-heart"></i>
-                        <div class="product-title title"><%= product.name %> </div>
-                        <div class="price-detail">
-                            <span class="product-price previous-price">
-                                <% if (product.price != product.offerPrice) { %>
-                                <%= product.price %>
-                                <% } %>
-                            </span>
-                            <span class="current-price">$ <%= product.offerPrice %> </span>
-                            <p class="stock">stock disponible</p>
-                        </div>
-                        <p class="product-description text"><%= product.description %> </p>
-
-                        <!-- Variants -->
-                        <% product.variants.forEach(variant => { %>
-                        <div class="select-variant">
-                            <label for="<%= variant.name %>"><%= variant.display %></label>
-                            <select name="<%= variant.name %>" id="variant-<%= variant.id %>">
-                                <% variant.variant_values.forEach(v_value => { %>
-                                <option value="<%= v_value.id %>">
-                                    <%= v_value.name %>
-                                </option>
-                                <% }) %>
-                            </select>
-                        </div>
-                        <% }) %>
-
-                        <!-- Categories -->
-                        <div>Categorías:
-                            <span class="labels">
-                                <% product.categories.forEach(category => { %>
-                                <span><%= category.name %></span>
-                                <% }) %>
-                            </span>
-                        </div>
+                            <i class="far fa-heart heart-icon right-heart"></i>
+                            <div class="product-title title"><%= product.name %> </div>
+                            <div class="price-detail">
+                                <span class="product-price previous-price">
+                                    <% if (product.price != product.offerPrice) { %>
+                                        <%= product.price %>
+                                    <% } %>  
+                                </span>
+                                <span class="current-price">$ <%= product.offerPrice %> </span>
+                                <p class="stock">stock disponible</p>
+                            </div>
+                            <p class="product-description text"><%= product.description %> </p>
+                            
+                            <!-- Variants -->
+                            <% product.variants.forEach(variant => { %>
+                                <div class="select-variant">
+                                    <label for="<%= variant.name %>"><%= variant.display %></label>
+                                    <select name="<%= variant.name %>" id="variant-<%= variant.id %>">
+                                        <% variant.variant_values.forEach(v_value => { %>
+                                            <option value="<%= v_value.id %>">
+                                                <%= v_value.name %>
+                                            </option> 
+                                        <% }) %>
+                                    </select>
+                                </div>
+                            <% }) %>
+                            
+                            <!-- Categories -->
+                            <div>Categorías:
+                                <span class="labels">
+                                    <% product.categories.forEach(category => { %>
+                                        <span><%= category.name %></span>
+                                    <% }) %>
+                                </span>
+                            </div>
                         <div class="product-actions">
-                            <form action="/products/cart" method="POST">
-                                <input type="hidden" name="productId" value="<%= product.id %> ">
-                                <button type="submit" class="btn btn-secondary btn-cart" id="addToCartBtn">Añadir al
-                                    carrito
-                                </button>
+                            <form action="/products/cart" method="GET">
+                                <button type="submit" class="btn btn-secondary btn-cart">Añadir al carrito</button>
                             </form>
                             <form action="/error" method="POST">
                                 <button type="submit" class="btn btn-primary">Comprar</button>
@@ -97,24 +91,23 @@
                     </article>
                 </div>
             </div>
-        </div>
+         </div>
     </main>
 
     <% if (related && related.length) { %>
-    <section class="related-products-container">
-        <span class="title">Productos Relacionados</span>
-        <div class="row nowrap simple-slider">
-            <% related.forEach(product => { %>
-            <div class="col-md-6 col-lg-3 simple-slide">
-                <%- include('product', {product}) %>
+        <section class="related-products-container">
+            <span class="title">Productos Relacionados</span>
+            <div class="row nowrap simple-slider">
+                <% related.forEach(product => { %>
+                    <div class="col-md-6 col-lg-3 simple-slide">
+                        <%- include('product', {product}) %>
+                    </div>
+                <% }) %>
             </div>
-            <% }) %>
-        </div>
-    </section>
+        </section>
     <% } %>
 
     <%- include("../partials/footer")%>
     <script src="/js/slider.js"></script>
 </body>
-
 </html>
