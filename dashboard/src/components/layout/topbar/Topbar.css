@@ -1,0 +1,7 @@
+.navbar {
+    background-image: url("/images/bg-header.png");
+}
+
+.topbar.navbar-light .navbar-nav .nav-item .nav-link {
+    color: var(--blue);
+}

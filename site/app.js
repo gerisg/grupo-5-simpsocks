@@ -1,5 +1,6 @@
 const express= require('express');
 const app = express();
+const cors = require('cors');
 const methodOverride = require('method-override');
 const session = require ('express-session');
 const cookieParser = require('cookie-parser');
@@ -14,6 +15,7 @@ const siteRoutes = require('./routes/siteRoutes');
 const apiRoutes = require('./routes/apiRoutes');
 
 // Configuration
+app.use(cors()); // cross origin
 app.set('view engine', 'ejs'); // views extension ejs
 app.use(express.static('public')); // template engines
 app.use(express.urlencoded({ extended: false })); // put json into body

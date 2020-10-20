@@ -139,16 +139,18 @@
             </div>
         </section>
         <!-- Featured Products -->
-        <section class="featured-products">
-            <span class="title">destacados</span>
-            <div class="row nowrap simple-slider">
-                <% featured.forEach(product => { %>
-                    <div class="col-10 col-md-6 col-lg-3 simple-slide">
-                        <%- include('./products/product', {product}) %>
-                    </div>
-                <% }); %> 
-            </div>
-        </section>
+        <% if (locals.featured) { %>
+            <section class="featured-products">
+                <span class="title">destacados</span>
+                <div class="row nowrap simple-slider">
+                    <% featured.forEach(product => { %>
+                        <div class="col-10 col-md-6 col-lg-3 simple-slide">
+                            <%- include('./products/product', {product}) %>
+                        </div>
+                    <% }); %> 
+                </div>
+            </section>
+        <% } %>
     </main>
 
     <%- include('./partials/footer') %> 

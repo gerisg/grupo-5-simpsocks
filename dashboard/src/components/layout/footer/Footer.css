@@ -1,0 +1,5 @@
+footer a,
+footer a:hover {
+    text-decoration: none;
+    color: var(--dark);
+}

@@ -21,19 +21,23 @@
                     <p class="subtitle">Filtros</p>
                     <div class="filter">
                         <label for="category">Categorías</label>
-                        <% categories.forEach(category => { %>
-                            <div>
-                                <% if (filter.category == category.id) { %>
-                                    <a href="/products/find/">
-                                        [<i class="fas fa-times"></i>]
-                                    </a>
-                                <% } %>
-                                <a href="/products/find/<%= category.name %>"><%= category.name %></a>
-                            </div>
-                        <% }) %>
+                        <% if (locals.categories) { %>
+                            <% categories.forEach(category => { %>
+                                <div>
+                                    <% if (filter.category == category.id) { %>
+                                        <a href="/products/find/">
+                                            [<i class="fas fa-times"></i>]
+                                        </a>
+                                    <% } %>
+                                    <a href="/products/find/<%= category.name %>"><%= category.name %></a>
+                                </div>
+                            <% }) %>
+                        <% } else { %>
+                            <div>Sin categorías</div>
+                        <% } %>
                     </div>
                     <!-- Variants -->
-                    <% variants.forEach(variant => { %>
+                    <% locals.variants && variants.forEach(variant => { %>
                     <div class="filter">
                         <label for="<%= variant.name %>"><%= variant.display %></label>
                         <% variant.variant_values.forEach(v_value => { %>
