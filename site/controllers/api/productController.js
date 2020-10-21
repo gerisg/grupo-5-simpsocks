@@ -1,11 +1,15 @@
 const sender = require('../../tools/sender');
+const pager = require('../../tools/pager');
 const { fn, col } = require('sequelize');
 const { product, image, category, variant_value, sku } = require('../../database/models');
 
 module.exports = {
     list: async (req, res) => {
         try {
+            let pagination = pager.getPagination(req.query.page);
             let results = await product.findAndCountAll({
+                limit: pagination.limit,
+                offset: pagination.offset,
                 include: [{ model: category, through: { attributes: [] }, attributes: { exclude: ['parent_id'] }}],
                 attributes: { 
                     exclude: ['discount', 'price', 'created_at'], 
@@ -16,7 +20,7 @@ module.exports = {
                 include: product,
                 group: ['name']
             });
-            sender.OK(req, res, results);
+            sender.OK(req, res, results, pagination);
         } catch (error) {
             if(error.original.code == 'ER_WRONG_FIELD_WITH_GROUP') {
                 // FIXME Buscar alternativas para hacerlo funcionar sin desactivar el modo estandar
