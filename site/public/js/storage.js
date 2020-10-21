@@ -1,4 +1,15 @@
 window.addEventListener('load', () => {  
+
+  function addToCart(item) {
+    let items = JSON.parse(localStorage.getItem('items'));
+    if(!items) {
+      items = []
+    }
+    items.push(item);
+    localStorage.setItem('items',JSON.stringify(items));
+  }
+
+
   let form = document.getElementById('addToCartForm');
   form.addEventListener('submit', function(e){ 
       
@@ -11,7 +22,7 @@ window.addEventListener('load', () => {
 
     axios.post('http://localhost:3000/api/products/stock', data)
       .then(function (response) {
-        localStorage.setItem('productsAdded', JSON.stringify(response.data));
+        addToCart(response.data);
       })
       .catch(function (error) {
         console.log(error);
