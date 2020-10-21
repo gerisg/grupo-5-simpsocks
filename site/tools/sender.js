@@ -1,7 +1,15 @@
-function OK(req, res, results) {
+function OK(req, res, results, pagination) {
     let meta = { status: 200, url: `${req.protocol}://${req.get('host')}${req.originalUrl}` };
     if(results.count) {
         meta.count = results.count;
+        if(pagination) {
+            if(pagination.prev) {
+                meta.prev = `${req.protocol}://${req.get('host')}${req.baseUrl}${req.path}?page=${pagination.prev}`;
+            }
+            if(pagination.next && pagination.next * pagination.limit <= results.count) {
+                meta.next = `${req.protocol}://${req.get('host')}${req.baseUrl}${req.path}?page=${pagination.next}`;
+            }
+        }
     }
     if(results.countByCategory) {
         meta.count_by_category = results.countByCategory.sort((cat1,cat2) => cat1.count > cat2.count ? -1 : cat1.count < cat2.count ? 1 : 0);
