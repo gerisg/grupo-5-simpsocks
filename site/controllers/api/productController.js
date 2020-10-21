@@ -12,9 +12,9 @@ module.exports = {
                 offset: pagination.offset,
                 include: [{ model: category, through: { attributes: [] }, attributes: { exclude: ['parent_id'] }}],
                 attributes: { 
-                    exclude: ['discount', 'price', 'created_at'], 
                     include: [[fn('concat', `${req.protocol}://${req.get('host')}/api/products/`, col('product.id')), 'detail']]
-                }
+                },
+                distinct:true
             });
             results.countByCategory = await category.count({
                 include: product,
