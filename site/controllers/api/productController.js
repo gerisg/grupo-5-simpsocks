@@ -59,7 +59,7 @@ module.exports = {
         let variantIDs = req.body.variantId.map(id => { return { variant_value_id: Number(id) }})
         // Find skus with variants
         let results = await sku.findAll({ 
-            where: { product_id: req.body.prodId }, 
+            where: { product_id: Number(req.body.prodId) }, 
             include: { model: variant_value, as: 'properties', through: { where: { [Op.or]: variantIDs}}}
         });
         if(results && results.length) {

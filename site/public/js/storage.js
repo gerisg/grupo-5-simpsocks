@@ -3,20 +3,19 @@ window.addEventListener('load', () => {
   form.addEventListener('submit', function(e){ 
       
     e.preventDefault();
-    let variantId = [e.target[0].value, e.target[1].value];
-    let productId = e.target[2].value;    
 
-    axios.get('http://localhost:3000/api/products/stock', { variantId, productId })
+    const data = new URLSearchParams();
+    data.append('variantId', e.target[0].value);
+    data.append('variantId', e.target[1].value);
+    data.append('prodId', e.target[2].value);
+
+    axios.post('http://localhost:3000/api/products/stock', data)
       .then(function (response) {
-        if(response.status==200) {
-          localStorage.setItem('prodcutsInCart', JSON.stringify(response.data));
-        } else {
-          console.log(response);
-        }
+        localStorage.setItem('productsAdded', JSON.stringify(response.data));
       })
       .catch(function (error) {
         console.log(error);
       });
-  });
 
-})
+  });
+});

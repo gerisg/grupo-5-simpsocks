@@ -12,7 +12,7 @@ router.get('/users/latest', userController.latest);
 router.get('/users/:id', userController.detail);
 
 //Stock producto
-router.get('/products/stock', productController.stock);
+router.post('/products/stock', productController.stock);
 // Detalle de producto
 router.get('/products', productController.list);
 // Ultimo producto creado
