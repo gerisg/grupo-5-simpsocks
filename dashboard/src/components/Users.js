@@ -9,21 +9,53 @@ class Users extends Component {
 
     constructor() {
         super();
-        this.state = { users: [] }
+        this.state = { 
+            users: [],
+            pagination: {}
+        }
+    }
+
+    fetchUsers = async (page) => {
+        const params = new URLSearchParams([['page', page]]);
+        axios.get('/api/users', { params })
+            .then(response => response.data)
+            .then(response =>
+                {
+                    this.setState({ 
+                        users: response.data,
+                        pagination: {
+                            curr: response.meta.page.current ? response.meta.page.current : '',
+                            prev: response.meta.page.prev ? response.meta.page.prev : '',
+                            next: response.meta.page.next ? response.meta.page.next : ''
+                        }
+                    });
+                }
+            )
+            .catch(error => console.log(error));
     }
 
     componentDidMount() {
-        axios.get('/api/users')
-            .then(response => response.data)
-            .then(users => this.setState({ users: users }))
-            .catch(error => console.log(error));
+        this.fetchUsers(1);
     }
 
     render() {
         return (
             <div className="container-fluid">
                 <Title title="Panel de Usuarios" />
-                <UsersTable users={ this.state.users.data } />
+                <nav aria-label="Navigation User Table">
+                    <ul className="pagination justify-content-center">
+                    <li className={`page-item ${this.state.pagination.prev ? '' : 'disabled'}`}>
+                            <button className="page-link" onClick={() => this.fetchUsers(this.state.pagination.prev)}>Anterior</button>
+                        </li>
+                        <li className="page-item active">
+                            <button className="page-link" onClick={() => this.fetchUsers(this.state.pagination.curr)}>{this.state.pagination.curr}</button>
+                        </li>
+                        <li className={`page-item ${this.state.pagination.next ? '' : 'disabled'}`}>
+                            <button className="page-link" onClick={() => this.fetchUsers(this.state.pagination.next)}>Siguiente</button>
+                        </li>
+                    </ul>
+                </nav>
+                <UsersTable users={ this.state.users } />
             </div>
         );
     }

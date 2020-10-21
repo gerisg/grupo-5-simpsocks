@@ -1,13 +1,20 @@
 function OK(req, res, results, pagination) {
-    let meta = { status: 200, url: `${req.protocol}://${req.get('host')}${req.originalUrl}` };
+    let meta = {};
+    meta.status = 200;
     if(results.count) {
         meta.count = results.count;
         if(pagination) {
+            meta.page = {};
+            meta.url = {};
+            meta.page.current = `${pagination.curr}`;
+            meta.url.current = `${req.protocol}://${req.get('host')}${req.originalUrl}`;
             if(pagination.prev) {
-                meta.prev = `${req.protocol}://${req.get('host')}${req.baseUrl}${req.path}?page=${pagination.prev}`;
+                meta.url.prev = `${req.protocol}://${req.get('host')}${req.baseUrl}${req.path}?page=${pagination.prev}`;
+                meta.page.prev = `${pagination.prev}`;
             }
-            if(pagination.next && pagination.next * pagination.limit <= results.count) {
-                meta.next = `${req.protocol}://${req.get('host')}${req.baseUrl}${req.path}?page=${pagination.next}`;
+            if(pagination.next && pagination.curr * pagination.limit < results.count) {
+                meta.url.next = `${req.protocol}://${req.get('host')}${req.baseUrl}${req.path}?page=${pagination.next}`;
+                meta.page.next = `${pagination.next}`;
             }
         }
     }

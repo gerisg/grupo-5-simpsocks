@@ -42,7 +42,7 @@ class Home extends Component {
                 console.log(error);
             });
 
-        // Último usuario
+        // Latest User
         axios.get(`/api/users/latest`)
             .then( response => {
                 this.setState({ lastUser: response.data.data[0] });
@@ -51,7 +51,7 @@ class Home extends Component {
                 console.log(error);
             });
         
-        // Último producto
+        // Latest Product
         axios.get(`/api/products/latest`)
             .then( response => {
                 this.setState({ lastProduct: response.data.data[0] });
@@ -84,10 +84,10 @@ class Home extends Component {
                     }
 
                     {/* LAST ITEM CARDS */}
-                    { this.state.lastUser ?
+                    { this.state.lastUser.id ?
                         <LastUserCard lastItem={ this.state.lastUser } /> : loading
                     }
-                    { this.state.lastProduct ?
+                    { this.state.lastProduct.id ?
                         <LastProductCard lastItem={ this.state.lastProduct } /> : loading
                     }
                     

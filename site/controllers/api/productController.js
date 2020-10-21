@@ -22,7 +22,7 @@ module.exports = {
             });
             sender.OK(req, res, results, pagination);
         } catch (error) {
-            if(error.original.code == 'ER_WRONG_FIELD_WITH_GROUP') {
+            if(error.original && error.original.code == 'ER_WRONG_FIELD_WITH_GROUP') {
                 // FIXME Buscar alternativas para hacerlo funcionar sin desactivar el modo estandar
                 // https://stackoverflow.com/questions/35882816/how-to-disable-only-full-group-by-in-mysql-or-sequelize
                 await product.sequelize.query(`SET SESSION sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''))`);
