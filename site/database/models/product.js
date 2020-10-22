@@ -4,6 +4,8 @@ module.exports = (sequelize, DataTypes) => {
   class Product extends Model {
     static associate(models) {
       this.belongsToMany(models.category, { through: 'categories_products' });
+      // workaround: https://stackoverflow.com/questions/53428989/sequelize-how-to-query-model-by-1n-association-but-include-all-associated-obj
+      this.belongsToMany(models.category, { as: 'categoryFilter', through: 'categories_products' });
       this.belongsToMany(models.variant, { through: 'products_variants' });
       this.hasMany(models.sku, { foreignKey: 'product_id' });
       this.hasMany(models.image, { foreignKey: 'product_id' });
