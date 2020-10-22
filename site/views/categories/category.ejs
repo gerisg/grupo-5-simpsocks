@@ -1,0 +1,10 @@
+<section class="category">
+    <a href="/products/find/<%= category.name %>">
+        <figure class="cat-img">
+            <img src="/images/categories/<%= category.image ? category.image : '' %>" onerror="this.src='/images/products/default-image.png'" alt="imagen de categoría">
+        </figure>
+        <article class="cat-name">
+            <span class="text"><%= category.name %></span>
+        </article>
+    </a>
+</section>

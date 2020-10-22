@@ -18,7 +18,7 @@
             <div class="header">
                 <p>Editar Categoria <span class="entity">#<%= category.id %></span></p>
             </div>
-            <form action="/categories/<%= category.id %>?_method=PUT" method="POST">
+            <form action="/categories/<%= category.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="name">Nombre</label>
                     <input type="text" id="name" name="name" placeholder="Ej: ofertas" value="<%= category.name %>"
@@ -37,6 +37,17 @@
                         <% }) %>
                     </select>
                 </div>
+                <div class="form-group">
+                    <label for="top">Es principal?</label>                                
+                    <input type="checkbox" id="top" name="top" value=<%= category.top %> <%= category.top ? 'checked' : '' %> >
+                    <span class="error"><%= locals.errors && errors.top ? errors.top.msg : '' %></span>
+                </div>
+                <div class="form-group">
+                    <label for="image">Imagen</label>
+                    <input type="file" id="image" name="image">
+                    <span class="error"><%= locals.errors && errors.image ? errors.image.msg : '' %></span>
+                </div>
+                <input type="hidden" name="currentImage" value="<%= locals.category ? category.image : '' %>">
                 <div class="controls">
                     <button type="submit" class="btn btn-primary">Guardar</button>
                     <a href="/categories" class="btn-cancel">Cancelar</a>

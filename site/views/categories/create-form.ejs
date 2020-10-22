@@ -18,7 +18,7 @@
             <div class="header">
                 <p>Crear categoria</p>
             </div>
-            <form action="/categories" method="POST">
+            <form action="/categories" method="POST" enctype="multipart/form-data">
                 <div class="row main-between">
                     <div class="col-12 form-group">
                         <label for="name">Nombre</label>
@@ -36,6 +36,16 @@
                                 </option>
                             <% }) %>
                         </select>
+                    </div>
+                    <div class="col-12 form-group">
+                        <label for="top">Es principal?</label>                                
+                        <input type="checkbox" id="top" name="top" >
+                        <span class="error"><%= locals.errors && errors.top ? errors.top.msg : '' %></span>
+                    </div>
+                    <div class="col-12 form-group">
+                        <label for="image">Imagen</label>
+                        <input type="file" id="image" name="image">
+                        <span class="error"><%= locals.errors && errors.image ? errors.image.msg : '' %></span>
                     </div>
                     <div class="col-12">
                         <button type="submit" class="btn btn-primary">Guardar</button>

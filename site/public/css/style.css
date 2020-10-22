@@ -160,6 +160,7 @@ a.danger:hover, button.danger:hover { background-color: var(--soft-red); }
 
 .btn-cancel {
   font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
   color: var(--blue);
 }
 
@@ -470,12 +471,13 @@ header {
       color: var(--light);
       position: absolute;
       left: 10px;
-      bottom: 14px;
+      bottom: 5px;
       width: 90%;
       border-radius: 8.1px;
       background-color: var(--secondary);
       box-shadow: 0 3px 16px 0 rgba(0,0,0,.1);
       padding: .25rem 0;
+      text-transform: capitalize;
     }
 
 /* Insta banner */
@@ -499,8 +501,11 @@ header {
 }
 
 .featured .product {
-  background-color: var(--blue);
-  color: var(--white);
+  background-color: var(--primary);
+}
+
+.featured .product-data {
+  color: var(--dark);
 }
 
 /* Footer */
