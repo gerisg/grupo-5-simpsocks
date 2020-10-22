@@ -1,20 +1,22 @@
+require('dotenv').config();
+
 var nodemailer = require('nodemailer');
 
 var transporter = nodemailer.createTransport({
     service: 'gmail', auth: {
-        user: 'simpsocks@gmail.com',
-        pass: 'o9QLr?t>'
+        user: process.env.MAIL_USER,
+        pass: process.env.MAIL_PASS
     }
 });
 
 module.exports = {
     sendWelcome: (to, password) => {
         let mailOptions = {
-            from: 'simpsocks@gmail.com',
+            from: process.env.MAIL_USER,
             to: to,
             subject: 'Bienvenido a SimpSocks',
             html: `<h1>¡Bienvenido a SimpSocks!</h1>
-                <a href='http://simpsocks.com.ar'>Acceder a Simpsocks</a>
+                <a href='https://simpsocks.com.ar'>Acceder a Simpsocks</a>
                 <p>Usuario: ${to}</p>
                 <p>Contraseña: ${password}</p>`
         };
@@ -24,11 +26,11 @@ module.exports = {
     },
     sendRecover: (to, password) => {
         let mailOptions = {
-            from: 'simpsocks@gmail.com',
+            from: process.env.MAIL_USER,
             to: to,
             subject: 'SimpSocks Nueva Contraseña',
             html: `<h1>Solicitud de nueva contraseña</h1>
-                <a href='http://simpsocks.com.ar'>Acceder a Simpsocks</a>
+                <a href='https://simpsocks.com.ar'>Acceder a Simpsocks</a>
                 <p>Usuario: ${to}</p>
                 <p>Contraseña: ${password}</p>`
         };
@@ -38,8 +40,8 @@ module.exports = {
     },
     sendContactInfo: (messageHTML) => {
         let mailOptions = {
-            from: 'simpsocks@gmail.com',
-            to: 'simpsocks@gmail.com',
+            from: process.env.MAIL_USER,
+            to: process.env.MAIL_USER,
             subject: 'Contacto Simpsocks',
             html: messageHTML
         };
