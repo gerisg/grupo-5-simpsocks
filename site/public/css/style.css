@@ -468,16 +468,15 @@ header {
       width: 100%;
     }
     .cat-name {
-      color: var(--light);
-      position: absolute;
-      left: 10px;
-      bottom: 5px;
-      width: 90%;
-      border-radius: 8.1px;
       background-color: var(--secondary);
       box-shadow: 0 3px 16px 0 rgba(0,0,0,.1);
+      color: var(--light);
+      left: 0;
+      top: 0;
       padding: .25rem 0;
+      position: absolute;
       text-transform: capitalize;
+      width: 100%;
     }
 
 /* Insta banner */
@@ -501,10 +500,11 @@ header {
 }
 
 .featured .product {
-  background-color: var(--primary);
+  background-color: var(--secondary);
 }
 
 .featured .product-data {
+  background-color: var(--light);
   color: var(--dark);
 }
 
