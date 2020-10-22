@@ -50,7 +50,8 @@ module.exports = {
                     id: { [Op.not]: productResult.id }},
                     include: [
                         { model: image },
-                        { model: category, where: { id: matchCategory.id }}
+                        { model: category },
+                        { model: category, as: 'categoryFilter', where: { id: matchCategory.id }}
                     ]
                 });
                 relatedResults.forEach(related => related.offerPrice = related.discount > 0 ? Math.round(related.price * ((100 - related.discount) / 100)) : related.price);
@@ -236,7 +237,8 @@ module.exports = {
         let featuredProducts = await product.findAll(
             { include: [
                 { model: image },
-                { model: category, where: { id: featuredCategory.id }}
+                { model: category },
+                { model: category, as: 'categoryFilter', where: { id: featuredCategory.id }}
             ]}
         );
         featuredProducts.forEach(prod => prod.offerPrice = prod.discount > 0 ? Math.round(prod.price * ((100 - prod.discount) / 100)) : prod.price);
@@ -255,7 +257,8 @@ module.exports = {
                     productResults = await product.findAll(
                         { include: [
                             { model: image },
-                            { model: category, where: { id: categoryMatch.id }}
+                            { model: category },
+                            { model: category, as: 'categoryFilter', where: { id: categoryMatch.id }}
                         ]}
                     );
                     filter.category = categoryMatch.id;
