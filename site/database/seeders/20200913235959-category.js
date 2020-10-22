@@ -3,18 +3,18 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.bulkInsert('categories', [
-      { name: "destacados", parent_id: null },
-      { name: "personajes", parent_id: null },
-      { name: "promociones", parent_id: null },
-      { name: "homero", parent_id: 2 },
-      { name: "marge", parent_id: 2 },
-      { name: "bart", parent_id: 2 },
-      { name: "lisa", parent_id: 2 },
-      { name: "maggie", parent_id: 2 },
-      { name: "hotsale", parent_id: 3 },
-      { name: "descuentos", parent_id: 3 },
-      { name: "envios", parent_id: 3 },
-      { name: "2x1", parent_id: 3 }
+      { name: "destacados", top: 1, image: "originals.png", parent_id: null },
+      { name: "personajes", top: 0, image: "", parent_id: null },
+      { name: "promociones", top: 0, image: "", parent_id: null },
+      { name: "homero", top: 1, image: "homero.png", parent_id: 2 },
+      { name: "marge", top: 0, image: "", parent_id: 2 },
+      { name: "bart", top: 1, image: "sockets.jpg", parent_id: 2 },
+      { name: "lisa", top: 0, image: "", parent_id: 2 },
+      { name: "maggie", top: 0, image: "", parent_id: 2 },
+      { name: "hotsale", top: 1, image: "bucaneras.png", parent_id: 3 },
+      { name: "descuentos", top: 0, image: "", parent_id: 3 },
+      { name: "envios", top: 0, image: "", parent_id: 3 },
+      { name: "2x1", top: 0, image: "", parent_id: 3 }
     ], {});
   },
 
