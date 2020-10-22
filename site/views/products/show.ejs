@@ -50,18 +50,19 @@
                     <article class="product-details row main-center">
                         <i class="far fa-heart heart-icon right-heart"></i>
                         <div class="product-title title"><%= product.name %> </div>
-                        <div class="price-detail">
+                        <div class="price-detail" id="price-detail">
                             <span class="product-price previous-price">
                                 <% if (product.price != product.offerPrice) { %>
                                 <%= product.price %>
                                 <% } %>
                             </span>
                             <span class="current-price">$ <%= product.offerPrice %> </span>
-                            <p class="stock">stock disponible</p>
+                            <p class="stock" id="stock-text">stock disponible</p>
+                            <p id="stock-quantity"></p>
                         </div>
                         <p class="product-description text"><%= product.description %> </p>
 
-                        <form method="GET" id="addToCartForm">
+                        <form action="products/cart" method="POST" id="addToCartForm">
                             <!-- Variants -->
                             <% product.variants.forEach(variant => { %>
                             <div class="select-variant">
@@ -75,10 +76,14 @@
                                 </select>
                             </div>
                             <% }) %>
+                            <p id="cart-confirmation" class="stock"></p>
                             <div class="product-actions">
-                                <input type="hidden" name="productId" value="<%= product.id %> ">
-                                <button type="submit" class="btn btn-secondary btn-cart">Añadir al carrito </button>
-                                <button type="submit" class="btn btn-primary">Comprar</button>
+                                <input type="hidden" name="productId" id="productId" value="<%= product.id %> ">
+                                <button type="submit" class="btn btn-secondary btn-cart" id="addToCart">Añadir
+                                    al
+                                    carrito
+                                </button>
+                                <button type=" submit" class="btn btn-primary">Comprar</button>
                             </div>
                         </form>
                         <!-- Categories -->
