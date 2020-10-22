@@ -11,7 +11,8 @@ module.exports = {
                 ]}
             );
             featuredProducts.forEach(prod => prod.offerPrice = prod.discount > 0 ? Math.round(prod.price * ((100 - prod.discount) / 100)) : prod.price);
-            res.render('index', { featured: featuredProducts } );
+            let topCategories = await category.findAll({ where: { top: 1 }});
+            res.render('index', { featured: featuredProducts, topCategories } );
         } catch (error) {
             console.log(error);
             res.render('index');

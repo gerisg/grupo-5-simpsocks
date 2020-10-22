@@ -90,54 +90,6 @@
                 </div>
             </div>
         </section>
-        <!-- Categories -->
-        <section class="featured-categories">
-            <span class="title">más buscados</span>
-            <div class="row main-center featured-categories-container">
-                <article class="col-5 col-md-3 col-lg-2 featured-category">
-                    <div class="cat-img">
-                        <img src="/images/categories/homero.png" alt="">
-                    </div>
-                    <div class="cat-name">
-                        <a href="/products/find?query=homero"><span class="text">Homero</span></a>
-                    </div>
-                </article>
-                <article class="col-5 col-md-3 col-lg-2 featured-category">
-                    <div class="cat-img">
-                        <img src="/images/categories/bucaneras.png" alt="">
-                    </div>
-                    <div class="cat-name">
-                        <a href="/products/find?query=bucaneras"><span class="text">Bucaneras</span></a>
-                    </div>
-                </article>
-                <article class="col-5 col-md-3 col-lg-2 featured-category">
-                    <div class="cat-img">
-                        <img src="/images/categories/sockets.jpg" alt="">
-                    </div>
-                    <div class="cat-name">
-                        <a href="/products/find?query=soquetes"><span class="text">Soquetes</span></a>
-                    </div>
-                </article>
-                <article class="col-5 col-md-5 col-lg-3 featured-category">
-                    <div class="cat-img">
-                        <img src="/images/categories/originals.png" alt="">
-                    </div>
-                    <div class="cat-name">
-                        <a href="/products/find?query=personajes"><span class="text">Originales</span></a>
-                    </div>
-                </article>
-            </div>
-        </section>
-        <!-- Banner Instagram -->
-        <section class="insta-banner">
-            <div class="row">
-                <div class="col-12 col-md-7 content">
-                    <span class="subtitle">buscanos en instagram</span>
-                    <span class="text"><a href="instragram.com/simpsocks-argentina" target="_blank">seguinos en <em>@simpsocks-argentina</em></a> para enterarte de las últimas colecciones y nuevos productos</span>
-                </div>
-                <div class="col-md-5 image"></div>
-            </div>
-        </section>
         <!-- Featured Products -->
         <% if (locals.featured) { %>
             <section class="featured-products">
@@ -148,6 +100,29 @@
                             <%- include('./products/product', {product}) %>
                         </div>
                     <% }); %> 
+                </div>
+            </section>
+        <% } %>
+        <!-- Banner Instagram -->
+        <section class="insta-banner">
+            <div class="row">
+                <div class="col-12 col-md-7 content">
+                    <span class="subtitle">buscanos en instagram</span>
+                    <span class="text"><a href="instragram.com/simpsocks-argentina" target="_blank">seguinos en <em>@simpsocks-argentina</em></a> para enterarte de las últimas colecciones y nuevos productos</span>
+                </div>
+                <div class="col-md-5 image"></div>
+            </div>
+        </section>
+        <!-- Featured Categories -->
+        <% if (locals.topCategories) { %>
+            <section class="featured-categories">
+                <span class="title">categorías</span>
+                <div class="row main-center featured-categories-container">
+                    <% topCategories.forEach(topCategory => { %>
+                        <div class="col-5 col-md-3 col-lg-2 featured-category">
+                            <%- include('./categories/category', { category: topCategory }) %>
+                        </div>
+                    <% }); %>
                 </div>
             </section>
         <% } %>
