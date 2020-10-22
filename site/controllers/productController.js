@@ -245,55 +245,56 @@ module.exports = {
         res.render('products/cart', { featured: featuredProducts } );
     },
     find: async (req, res) => {
-        let filter = {};
+        let categoryFilter = {};
         let productResults = [];
-        let categorySearchTerms = req.params.category;
         let querySearchTerms = req.query.query;
+        let categorySearchTerms = req.params.category;
+        let categories = {};
         try {
-            // Search by category
-            if (categorySearchTerms) {
-                let categoryMatch = await category.findOne({ where: { name: categorySearchTerms }});
-                if (categoryMatch) {
-                    productResults = await product.findAll(
-                        { include: [
-                            { model: image },
-                            { model: category },
-                            { model: category, as: 'categoryFilter', where: { id: categoryMatch.id }}
-                        ]}
-                    );
-                    filter.category = categoryMatch.id;
-                }
-            }
-            // Search by keywords
-            if (querySearchTerms && !productResults) {
-                productResults = await product.findAll(
-                    { where: 
-                        { [Op.or]: [
-                            { name: { [Op.like]: `%${querySearchTerms}%` }},
-                            { description: { [Op.like]: `%${querySearchTerms}%` }}
-                        ]},
-                        include: [ image, category ]
-                    }
-                );
-            }
-            if (!productResults) {
-                productResults = await product.findAll({ include: [ image, category ]});
-            }
-            // Add offer price
-            productResults.forEach(prod => prod.offerPrice = prod.discount > 0 ? Math.round(prod.price * ((100 - prod.discount) / 100)) : prod.price);
-            // Get categories and variants
-            let [categories, variants] = await Promise.all([
-                category.findAll({ where: {
+            // Get categories
+            categories = await category.findAll({ 
+                where: {
                     [Op.or]: [
                         { name: 'destacados' }, 
                         { parent_id: { [Op.ne]: null }}
                     ]
-                }}), 
-                variant.findAll({ include: variant_value })
-            ]);
-            res.render('products/find', { results: productResults, query: querySearchTerms, filter, categories, variants });
+                }
+            });
+            // Prepare query filter from query params
+            let queryFilter = {};
+            if (querySearchTerms) {
+                queryFilter = { 
+                    [Op.or]: [
+                        { name: { [Op.like]: `%${querySearchTerms}%` }},
+                        { description: { [Op.like]: `%${querySearchTerms}%` }}
+                    ]
+                }
+            }
+            // Prepare category filter from category params
+            let includes = [{ model: image }, { model: category }]
+            if (categorySearchTerms) {
+                let categoryMatch = await category.findOne({ where: { name: categorySearchTerms }});
+                if (categoryMatch) {
+                    categoryFilter = { id: categoryMatch.id, name: categoryMatch.name };
+                    includes.push({ 
+                        model: category,
+                        as: 'categoryFilter',
+                        where: { id: categoryMatch.id },
+                    });
+                }
+            }
+            // Execute query
+            if(querySearchTerms || categorySearchTerms) {
+                productResults = await product.findAll({ where: queryFilter, include: includes })
+            } else {
+                productResults = await product.findAll({ include: [ image, category ]});
+            }
+            // Add offer price
+            productResults.forEach(prod => prod.offerPrice = prod.discount > 0 ? Math.round(prod.price * ((100 - prod.discount) / 100)) : prod.price);
+            
+            res.render('products/find', { results: productResults, query: querySearchTerms, filter: categoryFilter, categories });
         } catch (error) {
-            res.render('products/find', { results: productResults, query: querySearchTerms, filter });
+            res.render('products/find', { results: productResults, query: querySearchTerms, filter: categoryFilter, categories });
         }
     }
 };

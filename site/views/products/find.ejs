@@ -24,48 +24,44 @@
                         <% if (locals.categories) { %>
                             <% categories.forEach(category => { %>
                                 <div>
-                                    <% if (filter.category == category.id) { %>
-                                        <a href="/products/find/">
+                                    <% if (filter.id == category.id) { %>
+                                        <a href="/products/find/<%= category.name %>?query=<%= query %>">
                                             [<i class="fas fa-times"></i>]
                                         </a>
                                     <% } %>
-                                    <a href="/products/find/<%= category.name %>"><%= category.name %></a>
+                                    <a href="/products/find/<%= category.name %>?query=<%= query %>"><%= category.name %></a>
                                 </div>
                             <% }) %>
                         <% } else { %>
                             <div>Sin categorías</div>
                         <% } %>
                     </div>
-                    <!-- Variants -->
-                    <% locals.variants && variants.forEach(variant => { %>
-                    <div class="filter">
-                        <label for="<%= variant.name %>"><%= variant.display %></label>
-                        <% variant.variant_values.forEach(v_value => { %>
-                            <div>
-                                <% if (filter[v_value.id]) { %>
-                                    <a href="/products/find?query=<%= query %>&<%= v_value.name %>=<%= filter[v_value.id] %>">
-                                        [<i class="fas fa-times"></i>]
-                                    </a>
-                                <% } %>
-                                <a href="/products/find?query=<%= query %>&<%= v_value.name %>=<%= filter.size %>"><%= v_value.name %></a>
-                            </div>
-                        <% }) %>
-                    </div>
-                    <% }) %>
                 </aside>
             </div>
             <div class="col-12 col-md-10 col-lg-9">
                 <% if (results.length) { %>
+                    <!-- TODO armar el mensaje en el BE -->
+                    <% if (query) { %>
+                        <% if (filter && filter.name) { %>
+                            <h3>Mostrando resultados para "<%= query %>" en la categoría "<%= filter.name %>"</h3>
+                        <% } else { %>
+                            <h3>Mostrando resultados para "<%= query %>"</h3>
+                        <% } %>
+                    <% } else if (filter && filter.name) { %>
+                        <h3>Mostrando resultados en la categoría "<%= filter.name %>"</h3>
+                    <% } else { %>
+                        <h3>Mostrando todos los resultados</h3>
+                    <% } %>
                     <div class="row products">
                         <% results.forEach(product => { %>
-                             <div class="col-12 col-md-6 col-lg-3 <%= product.categories.find(c => c.name == 'destacados') ? 'featured' : '' %> ">
+                             <div class="col-12 col-md-6 col-lg-3 <%= product.categories && product.categories.find(c => c.name == 'destacados') ? 'featured' : '' %> ">
                             <%- include('product', { product }) %>
                             </div>
                         <% }); %>
                     </div>
                 <% } else { %>
-                    <h3>No encontramos productos para su búsqueda.</h3>
-                    <a href="/products/find/descuentos">Hacé clic acá para ver productos con descuentos !!</a>
+                    <h3>No encontramos productos para tu búsqueda</h3>
+                    <a href="/products/find/descuentos">... pero hacé click acá y encontrá los mejores descuentos !!</a>
                 <% } %>
             </div>
         </div>
