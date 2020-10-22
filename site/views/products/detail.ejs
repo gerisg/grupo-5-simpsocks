@@ -18,14 +18,8 @@
         <div class="col-11 container">
             <div class="header">
                 <p>Producto <span class="entity">#<%= product.id %></span></p>
-                <a class="btn btn-primary" href="/products/<%= product.id %>/edit">
-                    <i class="fas fa-edit"></i> Editar 
-                </a>
-                <form class="form-only-btn" action="/products/<%= product.id %>?_method=delete" method="post">
-                    <button class="btn btn-secondary" type="submit">
-                        <i class="fas fa-trash"></i> Eliminar
-                    </button>
-                </form>
+                <a class="btn btn-primary" href="/products/<%= product.id %>/edit"><i class="fas fa-edit"></i> Editar</a>
+                <a href="/products" class="btn-cancel">Cancelar</a>
             </div>
             <div class="row main-center row-content">
                 <div class="col-11 col-md-3">

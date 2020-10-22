@@ -21,11 +21,7 @@
                 <a class="btn btn-primary" href="/users/<%= user.id %>/edit">
                     <i class="fas fa-edit"></i> Editar
                 </a>
-                <form class="form-only-btn" action="/users/<%= user.id %>?_method=delete" method="post">
-                    <button class="btn btn-secondary" type="submit">
-                        <i class="fas fa-trash"></i> Eliminar
-                    </button>
-                </form>
+                <a href="/users" class="btn-cancel">Cancelar</a>
             </div>
             <div class="row main-around row-content">
                 <div class="col-10 col-md-2 col-lg-2">
