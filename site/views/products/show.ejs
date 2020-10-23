@@ -62,7 +62,7 @@
                         </div>
                         <p class="product-description text"><%= product.description %> </p>
 
-                        <form action="products/cart" method="POST" id="addToCartForm">
+                        <form method="POST" id="addToCartForm">
                             <!-- Variants -->
                             <% product.variants.forEach(variant => { %>
                             <div class="select-variant">

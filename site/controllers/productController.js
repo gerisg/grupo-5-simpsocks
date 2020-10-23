@@ -131,18 +131,31 @@ module.exports = {
     edit: async (req,res) => {
         try {
             let [productResult, categories] = await Promise.all([
-                product.findByPk(parseInt(req.params.id), { include: [
-                    { model: image },
-                    { model: category },
-                    { model: sku, include: 'properties' }
-                ]}),
+                product.findByPk(parseInt(req.params.id), {
+                    include: [{
+                            model: image
+                        },
+                        {
+                            model: category
+                        },
+                        {
+                            model: sku,
+                            include: 'properties'
+                        }
+                    ]
+                }),
                 category.findAll()
             ]);
             categories = categories.filter(cat => cat.name == 'destacados' || cat.parent_id != null);
-            res.render('products/edit-form', { product: productResult, categories });
+            res.render('products/edit-form', {
+                product: productResult,
+                categories
+            });
         } catch (error) {
             console.log(error);
-            res.status(500).render('error-500', { error });
+            res.status(500).render('error-500', {
+                error
+            });
         }
     },
     update: async (req, res) => {
@@ -232,15 +245,27 @@ module.exports = {
     },
     cart: async (req,res) => {
         console.log('Not implemented yet');
-        let featuredCategory = await category.findOne({ where: { name: 'destacados' }});
-        let featuredProducts = await product.findAll(
-            { include: [
-                { model: image },
-                { model: category, where: { id: featuredCategory.id }}
-            ]}
-        );
+        let featuredCategory = await category.findOne({
+            where: {
+                name: 'destacados'
+            }
+        });
+        let featuredProducts = await product.findAll({
+            include: [{
+                    model: image
+                },
+                {
+                    model: category,
+                    where: {
+                        id: featuredCategory.id
+                    }
+                }
+            ]
+        });
         featuredProducts.forEach(prod => prod.offerPrice = prod.discount > 0 ? Math.round(prod.price * ((100 - prod.discount) / 100)) : prod.price);
-        res.render('products/cart', { featured: featuredProducts } );
+        res.render('products/cart', {
+            featured: featuredProducts
+        });
     },
     find: async (req, res) => {
         let filter = {};

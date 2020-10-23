@@ -1,5 +1,4 @@
 window.addEventListener('load', () => {
-
     //funciones auxiliares 
 
     function addToCart(item) {
@@ -9,7 +8,7 @@ window.addEventListener('load', () => {
         }
         items.push(item);
         localStorage.setItem('items', JSON.stringify(items));
-        changeConfirmationText('producto añadido al cashito');
+        changeConfirmationText('producto añadido al carrito');
     }
 
     function createData(variantId1, variantId2, productId) {
@@ -61,15 +60,16 @@ window.addEventListener('load', () => {
         let sibling = document.getElementById(id);
         return sibling.value;
     }
-    //PENDIENTE
+    //Implementacion PENDIENTE
 
-    // function removeItem(item) { //Tiene que estar en el carrito
-    //   let items = JSON.parse(localStorage.getItem('items'));
-    //   console.log(items);
-    //   localStorage.removeItem(JSON.stringify(item));
-    //   items = JSON.parse(localStorage.getItem('items'));
-    //   console.log(items);
-    // }
+    function removeItem(item) { //Tiene que estar en el cart
+        let items = JSON.parse(localStorage.getItem('items'));
+        console.log(items);
+        remove = localStorage.removeItem(JSON.stringify(item));
+        items = JSON.parse(localStorage.getItem('items'));
+        console.log(items);
+        console.log('se borra', remove);
+    }
 
     function changeStockQuantity(newQuantity) {
         let quantity = document.getElementById('stock-quantity')
@@ -79,6 +79,7 @@ window.addEventListener('load', () => {
 
     let selectType = document.getElementById('variant-1');
     let selectSize = document.getElementById('variant-2');
+    // let removeBtn = document.getElementById('remove');
     let form = document.getElementById('addToCartForm');
 
     //listeners
@@ -126,7 +127,24 @@ window.addEventListener('load', () => {
                 disabledBtn()
                 console.log('No hay stock');
             });
-    })
+    });
+
+    // removeBtn.addEventListener('click', function(){
+    //     axios.get('http://localhost:3000/api/products/cart', data)
+    //     .then(function (response) {
+    //         getProduct()
+    //         removeItem()
+    //         console.log('se borra',response.data);
+    //     })
+    //     .then(function (response) {
+    //         removeItem()
+    //         console.log('se borra',response.data);
+    //     })
+    //     .catch(function (error) {
+    //         console.log('error');
+    //     });
+
+    // })
 
     form.addEventListener('submit', function (e) {
         e.preventDefault();
@@ -142,6 +160,8 @@ window.addEventListener('load', () => {
         axios.post('http://localhost:3000/api/products/stock', data)
             .then(function (response) {
                 addToCart(response.data);
+                let items = JSON.parse(localStorage.getItem('items'));
+                console.log(items);
             })
             .catch(function (error) {
                 console.log('hice click en el cart');
