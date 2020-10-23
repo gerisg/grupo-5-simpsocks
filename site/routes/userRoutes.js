@@ -11,7 +11,7 @@ const adminRoute = require('../middlewares/adminRoute');
 const upload = require('../tools/uploader')('users');
 
 // TODO Not implemented yet
-router.get('/favorites', userRoute, controller.favorites);
+//router.get('/favorites', userRoute, controller.favorites);
 
 // Perfil de usuario
 router.get('/profile/edit', userRoute, controller.profileForm);
@@ -35,6 +35,9 @@ router.post('/', adminRoute, upload.single('image'), validate.createForm, contro
 
 // Listado de usuarios
 router.get('/', adminRoute, controller.list);
+
+//Listado de Favoritos de usuarios
+router.get ('/favorites',userRoute,controller.favorites)
 
 // Formulario de edición de usuarios
 router.get('/:id/edit', adminRoute, controller.edit);

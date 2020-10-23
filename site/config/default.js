@@ -7,7 +7,7 @@ module.exports = {
         database: process.env.MYSQL_DATABASE,
         host: process.env.DB_HOST,
         dialect: 'mysql',
-        logging: true,
+        logging:true ,
         define: {
             charset: 'utf8mb4',
             collate: 'utf8mb4_unicode_ci',

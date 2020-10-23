@@ -320,7 +320,7 @@ module.exports = {
         }
     },
     favorites: (req, res) => {
-        console.log('Not implemented yet');
-        res.redirect('/');
+        //console.log('Not implemented yet');
+        res.render('users/favorites');
     }
 };

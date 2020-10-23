@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang= "es">
+
+<body class="form">
+    <%- include('../partials/head', {title: 'Tus Favoritos'}) %>
+<body class="form">
+    <%- include('../partials/header') %>    
+    <section class="top-nav">
+        <nav class="top-nav-start breadcrumb">
+            <a href="/">Inicio</a>
+            <a href="/users/Favorites">Tus Favoritos</a>
+        </nav>
+    </section>
+    <main class="row main-center admin-form">
+        <div class="col-11 container">
+            <div class="header">
+                <p>Estos son tus Favoritos!</p>
+            </div>
+            <div class="row main-center">
+                <!-- table titles -->
+                <div class="col-11">
+                    <div class="row row-title">
+                        <div class="col-3 col-md-3">Foto</div>
+                        <div class="col-3 col-md-3">Nombre</div>
+                        <div class="col-3 col-md-3">Precio</div>
+                        <div class="col-3 hidden-sm">Acciones</div>
+                    </div>
+                </div>
+                <!-- table content -->
+                <div class="col-11">               
+                        <div class="row row-content">
+                            <div class="col-2 col-md-3 row-image">
+                                <img src="/images/users/ '' " onerror="this.src='/images/users/default-image.png'" alt="imagen de usuario">
+                            </div>
+                            <div class="col-5 col-md-3">
+                             SOQUETE BART
+                            </div>
+                            <div class="col-5 col-md-3">
+                            $150
+                            </div>
+                            <div class="col-12 col-md-3 row-actions">
+                                <a class="btn btn-icon" href="/products/cart">
+                                    <i class="fas fa-cart-plus"></i>
+                                </a>                               
+                                <form class="form-only-btn" action="/users/>?_method=delete" method="post">
+                                    <button class="btn btn-icon" type="submit">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+
+
+
+        </div>
+
+
+
+
+
+
+
+
+    </main>
+    
+    <%- include('../partials/footer') %>
+</body>
+</html>
