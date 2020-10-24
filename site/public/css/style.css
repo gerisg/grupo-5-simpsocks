@@ -904,6 +904,9 @@ footer {
 .purchase-container {
   width: 100%;
   padding: var(--default-padding);
+  height: 500px;
+  overflow: auto;
+  /* scroll-snap-type: y mandatory; */
 }
 
 .purchase-details {
@@ -975,6 +978,12 @@ footer {
   color: var(--red);
   font-weight: bold;
   padding-bottom: 10px;
+}
+
+.cart-height {
+  height: 500px;
+  overflow: auto;
+  scroll-snap-type: y mandatory;
 }
 
 /* Resume */

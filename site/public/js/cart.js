@@ -53,8 +53,8 @@ window.addEventListener('load', () => {
                     `  
                 }
             })
-            .catch(function () {
-                console.log('Error');
+            .catch(function (error) {
+                console.log(error);
             });
 
         }
@@ -78,7 +78,7 @@ window.addEventListener('load', () => {
             let priceId = 'price-'.concat(j);
             let priceValueId = 'price-value-'.concat(j);
             let deleteBtn = document.getElementById(deleteBtnId);
-            console.log(deleteBtnId);
+            // console.log(deleteBtnId);
             let productBox = document.getElementById(productId);
             let discount = document.getElementById(discountId);
             let price = document.getElementById(priceId);
@@ -88,18 +88,19 @@ window.addEventListener('load', () => {
 
 
             deleteBtn.addEventListener('click', () => {
-                console.log(discount);
-                console.log(price);
-                console.log(productBox);
+                // console.log(discount);
+                // console.log(price);
+                // console.log(productBox);
                 productBox.remove(); //Elimino la card
-                console.log(discount.innerText);
-                console.log(price.innerText);
+                // console.log(discount.innerText);
+                // console.log(price.innerText);
                 parseInt(discountValue.innerText.replace('-$', ''));
                 parseInt(priceValue.innerText.replace('$', ''));
                 parseInt(totalPrice.innerText);
+
                 totalPrice.innerText = parseInt(totalPrice.innerText) - (parseInt(priceValue.innerText.replace('$', '')) - parseInt(discountValue.innerText.replace('-$', '')))
                 if(discount){
-                    discount.remove();
+                    discount.remove(); //Bug encontrado no remueve productos sin descuentos 
                 }
                 price.remove();
                 items.splice(j-1, 1); // elimino item del array
