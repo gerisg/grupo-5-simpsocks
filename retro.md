@@ -102,6 +102,10 @@ Destacamos el uso de los post-it para que todos participemos en la confección d
 
 ### Sprint 7
 
+#### Metodología Estrella
+
+[Tablero Estrella](https://jamboard.google.com/d/1QiDDhW6AS9rRPJgw54n2TQnK_u8foaVo02zaykBNsc4/)
+
 | Resumen |
 | -------- |
 | + **Hacer más**: Tareas de planeamiento con plazos alcanzables. Entender que se está haciend para ayudar a convivir con la "frustración" y alcanzar mayor participación en el grupo en cuanto a la resolución de los problemas. Trabajar en pair programming y practicar lo aprendido. |
@@ -109,3 +113,13 @@ Destacamos el uso de los post-it para que todos participemos en la confección d
 | + **Empezar a hacer**: Investigar nuevas librerías. Participar en nuevos proyectos y refactorizar código propio.  |
 | + **Dejar de hacer**: Dejar de creer que es dificil o no se puede realizar la tarea para dar lugar a las ideas frescas. |
 | + **Hacer menos**: Evitar que pase mucho tiempo sin programar. |
+
+### Sprint 8
+
+#### Metodología Línea de Tiempo
+
+[Tablero Línea de Tiempo](https://jamboard.google.com/d/1SAY0KQOWddnBOnQjKi96lRQGEQuQq3-PmcDTlkeB1ms)
+
+| Resumen |
+| -------- |
+| Destacan el acompañamiento grupal que lograron alcanzar a medida que avanzaba el proyecto. Sumó también la experiencia previa que pudieron traer los integrantes del equipo en las diferentes áreas en que se desempeñan. La comunicación resultó fundamental para llevar adelante cada uno de los hitos propuestos y alcanzar en tiempo y forma los entregables. Mirando hacia atrás recuerdan términos o herramientas que nunca habían escuchado y hoy orgullosamente pueden decir que entienden de qué se trata y que con algo de tiempo dedicado hasta pueden incorporarla en futuros proyectos. Lograron identificar a tiempo los problemas que podían llevar a complejidades en un futuro tanto a nivel de equipo como de proyecto y esto permitió aprovechar las reuniones de la metodología scrum para corregir a tiempo esos desvíos. |
