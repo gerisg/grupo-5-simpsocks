@@ -60,17 +60,7 @@ window.addEventListener('load', () => {
         let sibling = document.getElementById(id);
         return sibling.value;
     }
-    //Implementacion PENDIENTE
-
-    function removeItem(item) { //Tiene que estar en el cart
-        let items = JSON.parse(localStorage.getItem('items'));
-        console.log(items);
-        remove = localStorage.removeItem(JSON.stringify(item));
-        items = JSON.parse(localStorage.getItem('items'));
-        console.log(items);
-        console.log('se borra', remove);
-    }
-
+    
     function changeStockQuantity(newQuantity) {
         let quantity = document.getElementById('stock-quantity')
         quantity.innerText = newQuantity
