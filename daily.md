@@ -101,3 +101,13 @@ __Asistentes__: Vale, Martin, Gera
 | __Gera__:  Review  y fixeo de validaciones, validacion de Imagenes, Password Opcional.|
 
 ---
+
+__Fecha__: 24/10
+
+__Asistentes__: Vale, Martin, Gera
+
+| Resumen |
+| -------- |
+| Review del proyecto. Separamos temas para la presentación del integrador. Finalizamos retro. |
+
+---
