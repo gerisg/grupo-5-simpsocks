@@ -17,7 +17,7 @@ COPY ./site/package*.json ./
 RUN npm install
 RUN npm install -g sequelize-cli
 COPY ./site .
-RUN cp -r ../dashboard/build ./public/
+RUN mkdir ./public/dashboard && mv ../dashboard/build/* ./public/dashboard && rm -r /usr/src/dashboard
 
 EXPOSE 3000
 CMD ["npm", "start"]
