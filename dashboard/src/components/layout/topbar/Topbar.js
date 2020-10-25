@@ -10,6 +10,7 @@ function Navbar() {
                 <i className="fa fa-bars"></i>
             </button>
             <ul className="navbar-nav ml-auto">
+                <TopbarItemIcon id='home' url='/' icon='fas fa-store-alt' />
                 <TopbarItemIcon id='alertsDropdown' icon='fas fa-bell fa-fw' value='3' />
                 <TopbarItemIcon id='messagesDropdown' icon='fas fa-envelope fa-fw' value='8' />
                 <div className="topbar-divider d-none d-sm-block"></div>
