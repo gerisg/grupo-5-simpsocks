@@ -2,4 +2,5 @@ node_modules/
 **/data/*.json
 **/database/config/config.json
 **/public/images/users/user-*
+**/public/dashboard
 .env

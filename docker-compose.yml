@@ -2,13 +2,12 @@ version: '3'
 
 services:
   server:
-    build:
-      context: ./site
+    build: .
+    container_name: simpsocks_server
+    command: npm start 
     ports:
       - 3000:3000
-    container_name: simpsocks_server
-    command: npm run startdev 
-    env_file: .env
+    env_file: .env.production
     volumes:
       - ./site:/usr/src/app
       - /usr/src/app/node_modules
@@ -17,23 +16,10 @@ services:
   db:
     image: mysql:8.0
     container_name: simpsocks_db
-    environment:
-      - MYSQL_USER
-      - MYSQL_ROOT_PASSWORD
-      - MYSQL_DATABASE
+    env_file: .env.production
     command: --character-set-server=utf8mb4
     restart: always
     volumes:
       - db:/var/lib/mysql
-  dashboard:
-    build:
-      context: ./dashboard
-    ports:
-      - 3001:3000
-    container_name: simpsocks_ui
-    stdin_open: true
-    volumes:
-       - ./dashboard:/usr/src/app
-       - /usr/src/app/node_modules
 volumes:
   db:

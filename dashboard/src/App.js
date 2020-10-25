@@ -29,7 +29,7 @@ function App() {
 
                 {/* SIDE MENU */}
                 <li className="nav-item">
-                    <NavLink className="nav-link collapsed" exact to="/">
+                    <NavLink className="nav-link collapsed" exact to="/dashboard">
                         <i className="fas fa-fw fa-tachometer-alt"></i>
                         <span>Panel</span>
                     </NavLink>
@@ -38,28 +38,27 @@ function App() {
                 
                 <div className="sidebar-heading">Secciones</div>
                 <li className="nav-item">
-                    <NavLink className="nav-link collapsed" to="/users">
+                    <NavLink className="nav-link collapsed" to="/dashboard/users">
                         <i className="fas fa-users"></i>
                         <span>Usuarios</span>
                     </NavLink>
                 </li>
                 <li className="nav-item">
-                    <NavLink className="nav-link collapsed" to="/products">
+                    <NavLink className="nav-link collapsed" to="/dashboard/products">
                         <i className="fas fa-shopping-cart"></i>
                         <span>Productos</span>
                     </NavLink>
                 </li>
                 <hr className="sidebar-divider d-none d-md-block" />
-
             </ul>
 
             <div id="content-wrapper" className="d-flex flex-column">
                 <div id="content">
                     <Topbar />
                     <Switch>
-                        <Route exact path="/" component={ Home } />
-                        <Route path="/products" component={ Products } />
-                        <Route path="/users" component={ Users } />
+                        <Route exact path="/dashboard" component={ Home } />
+                        <Route path="/dashboard/products" component={ Products } />
+                        <Route path="/dashboard/users" component={ Users } />
                         <Route component={ NotFound } />
                     </Switch>
                 </div>

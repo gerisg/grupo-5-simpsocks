@@ -14,6 +14,7 @@ const productRoutes = require('./routes/productRoutes');
 const categoryRoutes = require('./routes/categoryRoutes');
 const siteRoutes = require('./routes/siteRoutes');
 const apiRoutes = require('./routes/apiRoutes');
+const dashboardRoutes = require('./routes/dashboardRoutes');
 
 // Configuration
 app.use(cors()); // cross origin
@@ -37,6 +38,7 @@ app.use('/products', productRoutes);
 app.use('/categories', categoryRoutes);
 app.use('/site', siteRoutes);
 app.use('/api', apiRoutes);
+app.use('/dashboard', dashboardRoutes);
 
 // Errors
 app.use((req, res, next) => {
