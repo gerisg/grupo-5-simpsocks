@@ -25,7 +25,7 @@
                             <% categories.forEach(category => { %>
                                 <div>
                                     <% if (filter.id == category.id) { %>
-                                        <a href="/products/find/<%= category.name %>?query=<%= query %>">
+                                        <a href="/products/find?query=<%= query %>">
                                             [<i class="fas fa-times"></i>]
                                         </a>
                                     <% } %>
