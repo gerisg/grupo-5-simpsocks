@@ -9,8 +9,10 @@ services:
       - 3000:3000
     env_file: .env.production
     volumes:
+      - ./dashboard:/usr/src/dashboard
       - ./site:/usr/src/app
       - /usr/src/app/node_modules
+      - /usr/src/dashboard/node_modules
     depends_on:
       - db
   db:
