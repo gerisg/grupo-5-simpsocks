@@ -17,57 +17,54 @@
             </nav>
         </section>
         <!-- Slider -->
-        <section id="carousel-home" class="slides">
-            <div class="slide-container slide-1 fade">
-                <div class="row slide cross-center">
-                    <div class="col-12 col-md-5">
-                        <div class="row main-center">
-                            <div class="col-12 col-md-8 col-lg-8 slide-img">
-                                <img src="/images/slide/bucanera.jpg">
+        <section class="slides">
+            <div class="row">
+                <div class="hidden-sm hidden-md col-lg-3">
+                    <div class="row slide">
+                        <div class="container-hover col-12">
+                            <img src="/images/slide/next.gif">
+                            <div class="middle">
+                                <div class="btn btn-secondary">Proximamente</div>
+                            </div>
+                        </div>
+                        <div class="container-hover col-12">
+                            <img src="/images/slide/new.png">
+                            <div class="middle">
+                                <a href="/products/8/show" class="btn btn-secondary">Comprar</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-7 slide-info">
-                        <span class="title">medias bucaneras</span>
-                        <span class="text">Llegaron las bucaneras de los simpsons con los mejores diseños para vestir tus piernas.  </span>
-                        <a class="btn btn-primary" href="/products/find?query=bucaneras">Buscar</a>
+                </div>
+                <div class="col-12 col-md-8 col-lg-6">
+                    <div class="row slide">
+                        <div class="col-12 overlay-slide">
+                            <video id="videoPlayer" muted="muted" autoplay loop> 
+                                <source src="/video" type="video/mp4">
+                            </video>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="slide-container slide-2 fade">
-                <div class="row slide cross-center">
-                    <div class="col-12 col-md-5">
-                        <div class="row main-center">
-                            <div class="col-12 col-md-8 col-lg-8 slide-img">
-                                <img src="/images/slide/socks.jpg">
+                <div class="hidden-sm col-md-4 col-lg-3">
+                    <div class="row slide">
+                        <div class="container-hover col-12">
+                            <img src="/images/slide/featured.jpg">
+                            <div class="middle">
+                                <a href="/products/find/destacados" class="btn btn-secondary">Destacados</a>
+                            </div>
+                        </div>
+                        <div class="container-hover col-12">
+                            <img src="/images/slide/rude.gif">
+                            <div class="middle">
+                                <a href="/products/find/unisex" class="btn btn-secondary">Unisex</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-7 slide-info">
-                        <span class="title">modelos clásicos</span>
-                        <span class="text">No te podés perder la línea de diseño con los personajes clásicos para que te acompañen a todos lados.</span>
-                        <a class="btn btn-primary" href="/products/find?query=personajes">Buscar</a>
-                    </div>
                 </div>
             </div>
-            <div class="slide-container slide-3 fade">
-                <div class="row slide cross-center">
-                    <div class="col-12 col-md-5">
-                        <div class="row main-center">
-                            <div class="col-12 col-md-8 col-lg-8 slide-img">
-                                <img src="/images/slide/t-shirt.jpg">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-7 slide-info">
-                        <span class="title">muy pronto</span>
-                        <span class="text">Al igual que Homero, pensá cuál será tu próxima diseño y contactanos para incluirte en la pre-venta de remeras.</span>
-                        <a class="btn btn-secondary" href="/site/contact">Contacto</a>
-                    </div>
-                </div>
+            <div class="slide-info">
+                <span class="title">Busca tus SimpSocks</span>
+                <a class="btn btn-primary" href="/products/find/">Tienda</a>
             </div>
-            <a class="prev-link" onclick="prevSlide()">&#10094;</a>
-            <a class="next-link" onclick="nextSlide()">&#10095;</a>
         </section>
         <!-- Information -->
         <section class="info-banner">
@@ -128,7 +125,7 @@
         <% } %>
     </main>
 
-    <%- include('./partials/footer') %> 
-    <script src="/js/slider.js"></script>
+    <%- include('./partials/footer') %>
+    <script src="/js/video.js"></script>
 </body>
 </html>

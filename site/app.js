@@ -8,6 +8,7 @@ const auth = require('./middlewares/auth');
 
 // Routers
 const indexRoutes = require('./routes/indexRoutes');
+const videoRoutes = require('./routes/videoRoutes');
 const userRoutes = require('./routes/userRoutes');
 const productRoutes = require('./routes/productRoutes');
 const categoryRoutes = require('./routes/categoryRoutes');
@@ -30,6 +31,7 @@ app.use(auth);
 
 // Routes
 app.use('/', indexRoutes);
+app.use('/video', videoRoutes);
 app.use('/users', userRoutes);
 app.use('/products', productRoutes);
 app.use('/categories', categoryRoutes);

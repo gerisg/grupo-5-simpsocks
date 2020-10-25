@@ -16,7 +16,7 @@ module.exports = {
       { name: "envios", top: 0, image: "", parent_id: 3 },
       { name: "2x1", top: 0, image: "", parent_id: 3 },
       { name: "tamaño", top: 0, image: "", parent_id: null },
-      { name: "adultos", top: 1, image: "adult.jpg", parent_id: 13 },
+      { name: "unisex", top: 1, image: "unisex.jpg", parent_id: 13 },
       { name: "niños", top: 1, image: "children.jpg", parent_id: 13 },
     ], {});
   },
