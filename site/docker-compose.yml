@@ -12,8 +12,8 @@ services:
       - .:/usr/src/app
       - /usr/src/app/node_modules
     depends_on:
-      - mysql
-  mysql:
+      - db
+  db:
     image: mysql:8.0
     container_name: simpsocks_mysql
     environment:
