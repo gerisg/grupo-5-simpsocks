@@ -11,7 +11,7 @@ function LastProductCard(props) {
                     </h6>
                 </div>
                 <div className="card-body">
-                    <img src={props.lastItem.images ? props.lastItem.images[0].url : ''} className="rounded-circle img-fluid px-3 px-sm-4 mt-3 mb-4 card-img-top" alt="imagen de producto" />
+                    <img src={props.lastItem.images && props.lastItem.images.length ? props.lastItem.images[0].url : ''} className="rounded-circle img-fluid px-3 px-sm-4 mt-3 mb-4 card-img-top" alt="imagen de producto" />
                     <p className="card-text">{props.lastItem.description}</p>
                 </div>
                 {props.lastItem.skus ?
