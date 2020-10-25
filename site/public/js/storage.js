@@ -60,16 +60,9 @@ window.addEventListener('load', () => {
         let sibling = document.getElementById(id);
         return sibling.value;
     }
-    
-    function changeStockQuantity(newQuantity) {
-        let quantity = document.getElementById('stock-quantity')
-        quantity.innerText = newQuantity
-        console.log(quantity);
-    }
 
     let selectType = document.getElementById('variant-1');
     let selectSize = document.getElementById('variant-2');
-    // let removeBtn = document.getElementById('remove');
     let form = document.getElementById('addToCartForm');
 
     //listeners
@@ -78,16 +71,13 @@ window.addEventListener('load', () => {
         changeConfirmationText('');
 
         let siblingValue = getSelectSiblingValue('variant-2');
-
         const data = createData(e.target.value, siblingValue, productId()); //ejecucion de fn createData
 
         axios.post('http://localhost:3000/api/products/stock', data)
             .then(function (response) {
-                changeStockQuantity(response.data.stock)
                 enableBtn();
             })
             .catch(function () {
-                changeStockQuantity(0)
                 disabledBtn();
             });
     })
@@ -96,66 +86,32 @@ window.addEventListener('load', () => {
         changeConfirmationText('');
 
         let siblingValue = getSelectSiblingValue('variant-1');
-
         const data = createData(siblingValue, e.target.value, productId());
 
-        // const data = new URLSearchParams();
-        // data.append('variantId', siblingValue); //variant tipo //valor del sig select
-        // data.append('variantId', e.target.value); //variant size //valor del evento del select
-        // data.append('prodId', productId());
-
-        console.log(data);
         axios.post('http://localhost:3000/api/products/stock', data)
             .then(function (response) {
-                // addToCart(response.data);
-                changeStockQuantity(response.data.stock)
-                console.log(response.data);
                 enableBtn();
             })
             .catch(function () {
-                changeStockQuantity(0)
                 disabledBtn()
                 console.log('No hay stock');
             });
     });
 
-    // removeBtn.addEventListener('click', function(){
-    //     axios.get('http://localhost:3000/api/products/cart', data)
-    //     .then(function (response) {
-    //         getProduct()
-    //         removeItem()
-    //         console.log('se borra',response.data);
-    //     })
-    //     .then(function (response) {
-    //         removeItem()
-    //         console.log('se borra',response.data);
-    //     })
-    //     .catch(function (error) {
-    //         console.log('error');
-    //     });
-
-    // })
-
     form.addEventListener('submit', function (e) {
         e.preventDefault();
-
-        changeConfirmationText('');
-
-        const data = createData(e.target[0].value, e.target[1].value, e.target[2].value);
-        // const data = new URLSearchParams();
-        // data.append('variantId', e.target[0].value);
-        // data.append('variantId', e.target[1].value);
-        // data.append('prodId', e.target[2].value);
-
-        axios.post('http://localhost:3000/api/products/stock', data)
+        if(e.submitter.id == 'addToCart'){//Para diferenciar los btn del form
+            const data = createData(e.target[0].value, e.target[1].value, e.target[2].value);
+            axios.post('http://localhost:3000/api/products/stock', data)
             .then(function (response) {
                 addToCart(response.data);
-                let items = JSON.parse(localStorage.getItem('items'));
-                console.log(items);
+                window.location.href ='http://localhost:3000/products/cart'
             })
             .catch(function (error) {
-                console.log('hice click en el cart');
+                console.log(error);
             });
+        } else if(e.submitter.id == 'buy-btn'){
+            console.log('buy-btn'); //Redirigir 
+        }
     });
-
 });
