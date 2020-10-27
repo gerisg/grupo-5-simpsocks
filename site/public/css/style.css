@@ -906,18 +906,8 @@ footer {
     background-color: var(--white);
   }
 
-.price-details-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.price-details {
-  padding: .5rem;
-    display: flex;
-    justify-content: space-evenly;
-    text-align: left;
-  }
+.price-details { padding: .5rem; text-align: right; }
+.price-details>* { margin: 10px 0; }
 .resume-discount {
   color: var(--darkgreen);
 }
@@ -936,6 +926,11 @@ footer {
   background-color: var(--dark);
   width: 70%;
   margin-left: 15%;
+}
+
+.resume-line, .resume-total {
+  display: flex;
+  justify-content: space-between;
 }
 
 /* Featured */
