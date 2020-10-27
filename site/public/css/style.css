@@ -107,6 +107,11 @@ a {
   font-size: 1.3rem; /* 18 pt */
 }
 
+.text-small {
+  font-size: 0.75rem;
+  padding: 0 .5rem;
+}
+
 .hidden-sm { display: none; }
 
 /* Input / Buttons */
@@ -179,6 +184,25 @@ a.danger:hover, button.danger:hover { background-color: var(--soft-red); }
 
 .form-only-btn {
   display: inline;
+}
+
+.btn-group>* {
+  display: inline-block;
+  margin: 0;
+  width: 1.75rem;
+  text-align: center;
+  border: none;
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+}
+
+.btn-group>input {
+  padding-left: 1px;
+  padding-right: 1px;
+}
+
+#item-template {
+  display: none;
 }
 
 /* Validation Messages */
@@ -698,7 +722,7 @@ footer {
     display: none;
     text-align: center;
   }
-  .message.success { background-color: var(--blue); }
+  .message.success { background-color: var(--darkgreen); }
     .price {
       display: flex;
       flex-direction: row;

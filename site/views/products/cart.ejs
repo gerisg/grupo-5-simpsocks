@@ -17,52 +17,29 @@
     </div>
 
     <main class="row main-center">
+        <!-- Template to show items from local storage -->
+        <div id="item-template" class="purchase-details">
+            <img src="" alt="foto producto">
+            <article class="cart-info">
+                <span class="cancel"><i class="fa fa-times" aria-hidden="true"></i></span>
+                <p class="text"></p>
+                <div class="cart-quantity">
+                    <span class="quantity-label">Cantidad:</span>
+                    <div class="btn-group">
+                        <button>-</button><input type="text" value=""><button>+</button>
+                    </div>
+                </div>
+                <div class="cart-price">
+                    <p class="article-price">$<span></span></p><i class="far fa-heart"></i>
+                </div>
+            </article>
+        </div>
         <div class="purchase-container col-md-4 col-lg-5">
-            <div class="purchase-details">
-                <img src="/images/products/medias-homero-dona-2.png" alt="foto producto">
-                <article class="cart-info">
-                    <span class="cancel"><i class="fa fa-times" aria-hidden="true"></i></span>
-                    <p class="text">Medias Homero - rosquillas</p>
-                    <div class="cart-quantity">
-                        <span class="quantity-label">Cantidad:</span>
-                        <select name="products" id="products">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                        </select>
-                    </div>
-                    <div class="cart-price">
-                        <p class="article-price">$320</p><i class="far fa-heart"></i>
-                    </div>
-                </article>
-            </div>
-            <div class="purchase-details">
-                <img class="imae-size" src="/images/categories/homero.png" alt="foto producto">
-                <article class="cart-info">
-                    <span class="cancel"><i class="fa fa-times" aria-hidden="true"></i></span>
-                    <p class="text">Soquetes Homero - Hable mas fuerte</p>
-                    <div class="cart-quantity">
-                        <span class="quantity-label">Cantidad:</span>
-                        <select name="products" id="products">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                        </select>
-                    </div>
-                    <div class="cart-price">
-                        <p class="article-price">$320</p><i class="far fa-heart"></i>
-                    </div>
-                </article>
-            </div>
+            <!-- Items will be added here -->
         </div>
         <div class="resume-container col-md-6 col-lg-5">
             <div class="resume">
                 <div class="subtitle">Resumen de Compra</div>
-                <div>
-                    <input class="resume-input" type="text" id="discount" name="discount"
-                        placeholder="código de descuento">
-                    <button class="btn-action" type="submit">aplicar</button>
-                </div>
                 <div class="price-details-container">
                     <div class="price-details">
                         <div>Producto</div>
@@ -109,7 +86,8 @@
         </div>
     </main>
     <!-- FOOTER -->
-    <%- include('../partials/footer') %> 
+    <%- include('../partials/footer') %>
+    <script src="/js/cart.js"></script>
 </body>
 
 </html>

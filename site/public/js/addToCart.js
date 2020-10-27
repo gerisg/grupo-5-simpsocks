@@ -21,15 +21,21 @@ Array.prototype.forEach.call(variantElements, variant => {
     });
 });
 
+let test;
 addToCartForm.addEventListener('submit', async function(e){
     e.preventDefault();
     const sku = await fetch();
+    sku.image = e.target[3].value;
+    sku.price = e.target[4].value;
+    sku.discount = e.target[5].value;
+    sku.name = e.target[6].value;
     saveItem(sku);
 
     // Saved: show success message
-    messageElement.innerText = 'Agregado al Carrito';
+    messageElement.innerText = 'Agregaste el producto a tu carrito';
     messageElement.classList.add('success');
     messageElement.style.display = 'block';
+    setTimeout(() => messageElement.style.display = 'none', 5000);
 });
 
 async function fetch() {

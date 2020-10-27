@@ -75,6 +75,10 @@
                             <!-- Actions -->
                             <div class="product-actions">
                                 <input type="hidden" id="productId" name="productId" value="<%= product.id %> ">
+                                <input type="hidden" name="productImg" value="<%= product.images && product.images.length ? product.images[0].name : '' %> ">
+                                <input type="hidden" name="productPrice" value="<%= product.price ? product.price : '' %> ">
+                                <input type="hidden" name="productDiscount" value="<%= product.discount ? product.discount : '' %> ">
+                                <input type="hidden" name="productName" value="<%= product.name ? product.name : '' %> ">
                                 <button id="addToCartBtn" type="submit" class="btn btn-primary">Añadir al carrito</button>
                             </div>
                         </form>
