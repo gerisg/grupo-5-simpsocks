@@ -26,7 +26,7 @@ addToCartForm.addEventListener('submit', async function(e){
     const sku = await fetch();
     saveItem(sku);
 
-    // Saved: 
+    // Saved: show success message
     messageElement.innerText = 'Agregado al Carrito';
     messageElement.classList.add('success');
     messageElement.style.display = 'block';
@@ -43,7 +43,7 @@ async function fetch() {
         // get SKU from API
         const sku = await getSKU(params);
         
-        // OK:  hide error message and enable button
+        // OK: hide error message and enable button
         messageElement.style.display = 'none';
         messageElement.innerText = '';
         addToCartBtn.disabled = false;

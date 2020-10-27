@@ -693,6 +693,7 @@ footer {
     padding: 5px;
     background-color: var(--red);
     color: var(--white);
+    font-size: 1rem;
     font-weight: bold;
     display: none;
     text-align: center;
@@ -740,11 +741,8 @@ footer {
     }
 
 .product-actions {
-  display: flex;
-  flex-direction: column;
-  margin: var(--default-margin);
+  margin: 1rem 0;
   text-align: center;
-  width: 100%;
 }
 
 .related-products-container {
