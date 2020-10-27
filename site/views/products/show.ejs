@@ -43,24 +43,25 @@
                 </div>
                 <div class="col-12 col-md-6 col-lg-5">
                     <article class="product-details row main-center">
-                            <i class="far fa-heart heart-icon right-heart"></i>
-                            <div class="product-title title"><%= product.name %> </div>
-                            <div class="price-detail">
-                                <span class="product-price previous-price">
-                                    <% if (product.price != product.offerPrice) { %>
-                                        <%= product.price %>
-                                    <% } %>  
-                                </span>
-                                <span class="current-price">$ <%= product.offerPrice %> </span>
-                                <p class="stock">stock disponible</p>
-                            </div>
-                            <p class="product-description text"><%= product.description %> </p>
-                            
+                        <i class="far fa-heart heart-icon right-heart"></i>
+                        <div class="product-title title"><%= product.name %> </div>
+                        <div class="price-detail">
+                            <span class="product-price previous-price">
+                                <% if (product.price != product.offerPrice) { %>
+                                    $<span id="offerPrice"><%= product.price %></span>
+                                <% } %>  
+                            </span>
+                            <span class="current-price">$<span id="itemPrice"><%= product.offerPrice %></span></span>
+                        </div>
+                        <p class="product-description text"><%= product.description %> </p>
+                        
+                        <form id="addToCartForm" action="" method="post">
                             <!-- Variants -->
                             <% product.variants.forEach(variant => { %>
                                 <div class="select-variant">
                                     <label for="<%= variant.name %>"><%= variant.display %></label>
-                                    <select name="<%= variant.name %>" id="variant-<%= variant.id %>">
+                                    <select name="<%= variant.name %>" id="variant-<%= variant.id %>" class="variants">
+                                        <option disabled selected value> -- seleccione <%= variant.display %> -- </option>
                                         <% variant.variant_values.forEach(v_value => { %>
                                             <option value="<%= v_value.id %>">
                                                 <%= v_value.name %>
@@ -69,22 +70,21 @@
                                     </select>
                                 </div>
                             <% }) %>
-                            
-                            <!-- Categories -->
-                            <div>Categorías:
-                                <span class="labels">
-                                    <% product.categories.forEach(category => { %>
-                                        <span><%= category.name %></span>
-                                    <% }) %>
-                                </span>
+                            <!-- Message -->
+                            <div id="message" class="message"></div>
+                            <!-- Actions -->
+                            <div class="product-actions">
+                                <input type="hidden" id="productId" name="productId" value="<%= product.id %> ">
+                                <button id="addToCartBtn" type="submit" class="btn btn-primary">Añadir al carrito</button>
                             </div>
-                        <div class="product-actions">
-                            <form action="/products/cart" method="GET">
-                                <button type="submit" class="btn btn-secondary btn-cart">Añadir al carrito</button>
-                            </form>
-                            <form action="/error" method="POST">
-                                <button type="submit" class="btn btn-primary">Comprar</button>
-                            </form>
+                        </form>
+                        <!-- Categories -->
+                        <div>Categorías:
+                            <span class="labels">
+                                <% product.categories.forEach(category => { %>
+                                    <span><%= category.name %></span>
+                                <% }) %>
+                            </span>
                         </div>
                     </article>
                 </div>
@@ -106,6 +106,8 @@
     <% } %>
 
     <%- include("../partials/footer")%>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="/js/slider.js"></script>
+    <script src="/js/cart.js"></script>
 </body>
 </html>
