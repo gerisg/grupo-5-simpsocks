@@ -769,6 +769,10 @@ footer {
   text-align: center;
 }
 
+.product-actions>div>a {
+  margin: .1rem .5rem .5rem 0;
+}
+
 .related-products-container {
   display: none;
 }

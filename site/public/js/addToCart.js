@@ -21,7 +21,6 @@ Array.prototype.forEach.call(variantElements, variant => {
     });
 });
 
-let test;
 addToCartForm.addEventListener('submit', async function(e){
     e.preventDefault();
     const sku = await fetch();
@@ -58,8 +57,8 @@ async function fetch() {
         return sku;
 
     } catch (error) {
-        console.log(error);
         // Error:  show error message and disable button
+        messageElement.classList.remove('success');
         messageElement.innerText = 'No hay Stock';
         messageElement.style.display = 'block';
         addToCartBtn.disabled = true;
@@ -68,7 +67,7 @@ async function fetch() {
 
 async function getSKU(params) {
     try {
-        const response = await axios.post('http://localhost:3000/api/products/stock', params);
+        const response = await axios.post('/api/products/stock', params);
         return response.data;
     } catch (error) {
         throw Error(error.message);

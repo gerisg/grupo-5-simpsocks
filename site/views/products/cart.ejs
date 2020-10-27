@@ -16,6 +16,9 @@
     </div>
 
     <main class="row main-center">
+        <div id="message" class="message col-10">
+            <span>El carrito se encuentra vacío.</span>
+        </div>
         <!-- Template to show items from local storage -->
         <div id="item-template" class="purchase-details row">
             <img class="col-5 col-md-4" src="" alt="foto producto">
@@ -25,7 +28,7 @@
                 <div class="cart-quantity">
                     <span class="quantity-label">Cantidad:</span>
                     <div class="btn-group">
-                        <button>-</button><input type="text" value=""><button>+</button>
+                        <button>-</button><input type="text" value="" disabled><button>+</button>
                     </div>
                 </div>
                 <div class="cart-price">
@@ -52,7 +55,7 @@
                     <!-- total a pagar -->
                     <div class="payment price-details"></div>
                     <div class="btn-payment">
-                        <button class="btn btn-primary">Pagar</button>
+                        <button id="buy-btn" class="btn btn-primary">Pagar</button>
                     </div>
                 </div>
                 <div>

@@ -79,7 +79,10 @@
                                 <input type="hidden" name="productPrice" value="<%= product.price ? product.price : '' %> ">
                                 <input type="hidden" name="productDiscount" value="<%= product.discount ? product.discount : '' %> ">
                                 <input type="hidden" name="productName" value="<%= product.name ? product.name : '' %> ">
-                                <button id="addToCartBtn" type="submit" class="btn btn-primary">Añadir al carrito</button>
+                                <div class="row">
+                                    <button id="addToCartBtn" type="submit" class="btn btn-primary">Añadir al carrito</button>
+                                    <a href="/products/cart" class="btn btn-secondary">Ver carrito</a>
+                                </div>
                             </div>
                         </form>
                         <!-- Categories -->

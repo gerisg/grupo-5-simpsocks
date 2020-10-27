@@ -1,9 +1,15 @@
 let itemTemplate = document.getElementById('item-template');
 let resumeCart = document.getElementById('resume');
+let message = document.getElementById('message');
+let buyBtn = document.getElementById('buy-btn');
 
 function getItems() {
     let cart = localStorage.getItem('simpsocks_cart');
     return cart ? JSON.parse(cart) : [];
+}
+
+function removeAllItems() {
+    localStorage.removeItem('simpsocks_cart');
 }
 
 function saveItems(items) {
@@ -61,7 +67,8 @@ function calculateTotalPrice(price, discount, count) {
 function fetchResumeCart() {
     let items = getItems();
     if(!items.length) {
-        resumeCart.parentElement.innerHTML = '<div class="text">Carrito vacio</div>';
+        message.style.display = 'block';
+        message.nextElementSibling.nextElementSibling.nextElementSibling.style.display = 'none'; // TODO: improve structure design
         return;
     }
     // Initialize
@@ -151,6 +158,14 @@ function init() {
         
         itemTemplate.nextElementSibling.insertBefore(newItemNode, null);
     }
+
+    // buy button
+    buyBtn.addEventListener('click', e => {
+        message.innerHTML = `Gracias por probar nuestra demo. Para más info envianos un <a href="/site/contact">mensaje aquí.</a>`;
+        message.classList.add("success");
+        message.style.display = "block";
+        removeAllItems();
+    });
 }
 
 init();
