@@ -44,7 +44,7 @@ window.addEventListener('load', () => {
                 total += response.data.data.price;
                 if (response.data.data.discount > 0) {
                     let discount = Math.trunc(response.data.data.price - (response.data.data.price * response.data.data.discount / 100))
-                    total -= discount
+                    total -= Number(discount);
                     priceDetailsContainer.innerHTML += `
                         <div class="price-details resume-discount" id="discount-${i+1}">
                             <div>Descuento</div>
@@ -69,8 +69,13 @@ window.addEventListener('load', () => {
                 <button class="btn btn-primary">Pagar</button>
             </div>
         `
+        let itemsCopy = items;
+    
          //Busca las "x" por id y agrega sus respectivos listeners 
-         for (let j = 1; j <= items.length; j++) { // items del ls
+            for (let j = 1; j <= items.length; j++) { // items del ls
+            let localItems = JSON.parse(localStorage.getItem('items'))
+            console.log('items',localItems);
+
             let productId = 'purchase-'.concat(j);
             let deleteBtnId = 'remove-'.concat(j);
             let discountId = 'discount-'.concat(j);
@@ -94,18 +99,29 @@ window.addEventListener('load', () => {
                 productBox.remove(); //Elimino la card
                 // console.log(discount.innerText);
                 // console.log(price.innerText);
-                parseInt(discountValue.innerText.replace('-$', ''));
-                parseInt(priceValue.innerText.replace('$', ''));
-                parseInt(totalPrice.innerText);
+                // parseInt(priceValue.innerText.replace('$', ''));
+                // parseInt(totalPrice.innerText);
 
-                totalPrice.innerText = parseInt(totalPrice.innerText) - (parseInt(priceValue.innerText.replace('$', '')) - parseInt(discountValue.innerText.replace('-$', '')))
+                const total =  parseInt(totalPrice.innerText);
+                const priceValueReplaced = parseInt(priceValue.innerText.replace('$', ''));
+
+                totalPrice.innerText = parseInt(total - priceValueReplaced);
+                // - parseInt(discountValue.innerText.replace('-$', '')))
+                
+                if(discountValue){
+                    let  discountReplaced = parseInt(discountValue.innerText.replace('-$', ''));
+                    console.log(discountValue.innerText);
+                    totalPrice.innerText = parseInt(totalPrice.innerText) - discountReplaced; //el valor total - desceunto
+                }
+
                 if(discount){
                     discount.remove(); //Bug encontrado no remueve productos sin descuentos 
                 }
                 price.remove();
-                items.splice(j-1, 1); // elimino item del array
+                let filteredItems = localItems.filter(item => item.product_id != itemsCopy[parseInt(productId.replace('purchase-', '')) -1].product_id) // elimino item del array
+                console.log('filteredItems', filteredItems);
                 localStorage.clear;
-                localStorage.setItem('items', JSON.stringify(items)); //seteo los items restantes
+                localStorage.setItem('items', JSON.stringify(filteredItems)); //seteo los items restantes
             }); 
 
         }
