@@ -69,13 +69,23 @@ for (let i = 0; i < items.length; i++) {
     newItemNode.childNodes[3].childNodes[3].innerHTML = `${item.name}<br /><span class="text-small">${item.detail}</span>`;
     
     // Calculate total
-    const price = Number(item.price);
-    const discount = Number(item.discount);
+    const price = item.price;
+    const discount = item.discount;
     const totalPrice = calculateTotalPrice(price, discount, item.count);
     
+    // Item discount
+    let discountElement = newItemNode.childNodes[3].childNodes[7].childNodes[1].childNodes[1];
+    if(discount > 0) {
+        discountElement.innerText = discount + '%';
+    }
+    // Item offer price
+    let originalPriceElement = newItemNode.childNodes[3].childNodes[7].childNodes[1].childNodes[3];
+    if(discount > 0) {
+        originalPriceElement.innerText = `$ ${price * item.count}`;
+    }
     // Item total price
-    let priceElement = newItemNode.childNodes[3].childNodes[7].childNodes[1].childNodes[1];
-    priceElement.innerText = totalPrice;
+    let priceElement = newItemNode.childNodes[3].childNodes[7].childNodes[1].childNodes[5];
+    priceElement.innerText = `$ ${totalPrice}`;
 
     // Item count
     let countElement = newItemNode.childNodes[3].childNodes[5].childNodes[3].childNodes[2];
@@ -85,14 +95,20 @@ for (let i = 0; i < items.length; i++) {
     newItemNode.childNodes[3].childNodes[5].childNodes[3].childNodes[1].addEventListener('click', e => {
         const updatedCount = decrement(item.id);
         countElement.value = updatedCount;
-        priceElement.innerText = calculateTotalPrice(price, discount, updatedCount);
+        priceElement.innerText = `$ ${calculateTotalPrice(price, discount, updatedCount)}`;
+        if(discount > 0) {
+            originalPriceElement.innerText = `$ ${price * updatedCount}`;
+        }
     });
 
     // Increment count listener
     newItemNode.childNodes[3].childNodes[5].childNodes[3].childNodes[3].addEventListener('click', e => {
         const updatedCount = increment(item.id);
         countElement.value = updatedCount;
-        priceElement.innerText = calculateTotalPrice(price, discount, updatedCount);
+        priceElement.innerText = `$ ${calculateTotalPrice(price, discount, updatedCount)}`;
+        if(discount > 0) {
+            originalPriceElement.innerText = `$ ${price * updatedCount}`;
+        }
     });
 
     // Remove item

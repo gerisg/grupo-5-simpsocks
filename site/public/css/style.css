@@ -826,8 +826,7 @@ footer {
     border-radius: 10px;
   }
   .purchase-details img {
-    width: 40%;
-    margin: 2%;
+    padding: 1rem;
     align-self: center;
   }
 
@@ -843,10 +842,6 @@ footer {
       margin-right: 5%;
       margin-top: 3%;
     }
-  .cart-quantity {
-    width: 100%;
-    padding: 5px 20%;    
-  }
   .quantity-label {
       margin-right: 10px;
       font-size: 12px;
@@ -857,13 +852,26 @@ footer {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    padding: 0 20%;
+    padding: 0 10px 0 0;
   }
   .article-price {
     padding: 10px;
   }
   .article-details {
     padding: 10px;
+  }
+  .cart-item-discount {
+    color: var(--darkgreen);
+    font-size: .75rem;
+    margin: 0 3px;
+  }
+  .cart-item-price {
+    text-decoration: line-through;
+    font-size: .75rem;
+    margin: 0 3px;
+  }
+  .cart-item-total-price {
+    font-weight: bold;
   }
  
 /* Resume */

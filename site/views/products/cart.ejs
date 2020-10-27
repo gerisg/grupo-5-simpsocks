@@ -13,14 +13,13 @@
 
     <div class="cart-title">
         <div class="subtitle">Mi carrito </div>
-        <div class="article-count">2 Articulos</div>
     </div>
 
     <main class="row main-center">
         <!-- Template to show items from local storage -->
-        <div id="item-template" class="purchase-details">
-            <img src="" alt="foto producto">
-            <article class="cart-info">
+        <div id="item-template" class="purchase-details row">
+            <img class="col-5 col-md-4" src="" alt="foto producto">
+            <article class="cart-info col-7 col-md-8">
                 <span class="cancel"><i class="fa fa-times" aria-hidden="true"></i></span>
                 <p class="text"></p>
                 <div class="cart-quantity">
@@ -30,17 +29,22 @@
                     </div>
                 </div>
                 <div class="cart-price">
-                    <p class="article-price">$<span></span></p><i class="far fa-heart"></i>
+                    <p class="article-price">
+                        <span class="cart-item-discount"></span>
+                        <span class="cart-item-price"></span>
+                        <span class="cart-item-total-price"></span>
+                    </p>
                 </div>
             </article>
         </div>
-        <div class="purchase-container col-md-4 col-lg-5">
-            <!-- Items will be added here -->
+        <div class="purchase-container col-12 col-md-6">
+            <!-- Items will be added dinamically here -->
         </div>
-        <div class="resume-container col-md-6 col-lg-5">
+        <div class="resume-container col-11 col-md-5">
             <div class="resume">
                 <div class="subtitle">Resumen de Compra</div>
                 <div class="price-details-container">
+                    <!-- productos -->
                     <div class="price-details">
                         <div>Producto</div>
                         <div>$ 320 </div>
@@ -49,11 +53,13 @@
                         <div>Producto</div>
                         <div>$ 320 </div>
                     </div>
+                    <!-- total descuentos -->
                     <div class="price-details resume-discount">
                         <div>Descuento</div>
                         <div>-$ 125</div>
                     </div>
                     <div class="divisor"></div>
+                    <!-- total a pagar -->
                     <div class="payment price-details">
                         <div>Total</div>
                         <div>$515</div>
@@ -63,9 +69,8 @@
                     </div>
                 </div>
                 <div>
-                    <div class="shipping">Calcular Envío</div> 
-                        <input class="resume-input" type="text" id="discount" name="discount"
-                        placeholder="código postal">
+                    <div class="shipping">Calcular Envío</div>
+                        <input class="resume-input" type="text" id="discount" name="discount" placeholder="código postal">
                         <button class="btn-action" type="submit">enviar</button>
                     </div>
                 </div>
