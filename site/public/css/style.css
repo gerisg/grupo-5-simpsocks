@@ -134,6 +134,10 @@ input, button, select, textarea {
 a.danger, button.danger, input.danger { border-color: var(--red); }
 a.danger:hover, button.danger:hover { background-color: var(--soft-red); }
 
+.btn:disabled {
+  opacity: .5;
+}
+
 .btn-primary {
   color: var(--dark);
   background-color: var(--primary);
@@ -684,14 +688,16 @@ footer {
     justify-content: flex-end;
     display: flex;
   }
-  .stock {
-    display: flex;
-    font-size: 1rem;
-    margin-right: 12px;
-    color: #00a650;
+  .message {
+    margin: 15px 0;
+    padding: 5px;
+    background-color: var(--red);
+    color: var(--white);
     font-weight: bold;
-    padding-bottom: 10px;
+    display: none;
+    text-align: center;
   }
+  .message.success { background-color: var(--blue); }
     .price {
       display: flex;
       flex-direction: row;

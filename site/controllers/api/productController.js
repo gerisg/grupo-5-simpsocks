@@ -1,6 +1,6 @@
 const sender = require('../../tools/sender');
 const pager = require('../../tools/pager');
-const { fn, col } = require('sequelize');
+const { Op, fn, col } = require('sequelize');
 const { product, image, category, variant_value, sku } = require('../../database/models');
 
 module.exports = {
@@ -60,5 +60,34 @@ module.exports = {
         } catch (error) {
             sender.Error(req, res, error.message);
         }
+    },
+    stock: async (req, res) => {
+        // Get variants IDs
+        let variantIDs = req.body.variantId.map(id => { return { variant_value_id: Number(id) }})
+        // Find skus with variants
+        let results = await sku.findAll({ 
+            where: { product_id: Number(req.body.prodId) }, 
+            include: { model: variant_value, as: 'properties', through: { where: { [Op.or]: variantIDs}}}
+        });
+        if(results && results.length) {
+            // https://stackoverflow.com/questions/58556986/can-sequelize-filter-many-to-many-relationships
+            // TODO Find a better query to avoid following 
+            // Filter skus with all variants
+            results = results.filter(r => {
+                let idsToFilter = r.properties.reduce((ids, current) => { ids.push(current.id); return ids; }, []);
+                return variantIDs.every((val, index) => val.variant_value_id === idsToFilter[index]);
+            });
+            if(results && results.length) {
+                results = results[0];
+                return res.json({
+                    id: results.id,
+                    sku: results.sku,
+                    stock: results.stock,
+                    product_id: results.product_id,
+                    detail: results.properties.reduce((names, props) => `${names.trim()} ${props.name}`, '')
+                });
+            }
+        }
+        return res.status(404).json({ error: `Not available a product ID=${req.body.prodId} with properties IDs=[${req.body.variantId}]` });
     }
 };
